@@ -3,5 +3,7 @@ api_version: 1
 handlers:
 - url: /assets
   static_dir: public/assets
+- url: /semantic-ui
+  static_dir: public/semantic-ui
 - url: /.*
   script: public/index.php
