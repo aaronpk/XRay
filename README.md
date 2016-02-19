@@ -1,8 +1,18 @@
 Percolator
 ==========
 
-API
----
+
+## Discovering Content
+
+The contents of the URL is checked in the following order:
+
+* A supported silo URL
+* h-entry, h-event, h-card
+* OEmbed
+* OGP
+
+
+## API
 
 To parse a page and return structured data for the contents of the page, simply pass a url to the parse route.
 
@@ -31,14 +41,14 @@ In both cases, the response will be a JSON object containing a key of "type". If
 Other possible errors are listed below:
 
 * not_found: The URL provided was not found. (Returned 404 when fetching)
-* invalid_ssl: There was an error validating the SSL certificate. This may happen if the SSL certificate has expired, or was signed by a root authority not recognized by this service.
+* ssl_cert_error: There was an error validating the SSL certificate. This may happen if the SSL certificate has expired.
+* ssl_unsupported_cipher: The web server does not support any of the SSL ciphers known by the service.
 * timeout: The service timed out trying to connect to the URL.
 * invalid_content: The content at the URL was not valid. For example, providing a URL to an image will return this error.
 * no_link_found: The target link was not found on the page. When a target parameter is provided, this is the error that will be returned if the target could not be found on the page.
+* no_content: No usable content could be found at the given URL.
 
-
-Response Format
----------------
+## Response Format
 
 ```json
 {
@@ -74,6 +84,8 @@ If a property supports multiple values, it will always be returned as an array. 
 The content will be an object that always contains a "text" property and may contain an "html" property if the source documented published HTML content. The "text" property must always be HTML escaped before displaying it as HTML, as it may include unescaped characters such as `<` and `>`.
 
 The author will always be set in the entry if available. The service follows the [authorship discovery](http://indiewebcamp.com/authorship) algorithm to try to find the author information elsewhere on the page if it is not inside the entry in the source document.
+
+All URLs provided in the output are absolute URLs. If the source document contains a relative URL, it will be resolved first.
 
 Replies, likes, reposts, etc. of this post will be included if they are listed on the page.
 

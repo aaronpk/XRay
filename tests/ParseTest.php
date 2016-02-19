@@ -54,11 +54,10 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $response = $this->parse(['url' => $url, 'target' => 'http://target.example.com']);
 
     $body = $response->getContent();
-    print_r($body);
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
     $this->assertNotEquals('error', $data->type);
-    $this->assertNotEquals('no_link_found', $data->error);
+    $this->assertObjectNotHasAttribute('error', $data);
   }
 
 }

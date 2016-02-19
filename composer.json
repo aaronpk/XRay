@@ -9,7 +9,8 @@
       "lib/helpers.php",
       "controllers/Main.php",
       "controllers/Parse.php",
-      "lib/HTTP.php"
+      "lib/HTTP.php",
+      "lib/Formats/Mf2.php"
     ]
   },
   "autoload-dev": {

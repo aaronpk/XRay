@@ -2,6 +2,8 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Percolator\Formats;
+
 class Parse {
 
   public $http;
@@ -103,10 +105,20 @@ class Parse {
       }
     }
 
+    // Now start pulling in the data from the page. Start by looking for microformats2
+    $mf2 = mf2\Parse($result['body']);
+    if($mf2 && count($mf2['items']) > 0) {
+      $data = Formats\Mf2::parse($mf2);
+      return $this->respond($response, 200, $data);
+    }
+
+    // TODO: look for other content like OEmbed or known services later
 
 
-    return $this->respond($response, 200, [
-      'url' => $url,
+    return $this->respond($response, 400, [
+      'type' => 'error',
+      'error' => 'no_content',
+      'error_description' => 'No usable content could be found at the given URL'
     ]);
   }
 
