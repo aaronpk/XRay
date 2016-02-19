@@ -1,0 +1,11 @@
+{
+  "require": {
+    "league/plates": "3.*",
+    "league/route": "~1.2"
+  },
+  "autoload": {
+    "files": [
+      "lib/helpers.php"
+    ]
+  }
+}
