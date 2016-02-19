@@ -59,7 +59,7 @@ Response Format
   ],
   "summary": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it.",
   "content": {
-    "html": "Now that <a href="https://twitter.com/MozillaPersona">@MozillaPersona</a> is shutting down, the only good way to do email-based login is how <a href="https://twitter.com/poetica">@poetica</a> does it.",
+    "html": "Now that <a href=\"https://twitter.com/MozillaPersona\">@MozillaPersona</a> is shutting down, the only good way to do email-based login is how <a href=\"https://twitter.com/poetica\">@poetica</a> does it.",
     "text": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it."
   },
 }
