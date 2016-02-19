@@ -6,7 +6,15 @@
   },
   "autoload": {
     "files": [
-      "lib/helpers.php"
+      "lib/helpers.php",
+      "controllers/Main.php",
+      "controllers/Parse.php",
+      "lib/HTTP.php"
+    ]
+  },
+  "autoload-dev": {
+    "files": [
+      "lib/HTTPTest.php"
     ]
   }
 }
