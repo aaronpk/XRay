@@ -32,9 +32,8 @@ In both cases, the response will be a JSON object containing a key of "type". If
 
 ```json
 {
-  "type": "error",
-  "code": "not_found",
-  "summary": "The URL provided was not found"
+  "error": "not_found",
+  "error_description": "The URL provided was not found"
 }
 ```
 
@@ -52,26 +51,28 @@ Other possible errors are listed below:
 
 ```json
 {
-  "type": "entry",
-  "author": {
-  	"type": "card",
-  	"name": "Aaron Parecki",
-  	"photo": "https://aaronparecki.com/images/aaronpk-256.jpg",
-  	"url": "https://aaronparecki.com/"
-  },
-  "url": "https://aaronparecki.com/2016/01/16/11/",
-  "published": "2016-01-16T16:26:43-08:00",
-  "photo": [
-    "https://aaronparecki.com/2016/01/16/11/photo.png"
-  ],
-  "syndication": [
-    "https://twitter.com/aaronpk/status/688518372170977280"
-  ],
-  "summary": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it.",
-  "content": {
-    "html": "Now that <a href=\"https://twitter.com/MozillaPersona\">@MozillaPersona</a> is shutting down, the only good way to do email-based login is how <a href=\"https://twitter.com/poetica\">@poetica</a> does it.",
-    "text": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it."
-  },
+  "data": {
+    "type": "entry",
+    "author": {
+    	"type": "card",
+    	"name": "Aaron Parecki",
+    	"photo": "https://aaronparecki.com/images/aaronpk-256.jpg",
+    	"url": "https://aaronparecki.com/"
+    },
+    "url": "https://aaronparecki.com/2016/01/16/11/",
+    "published": "2016-01-16T16:26:43-08:00",
+    "photo": [
+      "https://aaronparecki.com/2016/01/16/11/photo.png"
+    ],
+    "syndication": [
+      "https://twitter.com/aaronpk/status/688518372170977280"
+    ],
+    "summary": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it.",
+    "content": {
+      "html": "Now that <a href=\"https://twitter.com/MozillaPersona\">@MozillaPersona</a> is shutting down, the only good way to do email-based login is how <a href=\"https://twitter.com/poetica\">@poetica</a> does it.",
+      "text": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it."
+    },
+  }
 }
 ```
 
@@ -91,36 +92,38 @@ Replies, likes, reposts, etc. of this post will be included if they are listed o
 
 ```json
 {
-  "type": "entry",
-  ...
-  "like": [
-    {
-      "type": "cite",
-      "author": {
-        "type": "card",
-        "name": "Thomas Dunlap",
-        "photo": "https://s3-us-west-2.amazonaws.com/aaronparecki.com/twitter.com/9055c458a67762637c0071006b16c78f25cb610b224dbc98f48961d772faff4d.jpeg",
-        "url": "https://twitter.com/spladow"
-      },
-      "url": "https://twitter.com/aaronpk/status/688518372170977280#favorited-by-16467582"
-    }
-  ],
-  "comment": [
-    {
-      "type": "cite",
-      "author": {
-        "type": "card",
-        "name": "Poetica",
-        "photo": "https://s3-us-west-2.amazonaws.com/aaronparecki.com/twitter.com/192664bb706b2998ed42a50a860490b6aa1bb4926b458ba293b4578af599aa6f.png",
-        "url": "http://poetica.com/"
-      },
-      "url": "https://twitter.com/poetica/status/689045331426803712",
-      "published": "2016-01-18T03:23:03-08:00",
-      "content": {
-        "text": "@aaronpk @mozillapersona thanks very much! :)"
+  "data": {
+    "type": "entry",
+    ...
+    "like": [
+      {
+        "type": "cite",
+        "author": {
+          "type": "card",
+          "name": "Thomas Dunlap",
+          "photo": "https://s3-us-west-2.amazonaws.com/aaronparecki.com/twitter.com/9055c458a67762637c0071006b16c78f25cb610b224dbc98f48961d772faff4d.jpeg",
+          "url": "https://twitter.com/spladow"
+        },
+        "url": "https://twitter.com/aaronpk/status/688518372170977280#favorited-by-16467582"
       }
-    }
-  ]
+    ],
+    "comment": [
+      {
+        "type": "cite",
+        "author": {
+          "type": "card",
+          "name": "Poetica",
+          "photo": "https://s3-us-west-2.amazonaws.com/aaronparecki.com/twitter.com/192664bb706b2998ed42a50a860490b6aa1bb4926b458ba293b4578af599aa6f.png",
+          "url": "http://poetica.com/"
+        },
+        "url": "https://twitter.com/poetica/status/689045331426803712",
+        "published": "2016-01-18T03:23:03-08:00",
+        "content": {
+          "text": "@aaronpk @mozillapersona thanks very much! :)"
+        }
+      }
+    ]
+  }
 }
 
 ```

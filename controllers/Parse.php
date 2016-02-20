@@ -32,7 +32,6 @@ class Parse {
 
     if(!$url) {
       return $this->respond($response, 400, [
-        'type' => 'error',
         'error' => 'missing_url',
         'error_description' => 'Provide a URL to fetch'
       ]);
@@ -42,7 +41,6 @@ class Parse {
     $scheme = parse_url($url, PHP_URL_SCHEME);
     if(!in_array($scheme, ['http','https'])) {
       return $this->respond($response, 400, [
-        'type' => 'error',
         'error' => 'invalid_url',
         'error_description' => 'Only http and https URLs are supported'
       ]);
@@ -51,7 +49,6 @@ class Parse {
     $host = parse_url($url, PHP_URL_HOST);
     if(!$host) {
       return $this->respond($response, 400, [
-        'type' => 'error',
         'error' => 'invalid_url',
         'error_description' => 'The URL provided was not valid'
       ]);
@@ -62,7 +59,6 @@ class Parse {
 
     if($result['error']) {
       return $this->respond($response, 400, [
-        'type' => 'error',
         'error' => $result['error'],
         'error_description' => $result['error_description']
       ]);
@@ -74,7 +70,6 @@ class Parse {
 
     if(!$doc) {
       return $this->respond($response, 400, [
-        'type' => 'error',
         'error' => 'invalid_content',
         'error_description' => 'The document could not be parsed as HTML'
       ]);
@@ -98,7 +93,6 @@ class Parse {
 
       if(!$found) {
         return $this->respond($response, 400, [
-          'type' => 'error',
           'error' => 'no_link_found',
           'error_description' => 'The source document does not have a link to the target URL'
         ]);
@@ -109,14 +103,18 @@ class Parse {
     $mf2 = mf2\Parse($result['body']);
     if($mf2 && count($mf2['items']) > 0) {
       $data = Formats\Mf2::parse($mf2);
-      return $this->respond($response, 200, $data);
+      if($data) {
+        return $this->respond($response, 200, [
+          'data' => $data,
+          'mf2' => $mf2
+        ]);
+      }
     }
 
     // TODO: look for other content like OEmbed or known services later
 
 
     return $this->respond($response, 400, [
-      'type' => 'error',
       'error' => 'no_content',
       'error_description' => 'No usable content could be found at the given URL'
     ]);
