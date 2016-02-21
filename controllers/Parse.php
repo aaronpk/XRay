@@ -59,9 +59,7 @@ class Parse {
       ]);
     }
 
-    if(parse_url($url, PHP_URL_PATH) == '') {
-      $url = $url . '/';
-    }
+    $url = \normalize_url($url);
 
     // Now fetch the URL and check for any curl errors
     $result = $this->http->get($url);

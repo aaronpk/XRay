@@ -15,11 +15,14 @@ class Mf2 {
       foreach($mf2['items'] as $i) {
         if(in_array('h-card', $i['type'])
           and array_key_exists('url', $i['properties'])
-          and in_array($url, $i['properties']['url'])
         ) {
-          // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
-          // and return the result as a feed instead
-          return self::parseHCard($i, $http, $url);
+          $urls = $i['properties']['url'];
+          $urls = array_map('\normalize_url', $urls);
+          if(in_array($url, $urls)) {
+            // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
+            // and return the result as a feed instead
+            return self::parseHCard($i, $http, $url);
+          }
         }
       }
 
@@ -130,11 +133,15 @@ class Mf2 {
     foreach($properties as $p) {
       if($p == 'url' && $authorURL) {
         // If there is a matching author URL, use that one
+        $found = false;
         foreach($item['properties']['url'] as $url) {
+          $url = \normalize_url($url);
           if($url == $authorURL) {
             $data['url'] = $url;
+            $found = true;
           }
         }
+        if(!$found) $data['url'] = $item['properties']['url'][0];
       } else if($v = self::getPlaintext($item, $p)) {
         $data[$p] = $v;
       }
