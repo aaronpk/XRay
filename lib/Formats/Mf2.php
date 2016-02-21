@@ -53,7 +53,7 @@ class Mf2 {
     }
 
     // Always arrays
-    $properties = ['photo','video','syndication','in-reply-to','like-of','repost-of'];
+    $properties = ['photo','video','syndication','in-reply-to','like-of','repost-of','category'];
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties']))
         $data[$p] = $item['properties'][$p];

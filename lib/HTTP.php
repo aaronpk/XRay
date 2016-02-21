@@ -3,7 +3,7 @@ namespace p3k;
 
 class HTTP {
 
-  public $timeout = 3;
+  public $timeout = 4;
   public $max_redirects = 8;
 
   public function get($url) {
