@@ -83,6 +83,20 @@ class AuthorTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('http://author.example.com/photo.jpg', $data->data->author->photo);
   }
 
+  public function testHEntryAuthorIsUrlToHCardWithMultipleLinks() {
+    $url = 'http://author.example.com/h-entry-author-is-url-to-h-card-with-multiple-links';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertEquals('http://author.example.com/about-with-multiple-urls', $data->data->author->url);
+    $this->assertEquals('Author Full Name', $data->data->author->name);
+    $this->assertEquals('http://author.example.com/photo.jpg', $data->data->author->photo);
+  }
+
   public function testHEntryHasHCardAndUrlAuthor() {
     $url = 'http://author.example.com/h-entry-has-h-card-and-url-author';
     $response = $this->parse(['url' => $url]);

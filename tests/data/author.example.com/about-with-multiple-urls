@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Author</title>
+</head>
+<body>
+
+  <div class="h-card">
+    <h2 class="p-name">Author Full Name</h2>
+    <a href="xmpp://user@host.example" class="u-url" rel="me">xmpp</a>
+    <a href="/about-with-multiple-urls" class="u-url" rel="me">Me</a>
+    <img src="/photo.jpg" class="u-photo">
+  </div>
+
+</body>
+</html>

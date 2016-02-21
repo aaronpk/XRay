@@ -118,7 +118,7 @@ class Mf2 {
     return $data;
   }
 
-  private static function parseHCard($item, \p3k\HTTP $http) {
+  private static function parseHCard($item, \p3k\HTTP $http, $authorURL=false) {
     $data = [
       'type' => 'card',
       'name' => null,
@@ -128,8 +128,16 @@ class Mf2 {
 
     $properties = ['url','name','photo'];
     foreach($properties as $p) {
-      if($v = self::getPlaintext($item, $p))
+      if($p == 'url' && $authorURL) {
+        // If there is a matching author URL, use that one
+        foreach($item['properties']['url'] as $url) {
+          if($url == $authorURL) {
+            $data['url'] = $url;
+          }
+        }
+      } else if($v = self::getPlaintext($item, $p)) {
         $data[$p] = $v;
+      }
     }
 
     return $data;
@@ -195,7 +203,7 @@ class Mf2 {
               and array_key_exists('uid', $i['properties'])
               and in_array($authorPage, $i['properties']['uid'])
             ) { 
-              return self::parseHCard($i, $http);
+              return self::parseHCard($i, $http, $authorPage);
             }
 
             // 7.3 "else if author-page has 1+ h-card with url property which matches the href of a rel-me link on the author-page"
@@ -204,7 +212,7 @@ class Mf2 {
               and array_key_exists('url', $i['properties'])
               and count(array_intersect($i['properties']['url'], $relMeLinks)) > 0
             ) {
-              return self::parseHCard($i, $http);
+              return self::parseHCard($i, $http, $authorPage);
             }
 
           }
