@@ -1,5 +1,5 @@
 <?php
-namespace Percolator\Formats;
+namespace XRay\Formats;
 
 class Mf2 {
 
@@ -225,7 +225,7 @@ class Mf2 {
       }
 
     }
-    
+
     return $author;
   }
 

@@ -1,15 +1,15 @@
-Percolator
-==========
+XRay
+====
 
 
 ## Discovering Content
 
 The contents of the URL is checked in the following order:
 
-* A supported silo URL
+* A supported silo URL (coming soon)
 * h-entry, h-event, h-card
-* OEmbed
-* OGP
+* OEmbed (coming soon)
+* OGP (coming soon)
 
 
 ## API
@@ -20,7 +20,7 @@ To parse a page and return structured data for the contents of the page, simply 
 GET /parse?url=https://aaronparecki.com/2016/01/16/11/
 ```
 
-To conditionally parse the page after first checking if it contains a link to a target URL, also include the target URL as a parameter. This is useful if using Percolator to verify an incoming webmention.
+To conditionally parse the page after first checking if it contains a link to a target URL, also include the target URL as a parameter. This is useful if using XRay to verify an incoming webmention.
 
 ```
 GET /parse?url=https://aaronparecki.com/2016/01/16/11/&target=http://poetica.com
@@ -88,7 +88,7 @@ The author will always be set in the entry if available. The service follows the
 
 All URLs provided in the output are absolute URLs. If the source document contains a relative URL, it will be resolved first.
 
-Replies, likes, reposts, etc. of this post will be included if they are listed on the page.
+In a future version, replies, likes, reposts, etc. of this post will be included if they are listed on the page.
 
 ```json
 {

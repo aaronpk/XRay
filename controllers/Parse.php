@@ -2,7 +2,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Percolator\Formats;
+use XRay\Formats;
 
 class Parse {
 

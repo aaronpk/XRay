@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
   <title><?= $this->e($title) ?></title>
   <link href="/assets/style.css" rel="stylesheet">
   <link href="/semantic-ui/semantic.min.css" rel="stylesheet">
@@ -11,13 +12,13 @@
 </head>
 <body>
 
-<div id="page-content">
-  <?= $this->section('content') ?>
-</div>
+<?= $this->section('content') ?>
 
+<!--
 <footer>
-  <a href="https://indiewebcamp.com/Percolator">What is Percolator?</a>
+  <a href="https://indiewebcamp.com/X-Ray">What is X-Ray?</a>
 </footer>
+-->
 
 </body>
 </html>

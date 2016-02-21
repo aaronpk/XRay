@@ -6,7 +6,7 @@ class Main {
 
   public function index(Request $request, Response $response) {
     $response->setContent(view('index', [
-      'title' => 'Percolator'
+      'title' => 'X-Ray'
     ]));
     return $response;
   }
