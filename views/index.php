@@ -2,15 +2,18 @@
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <form class="ui large form">
+
+    <h1>X-Ray</h1>
+
+    <form class="ui large form" action="/parse" method="get">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
             <i class="linkify icon"></i>
-            <input type="text" name="url" placeholder="http://example.com">
+            <input type="url" name="url" placeholder="http://example.com">
           </div>
         </div>
-        <div class="ui fluid large teal submit button">Go</div>
+        <button class="ui fluid large teal submit button">Go</button>
       </div>
 
     </form>
