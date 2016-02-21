@@ -19,7 +19,7 @@ class Mf2 {
         ) {
           // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
           // and return the result as a feed instead
-          return self::parseHCard($i, $http);
+          return self::parseHCard($i, $http, $url);
         }
       }
 
