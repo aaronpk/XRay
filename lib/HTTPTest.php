@@ -35,10 +35,11 @@ class HTTPTest extends HTTP {
     $response = file_get_contents($filename);
 
     $split = explode("\r\n\r\n", $response);
-    if(count($split) != 2) {
+    if(count($split) < 2) {
       throw new \Exception("Invalid file contents in test data, check that newlines are CRLF: $url");
     }
-    list($headers, $body) = $split;
+    $headers = array_shift($split);
+    $body = implode("\r\n", $split);
 
     if(preg_match('/HTTP\/1\.1 (\d+)/', $headers, $match)) {
       $code = $match[1];

@@ -39,7 +39,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testTargetNotFound() {
-    $url = 'http://source.example.com/baseictest';
+    $url = 'http://source.example.com/basictest';
     $response = $this->parse(['url' => $url, 'target' => 'http://example.net']);
 
     $body = $response->getContent();

@@ -12,7 +12,7 @@ class HTTP {
     curl_setopt($ch, CURLOPT_HEADER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_MAXREDIRS, $this->max_redirects);
-    curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
+    curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
     $response = curl_exec($ch);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     return array(
@@ -33,7 +33,7 @@ class HTTP {
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_HEADER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
+    curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
     $response = curl_exec($ch);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     return array(
@@ -53,7 +53,7 @@ class HTTP {
     curl_setopt($ch, CURLOPT_NOBODY, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_MAXREDIRS, $this->max_redirects);
-    curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
+    curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
     $response = curl_exec($ch);
     return array(
       'code' => curl_getinfo($ch, CURLINFO_HTTP_CODE),

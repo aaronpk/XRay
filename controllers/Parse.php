@@ -28,6 +28,11 @@ class Parse {
 
   public function parse(Request $request, Response $response) {
 
+    if($request->get('timeout')) {
+      // We might make 2 HTTP requests, so each request gets half the desired timeout
+      $this->http->timeout = $request->get('timeout') / 2;
+    }
+
     $url = $request->get('url');
 
     if(!$url) {
@@ -100,18 +105,18 @@ class Parse {
     }
 
     // Now start pulling in the data from the page. Start by looking for microformats2
-    $mf2 = mf2\Parse($result['body']);
+    $mf2 = mf2\Parse($result['body'], $url);
+
     if($mf2 && count($mf2['items']) > 0) {
-      $data = Formats\Mf2::parse($mf2);
+      $data = Formats\Mf2::parse($mf2, $url, $this->http);
       if($data) {
         return $this->respond($response, 200, [
           'data' => $data,
-          'mf2' => $mf2
         ]);
       }
     }
 
-    // TODO: look for other content like OEmbed or known services later
+    // TODO: look for other content like OEmbed or other known services later
 
 
     return $this->respond($response, 400, [

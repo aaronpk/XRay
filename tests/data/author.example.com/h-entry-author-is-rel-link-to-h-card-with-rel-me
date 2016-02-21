@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Example</title>
+</head>
+<body>
+
+  <div class="h-entry">
+    <p class="p-name e-content">Hello World</p>
+  </div>
+
+  <a href="/about-rel-me" rel="author">Author</a>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Author</title>
+</head>
+<body>
+
+  <div class="h-card">
+    <a href="/about" class="u-url">
+      <img src="/photo.jpg" class="u-photo">
+      <span class="p-name">Author Full Name</span>
+      <!-- includes a different name here than is used in the files that link here, in order to ensure they are not fetching this page -->
+    </a>
+  </div>
+
+</body>
+</html>
