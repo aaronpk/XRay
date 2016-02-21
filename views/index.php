@@ -15,8 +15,10 @@
         </div>
         <button class="ui fluid large teal submit button">Go</button>
       </div>
-
     </form>
+
+    <p><a href="https://github.com/aaronpk/XRay">Read Me</a>. Please <a href="https://github.com/aaronpk/XRay/issues">file an issue</a> if you encounter any issues.</p>
+
   </div>
 </div>
 
