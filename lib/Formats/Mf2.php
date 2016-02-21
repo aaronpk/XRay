@@ -115,7 +115,8 @@ class Mf2 {
         'url' => null,
         'photo' => null
       ],
-      'items' => []
+      'items' => [],
+      'todo' => 'Not yet implemented. Please see https://github.com/aaronpk/XRay/issues/1'
     ];
 
     return $data;
