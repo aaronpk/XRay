@@ -8,11 +8,7 @@ class HTTP {
 
   public function get($url) {
     $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HEADER, true);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_MAXREDIRS, $this->max_redirects);
-    curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
+    $this->_set_curlopts($ch, $url);
     $response = curl_exec($ch);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     return array(
@@ -27,13 +23,7 @@ class HTTP {
 
   public function post($url, $body, $headers=array()) {
     $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_HEADER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
+    $this->_set_curlopts($ch, $url);
     $response = curl_exec($ch);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     return array(
@@ -48,12 +38,7 @@ class HTTP {
 
   public function head($url) {
     $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HEADER, true);
-    curl_setopt($ch, CURLOPT_NOBODY, true);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_MAXREDIRS, $this->max_redirects);
-    curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
+    $this->_set_curlopts($ch, $url);
     $response = curl_exec($ch);
     return array(
       'code' => curl_getinfo($ch, CURLINFO_HTTP_CODE),
@@ -62,6 +47,25 @@ class HTTP {
       'error_description' => curl_error($ch),
       'error_code' => curl_errno($ch),
     );
+  }
+
+  private function _set_curlopts($ch, $url) {
+    $host = parse_url($url, PHP_URL_HOST);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, true);
+
+    // Special-case appspot.com URLs to not follow redirects.
+    // https://cloud.google.com/appengine/docs/php/urlfetch/
+    if(substr($host, -12) == '.appspot.com') {
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    } else {
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+      curl_setopt($ch, CURLOPT_MAXREDIRS, $this->max_redirects);
+    }
+
+    curl_setopt($ch, CURLOPT_MAXREDIRS, $this->max_redirects);
+    curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
   }
 
   public static function error_string_from_code($code) {
