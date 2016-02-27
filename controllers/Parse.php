@@ -33,6 +33,10 @@ class Parse {
       $this->http->timeout = $request->get('timeout') / 2;
     }
 
+    if($request->get('max_redirects')) {
+      $this->http->max_redirects = (int)$request->get('max_redirects');
+    }
+
     $url = $request->get('url');
 
     if(!$url) {

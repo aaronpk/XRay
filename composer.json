@@ -9,6 +9,8 @@
       "lib/helpers.php",
       "controllers/Main.php",
       "controllers/Parse.php",
+      "lib/HTTPCurl.php",
+      "lib/HTTPStream.php",
       "lib/HTTP.php",
       "lib/Formats/Mf2.php"
     ]

@@ -58,8 +58,15 @@ class Mf2 {
     // Always arrays
     $properties = ['photo','video','syndication','in-reply-to','like-of','repost-of','category'];
     foreach($properties as $p) {
-      if(array_key_exists($p, $item['properties']))
-        $data[$p] = $item['properties'][$p];
+      if(array_key_exists($p, $item['properties'])) {
+        $data[$p] = [];
+        foreach($item['properties'][$p] as $v) {
+          if(is_string($v))
+            $data[$p][] = $v;
+          elseif(is_array($v) and array_key_exists('value', $v))
+            $data[$p][] = $v['value'];
+        }
+      }
     }
 
     // Determine if the name is distinct from the content
@@ -73,18 +80,22 @@ class Mf2 {
         $textContent = $content;
       } elseif(!is_string($content) && is_array($content) && array_key_exists('value', $content)) {
         if(array_key_exists('html', $content)) {
-          $textContent = strip_tags($content['html']);
-          $htmlContent = $content['html'];
+          $textContent = trim(strip_tags($content['html']));
+          $htmlContent = trim($content['html']);
         } else {
-          $textContent = $content['value'];
+          $textContent = trim($content['value']);
         }
       }
 
       // Trim ellipses from the name
       $name = preg_replace('/ ?(\.\.\.|…)$/', '', $name);
 
+      // Remove all whitespace when checking equality
+      $nameCompare = preg_replace('/\s/','',trim($name));
+      $contentCompare = preg_replace('/\s/','',trim($textContent));
+
       // Check if the name is a prefix of the content
-      if(strpos($textContent, $name) === 0) {
+      if(strpos($contentCompare, $nameCompare) === 0) {
         $name = null;
       }
     }
