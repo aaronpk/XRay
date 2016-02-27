@@ -14,3 +14,4 @@ deploy:
   default: true
   project: xray-p3k-io
   on: master
+  keyfile: XRay-67d8fdd0bba3.json
