@@ -48,7 +48,7 @@ class HTTPStream {
         $description = str_replace('php_network_getaddresses: ', '', $description);
       }
 
-      if(preg_match('/timed out/', $description)) {
+      if(preg_match('/timed out|request failed/', $description)) {
         $code = 'timeout';
       }
 
