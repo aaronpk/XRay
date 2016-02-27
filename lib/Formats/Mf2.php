@@ -35,7 +35,7 @@ class Mf2 {
     return false;
   }
 
-  private static function parseHEntry($mf2, \p3k\HTTP $http) {
+  private static function parseHEntry($mf2, $http) {
     $data = [
       'type' => 'entry',
       'author' => [
@@ -117,7 +117,7 @@ class Mf2 {
     return $data;    
   }
 
-  private static function parseHFeed($mf2, \p3k\HTTP $http) {
+  private static function parseHFeed($mf2, $http) {
     $data = [
       'type' => 'feed',
       'author' => [
@@ -133,7 +133,7 @@ class Mf2 {
     return $data;
   }
 
-  private static function parseHCard($item, \p3k\HTTP $http, $authorURL=false) {
+  private static function parseHCard($item, $http, $authorURL=false) {
     $data = [
       'type' => 'card',
       'name' => null,
@@ -162,7 +162,7 @@ class Mf2 {
     return $data;
   }
 
-  private static function findAuthor($mf2, $item, \p3k\HTTP $http) {
+  private static function findAuthor($mf2, $item, $http) {
     $author = [
       'type' => 'card',
       'name' => null,
@@ -324,7 +324,7 @@ class Mf2 {
     return $fallback;
   }
 
-  private static function getURL($url, \p3k\HTTP $http) {
+  private static function getURL($url, $http) {
     if(!$url) return null;
     // TODO: consider adding caching here
     $result = $http->get($url);

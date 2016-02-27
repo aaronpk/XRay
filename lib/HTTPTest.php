@@ -1,7 +1,7 @@
 <?php
 namespace p3k;
 
-class HTTPTest extends HTTP {
+class HTTPTest extends HTTPCurl {
 
   private $_testDataPath;
 
