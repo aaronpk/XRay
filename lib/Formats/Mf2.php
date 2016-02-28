@@ -1,6 +1,8 @@
 <?php
 namespace XRay\Formats;
 
+use HTMLPurifier, HTMLPurifier_Config;
+
 class Mf2 {
 
   public static function parse($mf2, $url, $http) {
@@ -102,8 +104,8 @@ class Mf2 {
         $textContent = $content;
       } elseif(!is_string($content) && is_array($content) && array_key_exists('value', $content)) {
         if(array_key_exists('html', $content)) {
-          $textContent = trim(strip_tags($content['html']));
-          $htmlContent = trim($content['html']);
+          $htmlContent = trim(self::sanitizeHTML($content['html']));
+          $textContent = trim(str_replace("&#xD;","\r",strip_tags($htmlContent)));
         } else {
           $textContent = trim($content['value']);
         }
@@ -290,6 +292,45 @@ class Mf2 {
     }
 
     return $author;
+  }
+
+  private static function sanitizeHTML($html) {
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('Cache.DefinitionImpl', null);
+    $config->set('HTML.AllowedElements', [
+      'a',
+      'abbr',
+      'b',
+      'code',
+      'del',
+      'em',
+      'i',
+      'img',
+      'q',
+      'strike',
+      'strong',
+      'time',
+      'blockquote',
+      'pre',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+    ]);
+    $def = $config->getHTMLDefinition(true);
+    $def->addElement(
+      'time',
+      'Inline',
+      'Inline',
+      'Common',
+      [
+        'datetime' => 'Text'
+      ]
+    );
+    $purifier = new HTMLPurifier($config);
+    return $purifier->purify($html);
   }
 
   private static function responseDisplayText($name, $summary, $content) {

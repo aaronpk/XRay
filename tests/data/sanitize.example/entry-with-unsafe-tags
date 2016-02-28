@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <div class="e-content">
+      <p>This content has a bunch of invalid tags but also some <b>valid ones</b>.</p>
+      <script>alert('woo')</script>
+      <style>body { visiblity: hidden }</style>
+      <p>Hello World</p>
+    </div>
+  </body>
+</html>

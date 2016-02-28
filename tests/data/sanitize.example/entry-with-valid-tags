@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <div class="e-content">
+      This content has only valid tags. <a href="/example">links</a>, <abbr>abbreviations</abbr>, <b>bold</b>, <code>inline code</code>, <del>delete</del>, <em>emphasis</em>, <i>italics</i>, <img src="/example.jpg" alt="images are allowed"> <q>inline quote</q>, <strike>strikethrough</strike>, <strong>strong text</strong>, and <time datetime="2016-01-01">time elements</time> are supported inline elements.
+
+      <blockquote>Blockquote tags are okay</blockquote>
+
+      <pre>preformatted text is okay too
+for code examples and such</pre>
+
+      <h1>One</h1>
+      <h2>Two</h2>
+      <h3>Three</h3>
+      <h4>Four</h4>
+      <h5>Five</h5>
+      <h6>Six</h6>
+    </div>
+  </body>
+</html>
