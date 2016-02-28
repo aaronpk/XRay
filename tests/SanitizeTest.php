@@ -79,6 +79,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertContains('<h2 class="p-name">Hello World</h2>', $html);
+    $this->assertContains('<h3>Utility Class</h3>', $html);
   }
 
 }

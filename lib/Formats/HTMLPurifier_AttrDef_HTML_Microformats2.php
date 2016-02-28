@@ -32,7 +32,7 @@ class HTMLPurifier_AttrDef_HTML_Microformats2 extends HTMLPurifier_AttrDef_HTML_
     {
         $ret = array();
         foreach ($tokens as $token) {
-            if(preg_match('/^([hpue]|dt)-.+/', $token)) {
+            if(preg_match('/^([hpue]|dt)-[a-z\-]+$/', $token)) {
                 $ret[] = $token;
             }
         }

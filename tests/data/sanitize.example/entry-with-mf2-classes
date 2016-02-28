@@ -12,6 +12,8 @@ Connection: keep-alive
     <div class="e-content">
       <h2 class="p-name header">Hello World</h2>
       This content has a valid tags that contains microformats classes.
+      <h3 class="u-utilityClass">Utility Class</h3>
+      The u-utilityClass should not be returned according to http://microformats.org/wiki/microformats2-parsing-issues#ignore_u-camelCase_properties
     </div>
   </body>
 </html>
