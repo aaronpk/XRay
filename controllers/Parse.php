@@ -7,6 +7,7 @@ use XRay\Formats;
 class Parse {
 
   public $http;
+  private $_pretty = false;
 
   public function __construct() {
     $this->http = new p3k\HTTP();
@@ -18,7 +19,9 @@ class Parse {
       $response->headers->set($k, $v);
     }
     $response->headers->set('Content-Type', 'application/json');
-    $response->setContent(json_encode($params));
+    $opts = JSON_UNESCAPED_SLASHES;
+    if($this->_pretty) $opts += JSON_PRETTY_PRINT;
+    $response->setContent(json_encode($params, $opts)."\n");
     return $response;
   }
 
@@ -35,6 +38,10 @@ class Parse {
 
     if($request->get('max_redirects')) {
       $this->http->max_redirects = (int)$request->get('max_redirects');
+    }
+
+    if($request->get('pretty')) {
+      $this->_pretty = true;
     }
 
     $url = $request->get('url');
