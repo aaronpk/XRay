@@ -39,13 +39,7 @@ class Mf2 {
 
   private static function parseHEntry($mf2, $http) {
     $data = [
-      'type' => 'entry',
-      'author' => [
-        'type' => 'card',
-        'name' => null,
-        'url' => null,
-        'photo' => null
-      ]
+      'type' => 'entry'
     ];
     $refs = [];
 
@@ -119,7 +113,7 @@ class Mf2 {
       $contentCompare = preg_replace('/\s/','',trim($textContent));
 
       // Check if the name is a prefix of the content
-      if(strpos($contentCompare, $nameCompare) === 0) {
+      if($contentCompare && $nameCompare && strpos($contentCompare, $nameCompare) === 0) {
         $name = null;
       }
     }
@@ -136,7 +130,8 @@ class Mf2 {
       }
     }
 
-    $data['author'] = self::findAuthor($mf2, $item, $http);
+    if($author = self::findAuthor($mf2, $item, $http))
+      $data['author'] = $author;
 
     $response = [
       'data' => $data
@@ -291,6 +286,9 @@ class Mf2 {
 
     }
 
+    if(!$author['name'] && !$author['photo'] && !$author['url'])
+      return null;
+
     return $author;
   }
 
@@ -312,6 +310,7 @@ class Mf2 {
       'time',
       'blockquote',
       'pre',
+      'p',
       'h1',
       'h2',
       'h3',
@@ -329,6 +328,8 @@ class Mf2 {
         'datetime' => 'Text'
       ]
     );
+    // Override the allowed classes to only support Microformats2 classes
+    $def->manager->attrTypes->set('Class', new \HTMLPurifier_AttrDef_HTML_Microformats2());
     $purifier = new HTMLPurifier($config);
     return $purifier->purify($html);
   }

@@ -13,7 +13,8 @@
       "lib/HTTPCurl.php",
       "lib/HTTPStream.php",
       "lib/HTTP.php",
-      "lib/Formats/Mf2.php"
+      "lib/Formats/Mf2.php",
+      "lib/Formats/HTMLPurifier_AttrDef_HTML_Microformats2.php"
     ]
   },
   "autoload-dev": {

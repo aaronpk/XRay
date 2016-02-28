@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <div class="e-content">
+      <h2 class="p-name header">Hello World</h2>
+      This content has a valid tags that contains microformats classes.
+    </div>
+  </body>
+</html>

@@ -43,6 +43,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('<blockquote>Blockquote tags are okay</blockquote>', $html);
     $this->assertContains('<pre>preformatted text is okay too', $html, '<pre> missing');
     $this->assertContains('for code examples and such</pre>', $html, '<pre> missing');
+    $this->assertContains('<p>Paragraph tags are allowed</p>', $html, '<p> missing');
     $this->assertContains('<h1>One</h1>', $html, '<h1> missing');
     $this->assertContains('<h2>Two</h2>', $html, '<h2> missing');
     $this->assertContains('<h3>Three</h3>', $html, '<h3> missing');
@@ -61,11 +62,23 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $html = $data['data']['content']['html'];
 
     $this->assertEquals('entry', $data['data']['type']);
-    $this->assertNotContains('<p>', $html);
     $this->assertNotContains('<script>', $html);
     $this->assertNotContains('<style>', $html);
     $this->assertNotContains('visiblity', $html); // from the CSS
     $this->assertNotContains('alert', $html); // from the JS
+  }
+
+  public function testAllowsMF2Classes() {
+    $url = 'http://sanitize.example/entry-with-mf2-classes';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $html = $data['data']['content']['html'];
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertContains('<h2 class="p-name">Hello World</h2>', $html);
   }
 
 }
