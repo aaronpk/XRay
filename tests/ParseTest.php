@@ -118,4 +118,14 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertObjectNotHasAttribute('content', $data->data);
   }
 
+  public function testNoHEntryMarkup() {
+    $url = 'http://source.example.com/no-h-entry';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertEquals('unknown', $data->data->type);
+  }
+
 }

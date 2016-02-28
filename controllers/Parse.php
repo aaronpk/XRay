@@ -125,9 +125,10 @@ class Parse {
     // TODO: look for other content like OEmbed or other known services later
 
 
-    return $this->respond($response, 400, [
-      'error' => 'no_content',
-      'error_description' => 'No usable content could be found at the given URL'
+    return $this->respond($response, 200, [
+      'data' => [
+        'type' => 'unknown',
+      ]
     ]);
   }
 
