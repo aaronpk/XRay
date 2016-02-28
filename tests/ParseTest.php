@@ -128,4 +128,55 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('unknown', $data->data->type);
   }
 
+  public function testReplyIsURL() {
+    $url = 'http://source.example.com/reply-is-url';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('http://example.com/100', $data['data']['in-reply-to'][0]);
+  }
+
+  public function testReplyIsHCite() {
+    $url = 'http://source.example.com/reply-is-h-cite';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);    
+    $this->assertEquals('http://example.com/100', $data['data']['in-reply-to'][0]);
+    $this->assertArrayHasKey('http://example.com/100', $data['refs']);
+    $this->assertEquals('Example Post', $data['refs']['http://example.com/100']['name']);
+    $this->assertEquals('http://example.com/100', $data['refs']['http://example.com/100']['url']);
+  }
+
+  public function testPersonTagIsURL() {
+    $url = 'http://source.example.com/person-tag-is-url';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('http://alice.example.com/', $data['data']['category'][0]);
+  }
+
+  public function testPersonTagIsHCard() {
+    $url = 'http://source.example.com/person-tag-is-h-card';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('http://alice.example.com/', $data['data']['category'][0]);
+    $this->assertArrayHasKey('http://alice.example.com/', $data['refs']);
+    $this->assertEquals('card', $data['refs']['http://alice.example.com/']['type']);
+    $this->assertEquals('http://alice.example.com/', $data['refs']['http://alice.example.com/']['url']);
+    $this->assertEquals('Alice', $data['refs']['http://alice.example.com/']['name']);
+  }
+
 }

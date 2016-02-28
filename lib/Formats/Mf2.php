@@ -27,7 +27,7 @@ class Mf2 {
       }
 
       // Otherwise check for an h-entry
-      if(in_array('h-entry', $item['type'])) {
+      if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         return self::parseHEntry($mf2, $http);
       }
     }
@@ -45,6 +45,7 @@ class Mf2 {
         'photo' => null
       ]
     ];
+    $refs = [];
 
     $item = $mf2['items'][0];
 
@@ -56,7 +57,7 @@ class Mf2 {
     }
 
     // Always arrays
-    $properties = ['photo','video','syndication','in-reply-to','like-of','repost-of','category'];
+    $properties = ['photo','video','syndication'];
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         $data[$p] = [];
@@ -68,6 +69,27 @@ class Mf2 {
         }
       }
     }
+
+    // Always returned as arrays, and may also create external references
+    $properties = ['in-reply-to','like-of','repost-of','category'];
+    foreach($properties as $p) {
+      if(array_key_exists($p, $item['properties'])) {
+        $data[$p] = [];
+        foreach($item['properties'][$p] as $v) {
+          if(is_string($v))
+            $data[$p][] = $v;
+          elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url'))) {
+            $data[$p][] = $u;
+            // parse the object and put the result in the "refs" object
+            $ref = self::parse(['items'=>[$v]], $u, $http);
+            if($ref) {
+              $refs[$u] = $ref['data'];
+            }
+          }
+        }
+      }      
+    }
+
 
     // Determine if the name is distinct from the content
     $name = self::getPlaintext($item, 'name');
@@ -114,7 +136,15 @@ class Mf2 {
 
     $data['author'] = self::findAuthor($mf2, $item, $http);
 
-    return $data;    
+    $response = [
+      'data' => $data
+    ];
+
+    if(count($refs)) {
+      $response['refs'] = $refs;
+    }
+
+    return $response;
   }
 
   private static function parseHFeed($mf2, $http) {
@@ -130,7 +160,9 @@ class Mf2 {
       'todo' => 'Not yet implemented. Please see https://github.com/aaronpk/XRay/issues/1'
     ];
 
-    return $data;
+    return [
+      'data' => $data
+    ];
   }
 
   private static function parseHCard($item, $http, $authorURL=false) {
@@ -159,7 +191,11 @@ class Mf2 {
       }
     }
 
-    return $data;
+    $response = [
+      'data' => $data
+    ];
+
+    return $response;
   }
 
   private static function findAuthor($mf2, $item, $http) {

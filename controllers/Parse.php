@@ -116,9 +116,7 @@ class Parse {
     if($mf2 && count($mf2['items']) > 0) {
       $data = Formats\Mf2::parse($mf2, $url, $this->http);
       if($data) {
-        return $this->respond($response, 200, [
-          'data' => $data,
-        ]);
+        return $this->respond($response, 200, $data);
       }
     }
 
