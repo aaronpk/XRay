@@ -7,10 +7,13 @@ class Mf2 {
 
   public static function parse($mf2, $url, $http) {
 
+    // TODO: Check if the list of items is a bunch of h-entrys and return as a feed
+
+
     if($item = $mf2['items'][0]) {
       // If the first item is a feed, the page is a feed
       if(in_array('h-feed', $item['type'])) {
-        return self::parseHFeed($mf2, $http);
+        return self::parseAsHFeed($mf2, $http);
       }
 
       // Check each top-level h-card, and if there is one that matches this URL, the page is an h-card
@@ -23,27 +26,35 @@ class Mf2 {
           if(in_array($url, $urls)) {
             // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
             // and return the result as a feed instead
-            return self::parseHCard($i, $http, $url);
+            return self::parseAsHCard($i, $http, $url);
           }
         }
       }
+    }
 
+    foreach($mf2['items'] as $item) {
       // Otherwise check for an h-entry
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        return self::parseHEntry($mf2, $http);
+        return self::parseAsHEntry($mf2, $http);
       }
     }
 
     return false;
   }
 
-  private static function parseHEntry($mf2, $http) {
+  private static function parseAsHEntry($mf2, $http) {
     $data = [
       'type' => 'entry'
     ];
     $refs = [];
 
-    $item = $mf2['items'][0];
+    // Find the first h-entry
+    foreach($mf2['items'] as $i) {
+      if(in_array('h-entry', $i['type']) || in_array('h-cite', $i['type'])) {
+        $item = $i;
+        continue;
+      }
+    }
 
     // Single plaintext values
     $properties = ['url','published','summary','rsvp'];
@@ -86,7 +97,6 @@ class Mf2 {
       }      
     }
 
-
     // Determine if the name is distinct from the content
     $name = self::getPlaintext($item, 'name');
     $content = null;
@@ -100,6 +110,7 @@ class Mf2 {
         if(array_key_exists('html', $content)) {
           $htmlContent = trim(self::sanitizeHTML($content['html']));
           $textContent = trim(str_replace("&#xD;","\r",strip_tags($htmlContent)));
+          $textContent = trim(str_replace("&#xD;","\r",$content['value']));
         } else {
           $textContent = trim($content['value']);
         }
@@ -125,7 +136,7 @@ class Mf2 {
       $data['content'] = [
         'text' => $textContent
       ];
-      if($textContent != $htmlContent) {
+      if($htmlContent && $textContent != $htmlContent) {
         $data['content']['html'] = $htmlContent;
       }
     }
@@ -144,7 +155,7 @@ class Mf2 {
     return $response;
   }
 
-  private static function parseHFeed($mf2, $http) {
+  private static function parseAsHFeed($mf2, $http) {
     $data = [
       'type' => 'feed',
       'author' => [
@@ -162,7 +173,7 @@ class Mf2 {
     ];
   }
 
-  private static function parseHCard($item, $http, $authorURL=false) {
+  private static function parseAsHCard($item, $http, $authorURL=false) {
     $data = [
       'type' => 'card',
       'name' => null,
@@ -213,7 +224,7 @@ class Mf2 {
       foreach($item['properties']['author'] as $a) {
         if(self::isHCard($a)) {
           // 5.1 "if it has an h-card, use it, exit."
-          return self::parseHCard($a, $http)['data'];
+          return self::parseAsHCard($a, $http)['data'];
         } elseif(is_string($a)) {
           if(self::isURL($a)) {
             // 5.2 "otherwise if author property is an http(s) URL, let the author-page have that URL"
@@ -255,7 +266,7 @@ class Mf2 {
               and array_key_exists('uid', $i['properties'])
               and in_array($authorPage, $i['properties']['uid'])
             ) { 
-              return self::parseHCard($i, $http, $authorPage)['data'];
+              return self::parseAsHCard($i, $http, $authorPage)['data'];
             }
 
             // 7.3 "else if author-page has 1+ h-card with url property which matches the href of a rel-me link on the author-page"
@@ -264,7 +275,7 @@ class Mf2 {
               and array_key_exists('url', $i['properties'])
               and count(array_intersect($i['properties']['url'], $relMeLinks)) > 0
             ) {
-              return self::parseHCard($i, $http, $authorPage)['data'];
+              return self::parseAsHCard($i, $http, $authorPage)['data'];
             }
 
           }
@@ -278,7 +289,7 @@ class Mf2 {
           if(array_key_exists('url', $i['properties'])
             and in_array($authorPage, $i['properties']['url'])
           ) {
-            return self::parseHCard($i, $http)['data'];
+            return self::parseAsHCard($i, $http)['data'];
           }
 
         }

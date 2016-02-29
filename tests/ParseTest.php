@@ -179,4 +179,15 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Alice', $data['refs']['http://alice.example.com/']['name']);
   }
 
+  public function testHEntryIsNotFirstObject() {
+    $url = 'http://source.example.com/h-entry-is-not-first';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Hello World', $data['data']['content']['text']);
+  }
+
 }
