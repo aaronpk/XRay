@@ -62,12 +62,15 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $html = $data['data']['content']['html'];
+    $text = $data['data']['content']['text'];
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertNotContains('<script>', $html);
     $this->assertNotContains('<style>', $html);
     $this->assertNotContains('visiblity', $html); // from the CSS
     $this->assertNotContains('alert', $html); // from the JS
+    $this->assertNotContains('visiblity', $text);
+    $this->assertNotContains('alert', $text);
   }
 
   public function testAllowsMF2Classes() {
@@ -82,6 +85,32 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertContains('<h2 class="p-name">Hello World</h2>', $html);
     $this->assertContains('<h3>Utility Class</h3>', $html);
+  }
+
+  public function testEscapingHTMLTagsInText() {
+    $url = 'http://sanitize.example/html-escaping-in-text';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('This content has some HTML escaped entities such as & ampersand, " quote, escaped <code> HTML tags, an ümlaut, an @at sign.', $data['data']['content']['text']);
+  }
+
+  public function testEscapingHTMLTagsInHTML() {
+    $url = 'http://sanitize.example/html-escaping-in-html';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertArrayNotHasKey('name', $data['data']);
+    $this->assertEquals('This content has some HTML escaped entities such as & ampersand, " quote, escaped <code> HTML tags, an ümlaut, an @at sign.', $data['data']['content']['text']);
+    $this->assertEquals('This content has some <i>HTML escaped</i> entities such as &amp; ampersand, " quote, escaped &lt;code&gt; HTML tags, an ümlaut, an @at sign.', $data['data']['content']['html']);
   }
 
 }

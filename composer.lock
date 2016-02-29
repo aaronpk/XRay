@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9ca7e7a96c33dc8c293a42cbcd4c1d2f",
-    "content-hash": "c1c0c63887a953998208639cd85555a3",
+    "hash": "9aca2f5dc097a03c196b7c2b4e771ade",
+    "content-hash": "ccf2adf6d508929e3d329fe3d2adaaef",
     "packages": [
         {
             "name": "ezyang/htmlpurifier",
@@ -263,16 +263,16 @@
         },
         {
             "name": "mf2/mf2",
-            "version": "v0.2.12",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/indieweb/php-mf2.git",
-                "reference": "6701504876d6c9242eb310b35f41d40d9785ab4e"
+                "url": "https://github.com/aaronpk/php-mf2.git",
+                "reference": "bb02f0ee92de17975da1eec738d75ed0dfb68027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/6701504876d6c9242eb310b35f41d40d9785ab4e",
-                "reference": "6701504876d6c9242eb310b35f41d40d9785ab4e",
+                "url": "https://api.github.com/repos/aaronpk/php-mf2/zipball/bb02f0ee92de17975da1eec738d75ed0dfb68027",
+                "reference": "bb02f0ee92de17975da1eec738d75ed0dfb68027",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "CC0"
             ],
             "authors": [
                 {
@@ -312,7 +312,7 @@
                 "parser",
                 "semantic"
             ],
-            "time": "2015-07-12 14:10:01"
+            "time": "2016-02-29 01:39:53"
         },
         {
             "name": "nikic/fast-route",
@@ -359,16 +359,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v2.8.2",
+            "version": "v2.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "9194b33c71da8ef4d05d22964376f2f9c95a1bfd"
+                "reference": "6f4e41c41e7d352ed9adf71ff6f2ec1756490a1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/9194b33c71da8ef4d05d22964376f2f9c95a1bfd",
-                "reference": "9194b33c71da8ef4d05d22964376f2f9c95a1bfd",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/6f4e41c41e7d352ed9adf71ff6f2ec1756490a1b",
+                "reference": "6f4e41c41e7d352ed9adf71ff6f2ec1756490a1b",
                 "shasum": ""
             },
             "require": {
@@ -409,7 +409,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-13 10:28:07"
+            "time": "2016-02-28 16:20:50"
         },
         {
             "name": "symfony/polyfill-php54",
@@ -529,7 +529,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mf2/mf2": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

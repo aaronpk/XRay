@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <p class="e-content">This content has some <i>HTML escaped</i> entities such as &amp; ampersand, &quot; quote, escaped &lt;code&gt; HTML tags, an &uuml;mlaut, an &#64;at sign.</p>
+  </body>
+</html>
