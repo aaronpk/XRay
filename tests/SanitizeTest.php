@@ -50,6 +50,8 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('<h4>Four</h4>', $html, '<h4> missing');
     $this->assertContains('<h5>Five</h5>', $html, '<h5> missing');
     $this->assertContains('<h6>Six</h6>', $html, '<h6> missing');
+    $this->assertContains('<ul>', $html, '<ul> missing');
+    $this->assertContains('<li>One</li>', $html, '<li> missing');
   }
 
   public function testRemovesUnsafeTags() {

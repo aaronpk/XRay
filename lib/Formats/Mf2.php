@@ -317,6 +317,9 @@ class Mf2 {
       'h4',
       'h5',
       'h6',
+      'ul',
+      'li',
+      'ol'
     ]);
     $def = $config->getHTMLDefinition(true);
     $def->addElement(
