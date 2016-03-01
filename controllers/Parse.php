@@ -45,41 +45,47 @@ class Parse {
     }
 
     $url = $request->get('url');
+    $html = $request->get('html');
 
-    if(!$url) {
+    if(!$url && !$html) {
       return $this->respond($response, 400, [
         'error' => 'missing_url',
-        'error_description' => 'Provide a URL to fetch'
+        'error_description' => 'Provide a URL or HTML to fetch'
       ]);
     }
 
-    // Attempt some basic URL validation
-    $scheme = parse_url($url, PHP_URL_SCHEME);
-    if(!in_array($scheme, ['http','https'])) {
-      return $this->respond($response, 400, [
-        'error' => 'invalid_url',
-        'error_description' => 'Only http and https URLs are supported'
-      ]);
-    }
+    if($html) {
+      // If HTML is provided in the request, parse that, and use the URL provided as the base URL for mf2 resolving
+      $result['body'] = $html;
+    } else {
+      // Attempt some basic URL validation
+      $scheme = parse_url($url, PHP_URL_SCHEME);
+      if(!in_array($scheme, ['http','https'])) {
+        return $this->respond($response, 400, [
+          'error' => 'invalid_url',
+          'error_description' => 'Only http and https URLs are supported'
+        ]);
+      }
 
-    $host = parse_url($url, PHP_URL_HOST);
-    if(!$host) {
-      return $this->respond($response, 400, [
-        'error' => 'invalid_url',
-        'error_description' => 'The URL provided was not valid'
-      ]);
-    }
+      $host = parse_url($url, PHP_URL_HOST);
+      if(!$host) {
+        return $this->respond($response, 400, [
+          'error' => 'invalid_url',
+          'error_description' => 'The URL provided was not valid'
+        ]);
+      }
 
-    $url = \normalize_url($url);
+      $url = \normalize_url($url);
 
-    // Now fetch the URL and check for any curl errors
-    $result = $this->http->get($url);
+      // Now fetch the URL and check for any curl errors
+      $result = $this->http->get($url);
 
-    if($result['error']) {
-      return $this->respond($response, 400, [
-        'error' => $result['error'],
-        'error_description' => $result['error_description']
-      ]);
+      if($result['error']) {
+        return $this->respond($response, 400, [
+          'error' => $result['error'],
+          'error_description' => $result['error_description']
+        ]);
+      }
     }
 
     // attempt to parse the page as HTML

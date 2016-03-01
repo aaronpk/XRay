@@ -78,7 +78,7 @@ class Mf2 {
     }
 
     // Always returned as arrays, and may also create external references
-    $properties = ['in-reply-to','like-of','repost-of','bookmark-of','category'];
+    $properties = ['in-reply-to','like-of','repost-of','bookmark-of','category','invitee'];
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         $data[$p] = [];
@@ -132,6 +132,8 @@ class Mf2 {
     if($name) {
       $data['name'] = $name;
     }
+
+    // If there is content, always return the plaintext content, and return HTML content if it's different
     if($content) {
       $data['content'] = [
         'text' => $textContent
