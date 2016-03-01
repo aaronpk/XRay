@@ -99,12 +99,12 @@ class Parse {
 
       $found = [];
       foreach($xpath->query('//a[@href]') as $href) {
-        $url = $href->getAttribute('href');
+        $u = $href->getAttribute('href');
 
         if($target) {
           # target parameter was provided
-          if($url == $target) {
-            $found[$url] = null;
+          if($u == $target) {
+            $found[$u] = null;
           }
         }
       }

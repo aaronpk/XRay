@@ -78,7 +78,7 @@ class Mf2 {
     }
 
     // Always returned as arrays, and may also create external references
-    $properties = ['in-reply-to','like-of','repost-of','category'];
+    $properties = ['in-reply-to','like-of','repost-of','bookmark-of','category'];
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         $data[$p] = [];
