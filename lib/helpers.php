@@ -9,3 +9,12 @@ function view($template, $data=[]) {
 function normalize_url($url) {
   return parse_url($url, PHP_URL_PATH) == '' ? $url.'/' : $url;
 }
+
+function should_follow_redirects($url) {
+  $host = parse_url($url, PHP_URL_HOST);
+  if(preg_match('/brid\.gy|appspot\.com|blogspot\.com|youtube\.com/', $host)) {
+    return false;
+  } else {
+    return true;
+  }
+}

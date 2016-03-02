@@ -31,7 +31,7 @@ class HTTP {
   }
 
   private function _class($url) {
-    if(preg_match('/brid\.gy|appspot\.com/', $url)) {
+    if(should_follow_redirects($url)) {
       return 'p3k\HTTPStream';
     } else {
       return 'p3k\HTTPCurl';

@@ -72,8 +72,6 @@ class HTTPStream {
   }
 
   private function _stream_context($method, $url, $body=false, $headers=[]) {
-    $host = parse_url($url, PHP_URL_HOST);
-
     $options = [
       'method' => $method,
       'timeout' => $this->timeout,
@@ -90,11 +88,11 @@ class HTTPStream {
 
     // Special-case appspot.com URLs to not follow redirects.
     // https://cloud.google.com/appengine/docs/php/urlfetch/
-    if(substr($host, -12) == '.appspot.com') {
-      $options['follow_location'] = 0;
-    } else {
+    if(should_follow_redirects($url)) {
       $options['follow_location'] = 1;
       $options['max_redirects'] = $this->max_redirects;
+    } else {
+      $options['follow_location'] = 0;
     }
 
     return stream_context_create(['http' => $options]);

@@ -54,18 +54,16 @@ class HTTPCurl {
   }
 
   private function _set_curlopts($ch, $url) {
-    $host = parse_url($url, PHP_URL_HOST);
-
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HEADER, true);
 
     // Special-case appspot.com URLs to not follow redirects.
     // https://cloud.google.com/appengine/docs/php/urlfetch/
-    if(substr($host, -12) == '.appspot.com') {
-      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
-    } else {
+    if(should_follow_redirects($url)) {
       curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
       curl_setopt($ch, CURLOPT_MAXREDIRS, $this->max_redirects);
+    } else {
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
     }
 
     curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
