@@ -14,6 +14,7 @@ Content-Type: text/html; charset=utf-8
   <div class="h-entry">
     <a href="/about-with-multiple-urls" class="u-author">Author</a>
     <p class="p-name e-content">Hello World</p>
+    <a href="/h-entry-author-is-url-to-h-card-with-multiple-links" class="u-url">permalink</a>
   </div>
 
 </body>

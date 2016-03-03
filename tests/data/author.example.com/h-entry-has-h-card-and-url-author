@@ -23,7 +23,8 @@ Content-Type: text/html; charset=utf-8
     </div>
 
     <p class="p-name e-content">Hello World</p>
-    
+
+    <a href="/h-entry-has-h-card-and-url-author" class="u-url">permalink</a>    
   </div>
 
 </body>

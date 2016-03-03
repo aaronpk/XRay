@@ -235,4 +235,15 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Hello World', $data['data']['content']['text']);
   }
 
+  public function testSingleHEntryHasNoPermalink() {
+    $url = 'http://source.example.com/single-h-entry-has-no-permalink';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Hello World', $data['data']['content']['text']);
+  }
+
 }
