@@ -7,16 +7,20 @@ use XRay\Formats;
 class Parse {
 
   public $http;
+  public $mc;
+  private $_cacheTime = 300;
   private $_pretty = false;
 
   public function __construct() {
     $this->http = new p3k\HTTP();
+    $this->mc = new Memcache();
+    $this->mc->addServer('127.0.0.1');
   }
 
-  public static function debug($msg) {
+  public static function debug($msg, $header='X-Parse-Debug') {
     syslog(LOG_INFO, $msg);
     if(array_key_exists('REMOTE_ADDR', $_SERVER))
-      header("X-Parse-Debug: " . $msg);
+      header($header . ": " . $msg);
   }
 
   private function respond(Response $response, $code, $params, $headers=[]) {
@@ -84,7 +88,15 @@ class Parse {
       $url = \normalize_url($url);
 
       // Now fetch the URL and check for any curl errors
-      $result = $this->http->get($url);
+      if($cached=$this->mc->get('xray-'.md5($url))) {
+        $result = json_decode($cached, true);
+        self::debug('using HTML from cache', 'X-Cache-Debug');
+      } else {
+        $result = $this->http->get($url);
+        $cacheData = json_encode($result);
+        if(strlen($cacheData) < 1000000) // App Engine limits the size of cached items, so don't cache ones larger than that
+          $this->mc->set('xray-'.md5($url), $cacheData, MEMCACHE_COMPRESSED, $this->_cacheTime);
+      }
 
       if($result['error']) {
         return $this->respond($response, 400, [
