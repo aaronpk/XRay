@@ -1,0 +1,58 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>I'm at SmartMathPro by P'Pan (@t Once Academy) in Bangrak, Bangkok swarmapp.com/c/4m4AboRbm45</title>
+<style type="text/css">
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.p-uid {
+  display: none;
+}
+.u-photo {
+  max-width: 50px;
+  border-radius: 4px;
+}
+.e-content {
+  margin-top: 10px;
+  font-size: 1.3em;
+}
+</style>
+</head>
+<article class="h-entry h-as-note">
+  <span class="p-uid">tag:twitter.com,2013:705248246067806209</span>
+  
+  <time class="dt-published" datetime="2016-03-03T04:27:39+00:00">2016-03-03T04:27:39+00:00</time>
+  
+  <span class="p-author h-card">
+    <a class="p-name u-url" href="https://twitter.com/NNanpartoonoi">ณณแนน</a>
+    <img class="u-photo" src="https://twitter.com/NNanpartoonoi/profile_image?size=original" alt="" />
+  </span>
+
+  <a class="u-url" href="https://twitter.com/NNanpartoonoi/status/705248246067806209">https://twitter.com/NNanpartoonoi/status/705248246067806209</a>
+  <div class="e-content p-name">
+  
+  I'm at SmartMathPro by P'Pan (<a href="https://twitter.com/t">@t</a> Once Academy) in Bangrak, Bangkok <a href="https://www.swarmapp.com/c/4m4AboRbm45">swarmapp.com/c/4m4AboRbm45</a>
+  </div>
+
+
+
+  <span class="u-category h-card h-card">
+    <a class="p-name u-url" href="https://twitter.com/t">⚡️</a>
+<a class="u-url" href="http://tantek.com/"></a>
+    
+  </span>
+
+
+
+
+</article>
+
+</html>

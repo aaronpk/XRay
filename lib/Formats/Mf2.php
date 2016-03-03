@@ -9,6 +9,14 @@ class Mf2 {
   public static function parse($mf2, $url, $http) {
     if(count($mf2['items']) == 0)
       return false;
+    // If there is only one item on the page, just use that
+    if(count($mf2['items']) == 1) {
+      $item = $mf2['items'][0];
+      if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
+        Parse::debug("mf2.0: Recognized $url as an h-entry it is the only item on the page");
+        return self::parseAsHEntry($mf2, $item, $http, $url);
+      }
+    }
 
     // Check if the list of items is a bunch of h-entrys and return as a feed
     // Unless this page's URL matches one of the entries, then treat it as a permalink
