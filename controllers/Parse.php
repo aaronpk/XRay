@@ -13,8 +13,10 @@ class Parse {
 
   public function __construct() {
     $this->http = new p3k\HTTP();
-    $this->mc = new Memcache();
-    $this->mc->addServer('127.0.0.1');
+    if(class_exists('Memcache')) {
+      $this->mc = new Memcache();
+      $this->mc->addServer('127.0.0.1');
+    }
   }
 
   public static function debug($msg, $header='X-Parse-Debug') {
@@ -88,14 +90,20 @@ class Parse {
       $url = \normalize_url($url);
 
       // Now fetch the URL and check for any curl errors
-      if($cached=$this->mc->get('xray-'.md5($url))) {
-        $result = json_decode($cached, true);
-        self::debug('using HTML from cache', 'X-Cache-Debug');
+      if($this->mc) {
+        $cacheKey = 'xray-'.md5($url);
+        if($cached=$this->mc->get($cacheKey)) {
+          $result = json_decode($cached, true);
+          self::debug('using HTML from cache', 'X-Cache-Debug');
+        } else {
+          $result = $this->http->get($url);
+          $cacheData = json_encode($result);
+          // App Engine limits the size of cached items, so don't cache ones larger than that
+          if(strlen($cacheData) < 1000000) 
+            $this->mc->set($cacheKey, $cacheData, MEMCACHE_COMPRESSED, $this->_cacheTime);
+        }
       } else {
         $result = $this->http->get($url);
-        $cacheData = json_encode($result);
-        if(strlen($cacheData) < 1000000) // App Engine limits the size of cached items, so don't cache ones larger than that
-          $this->mc->set('xray-'.md5($url), $cacheData, MEMCACHE_COMPRESSED, $this->_cacheTime);
       }
 
       if($result['error']) {
