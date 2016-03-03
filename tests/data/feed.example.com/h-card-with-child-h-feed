@@ -11,7 +11,7 @@ Connection: keep-alive
   <body>
 
     <div class="h-card">
-      <a href="/author" class="u-url p-name">Author Name</a>
+      <a href="/h-card-with-child-h-feed" class="u-url p-name">Author Name</a>
 
       <ul class="h-feed">
         <li class="h-entry">

@@ -6,55 +6,80 @@ use HTMLPurifier, HTMLPurifier_Config;
 class Mf2 {
 
   public static function parse($mf2, $url, $http) {
+    if(count($mf2['items']) == 0)
+      return false;
 
-    // TODO: Check if the list of items is a bunch of h-entrys and return as a feed
-
-
-    if($item = $mf2['items'][0]) {
-      // If the first item is a feed, the page is a feed
-      if(in_array('h-feed', $item['type'])) {
-        return self::parseAsHFeed($mf2, $http);
-      }
-
-      // Check each top-level h-card, and if there is one that matches this URL, the page is an h-card
-      foreach($mf2['items'] as $i) {
-        if(in_array('h-card', $i['type'])
-          and array_key_exists('url', $i['properties'])
-        ) {
-          $urls = $i['properties']['url'];
+    // Check if the list of items is a bunch of h-entrys and return as a feed
+    // Unless this page's URL matches one of the entries, then treat it as a permalink
+    $hentrys = 0;
+    $lastSeenEntry = false;
+    foreach($mf2['items'] as $item) {
+      if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
+        if(array_key_exists('url', $item['properties'])) {
+          $urls = $item['properties']['url'];
           $urls = array_map('\normalize_url', $urls);
           if(in_array($url, $urls)) {
-            // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
-            // and return the result as a feed instead
-            return self::parseAsHCard($i, $http, $url);
+            return self::parseAsHEntry($mf2, $item, $http, $url);
           }
+          $lastSeenEntry = $item;
+        }
+        $hentrys++;
+      }
+    }
+
+    // If there was more than one h-entry on the page, treat the whole page as a feed
+    if($hentrys > 1) {
+      return self::parseAsHFeed($mf2, $http);
+    }
+
+    // If the first item is an h-feed, parse as a feed
+    $first = $mf2['items'][0];
+    if(in_array('h-feed', $first['type'])) {
+      return self::parseAsHFeed($mf2, $http);
+    }
+
+    // Check each top-level h-card, and if there is one that matches this URL, the page is an h-card
+    foreach($mf2['items'] as $item) {
+      if(in_array('h-card', $item['type'])
+        and array_key_exists('url', $item['properties'])
+      ) {
+        $urls = $item['properties']['url'];
+        $urls = array_map('\normalize_url', $urls);
+        if(in_array($url, $urls)) {
+          // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
+          // and return the result as a feed instead
+          return self::parseAsHCard($item, $http, $url);
         }
       }
     }
 
+    // If there was only one h-entry, but the URL for it is not the same as this page, then treat as a feed
+    if($hentrys == 1) {
+      if($lastSeenEntry) {
+        $urls = $lastSeenEntry['properties']['url'];
+        $urls = array_map('\normalize_url', $urls);
+        if(count($urls) && !in_array($url, $urls)) {
+          return self::parseAsHFeed($mf2, $http);
+        }
+      }
+    }
+
+    // Fallback case, but hopefully we have found something before this point
     foreach($mf2['items'] as $item) {
       // Otherwise check for an h-entry
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        return self::parseAsHEntry($mf2, $http);
+        return self::parseAsHEntry($mf2, $item, $http);
       }
     }
 
     return false;
   }
 
-  private static function parseAsHEntry($mf2, $http) {
+  private static function parseAsHEntry($mf2, $item, $http) {
     $data = [
       'type' => 'entry'
     ];
     $refs = [];
-
-    // Find the first h-entry
-    foreach($mf2['items'] as $i) {
-      if(in_array('h-entry', $i['type']) || in_array('h-cite', $i['type'])) {
-        $item = $i;
-        continue;
-      }
-    }
 
     // Single plaintext values
     $properties = ['url','published','summary','rsvp'];
@@ -166,12 +191,12 @@ class Mf2 {
         'url' => null,
         'photo' => null
       ],
-      'items' => [],
       'todo' => 'Not yet implemented. Please see https://github.com/aaronpk/XRay/issues/1'
     ];
 
     return [
-      'data' => $data
+      'data' => $data,
+      'entries' => []
     ];
   }
 

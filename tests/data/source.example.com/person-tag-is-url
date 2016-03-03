@@ -11,5 +11,6 @@ Connection: keep-alive
   <body class="h-entry">
     <h2 class="p-name">Hello World</h2>
     <a href="http://alice.example.com/" class="u-category">Alice</a>
+    <a href="/person-tag-is-url" class="u-url">permalink</a>
   </body>
 </html>

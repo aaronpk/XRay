@@ -13,6 +13,7 @@ Connection: keep-alive
     <ul>
       <li class="h-entry">
         <a href="/1" class="u-url p-name">One</a>
+        <a href="/author" class="p-author h-card">Author</a>
       </li>
     </ul>
 

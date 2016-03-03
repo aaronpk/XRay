@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <div class="h-entry">
+      <h2 class="p-name">Primary Post</h2>
+      <a href="/multiple-h-entry-on-permalink">permalink</a>
+    </div>
+    <div class="h-entry">
+      <h3 class="p-name">Next Post</h3>
+      <a href="/another-post">read more</a>
+    </div>
+  </body>
+</html>

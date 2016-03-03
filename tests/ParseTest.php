@@ -202,4 +202,15 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('yes', $data['data']['rsvp']);
   }
 
+  public function testMultipleHEntryOnPermalink() {
+    $url = 'http://source.example.com/multiple-h-entry-on-permalink';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Primary Post', $data['data']['name']);
+  }
+
 }
