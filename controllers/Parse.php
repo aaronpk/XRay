@@ -13,6 +13,12 @@ class Parse {
     $this->http = new p3k\HTTP();
   }
 
+  public static function debug($msg) {
+    syslog(LOG_INFO, $msg);
+    if(array_key_exists('REMOTE_ADDR', $_SERVER))
+      header("X-Parse-Debug: " . $msg);
+  }
+
   private function respond(Response $response, $code, $params, $headers=[]) {
     $response->setStatusCode($code);
     foreach($headers as $k=>$v) {
@@ -84,6 +90,13 @@ class Parse {
         return $this->respond($response, 400, [
           'error' => $result['error'],
           'error_description' => $result['error_description']
+        ]);
+      }
+
+      if(trim($result['body']) == '') {
+        return $this->respond($response, 200, [
+          'error' => 'no_content',
+          'error_description' => 'We did not get a response body when fetching the URL'
         ]);
       }
     }

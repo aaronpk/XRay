@@ -2,14 +2,9 @@
 namespace XRay\Formats;
 
 use HTMLPurifier, HTMLPurifier_Config;
+use Parse;
 
 class Mf2 {
-
-  private static function _debug($msg) {
-    syslog(LOG_INFO, $msg);
-    if(array_key_exists('REMOTE_ADDR', $_SERVER))
-      header("X-Parse-Debug: " . $msg);
-  }
 
   public static function parse($mf2, $url, $http) {
     if(count($mf2['items']) == 0)
@@ -25,7 +20,7 @@ class Mf2 {
           $urls = $item['properties']['url'];
           $urls = array_map('\normalize_url', $urls);
           if(in_array($url, $urls)) {
-            self::_debug("1: Recognized $url as an h-entry because an h-entry on the page matched the URL of the request");
+            Parse::debug("mf2.1: Recognized $url as an h-entry because an h-entry on the page matched the URL of the request");
             return self::parseAsHEntry($mf2, $item, $http, $url);
           }
           $lastSeenEntry = $item;
@@ -36,14 +31,14 @@ class Mf2 {
 
     // If there was more than one h-entry on the page, treat the whole page as a feed
     if($hentrys > 1) {
-      self::_debug("2: Recognized $url as an h-feed because there are more than one h-entry on the page");
+      Parse::debug("mf2.2: Recognized $url as an h-feed because there are more than one h-entry on the page");
       return self::parseAsHFeed($mf2, $http);
     }
 
     // If the first item is an h-feed, parse as a feed
     $first = $mf2['items'][0];
     if(in_array('h-feed', $first['type'])) {
-      self::_debug("3: Recognized $url as an h-feed because the first item is an h-feed");
+      Parse::debug("mf2.3: Recognized $url as an h-feed because the first item is an h-feed");
       return self::parseAsHFeed($mf2, $http);
     }
 
@@ -57,7 +52,7 @@ class Mf2 {
         if(in_array($url, $urls)) {
           // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
           // and return the result as a feed instead
-          self::_debug("4: Recognized $url as an h-card because an h-card on the page matched the URL of the request");
+          Parse::debug("mf2.4: Recognized $url as an h-card because an h-card on the page matched the URL of the request");
           return self::parseAsHCard($item, $http, $url);
         }
       }
@@ -69,7 +64,7 @@ class Mf2 {
         $urls = $lastSeenEntry['properties']['url'];
         $urls = array_map('\normalize_url', $urls);
         if(count($urls) && !in_array($url, $urls)) {
-          self::_debug("5: Recognized $url as an h-feed no h-entrys on the page matched the URL of the request");
+          Parse::debug("mf2.5: Recognized $url as an h-feed no h-entrys on the page matched the URL of the request");
           return self::parseAsHFeed($mf2, $http);
         }
       }
@@ -79,12 +74,12 @@ class Mf2 {
     foreach($mf2['items'] as $item) {
       // Otherwise check for an h-entry
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        self::_debug("6: $url is falling back to the first h-entry on the page");
+        Parse::debug("mf2.6: $url is falling back to the first h-entry on the page");
         return self::parseAsHEntry($mf2, $item, $http);
       }
     }
 
-    self::_debug("E: No object at $url was recognized");
+    Parse::debug("mf2.E: No object at $url was recognized");
 
     return false;
   }
