@@ -1,6 +1,5 @@
 <?php
 chdir('..');
-include('config.php');
 include('vendor/autoload.php');
 
 use Symfony\Component\HttpFoundation\Request;
