@@ -68,6 +68,7 @@ class HTTPStream {
       'body' => $body,
       'error' => $error ? $error['code'] : false,
       'error_description' => $error ? $error['description'] : false,
+      'url' => $url,
     );
   }
 

@@ -23,7 +23,8 @@ class HTTPTest extends HTTPCurl {
       'code' => $response['code'],
       'headers' => $response['headers'],
       'error' => '',
-      'error_description' => ''
+      'error_description' => '',
+      'url' => $response['url']
     );
   }
 
@@ -46,13 +47,21 @@ class HTTPTest extends HTTPCurl {
     }
 
     $headers = preg_replace('/HTTP\/1\.1 \d+ .+/', '', $headers);
+    $parsedHeaders = self::parse_headers($headers);
+
+    if(array_key_exists('Location', $parsedHeaders)) {
+      $effectiveUrl = \mf2\resolveUrl($url, $parsedHeaders['Location']);
+    } else {
+      $effectiveUrl = $url;
+    }
 
     return array(
       'code' => $code,
-      'headers' => self::parse_headers($headers),
+      'headers' => $parsedHeaders,
       'body' => $body,
       'error' => '',
-      'error_description' => ''
+      'error_description' => '',
+      'url' => $effectiveUrl
     );
   }
 

@@ -18,6 +18,7 @@ class HTTPCurl {
       'error' => self::error_string_from_code(curl_errno($ch)),
       'error_description' => curl_error($ch),
       'error_code' => curl_errno($ch),
+      'url' => curl_getinfo($ch, CURLINFO_EFFECTIVE_URL),
     );
   }
 
@@ -36,6 +37,7 @@ class HTTPCurl {
       'error' => self::error_string_from_code(curl_errno($ch)),
       'error_description' => curl_error($ch),
       'error_code' => curl_errno($ch),
+      'url' => curl_getinfo($ch, CURLINFO_EFFECTIVE_URL),
     );
   }
 
@@ -50,6 +52,7 @@ class HTTPCurl {
       'error' => self::error_string_from_code(curl_errno($ch)),
       'error_description' => curl_error($ch),
       'error_code' => curl_errno($ch),
+      'url' => curl_getinfo($ch, CURLINFO_EFFECTIVE_URL),
     );
   }
 

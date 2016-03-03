@@ -124,10 +124,10 @@ class Parse {
     }
 
     // Now start pulling in the data from the page. Start by looking for microformats2
-    $mf2 = mf2\Parse($result['body'], $url);
+    $mf2 = mf2\Parse($result['body'], $result['url']);
 
     if($mf2 && count($mf2['items']) > 0) {
-      $data = Formats\Mf2::parse($mf2, $url, $this->http);
+      $data = Formats\Mf2::parse($mf2, $result['url'], $this->http);
       if($data) {
         return $this->respond($response, 200, $data);
       }

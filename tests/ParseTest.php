@@ -213,4 +213,26 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Primary Post', $data['data']['name']);
   }
 
+  public function testHEntryWithHCardSibling() {
+    $url = 'http://source.example.com/h-entry-with-h-card-sibling';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Hello World', $data['data']['content']['text']);
+  }
+
+  public function testHEntryRedirectWithHCardSibling() {
+    $url = 'http://source.example.com/h-entry-redirect-with-h-card-sibling';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Hello World', $data['data']['content']['text']);
+  }
+
 }

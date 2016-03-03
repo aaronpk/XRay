@@ -1,0 +1,20 @@
+HTTP/1.1 301 Moved Permanently
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Location: /h-entry-with-h-card-sibling
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <div class="h-entry">
+      <p class="p-content">Hello World</p>
+      <a href="/h-entry-with-h-card-sibling">permalink</a>
+      <!-- testing when the URL to this page is a redirect to the actual URL, so that the reported URL is different from what was fetched -->
+    </div>
+    <a href="/" class="h-card">Author Name</a>
+  </body>
+</html>
