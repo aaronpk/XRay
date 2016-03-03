@@ -31,7 +31,7 @@ class HTTP {
   }
 
   private function _class($url) {
-    if(should_follow_redirects($url)) {
+    if(!should_follow_redirects($url)) {
       return 'p3k\HTTPStream';
     } else {
       return 'p3k\HTTPCurl';
