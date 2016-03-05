@@ -108,7 +108,7 @@ class Parse {
       }
 
       if($result['error']) {
-        return $this->respond($response, 400, [
+        return $this->respond($response, 200, [
           'error' => $result['error'],
           'error_description' => $result['error_description']
         ]);
@@ -127,7 +127,7 @@ class Parse {
     @$doc->loadHTML(self::toHtmlEntities($result['body']));
 
     if(!$doc) {
-      return $this->respond($response, 400, [
+      return $this->respond($response, 200, [
         'error' => 'invalid_content',
         'error_description' => 'The document could not be parsed as HTML'
       ]);
@@ -150,7 +150,7 @@ class Parse {
       }
 
       if(!$found) {
-        return $this->respond($response, 400, [
+        return $this->respond($response, 200, [
           'error' => 'no_link_found',
           'error_description' => 'The source document does not have a link to the target URL'
         ]);
