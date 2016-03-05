@@ -115,7 +115,7 @@ class Mf2 {
     }
 
     // Always arrays
-    $properties = ['photo','video','syndication'];
+    $properties = ['photo','video','audio','syndication'];
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         $data[$p] = [];
