@@ -1,0 +1,48 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 02 Dec 2015 03:30:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bridgy Response</title>
+<style type="text/css">
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.p-uid {
+  display: none;
+}
+.u-photo {
+  max-width: 50px;
+  border-radius: 4px;
+}
+.e-content {
+  margin-top: 10px;
+  font-size: 1.3em;
+}
+</style>
+</head>
+<article class="h-entry">
+  <span class="p-uid">tag:facebook.com,2013:555707837940351_rsvp_10153997868474283</span>
+  
+  <a class="p-name u-url" href="https://www.facebook.com/555707837940351#tantek">invited</a>
+
+  <div class="">
+    <span class="p-invitee h-card">
+      <a class="p-name u-url" href="https://www.facebook.com/tantek.celik">Tantek Çelik</a>
+      <img class="u-photo" src="https://graph.facebook.com/v2.2/tantek.celik/picture?type=large" alt="" />
+    </span>
+  </div>
+
+  <a class="u-in-reply-to" href="https://indiewebcamp.com/irc/2016-03-05"></a>
+  <a class="u-in-reply-to" href="https://indiewebcamp.com/events/2016-03-09-homebrew-website-club"></a>
+  <a class="u-in-reply-to" href="http://indiewebcamp.com/irc/today#bottom"></a>
+  <a class="u-in-reply-to" href="https://kylewm.com/2016/03/sf-homebrew-website-club-11"></a>
+
+</article>
+
+</html>

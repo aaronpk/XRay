@@ -9,6 +9,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
   public function setUp() {
     $this->client = new Parse();
     $this->client->http = new p3k\HTTPTest(dirname(__FILE__).'/data/');
+    $this->client->mc = null;
   }
 
   private function parse($params) {
@@ -307,6 +308,21 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('card', $data['refs']['http://source.example.com/venue']['type']);
     $this->assertEquals('http://source.example.com/venue', $data['refs']['http://source.example.com/venue']['url']);
     $this->assertEquals('Venue', $data['refs']['http://source.example.com/venue']['name']);
+  }
+
+  public function testEntryIsAnInvitee() {
+    $url = 'http://source.example.com/bridgy-invitee';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('https://www.facebook.com/555707837940351#tantek', $data['data']['url']);
+    $this->assertContains('https://www.facebook.com/tantek.celik', $data['data']['invitee']);
+    $this->assertArrayHasKey('https://www.facebook.com/tantek.celik', $data['refs']);
+    $this->assertEquals('Tantek Çelik', $data['refs']['https://www.facebook.com/tantek.celik']['name']);
   }
 
 }
