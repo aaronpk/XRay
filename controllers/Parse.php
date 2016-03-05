@@ -69,6 +69,7 @@ class Parse {
     if($html) {
       // If HTML is provided in the request, parse that, and use the URL provided as the base URL for mf2 resolving
       $result['body'] = $html;
+      $result['url'] = $url;
     } else {
       // Attempt some basic URL validation
       $scheme = parse_url($url, PHP_URL_SCHEME);

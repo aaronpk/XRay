@@ -256,4 +256,57 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('entry', $data['data']['type']);
   }
 
+  public function testEventWithHTMLDescription() {
+    $url = 'http://source.example.com/h-event';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('Homebrew Website Club', $data['data']['name']);
+    $this->assertEquals($url, $data['data']['url']);
+    $this->assertEquals('2016-03-09T18:30', $data['data']['start']);
+    $this->assertEquals('2016-03-09T19:30', $data['data']['end']);
+    $this->assertStringStartsWith("Are you building your own website? Indie reader? Personal publishing web app? Or some other digital magic-cloud proxy? If so, come on by and join a gathering of people with likeminded interests. Bring your friends that want to start a personal web site. Exchange information, swap ideas, talk shop, help work on a project...", $data['data']['description']['text']);
+    $this->assertStringEndsWith("See the Homebrew Website Club Newsletter Volume 1 Issue 1 for a description of the first meeting.",  $data['data']['description']['text']);
+    $this->assertStringStartsWith("<p>Are you building your own website? Indie reader? Personal publishing web app? Or some other digital magic-cloud proxy? If so, come on by and join a gathering of people with likeminded interests. Bring your friends that want to start a personal web site. Exchange information, swap ideas, talk shop, help work on a project...</p>", $data['data']['description']['html']);
+    $this->assertStringEndsWith('<p>See the <a href="http://tantek.com/2013/332/b1/homebrew-website-club-newsletter">Homebrew Website Club Newsletter Volume 1 Issue 1</a> for a description of the first meeting.</p>', $data['data']['description']['html']);
+  }
+
+  public function testEventWithTextDescription() {
+    $url = 'http://source.example.com/h-event-text-description';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('Homebrew Website Club', $data['data']['name']);
+    $this->assertEquals($url, $data['data']['url']);
+    $this->assertEquals('2016-03-09T18:30', $data['data']['start']);
+    $this->assertEquals('2016-03-09T19:30', $data['data']['end']);
+    $this->assertStringStartsWith("Are you building your own website? Indie reader? Personal publishing web app? Or some other digital magic-cloud proxy? If so, come on by and join a gathering of people with likeminded interests. Bring your friends that want to start a personal web site. Exchange information, swap ideas, talk shop, help work on a project...", $data['data']['description']['text']);
+    $this->assertStringEndsWith("See the Homebrew Website Club Newsletter Volume 1 Issue 1 for a description of the first meeting.", $data['data']['description']['text']);
+    $this->assertArrayNotHasKey('html', $data['data']['description']);
+  }
+
+  public function testEventWithHCardLocation() {
+    $url = 'http://source.example.com/h-event-with-h-card-location';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('Homebrew Website Club', $data['data']['name']);
+    $this->assertEquals($url, $data['data']['url']);
+    $this->assertEquals('2016-02-09T18:30', $data['data']['start']);
+    $this->assertEquals('2016-02-09T19:30', $data['data']['end']);
+    $this->assertArrayHasKey('http://source.example.com/venue', $data['refs']);
+    $this->assertEquals('card', $data['refs']['http://source.example.com/venue']['type']);
+    $this->assertEquals('http://source.example.com/venue', $data['refs']['http://source.example.com/venue']['url']);
+    $this->assertEquals('Venue', $data['refs']['http://source.example.com/venue']['name']);
+  }
+
 }

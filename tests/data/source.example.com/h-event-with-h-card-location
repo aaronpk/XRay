@@ -1,0 +1,20 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 02:29:12 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Homebrew Website Club</title>
+  </head>
+  <body class="h-event">
+    <h2 class="p-name">Homebrew Website Club</h2>
+
+    <a href="/h-event-with-h-card-location" class="u-url">permalink</a>
+
+    <time class="dt-start" datetime="2016-02-09T18:30">Feb 9, 6:30pm</time> - <time class="dt-end" datetime="2016-02-09T19:30">7:30pm</time>
+
+    <a href="/venue" class="p-location h-card">Venue</a>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Homebrew Website Club</title>
+  </head>
+  <body class="h-event">
+    <h2 class="p-name">Homebrew Website Club</h2>
+
+    <a href="/h-event" class="u-url">permalink</a>
+
+    <time class="dt-start" datetime="2016-03-09T18:30">March 9, 6:30pm</time> - <time class="dt-end" datetime="2016-03-09T19:30">7:30pm</time>
+
+    <div class="e-description">
+      <p>Are you building your own website? Indie reader? Personal publishing web app? Or some other digital magic-cloud proxy? If so, come on by and join a gathering of people with likeminded interests. Bring your friends that want to start a personal web site. Exchange information, swap ideas, talk shop, help work on a project...</p>
+      <p>See the <a href="http://tantek.com/2013/332/b1/homebrew-website-club-newsletter">Homebrew Website Club Newsletter Volume 1 Issue 1</a> for a description of the first meeting.</p>
+    </div>
+
+  </body>
+</html>

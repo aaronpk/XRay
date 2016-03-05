@@ -13,8 +13,12 @@ class Mf2 {
     if(count($mf2['items']) == 1) {
       $item = $mf2['items'][0];
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        Parse::debug("mf2.0: Recognized $url as an h-entry it is the only item on the page");
+        Parse::debug("mf2:0: Recognized $url as an h-entry it is the only item on the page");
         return self::parseAsHEntry($mf2, $item, $http, $url);
+      }
+      if(in_array('h-event', $item['type'])) {
+        Parse::debug("mf2:0: Recognized $url as an h-event it is the only item on the page");
+        return self::parseAsHEvent($mf2, $item, $http, $url);
       }
     }
 
@@ -28,7 +32,7 @@ class Mf2 {
           $urls = $item['properties']['url'];
           $urls = array_map('\normalize_url', $urls);
           if(in_array($url, $urls)) {
-            Parse::debug("mf2.1: Recognized $url as an h-entry because an h-entry on the page matched the URL of the request");
+            Parse::debug("mf2:1: Recognized $url as an h-entry because an h-entry on the page matched the URL of the request");
             return self::parseAsHEntry($mf2, $item, $http, $url);
           }
           $lastSeenEntry = $item;
@@ -39,20 +43,20 @@ class Mf2 {
 
     // If there was more than one h-entry on the page, treat the whole page as a feed
     if($hentrys > 1) {
-      Parse::debug("mf2.2: Recognized $url as an h-feed because there are more than one h-entry on the page");
+      Parse::debug("mf2:2: Recognized $url as an h-feed because there are more than one h-entry on the page");
       return self::parseAsHFeed($mf2, $http);
     }
 
     // If the first item is an h-feed, parse as a feed
     $first = $mf2['items'][0];
     if(in_array('h-feed', $first['type'])) {
-      Parse::debug("mf2.3: Recognized $url as an h-feed because the first item is an h-feed");
+      Parse::debug("mf2:3: Recognized $url as an h-feed because the first item is an h-feed");
       return self::parseAsHFeed($mf2, $http);
     }
 
-    // Check each top-level h-card, and if there is one that matches this URL, the page is an h-card
+    // Check each top-level h-card and h-event, and if there is one that matches this URL, the page is an h-card
     foreach($mf2['items'] as $item) {
-      if(in_array('h-card', $item['type'])
+      if((in_array('h-card', $item['type']) or in_array('h-event', $item['type']))
         and array_key_exists('url', $item['properties'])
       ) {
         $urls = $item['properties']['url'];
@@ -60,8 +64,13 @@ class Mf2 {
         if(in_array($url, $urls)) {
           // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
           // and return the result as a feed instead
-          Parse::debug("mf2.4: Recognized $url as an h-card because an h-card on the page matched the URL of the request");
-          return self::parseAsHCard($item, $http, $url);
+          if(in_array('h-card', $item['type'])) {
+            Parse::debug("mf2:4: Recognized $url as an h-card because an h-card on the page matched the URL of the request");
+            return self::parseAsHCard($item, $http, $url);
+          } else {
+            Parse::debug("mf2:4: Recognized $url as an h-event because an h-event on the page matched the URL of the request");
+            return self::parseAsHEvent($item, $http, $url);
+          }
         }
       }
     }
@@ -72,7 +81,7 @@ class Mf2 {
         $urls = $lastSeenEntry['properties']['url'];
         $urls = array_map('\normalize_url', $urls);
         if(count($urls) && !in_array($url, $urls)) {
-          Parse::debug("mf2.5: Recognized $url as an h-feed no h-entrys on the page matched the URL of the request");
+          Parse::debug("mf2:5: Recognized $url as an h-feed no h-entrys on the page matched the URL of the request");
           return self::parseAsHFeed($mf2, $http);
         }
       }
@@ -82,12 +91,12 @@ class Mf2 {
     foreach($mf2['items'] as $item) {
       // Otherwise check for an h-entry
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        Parse::debug("mf2.6: $url is falling back to the first h-entry on the page");
+        Parse::debug("mf2:6: $url is falling back to the first h-entry on the page");
         return self::parseAsHEntry($mf2, $item, $http);
       }
     }
 
-    Parse::debug("mf2.E: No object at $url was recognized");
+    Parse::debug("mf2:E: No object at $url was recognized");
 
     return false;
   }
@@ -187,6 +196,91 @@ class Mf2 {
 
     if($author = self::findAuthor($mf2, $item, $http))
       $data['author'] = $author;
+
+    $response = [
+      'data' => $data
+    ];
+
+    if(count($refs)) {
+      $response['refs'] = $refs;
+    }
+
+    return $response;
+  }
+
+  private static function parseAsHEvent($mf2, $item, $http) {
+    $data = [
+      'type' => 'event'
+    ];
+    $refs = [];
+
+    // Single plaintext values
+    $properties = ['name','summary','url','published','start','end','duration'];
+    foreach($properties as $p) {
+      if($v = self::getPlaintext($item, $p))
+        $data[$p] = $v;
+    }
+
+    // Always arrays
+    $properties = ['photo','video','syndication'];
+    foreach($properties as $p) {
+      if(array_key_exists($p, $item['properties'])) {
+        $data[$p] = [];
+        foreach($item['properties'][$p] as $v) {
+          if(is_string($v))
+            $data[$p][] = $v;
+          elseif(is_array($v) and array_key_exists('value', $v))
+            $data[$p][] = $v['value'];
+        }
+      }
+    }
+
+    // Always returned as arrays, and may also create external references
+    $properties = ['category','location','attendee'];
+    foreach($properties as $p) {
+      if(array_key_exists($p, $item['properties'])) {
+        $data[$p] = [];
+        foreach($item['properties'][$p] as $v) {
+          if(is_string($v))
+            $data[$p][] = $v;
+          elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url'))) {
+            $data[$p][] = $u;
+            // parse the object and put the result in the "refs" object
+            $ref = self::parse(['items'=>[$v]], $u, $http);
+            if($ref) {
+              $refs[$u] = $ref['data'];
+            }
+          }
+        }
+      }      
+    }
+
+    // If there is a description, always return the plaintext description, and return HTML description if it's different
+    $textDescription = null;
+    $htmlDescription = null;
+    if(array_key_exists('description', $item['properties'])) {
+      $description = $item['properties']['description'][0];
+      if(is_string($description)) {
+        $textDescription = $description;
+      } elseif(!is_string($description) && is_array($description) && array_key_exists('value', $description)) {
+        if(array_key_exists('html', $description)) {
+          $htmlDescription = trim(self::sanitizeHTML($description['html']));
+          $textDescription = trim(str_replace("&#xD;","\r",strip_tags($htmlDescription)));
+          $textDescription = trim(str_replace("&#xD;","\r",$description['value']));
+        } else {
+          $textDescription = trim($description['value']);
+        }
+      }
+    }
+
+    if($textDescription) {
+      $data['description'] = [
+        'text' => $textDescription
+      ];
+      if($htmlDescription && $textDescription != $htmlDescription) {
+        $data['description']['html'] = $htmlDescription;
+      }
+    }
 
     $response = [
       'data' => $data
@@ -389,7 +483,9 @@ class Mf2 {
     // Override the allowed classes to only support Microformats2 classes
     $def->manager->attrTypes->set('Class', new \HTMLPurifier_AttrDef_HTML_Microformats2());
     $purifier = new HTMLPurifier($config);
-    return $purifier->purify($html);
+    $sanitized = $purifier->purify($html);
+    $sanitized = str_replace("&#xD;","\r",$sanitized);
+    return $sanitized;
   }
 
   private static function responseDisplayText($name, $summary, $content) {
