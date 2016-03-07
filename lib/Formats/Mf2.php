@@ -69,7 +69,7 @@ class Mf2 {
             return self::parseAsHCard($item, $http, $url);
           } else {
             Parse::debug("mf2:4: Recognized $url as an h-event because an h-event on the page matched the URL of the request");
-            return self::parseAsHEvent($item, $http, $url);
+            return self::parseAsHEvent($mf2, $item, $http, $url);
           }
         }
       }
@@ -101,7 +101,7 @@ class Mf2 {
     return false;
   }
 
-  private static function parseAsHEntry($mf2, $item, $http) {
+  private static function parseAsHEntry($mf2, $item, $http, $url) {
     $data = [
       'type' => 'entry'
     ];
@@ -208,7 +208,7 @@ class Mf2 {
     return $response;
   }
 
-  private static function parseAsHEvent($mf2, $item, $http) {
+  private static function parseAsHEvent($mf2, $item, $http, $url) {
     $data = [
       'type' => 'event'
     ];
