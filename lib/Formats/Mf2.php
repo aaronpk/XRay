@@ -14,11 +14,11 @@ class Mf2 {
       $item = $mf2['items'][0];
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         Parse::debug("mf2:0: Recognized $url as an h-entry it is the only item on the page");
-        return self::parseAsHEntry($mf2, $item, $http, $url);
+        return self::parseAsHEntry($mf2, $item, $http);
       }
       if(in_array('h-event', $item['type'])) {
         Parse::debug("mf2:0: Recognized $url as an h-event it is the only item on the page");
-        return self::parseAsHEvent($mf2, $item, $http, $url);
+        return self::parseAsHEvent($mf2, $item, $http);
       }
     }
 
@@ -33,7 +33,7 @@ class Mf2 {
           $urls = array_map('\normalize_url', $urls);
           if(in_array($url, $urls)) {
             Parse::debug("mf2:1: Recognized $url as an h-entry because an h-entry on the page matched the URL of the request");
-            return self::parseAsHEntry($mf2, $item, $http, $url);
+            return self::parseAsHEntry($mf2, $item, $http);
           }
           $lastSeenEntry = $item;
         }
@@ -69,7 +69,7 @@ class Mf2 {
             return self::parseAsHCard($item, $http, $url);
           } else {
             Parse::debug("mf2:4: Recognized $url as an h-event because an h-event on the page matched the URL of the request");
-            return self::parseAsHEvent($mf2, $item, $http, $url);
+            return self::parseAsHEvent($mf2, $item, $http);
           }
         }
       }
@@ -101,7 +101,7 @@ class Mf2 {
     return false;
   }
 
-  private static function parseAsHEntry($mf2, $item, $http, $url) {
+  private static function parseAsHEntry($mf2, $item, $http) {
     $data = [
       'type' => 'entry'
     ];
@@ -208,7 +208,7 @@ class Mf2 {
     return $response;
   }
 
-  private static function parseAsHEvent($mf2, $item, $http, $url) {
+  private static function parseAsHEvent($mf2, $item, $http) {
     $data = [
       'type' => 'event'
     ];
