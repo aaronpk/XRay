@@ -2,7 +2,7 @@
   "require": {
     "league/plates": "3.*",
     "league/route": "1.*",
-    "mf2/mf2": "dev-master#bb02f0ee92de17975da1eec738d75ed0dfb68027",
+    "mf2/mf2": "~0.3",
     "ezyang/htmlpurifier": "4.*"
   },
   "autoload": {
@@ -21,11 +21,5 @@
     "files": [
       "lib/HTTPTest.php"
     ]
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "http://github.com/aaronpk/php-mf2"
-    }
-  ]
+  }
 }
