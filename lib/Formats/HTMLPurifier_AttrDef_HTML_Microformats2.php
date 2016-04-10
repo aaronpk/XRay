@@ -1,9 +1,10 @@
 <?php
+namespace XRay\Formats;
 
 /**
  * Allows Microformats2 classes but rejects any others
  */
-class HTMLPurifier_AttrDef_HTML_Microformats2 extends HTMLPurifier_AttrDef_HTML_Nmtokens
+class HTMLPurifier_AttrDef_HTML_Microformats2 extends \HTMLPurifier_AttrDef_HTML_Nmtokens
 {
     /**
      * @param string $string

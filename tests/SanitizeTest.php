@@ -9,6 +9,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
   public function setUp() {
     $this->client = new Parse();
     $this->client->http = new p3k\HTTPTest(dirname(__FILE__).'/data/');
+    $this->client->mc = null;
   }
 
   private function parse($params) {
@@ -111,6 +112,43 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertArrayNotHasKey('name', $data['data']);
     $this->assertEquals('This content has some HTML escaped entities such as & ampersand, " quote, escaped <code> HTML tags, an ümlaut, an @at sign.', $data['data']['content']['text']);
     $this->assertEquals('This content has some <i>HTML escaped</i> entities such as &amp; ampersand, " quote, escaped &lt;code&gt; HTML tags, an ümlaut, an @at sign.', $data['data']['content']['html']);
+  }
+
+  public function testSanitizeJavascriptURLs() {
+    $url = 'http://sanitize.example/h-entry-with-javascript-urls';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('', $data['data']['author']['url']);
+    $this->assertArrayNotHasKey('url', $data['data']);
+    $this->assertArrayNotHasKey('photo', $data['data']);
+    $this->assertArrayNotHasKey('audio', $data['data']);
+    $this->assertArrayNotHasKey('video', $data['data']);
+    $this->assertArrayNotHasKey('syndication', $data['data']);
+    $this->assertArrayNotHasKey('in-reply-to', $data['data']);
+    $this->assertArrayNotHasKey('like-of', $data['data']);
+    $this->assertArrayNotHasKey('repost-of', $data['data']);
+    $this->assertArrayNotHasKey('bookmark-of', $data['data']);
+    $this->assertEquals('Author', $data['data']['author']['name']);
+    $this->assertEquals('', $data['data']['author']['photo']);
+  }
+
+  public function testSanitizeEmailAuthorURL() {
+    $url = 'http://sanitize.example/h-entry-with-email-author';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertEquals('entry', $data->data->type);
+    $this->assertEquals('', $data->data->author->url);
+    $this->assertEquals('Author', $data->data->author->name);
+    $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->author->photo);
   }
 
 }

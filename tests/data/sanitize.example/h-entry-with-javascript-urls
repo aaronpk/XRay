@@ -1,0 +1,44 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Example</title>
+</head>
+<body>
+
+  <div class="h-entry">
+
+    <div class="p-author h-card">
+      <a href="javascript:alert('author href')" class="u-url">
+        <img src="javascript:alert('author photo')" class="u-photo">
+        <span class="p-name">Author</span>
+      </a>
+    </div>
+
+    <p class="p-name e-content">Hello World</p>
+
+    <a href="javascript:alert('url')" class="u-url">attack</a>
+    <a href="javascript:alert('photo')" class="u-photo">attack</a>
+    <a href="javascript:alert('audio')" class="u-audio">attack</a>
+    <a href="javascript:alert('video')" class="u-video">attack</a>
+    <a href="javascript:alert('syndication')" class="u-syndication">attack</a>
+    <a href="javascript:alert('in-reply-to')" class="u-in-reply-to">attack</a>
+    <a href="javascript:alert('like-of')" class="u-like-of">attack</a>
+    <a href="javascript:alert('repost-of')" class="u-repost-of">attack</a>
+    <a href="javascript:alert('bookmark-of')" class="u-bookmark-of">attack</a>
+    <div class="p-photo h-card">
+      <a href="javascript:alert('photo')" class="u-url p-name">attack</a>
+    </div>
+    <div class="p-repost-of h-card">
+      <a href="javascript:alert('repost-of')" class="u-url p-name">attack</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
