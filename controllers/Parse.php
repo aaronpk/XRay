@@ -13,7 +13,7 @@ class Parse {
 
   public function __construct() {
     $this->http = new p3k\HTTP();
-    if(class_exists('Memcache')) {
+    if(Config::$cache && class_exists('Memcache')) {
       $this->mc = new Memcache();
       $this->mc->addServer('127.0.0.1');
     }
