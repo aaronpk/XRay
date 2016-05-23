@@ -110,7 +110,7 @@ class Mf2 {
     // Single plaintext values
     $properties = ['url','published','summary','rsvp'];
     foreach($properties as $p) {
-      if($v = self::getPlaintext($item, $p)) {
+      if(($v = self::getPlaintext($item, $p)) !== null) {
         if($p == 'url') {
           if(self::isURL($v))
             $data[$p] = $v;
@@ -235,7 +235,7 @@ class Mf2 {
     // Single plaintext values
     $properties = ['name','summary','url','published','start','end','duration'];
     foreach($properties as $p) {
-      if($v = self::getPlaintext($item, $p)) {
+      if(($v = self::getPlaintext($item, $p)) !== null) {
         if($p == 'url') {
           if(self::isURL($v))
             $data[$p] = $v;
@@ -363,7 +363,7 @@ class Mf2 {
         if(!$found && self::isURL($item['properties']['url'][0])) {
           $data['url'] = $item['properties']['url'][0];
         }
-      } else if($v = self::getPlaintext($item, $p)) {
+      } else if(($v = self::getPlaintext($item, $p)) !== null) {
         // Make sure the URL property is actually a URL
         if($p == 'url' || $p == 'photo') {
           if(self::isURL($v))

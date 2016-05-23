@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Author</title>
+</head>
+<body>
+
+  <div class="h-card">
+    <a href="/author-name-is-0" class="u-url">
+      <img src="/photo.jpg" class="u-photo">
+      <span class="p-name">0</span>
+    </a>
+  </div>
+
+</body>
+</html>
