@@ -12,7 +12,7 @@ The contents of the URL is checked in the following order:
 * OGP (coming soon)
 
 
-## API
+## Parse API
 
 To parse a page and return structured data for the contents of the page, simply pass a url to the parse route.
 
@@ -23,10 +23,24 @@ GET /parse?url=https://aaronparecki.com/2016/01/16/11/
 To conditionally parse the page after first checking if it contains a link to a target URL, also include the target URL as a parameter. This is useful if using XRay to verify an incoming webmention.
 
 ```
-GET /parse?url=https://aaronparecki.com/2016/01/16/11/&target=http://poetica.com
+GET /parse?url=https://aaronparecki.com/2016/01/16/11/&target=http://example.com
 ```
 
 In both cases, the response will be a JSON object containing a key of "type". If there was an error, "type" will be set to the string "error", otherwise it will refer to the kind of content that was found at the URL, most often "entry".
+
+You can also make a POST request with the same parameter names.
+
+### Authentication
+
+If the URL you are fetching requires authentication, include the access token in the parameter "token", and it will be included in an "Authorization" header when fetching the URL. (It is recommended to use a POST request in this case, to avoid the access token potentially being logged as part of the query string.)
+
+```
+POST /parse
+
+url=https://aaronparecki.com/2016/01/16/11/
+&target=http://example.com
+&token=12341234123412341234
+```
 
 ### Error Response
 
@@ -37,17 +51,19 @@ In both cases, the response will be a JSON object containing a key of "type". If
 }
 ```
 
-Other possible errors are listed below:
+Possible errors are listed below:
 
-* not_found: The URL provided was not found. (Returned 404 when fetching)
-* ssl_cert_error: There was an error validating the SSL certificate. This may happen if the SSL certificate has expired.
-* ssl_unsupported_cipher: The web server does not support any of the SSL ciphers known by the service.
-* timeout: The service timed out trying to connect to the URL.
-* invalid_content: The content at the URL was not valid. For example, providing a URL to an image will return this error.
-* no_link_found: The target link was not found on the page. When a target parameter is provided, this is the error that will be returned if the target could not be found on the page.
-* no_content: No usable content could be found at the given URL.
+* `not_found`: The URL provided was not found. (Returned 404 when fetching)
+* `ssl_cert_error`: There was an error validating the SSL certificate. This may happen if the SSL certificate has expired.
+* `ssl_unsupported_cipher`: The web server does not support any of the SSL ciphers known by the service.
+* `timeout`: The service timed out trying to connect to the URL.
+* `invalid_content`: The content at the URL was not valid. For example, providing a URL to an image will return this error.
+* `no_link_found`: The target link was not found on the page. When a target parameter is provided, this is the error that will be returned if the target could not be found on the page.
+* `no_content`: No usable content could be found at the given URL.
+* `unauthorized`: The URL returned HTTP 401 Unauthorized.
+* `forbidden`: The URL returned HTTP 403 Forbidden.
 
-## Response Format
+### Response Format
 
 ```json
 {
@@ -127,4 +143,32 @@ In a future version, replies, likes, reposts, etc. of this post will be included
 }
 
 ```
+
+## Token API
+
+When verifying [Private Webmentions](https://indieweb.org/Private-Webmention#How_to_Receive_Private_Webmentions), you will need to exchange a code for an access token at the token endpoint specified by the source URL.
+
+XRay provides an API that will do this in one step. You can provide the source URL and code you got from the webmention, and XRay will discover the token endpoint, and then return you an access token.
+
+```
+POST /token
+
+source=http://example.com/private-post
+&code=1234567812345678
+```
+
+The response will be the response from the token endpoint, which will include an `access_token` property, and possibly an `expires_in` property.
+
+```
+{
+  "access_token": "eyJ0eXAXBlIjoI6Imh0dHB8idGFyZ2V0IjoraW0uZGV2bb-ZO6MV-DIqbUn_3LZs",
+  "token_type": "bearer",
+  "expires_in": 3600
+}
+```
+
+If there was a problem fetching the access token, you will get one of the errors below in addition to the HTTP related errors returned by the parse API:
+
+* `no_token_endpoint` - Unable to find an HTTP header specifying the token endpoint.
+
 

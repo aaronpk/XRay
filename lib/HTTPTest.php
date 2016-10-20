@@ -9,11 +9,11 @@ class HTTPTest extends HTTPCurl {
     $this->_testDataPath = $testDataPath;
   }
 
-  public function get($url) {
+  public function get($url, $headers=[]) {
     return $this->_read_file($url);
   }
 
-  public function post($url, $body, $headers=array()) {
+  public function post($url, $body, $headers=[]) {
     return $this->_read_file($url);
   }
 
@@ -59,7 +59,7 @@ class HTTPTest extends HTTPCurl {
       'code' => $code,
       'headers' => $parsedHeaders,
       'body' => $body,
-      'error' => '',
+      'error' => (isset($parsedHeaders['X-Test-Error']) ? $parsedHeaders['X-Test-Error'] : ''),
       'error_description' => '',
       'url' => $effectiveUrl
     );

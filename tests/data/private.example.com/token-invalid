@@ -1,0 +1,9 @@
+HTTP/1.1 400 Bad Request
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: application/json
+Connection: keep-alive
+
+{
+  "error": "this-string-passed-through-from-token-endpoint"
+}

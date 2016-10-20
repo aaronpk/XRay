@@ -14,13 +14,13 @@ class HTTPStream {
     throw new \ErrorException($message, 0, $severity, $file, $line);
   }
 
-  public function get($url) {
+  public function get($url, $headers=[]) {
     set_error_handler("p3k\HTTPStream::exception_error_handler");
-    $context = $this->_stream_context('GET', $url);
+    $context = $this->_stream_context('GET', $url, false, $headers);
     return $this->_fetch($url, $context);
   }
 
-  public function post($url, $body, $headers=array()) {
+  public function post($url, $body, $headers=[]) {
     set_error_handler("p3k\HTTPStream::exception_error_handler");
     $context = $this->_stream_context('POST', $url, $body, $headers);
     return $this->_fetch($url, $context);
@@ -37,6 +37,8 @@ class HTTPStream {
 
     try {
       $body = file_get_contents($url, false, $context);
+      // This sets $http_response_header
+      // see http://php.net/manual/en/reserved.variables.httpresponseheader.php
     } catch(\Exception $e) {
       $body = false;
       $http_response_header = [];
@@ -84,7 +86,7 @@ class HTTPStream {
     }
 
     if($headers) {
-      $options['header'] = $headers;
+      $options['header'] = implode("\r\n", $headers);
     }
 
     // Special-case appspot.com URLs to not follow redirects.

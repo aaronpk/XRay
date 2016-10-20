@@ -3,7 +3,8 @@
     "league/plates": "3.*",
     "league/route": "1.*",
     "mf2/mf2": "~0.3",
-    "ezyang/htmlpurifier": "4.*"
+    "ezyang/htmlpurifier": "4.*",
+    "indieweb/link-rel-parser": "0.1.*"
   },
   "autoload": {
     "files": [
@@ -11,6 +12,7 @@
       "lib/helpers.php",
       "controllers/Main.php",
       "controllers/Parse.php",
+      "controllers/Token.php",
       "lib/HTTPCurl.php",
       "lib/HTTPStream.php",
       "lib/HTTP.php",

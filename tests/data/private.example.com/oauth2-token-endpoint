@@ -1,0 +1,8 @@
+HTTP/1.1 401 Unauthorized
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/plain; charset=utf-8
+Connection: keep-alive
+Link: </token>; rel="oauth2-token"
+
+This page uses the "oauth2-token" rel value defined in https://tools.ietf.org/html/draft-wmills-oauth-lrdd-07

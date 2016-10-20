@@ -8,7 +8,7 @@ class Parse {
 
   public $http;
   public $mc;
-  private $_cacheTime = 300;
+  private $_cacheTime = 120;
   private $_pretty = false;
 
   public function __construct() {
@@ -91,7 +91,8 @@ class Parse {
       $url = \normalize_url($url);
 
       // Now fetch the URL and check for any curl errors
-      if($this->mc) {
+      // Don't cache the response if a token is used to fetch it
+      if($this->mc && !$request->get('token')) {
         $cacheKey = 'xray-'.md5($url);
         if($cached=$this->mc->get($cacheKey)) {
           $result = json_decode($cached, true);
@@ -104,7 +105,12 @@ class Parse {
             $this->mc->set($cacheKey, $cacheData, MEMCACHE_COMPRESSED, $this->_cacheTime);
         }
       } else {
-        $result = $this->http->get($url);
+        $headers = [];
+        if($request->get('token')) {
+          $headers[] = 'Authorization: Bearer ' . $request->get('token');
+        }
+
+        $result = $this->http->get($url, $headers);
       }
 
       if($result['error']) {
@@ -120,6 +126,21 @@ class Parse {
           'error_description' => 'We did not get a response body when fetching the URL'
         ]);
       }
+
+      // Check for HTTP 401/403
+      if($result['code'] == 401) {
+        return $this->respond($response, 200, [
+          'error' => 'unauthorized',
+          'error_description' => 'The URL returned "HTTP 401 Unauthorized"',
+        ]);
+      }
+      if($result['code'] == 403) {
+        return $this->respond($response, 200, [
+          'error' => 'forbidden',
+          'error_description' => 'The URL returned "HTTP 403 Forbidden"',
+        ]);
+      }
+
     }
 
     // attempt to parse the page as HTML

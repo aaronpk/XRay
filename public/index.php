@@ -10,6 +10,7 @@ $templates = new League\Plates\Engine(dirname(__FILE__).'/../views');
 $router->addRoute('GET', '/', 'Main::index');
 $router->addRoute('GET', '/parse', 'Parse::parse');
 $router->addRoute('POST', '/parse', 'Parse::parse');
+$router->addRoute('POST', '/token', 'Token::token');
 
 $dispatcher = $router->getDispatcher();
 $request = Request::createFromGlobals();

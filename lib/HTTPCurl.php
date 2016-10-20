@@ -6,9 +6,11 @@ class HTTPCurl {
   public $timeout = 4;
   public $max_redirects = 8;
 
-  public function get($url) {
+  public function get($url, $headers=[]) {
     $ch = curl_init($url);
     $this->_set_curlopts($ch, $url);
+    if($headers)
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     $response = curl_exec($ch);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     return array(
@@ -22,12 +24,13 @@ class HTTPCurl {
     );
   }
 
-  public function post($url, $body, $headers=array()) {
+  public function post($url, $body, $headers=[]) {
     $ch = curl_init($url);
     $this->_set_curlopts($ch, $url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    if($headers)
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     $response = curl_exec($ch);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     return array(
