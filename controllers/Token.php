@@ -82,7 +82,7 @@ class Token {
 
     // Catch HTTP errors here such as timeouts
     if($token['error']) {
-      return $this->respond($response, 400, [
+      return $this->respond($response, 200, [
         'error' => $token['error'],
         'error_description' => $token['error_description'] ?: 'An unknown error occurred trying to fetch the token'
       ]);
@@ -97,7 +97,7 @@ class Token {
       $headers['Content-Type'] = $token['headers']['Content-Type'];
     }
 
-    return $this->respond($response, $token['code'], $body ?: $token['body'], $headers);
+    return $this->respond($response, 200, $body ?: $token['body'], $headers);
   }
 
   private function respond(Response $response, $code, $params, $headers=[]) {

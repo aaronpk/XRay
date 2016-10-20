@@ -124,7 +124,7 @@ class TokenTest extends PHPUnit_Framework_TestCase {
     $response = $this->token(['source' => $url, 'code' => '1234']);
 
     $body = $response->getContent();
-    $this->assertEquals(400, $response->getStatusCode());
+    $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
 
     $this->assertObjectHasAttribute('error', $data);
@@ -136,7 +136,7 @@ class TokenTest extends PHPUnit_Framework_TestCase {
     $response = $this->token(['source' => $url, 'code' => '1234']);
 
     $body = $response->getContent();
-    $this->assertEquals(400, $response->getStatusCode());
+    $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
 
     $this->assertObjectHasAttribute('error', $data);
@@ -148,7 +148,7 @@ class TokenTest extends PHPUnit_Framework_TestCase {
     $response = $this->token(['source' => $url, 'code' => '1234']);
 
     $body = $response->getContent();
-    $this->assertEquals(400, $response->getStatusCode());
+    $this->assertEquals(200, $response->getStatusCode());
     $this->assertEquals('text/plain', $response->headers->get('content-type'));
     $this->assertEquals('Invalid request', $body);
   }
