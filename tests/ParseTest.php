@@ -73,6 +73,39 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This page has a link to <a href="http://target.example.com">target.example.com</a> and some <b>formatted text</b>.', $data->data->content->html);
   }
 
+  public function testFindTargetLinkIsImage() {
+    $url = 'http://source.example.com/link-is-img';
+    $response = $this->parse(['url' => $url, 'target' => 'http://target.example.com/photo.jpg']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('This page has an img tag with the target URL.', $data->data->content->text);
+  }
+
+  public function testFindTargetLinkIsVideo() {
+    $url = 'http://source.example.com/link-is-video';
+    $response = $this->parse(['url' => $url, 'target' => 'http://target.example.com/movie.mp4']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('This page has a video tag with the target URL.', $data->data->content->text);
+  }
+
+  public function testFindTargetLinkIsAudio() {
+    $url = 'http://source.example.com/link-is-audio';
+    $response = $this->parse(['url' => $url, 'target' => 'http://target.example.com/media.mp3']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('This page has an audio tag with the target URL.', $data->data->content->text);
+  }
+
   public function testTextContent() {
     $url = 'http://source.example.com/text-content';
     $response = $this->parse(['url' => $url]);

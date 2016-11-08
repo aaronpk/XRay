@@ -159,15 +159,27 @@ class Parse {
       $xpath = new DOMXPath($doc);
 
       $found = [];
-      foreach($xpath->query('//a[@href]') as $href) {
-        $u = $href->getAttribute('href');
-
-        if($target) {
-          # target parameter was provided
+      if($target) {
+        self::xPathFindNodeWithAttribute($xpath, 'a', 'href', function($u) use($target, &$found){
           if($u == $target) {
             $found[$u] = null;
           }
-        }
+        });
+        self::xPathFindNodeWithAttribute($xpath, 'img', 'src', function($u) use($target, &$found){
+          if($u == $target) {
+            $found[$u] = null;
+          }
+        });
+        self::xPathFindNodeWithAttribute($xpath, 'video', 'src', function($u) use($target, &$found){
+          if($u == $target) {
+            $found[$u] = null;
+          }
+        });
+        self::xPathFindNodeWithAttribute($xpath, 'audio', 'src', function($u) use($target, &$found){
+          if($u == $target) {
+            $found[$u] = null;
+          }
+        });
       }
 
       if(!$found) {
@@ -196,6 +208,13 @@ class Parse {
         'type' => 'unknown',
       ]
     ]);
+  }
+
+  private static function xPathFindNodeWithAttribute($xpath, $node, $attr, $callback) {
+    foreach($xpath->query('//'.$node.'[@'.$attr.']') as $el) {
+      $v = $el->getAttribute($attr);
+      $callback($v);
+    }
   }
 
 }
