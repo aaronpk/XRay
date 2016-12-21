@@ -73,7 +73,7 @@ class HTTPCurl {
     }
 
     curl_setopt($ch, CURLOPT_TIMEOUT_MS, round($this->timeout * 1000));
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2000);
   }
 
   public static function error_string_from_code($code) {

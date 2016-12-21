@@ -2,6 +2,8 @@
 chdir('..');
 include('vendor/autoload.php');
 
+register_shutdown_function('shutdown');
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 $router = new League\Route\RouteCollection;
@@ -28,4 +30,21 @@ try {
   $response->setStatusCode(405);
   $response->setContent("Method not allowed\n");
   $response->send();
+}
+
+function shutdown() {
+  $error = error_get_last();
+  if($error['type'] !== 0) {
+    header('HTTP/1.1 500 Server Error');
+    header('X-PHP-Error-Type: '.$error['type']);
+    header('X-PHP-Error-Message: '.$error['message']);
+    header('Content-Type: application/json');
+    echo json_encode([
+      'error' => 'internal_error',
+      'error_code' => 500,
+      'error_description' => $error['message'],
+      'debug' => 'Please file an issue with any information you have about what caused this error: https://github.com/aaronpk/XRay/issues'
+    ]);
+    die();
+  }
 }
