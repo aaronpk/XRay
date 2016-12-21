@@ -34,7 +34,7 @@ try {
 
 function shutdown() {
   $error = error_get_last();
-  if($error['type'] !== 0) {
+  if($error['type'] === E_ERROR) {
     header('HTTP/1.1 500 Server Error');
     header('X-PHP-Error-Type: '.$error['type']);
     header('X-PHP-Error-Message: '.$error['message']);
