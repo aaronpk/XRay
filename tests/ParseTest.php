@@ -358,4 +358,28 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Tantek Çelik', $data['refs']['https://www.facebook.com/tantek.celik']['name']);
   }
 
+  public function testEntryAtFragmentID() {
+    $url = 'http://source.example.com/fragment-id#comment-1000';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('http://source.example.com/fragment-id#comment-1000', $data['data']['url']);
+    $this->assertTrue($data['info']['found_fragment']);
+  }
+
+  public function testEntryAtNonExistentFragmentID() {
+    $url = 'http://source.example.com/fragment-id#comment-404';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('http://source.example.com/fragment-id', $data['data']['url']);
+    $this->assertFalse($data['info']['found_fragment']);
+  }
+
 }

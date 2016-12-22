@@ -154,10 +154,10 @@ class Parse {
       ]);
     }
 
+    $xpath = new DOMXPath($doc);
+
     // If a target parameter was provided, make sure a link to it exists on the page
     if($target=$request->get('target')) {
-      $xpath = new DOMXPath($doc);
-
       $found = [];
       if($target) {
         self::xPathFindNodeWithAttribute($xpath, 'a', 'href', function($u) use($target, &$found){
@@ -190,18 +190,36 @@ class Parse {
       }
     }
 
+    // If the URL has a fragment ID, find the DOM starting at that node and parse it instead
+    $html = $result['body'];
+
+    $fragment = parse_url($url, PHP_URL_FRAGMENT);
+    if($fragment) {
+      $fragElement = self::xPathGetElementById($xpath, $fragment);
+      if($fragElement) {
+        $html = $doc->saveHTML($fragElement);
+        $foundFragment = true;
+      } else {
+        $foundFragment = false;
+      }
+    }
+
     // Now start pulling in the data from the page. Start by looking for microformats2
-    $mf2 = mf2\Parse($result['body'], $result['url']);
+    $mf2 = mf2\Parse($html, $result['url']);
 
     if($mf2 && count($mf2['items']) > 0) {
       $data = Formats\Mf2::parse($mf2, $result['url'], $this->http);
       if($data) {
+        if($fragment) {
+          $data['info'] = [
+            'found_fragment' => $foundFragment
+          ];
+        }
         return $this->respond($response, 200, $data);
       }
     }
 
     // TODO: look for other content like OEmbed or other known services later
-
 
     return $this->respond($response, 200, [
       'data' => [
@@ -215,6 +233,14 @@ class Parse {
       $v = $el->getAttribute($attr);
       $callback($v);
     }
+  }
+
+  private static function xPathGetElementById($xpath, $id) {
+    $element = null;
+    foreach($xpath->query("//*[@id='$id']") as $el) {
+      $element = $el;
+    }
+    return $element;
   }
 
 }

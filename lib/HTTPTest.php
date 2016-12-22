@@ -10,6 +10,9 @@ class HTTPTest extends HTTPCurl {
   }
 
   public function get($url, $headers=[]) {
+    $parts = parse_url($url);
+    unset($parts['fragment']);
+    $url = \build_url($parts);
     return $this->_read_file($url);
   }
 

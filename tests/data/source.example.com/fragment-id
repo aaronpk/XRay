@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <p class="e-content p-name">This page has comments.</p>
+    <ul>
+      <li class="p-comment h-entry" id="comment-1000">
+        <span class="p-content p-name">Comment text</span>
+        <a href="http://user.example.com/" class="p-author h-card">A. Commenter</a>
+        <a href="#comment-1000" class="u-url">comment permalink</a>
+      </li>
+    </ul>
+    <a href="" class="u-url">permalink</a>
+  </body>
+</html>
