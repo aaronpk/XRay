@@ -525,32 +525,6 @@ class Mf2 {
     return $sanitized;
   }
 
-  private static function responseDisplayText($name, $summary, $content) {
-
-    // Build a fake h-entry to pass to the comments parser
-    $input = [
-      'type' => ['h-entry'],
-      'properties' => [
-        'name' => [trim($name)],
-        'summary' => [trim($summary)],
-        'content' => [trim($content)]
-      ]
-    ];
-
-    if(!trim($name))
-      unset($input['properties']['name']);
-
-    if(!trim($summary))
-      unset($input['properties']['summary']);
-
-    $result = \IndieWeb\comments\parse($input, false, 1024, 4);
-
-    return [
-      'name' => trim($result['name']),
-      'content' => $result['text']
-    ];
-  }  
-
   private static function hasNumericKeys(array $arr) {
     foreach($arr as $key=>$val) 
       if (is_numeric($key)) 
