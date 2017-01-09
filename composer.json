@@ -13,6 +13,7 @@
       "controllers/Main.php",
       "controllers/Parse.php",
       "controllers/Token.php",
+      "lib/Timezone.php",
       "lib/HTTPCurl.php",
       "lib/HTTPStream.php",
       "lib/HTTP.php",

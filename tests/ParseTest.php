@@ -392,6 +392,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('2017-01-05T23:31:32+00:00', $data['data']['published']);
     $this->assertContains('planning', $data['data']['category']);
     $this->assertContains('2017', $data['data']['category']);
     $this->assertEquals('Kind of crazy to see the whole year laid out like this. #planning #2017', $data['data']['content']['text']);
@@ -451,6 +452,8 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('XOXO Outpost', $venue['name']);
     $this->assertEquals('45.5261002', $venue['latitude']);
     $this->assertEquals('-122.6558081', $venue['longitude']);
+    // Setting a venue should set the timezone
+    $this->assertEquals('2016-12-10T21:48:56-08:00', $data['data']['published']);
   }
 
 }

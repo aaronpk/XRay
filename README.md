@@ -6,7 +6,9 @@ XRay
 
 The contents of the URL is checked in the following order:
 
-* A supported silo URL (coming soon)
+* A silo URL from one of the following websites:
+** Instagram
+** (more coming soon)
 * h-entry, h-event, h-card
 * OEmbed (coming soon)
 * OGP (coming soon)

@@ -2,6 +2,7 @@
 namespace XRay\Formats;
 
 use DOMDocument, DOMXPath;
+use DateTime, DateTimeZone;
 use Parse;
 
 class Instagram {
@@ -25,11 +26,14 @@ class Instagram {
       ]
     );
 
+    $profiles = [];
+
     // Fetch profile info for this user
     $username = $photoData['owner']['username'];
     $profile = self::_getInstagramProfile($username, $http);
     if($profile) {
       $entry['author'] = self::_buildHCardFromInstagramProfile($profile);
+      $profiles[] = $profile;
     }
 
     // Content and hashtags
@@ -55,7 +59,6 @@ class Instagram {
     }
 
     $refs = [];
-    $profiles = [];
 
     // Find person tags and fetch user profiles
     if(array_key_exists('usertags', $photoData) && $photoData['usertags']['nodes']) {
@@ -72,6 +75,9 @@ class Instagram {
       }
     }
 
+    // Published date
+    $published = DateTime::createFromFormat('U', $photoData['date']);
+
     // Include venue data
     $locations = [];
     if($photoData['location']) {
@@ -80,8 +86,18 @@ class Instagram {
         $entry['location'] = [$location['url']];
         $refs[$location['url']] = $location;
         $locations[] = $location;
+
+        // Look up timezone
+        if($location['latitude']) {
+          $tz = \p3k\Timezone::timezone_for_location($location['latitude'], $location['longitude']);
+          if($tz) {
+            $published->setTimeZone(new DateTimeZone($tz));
+          }
+        }
       }
     }
+
+    $entry['published'] = $published->format('c');
 
     $response = [
       'data' => $entry
