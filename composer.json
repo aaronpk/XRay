@@ -17,6 +17,7 @@
       "lib/HTTPStream.php",
       "lib/HTTP.php",
       "lib/Formats/Mf2.php",
+      "lib/Formats/Instagram.php",
       "lib/Formats/HTMLPurifier_AttrDef_HTML_Microformats2.php"
     ]
   },

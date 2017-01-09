@@ -143,6 +143,16 @@ class Parse {
 
     }
 
+    // Check for known services
+    $host = parse_url($result['url'], PHP_URL_HOST);
+    if(in_array($host, ['www.instagram.com','instagram.com'])) {
+      list($data, $parsed) = Formats\Instagram::parse($result['body'], $result['url'], $this->http);
+      if($request->get('include_original'))
+        $data['original'] = $parsed;
+      return $this->respond($response, 200, $data);
+    }
+
+
     // attempt to parse the page as HTML
     $doc = new DOMDocument();
     @$doc->loadHTML(self::toHtmlEntities($result['body']));
@@ -215,6 +225,8 @@ class Parse {
             'found_fragment' => $foundFragment
           ];
         }
+        if($request->get('include_original'))
+          $data['original'] = $html;
         return $this->respond($response, 200, $data);
       }
     }
