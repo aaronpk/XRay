@@ -90,6 +90,45 @@ class Parse {
 
       $url = \normalize_url($url);
 
+      // Check if this is a Twitter URL and if they've provided API credentials, use the API
+      if(preg_match('/https?:\/\/(?:mobile\.twitter\.com|twitter\.com|twtr\.io)\/(?:[a-z0-9_\/!#]+statuse?s?\/([0-9]+)|([a-zA-Z0-9_]+))/', $url, $match)) {
+        $fields = ['twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret'];
+        $creds = [];
+        foreach($fields as $f) {
+          if($v=$request->get($f))
+            $creds[$f] = $v;
+        }
+        $data = false;
+        if(count($creds) == 4) {
+          list($data, $parsed) = Formats\Twitter::parse($url, $match[1], $creds);
+        } elseif(count($creds) > 0) {
+          // If only some Twitter credentials were present, return an error  
+          return $this->respond($response, 400, [
+            'error' => 'missing_parameters',
+            'error_description' => 'All 4 Twitter credentials must be included in the request'
+          ]);
+        } else {
+          // Accept Tweet JSON and parse that if provided
+          $json = $request->get('json');
+          if($json) {
+            list($data, $parsed) = Formats\Twitter::parse($url, $match[1], null, $json);
+          }
+          // Skip parsing from the Twitter API if they didn't include credentials
+        }
+
+        if($data) {
+          if($request->get('include_original'))
+            $data['original'] = $parsed;
+          return $this->respond($response, 200, $data);
+        } else {
+          return $this->respond($response, 200, [
+            'data' => [
+              'type' => 'unknown'
+            ]
+          ]);
+        }
+      }
+
       // Now fetch the URL and check for any curl errors
       // Don't cache the response if a token is used to fetch it
       if($this->mc && !$request->get('token')) {
@@ -145,13 +184,13 @@ class Parse {
 
     // Check for known services
     $host = parse_url($result['url'], PHP_URL_HOST);
+
     if(in_array($host, ['www.instagram.com','instagram.com'])) {
       list($data, $parsed) = Formats\Instagram::parse($result['body'], $result['url'], $this->http);
       if($request->get('include_original'))
         $data['original'] = $parsed;
       return $this->respond($response, 200, $data);
     }
-
 
     // attempt to parse the page as HTML
     $doc = new DOMDocument();

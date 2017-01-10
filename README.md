@@ -8,6 +8,7 @@ The contents of the URL is checked in the following order:
 
 * A silo URL from one of the following websites:
 ** Instagram
+** Twitter
 ** (more coming soon)
 * h-entry, h-event, h-card
 * OEmbed (coming soon)
@@ -43,6 +44,18 @@ url=https://aaronparecki.com/2016/01/16/11/
 &target=http://example.com
 &token=12341234123412341234
 ```
+
+### Twitter Authentication
+
+XRay uses the Twitter API to fetch posts, and the Twitter API requires authentication. In order to keep XRay stateless, it is required that you pass in Twitter credentials to the parse call. You can register an application on the Twitter developer website, and generate an access token for your account without writing any code, and then use those credentials when making an API request to XRay.
+
+You should only send Twitter credentials when the URL you are trying to parse is a Twitter URL, so you'll want to check for whether the hostname is `twitter.com` before you include credentials in this call.
+
+* twitter_api_key - Your application's API key
+* twitter_api_secret - Your application's API secret
+* twitter_access_token - Your Twitter access token
+* twitter_access_token_secret - Your Twitter secret access token
+
 
 ### Error Response
 

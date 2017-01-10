@@ -1,0 +1,431 @@
+{
+  "created_at": "Tue Jan 10 20:12:45 +0000 2017",
+  "id": 818913488609251331,
+  "id_str": "818913488609251331",
+  "full_text": "Quoted tweet with a #hashtag https://t.co/m8RAfr0S3e",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    52
+  ],
+  "entities": {
+    "hashtags": [
+      {
+        "text": "hashtag",
+        "indices": [
+          20,
+          28
+        ]
+      }
+    ],
+    "symbols": [
+
+    ],
+    "user_mentions": [
+
+    ],
+    "urls": [
+      {
+        "url": "https://t.co/m8RAfr0S3e",
+        "expanded_url": "https://twitter.com/aaronpk/status/817414679131660288",
+        "display_url": "twitter.com/aaronpk/status…",
+        "indices": [
+          29,
+          52
+        ]
+      }
+    ]
+  },
+  "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 143883456,
+    "id_str": "143883456",
+    "name": "aaronpk dev",
+    "screen_name": "pkdev",
+    "location": "Portland, OR",
+    "description": "Dev account for testing Twitter things. Follow me here: http://t.co/DtzRLfxayu",
+    "url": "https://t.co/fXLomQaMAd",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/fXLomQaMAd",
+            "expanded_url": "https://aaronparecki.com/",
+            "display_url": "aaronparecki.com",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": [
+          {
+            "url": "http://t.co/DtzRLfxayu",
+            "expanded_url": "https://twitter.com/aaronpk",
+            "display_url": "twitter.com/aaronpk",
+            "indices": [
+              56,
+              78
+            ]
+          }
+        ]
+      }
+    },
+    "protected": true,
+    "followers_count": 4,
+    "friends_count": 1,
+    "listed_count": 1,
+    "created_at": "Fri May 14 17:47:15 +0000 2010",
+    "favourites_count": 1,
+    "utc_offset": -28800,
+    "time_zone": "Pacific Time (US & Canada)",
+    "geo_enabled": true,
+    "verified": false,
+    "statuses_count": 37,
+    "lang": "en",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "C0DEED",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/638125135904436224/qd_d94Qn_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/638125135904436224/qd_d94Qn_normal.jpg",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": true,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": true,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "none"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": {
+    "id": "ac88a4f17a51c7fc",
+    "url": "https://api.twitter.com/1.1/geo/id/ac88a4f17a51c7fc.json",
+    "place_type": "city",
+    "name": "Portland",
+    "full_name": "Portland, OR",
+    "country_code": "US",
+    "country": "United States",
+    "contained_within": [
+
+    ],
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -122.7900653,
+            45.421863
+          ],
+          [
+            -122.471751,
+            45.421863
+          ],
+          [
+            -122.471751,
+            45.6509405
+          ],
+          [
+            -122.7900653,
+            45.6509405
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+    }
+  },
+  "contributors": null,
+  "is_quote_status": true,
+  "quoted_status_id": 817414679131660288,
+  "quoted_status_id_str": "817414679131660288",
+  "quoted_status": {
+    "created_at": "Fri Jan 06 16:57:00 +0000 2017",
+    "id": 817414679131660288,
+    "id_str": "817414679131660288",
+    "full_text": "Yeah that's me https://t.co/6ZjcRmb3ec https://t.co/n0k56i1nSl",
+    "truncated": false,
+    "display_text_range": [
+      0,
+      38
+    ],
+    "entities": {
+      "hashtags": [
+
+      ],
+      "symbols": [
+
+      ],
+      "user_mentions": [
+
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/6ZjcRmb3ec",
+          "expanded_url": "http://xkcd.com/1782/",
+          "display_url": "xkcd.com/1782/",
+          "indices": [
+            15,
+            38
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 817414678586372096,
+          "id_str": "817414678586372096",
+          "indices": [
+            39,
+            62
+          ],
+          "media_url": "http://pbs.twimg.com/media/C1gKUb9UsAAbi2R.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/C1gKUb9UsAAbi2R.jpg",
+          "url": "https://t.co/n0k56i1nSl",
+          "display_url": "pic.twitter.com/n0k56i1nSl",
+          "expanded_url": "https://twitter.com/aaronpk/status/817414679131660288/photo/1",
+          "type": "photo",
+          "sizes": {
+            "small": {
+              "w": 680,
+              "h": 290,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 700,
+              "h": 299,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 700,
+              "h": 299,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 817414678586372096,
+          "id_str": "817414678586372096",
+          "indices": [
+            39,
+            62
+          ],
+          "media_url": "http://pbs.twimg.com/media/C1gKUb9UsAAbi2R.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/C1gKUb9UsAAbi2R.jpg",
+          "url": "https://t.co/n0k56i1nSl",
+          "display_url": "pic.twitter.com/n0k56i1nSl",
+          "expanded_url": "https://twitter.com/aaronpk/status/817414679131660288/photo/1",
+          "type": "photo",
+          "sizes": {
+            "small": {
+              "w": 680,
+              "h": 290,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 700,
+              "h": 299,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 700,
+              "h": 299,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "source": "<a href=\"https://silopub.p3k.io\" rel=\"nofollow\">Silo Pub for p3k</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 14447132,
+      "id_str": "14447132",
+      "name": "Aaron Parecki",
+      "screen_name": "aaronpk",
+      "location": "Portland, OR",
+      "description": "Cofounder of #indieweb/@indiewebcamp • I maintain https://t.co/zBgRc3oyhG • Editor of https://t.co/JxW2Ws0Ctv and https://t.co/bjsh7VQ4ZI • @W7APK",
+      "url": "https://t.co/LvwC5LPQlU",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/LvwC5LPQlU",
+              "expanded_url": "http://aaronparecki.com",
+              "display_url": "aaronparecki.com",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": [
+            {
+              "url": "https://t.co/zBgRc3oyhG",
+              "expanded_url": "http://oauth.net",
+              "display_url": "oauth.net",
+              "indices": [
+                50,
+                73
+              ]
+            },
+            {
+              "url": "https://t.co/JxW2Ws0Ctv",
+              "expanded_url": "http://w3.org/TR/micropub",
+              "display_url": "w3.org/TR/micropub",
+              "indices": [
+                86,
+                109
+              ]
+            },
+            {
+              "url": "https://t.co/bjsh7VQ4ZI",
+              "expanded_url": "http://w3.org/TR/webmention",
+              "display_url": "w3.org/TR/webmention",
+              "indices": [
+                114,
+                137
+              ]
+            }
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 3379,
+      "friends_count": 1036,
+      "listed_count": 346,
+      "created_at": "Sat Apr 19 22:38:15 +0000 2008",
+      "favourites_count": 3703,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 6675,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "7A9AAF",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/185835062/4786064324_b7049fbec8_b.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/185835062/4786064324_b7049fbec8_b.jpg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/775755455188512768/CA3YxGa4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/775755455188512768/CA3YxGa4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/14447132/1398201184",
+      "profile_link_color": "FF5900",
+      "profile_sidebar_border_color": "87BC44",
+      "profile_sidebar_fill_color": "94C8FF",
+      "profile_text_color": "000000",
+      "profile_use_background_image": true,
+      "has_extended_profile": true,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false,
+      "translator_type": "none"
+    },
+    "geo": {
+      "type": "Point",
+      "coordinates": [
+        45.53553,
+        -122.62139
+      ]
+    },
+    "coordinates": {
+      "type": "Point",
+      "coordinates": [
+        -122.62139,
+        45.53553
+      ]
+    },
+    "place": {
+      "id": "ac88a4f17a51c7fc",
+      "url": "https://api.twitter.com/1.1/geo/id/ac88a4f17a51c7fc.json",
+      "place_type": "city",
+      "name": "Portland",
+      "full_name": "Portland, OR",
+      "country_code": "US",
+      "country": "United States",
+      "contained_within": [
+
+      ],
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -122.7900653,
+              45.421863
+            ],
+            [
+              -122.471751,
+              45.421863
+            ],
+            [
+              -122.471751,
+              45.6509405
+            ],
+            [
+              -122.7900653,
+              45.6509405
+            ]
+          ]
+        ]
+      },
+      "attributes": {
+      }
+    },
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 3,
+    "favorite_count": 6,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "en"
+  },
+  "retweet_count": 0,
+  "favorite_count": 0,
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "possibly_sensitive_appealable": false,
+  "lang": "en"
+}

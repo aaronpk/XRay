@@ -4,7 +4,8 @@
     "league/route": "1.*",
     "mf2/mf2": "~0.3",
     "ezyang/htmlpurifier": "4.*",
-    "indieweb/link-rel-parser": "0.1.*"
+    "indieweb/link-rel-parser": "0.1.*",
+    "dg/twitter-php": "^3.6"
   },
   "autoload": {
     "files": [
@@ -19,6 +20,7 @@
       "lib/HTTP.php",
       "lib/Formats/Mf2.php",
       "lib/Formats/Instagram.php",
+      "lib/Formats/Twitter.php",
       "lib/Formats/HTMLPurifier_AttrDef_HTML_Microformats2.php"
     ]
   },

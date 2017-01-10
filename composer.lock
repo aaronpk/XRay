@@ -4,9 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b55b9f1fabddb79bf5e8b0daf6b4f88e",
-    "content-hash": "a791e61b2f956830a8b7d9b0a2493148",
+    "content-hash": "e5c15a7976be20fd9ed6f7cc48096672",
     "packages": [
+        {
+            "name": "dg/twitter-php",
+            "version": "v3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dg/twitter-php.git",
+                "reference": "dd872ad12121ff919b358989e61f7f08ba6cc7a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dg/twitter-php/zipball/dd872ad12121ff919b358989e61f7f08ba6cc7a8",
+                "reference": "dd872ad12121ff919b358989e61f7f08ba6cc7a8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                }
+            ],
+            "description": "Small and easy Twitter library for PHP",
+            "homepage": "https://github.com/dg/twitter-php",
+            "keywords": [
+                "oauth",
+                "twitter"
+            ],
+            "time": "2016-08-15T16:46:22+00:00"
+        },
         {
             "name": "ezyang/htmlpurifier",
             "version": "v4.8.0",
@@ -49,7 +90,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16 12:58:58"
+            "time": "2016-07-16T12:58:58+00:00"
         },
         {
             "name": "indieweb/link-rel-parser",
@@ -95,7 +136,7 @@
                 "indieweb",
                 "microformats2"
             ],
-            "time": "2016-04-13 17:48:59"
+            "time": "2016-04-13T17:48:59+00:00"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -137,7 +178,7 @@
                 "hashing",
                 "password"
             ],
-            "time": "2014-11-20 16:49:30"
+            "time": "2014-11-20T16:49:30+00:00"
         },
         {
             "name": "league/container",
@@ -195,7 +236,7 @@
                 "injection",
                 "league"
             ],
-            "time": "2015-04-05 17:14:48"
+            "time": "2015-04-05T17:14:48+00:00"
         },
         {
             "name": "league/plates",
@@ -247,7 +288,7 @@
                 "templating",
                 "views"
             ],
-            "time": "2015-07-09 02:14:40"
+            "time": "2015-07-09T02:14:40+00:00"
         },
         {
             "name": "league/route",
@@ -305,7 +346,7 @@
                 "league",
                 "route"
             ],
-            "time": "2015-09-11 07:40:31"
+            "time": "2015-09-11T07:40:31+00:00"
         },
         {
             "name": "mf2/mf2",
@@ -358,7 +399,7 @@
                 "parser",
                 "semantic"
             ],
-            "time": "2016-03-14 12:13:34"
+            "time": "2016-03-14T12:13:34+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -401,7 +442,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2016-03-25 23:46:52"
+            "time": "2016-03-25T23:46:52+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -456,7 +497,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-27 12:57:53"
+            "time": "2016-03-27T12:57:53+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -515,7 +556,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-20 09:13:37"
+            "time": "2016-01-20T09:13:37+00:00"
         },
         {
             "name": "symfony/polyfill-php54",
@@ -573,7 +614,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-25 19:13:00"
+            "time": "2016-01-25T19:13:00+00:00"
         },
         {
             "name": "symfony/polyfill-php55",
@@ -629,7 +670,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-20 09:13:37"
+            "time": "2016-01-20T09:13:37+00:00"
         }
     ],
     "packages-dev": [],
