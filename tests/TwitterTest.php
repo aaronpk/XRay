@@ -38,6 +38,14 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('https://pbs.twimg.com/profile_images/638125135904436224/qd_d94Qn_normal.jpg', $data['data']['author']['photo']);
   }
 
+  public function testProfileWithNonExpandedURL() {
+    list($url, $json) = $this->loadTweet('791704641046052864');
+
+    $data = $this->parse(['url' => $url, 'json' => $json]);
+
+    $this->assertEquals('http://agiletortoise.com', $data['data']['author']['url']);
+  }
+
   public function testBasicTestStuff() {
     list($url, $json) = $this->loadTweet('818913630569664512');
 

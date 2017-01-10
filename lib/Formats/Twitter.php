@@ -178,10 +178,15 @@ class Twitter {
     else
       $author['name'] = $profile->screen_name;
 
-    if($profile->url)
-      $author['url'] = $profile->entities->url->urls[0]->expanded_url;
-    else
+    if($profile->url) {
+      if($profile->entities->url->urls[0]->expanded_url)
+        $author['url'] = $profile->entities->url->urls[0]->expanded_url;
+      else
+        $author['url'] = $profile->entities->url->urls[0]->url;
+    }
+    else {
       $author['url'] = 'https://twitter.com/' . $profile->screen_name;
+    }
 
     $author['photo'] = $profile->profile_image_url_https;
 
