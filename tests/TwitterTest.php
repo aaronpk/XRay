@@ -52,6 +52,13 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('2017-01-10T12:13:18-08:00', $data['data']['published']);
   }
 
+  public function testPositiveTimezone() {
+    list($url, $json) = $this->loadTweet('719914707566649344');
+
+    $data = $this->parse(['url' => $url, 'json' => $json]);
+    $this->assertEquals("2016-04-12T16:46:56+01:00", $data['data']['published']);
+  }
+
   public function testTweetWithEmoji() {
     list($url, $json) = $this->loadTweet('818943244553699328');
 

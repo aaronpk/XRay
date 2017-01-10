@@ -21,7 +21,11 @@ class Twitter {
         $tweet = $json;
     } else {
       $twitter = new \Twitter($creds['twitter_api_key'], $creds['twitter_api_secret'], $creds['twitter_access_token'], $creds['twitter_access_token_secret']);
-      $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
+      try { 
+        $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
+      } catch(\TwitterException $e) {
+        return false;
+      }
     }
 
     if(!$tweet)
@@ -74,7 +78,7 @@ class Twitter {
     // Published date
     $published = new DateTime($tweet->created_at);
     if(property_exists($tweet->user, 'utc_offset')) {
-      $tz = new DateTimeZone($tweet->user->utc_offset / 3600);
+      $tz = new DateTimeZone(sprintf('%+d', $tweet->user->utc_offset / 3600));
       $published->setTimeZone($tz);
     }
     $entry['published'] = $published->format('c');

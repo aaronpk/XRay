@@ -91,7 +91,7 @@ class Parse {
       $url = \normalize_url($url);
 
       // Check if this is a Twitter URL and if they've provided API credentials, use the API
-      if(preg_match('/https?:\/\/(?:mobile\.twitter\.com|twitter\.com|twtr\.io)\/(?:[a-z0-9_\/!#]+statuse?s?\/([0-9]+)|([a-zA-Z0-9_]+))/', $url, $match)) {
+      if(preg_match('/https?:\/\/(?:mobile\.twitter\.com|twitter\.com|twtr\.io)\/(?:[a-z0-9_\/!#]+statuse?s?\/([0-9]+)|([a-zA-Z0-9_]+))/i', $url, $match)) {
         $fields = ['twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret'];
         $creds = [];
         foreach($fields as $f) {
