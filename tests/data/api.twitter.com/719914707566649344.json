@@ -1,0 +1,166 @@
+{
+  "created_at": "Tue Apr 12 15:46:56 +0000 2016",
+  "id": 719914707566649344,
+  "id_str": "719914707566649344",
+  "full_text": "Interested in re-claiming your #web? Go #IndieWeb together with @t @adactio @aaronpk in @nuernberg_de this WE https://t.co/OSGu8tYBNF",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    133
+  ],
+  "entities": {
+    "hashtags": [
+      {
+        "text": "web",
+        "indices": [
+          31,
+          35
+        ]
+      },
+      {
+        "text": "IndieWeb",
+        "indices": [
+          40,
+          49
+        ]
+      }
+    ],
+    "symbols": [
+
+    ],
+    "user_mentions": [
+      {
+        "screen_name": "t",
+        "name": "⚡️",
+        "id": 11628,
+        "id_str": "11628",
+        "indices": [
+          64,
+          66
+        ]
+      },
+      {
+        "screen_name": "adactio",
+        "name": "Jeremy Keith",
+        "id": 11250,
+        "id_str": "11250",
+        "indices": [
+          67,
+          75
+        ]
+      },
+      {
+        "screen_name": "aaronpk",
+        "name": "Aaron Parecki",
+        "id": 14447132,
+        "id_str": "14447132",
+        "indices": [
+          76,
+          84
+        ]
+      },
+      {
+        "screen_name": "nuernberg_de",
+        "name": "Stadt Nürnberg",
+        "id": 22136838,
+        "id_str": "22136838",
+        "indices": [
+          88,
+          101
+        ]
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://t.co/OSGu8tYBNF",
+        "expanded_url": "https://indiewebcamp.com/2016/Nuremberg",
+        "display_url": "indiewebcamp.com/2016/Nuremberg",
+        "indices": [
+          110,
+          133
+        ]
+      }
+    ]
+  },
+  "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 15134408,
+    "id_str": "15134408",
+    "name": "openSUSE",
+    "screen_name": "openSUSE",
+    "location": "Internet",
+    "description": "Your friendly neighborhood #FOSS project promoting the use of #Linux everywhere, working together as part of the worldwide community.",
+    "url": "http://t.co/PhcXzjUcfM",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "http://t.co/PhcXzjUcfM",
+            "expanded_url": "http://www.opensuse.org/",
+            "display_url": "opensuse.org",
+            "indices": [
+              0,
+              22
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": [
+
+        ]
+      }
+    },
+    "protected": false,
+    "followers_count": 49423,
+    "friends_count": 376,
+    "listed_count": 1543,
+    "created_at": "Mon Jun 16 14:16:26 +0000 2008",
+    "favourites_count": 787,
+    "utc_offset": 3600,
+    "time_zone": "Berlin",
+    "geo_enabled": true,
+    "verified": false,
+    "statuses_count": 7271,
+    "lang": "en",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "131006",
+    "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/540413620933238784/IUmiNwDx.png",
+    "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/540413620933238784/IUmiNwDx.png",
+    "profile_background_tile": true,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/539701542740172803/MnpABm74_normal.png",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/539701542740172803/MnpABm74_normal.png",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/15134408/1446618674",
+    "profile_link_color": "131006",
+    "profile_sidebar_border_color": "EEEEEE",
+    "profile_sidebar_fill_color": "EFEFEF",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": false,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "none"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": false,
+  "retweet_count": 9,
+  "favorite_count": 10,
+  "favorited": false,
+  "retweeted": true,
+  "possibly_sensitive": false,
+  "possibly_sensitive_appealable": false,
+  "lang": "en"
+}
