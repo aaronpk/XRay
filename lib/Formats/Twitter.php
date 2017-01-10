@@ -41,7 +41,10 @@ class Twitter {
     $refs = [];
 
     // Only use the "display" segment of the text
-    $text = mb_substr($tweet->full_text, $tweet->display_text_range[0], $tweet->display_text_range[1]-$tweet->display_text_range[0]);
+    $text = mb_substr($tweet->full_text, 
+      $tweet->display_text_range[0], 
+      $tweet->display_text_range[1]-$tweet->display_text_range[0],
+      'UTF-8');
 
     if(property_exists($tweet, 'retweeted_status')) {
       // No content for retweets
