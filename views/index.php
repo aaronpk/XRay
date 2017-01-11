@@ -1,65 +1,91 @@
 <?php $this->layout('layout', ['title' => $title]); ?>
 
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
+<div class="column">
 
-    <h1>X-Ray</h1>
+  <h1>X-Ray</h1>
 
-    <div class="ui top attached tabular menu">
-      <a class="item active" data-tab="url">URL</a>
-      <a class="item" data-tab="html">HTML</a>
-    </div>
-    <div class="ui bottom attached tab segment active" data-tab="url">
-      <form class="ui large form" action="/parse" method="get">
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="linkify icon"></i>
-              <input type="url" name="url" placeholder="http://example.com">
-            </div>
-          </div>
-          <button class="ui fluid large teal submit button">Go</button>
-      </form>
-    </div>
-    <div class="ui bottom attached tab segment" data-tab="html">
-      <form class="ui large form" action="/parse" method="post">
-          <div class="field">
-            <div class="ui left icon input">
-              <textarea name="html" placeholder="HTML"></textarea>
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="linkify icon"></i>
-              <input type="url" name="url" placeholder="http://example.com">
-            </div>
-          </div>
-          <button class="ui fluid large teal submit button">Go</button>
-      </form>
-    </div>
-
-    <p><a href="https://github.com/aaronpk/XRay">Read Me</a>. Please <a href="https://github.com/aaronpk/XRay/issues">file an issue</a> if you encounter any issues.</p>
-
+  <div class="section url-form">
+    <form class="" action="/parse" method="get">
+      <div class="field"><input type="url" name="url" placeholder="http://example.com"></div>
+      <div class="field"><button type="submit" class="button" value="Go">Go</button></div>
+    </form>
   </div>
-</div>
 
+  <div class="section html-form">
+    <form class="" action="/parse" method="post">
+      <div class="field"><textarea name="html" rows="4" placeholder="HTML"></textarea></div>
+      <div class="field"><input type="url" name="url" placeholder="http://example.com"></div>
+      <div class="field"><input type="submit" class="button" value="Go"></div>
+    </form>
+  </div>
+
+  <p class="help"><a href="https://github.com/aaronpk/XRay">Read Me</a>. Please <a href="https://github.com/aaronpk/XRay/issues">file an issue</a> if you encounter any issues.</p>
+
+</div>
 
 <style type="text/css">
   body {
+    color: #212121;
+    font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
     background-color: #e9e9e9;
+    font-size: 16px;
   }
-  body > .grid {
-    height: 100%;
+  h1 {
+    padding-top: 6rem;
+    padding-bottom: 1rem;
+    text-align: center;
   }
-  .image {
-    margin-top: -100px;
+
+  a {
+    color: #4183c4;
+    text-decoration: none;
   }
+
   .column {
     max-width: 450px;
+    margin: 0 auto;
   }
+
+  .section {
+    border: 1px #ccc solid;
+    border-radius: 6px;
+    background: white;
+    padding: 12px;
+    margin-top: 2em;
+  }
+  .help {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  form .field {
+    margin-bottom: .5rem;
+    display: flex;
+  }
+  form input, form textarea, form button {
+    width: 100%;
+    border: 1px #ccc solid;
+    border-radius: 4px;
+    flex: 1 0;
+    font-size: 1rem;
+  }
+  form input, form textarea {
+    padding: .5rem;
+  }
+  form .button {
+    background-color: #009c95;
+    border: 0;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+
 </style>
-<script>
-$(function(){
-  $('.menu .item').tab();
-;
-});
-</script>
