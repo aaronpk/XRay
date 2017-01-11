@@ -94,16 +94,16 @@
         },
         {
             "name": "indieweb/link-rel-parser",
-            "version": "0.1.2",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/indieweb/link-rel-parser-php.git",
-                "reference": "7127a92f32cecbf8166fb3b34130a59ea63e2041"
+                "reference": "295420e4f16d9a9d262a3c25a7a583794428f055"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/indieweb/link-rel-parser-php/zipball/7127a92f32cecbf8166fb3b34130a59ea63e2041",
-                "reference": "7127a92f32cecbf8166fb3b34130a59ea63e2041",
+                "url": "https://api.github.com/repos/indieweb/link-rel-parser-php/zipball/295420e4f16d9a9d262a3c25a7a583794428f055",
+                "reference": "295420e4f16d9a9d262a3c25a7a583794428f055",
                 "shasum": ""
             },
             "require": {
@@ -136,7 +136,7 @@
                 "indieweb",
                 "microformats2"
             ],
-            "time": "2016-04-13T17:48:59+00:00"
+            "time": "2017-01-11T17:14:49+00:00"
         },
         {
             "name": "ircmaxell/password-compat",
