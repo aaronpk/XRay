@@ -6,7 +6,7 @@ register_shutdown_function('shutdown');
 
 // Load config file if present, otherwise use default
 if(file_exists(dirname(__FILE__).'/../config.php')) {
-  require 'config.php';
+  require dirname(__FILE__).'/../config.php';
 } else {
   class Config {
     public static $cache = false;
