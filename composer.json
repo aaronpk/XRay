@@ -9,7 +9,6 @@
   },
   "autoload": {
     "files": [
-      "config.php",
       "lib/helpers.php",
       "controllers/Main.php",
       "controllers/Parse.php",

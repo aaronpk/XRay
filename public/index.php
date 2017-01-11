@@ -1,8 +1,17 @@
 <?php
-chdir('..');
+chdir(dirname(__FILE__).'/..');
 include('vendor/autoload.php');
 
 register_shutdown_function('shutdown');
+
+// Load config file if present, otherwise use default
+if(file_exists(dirname(__FILE__).'/../config.php')) {
+  require 'config.php';
+} else {
+  class Config {
+    public static $cache = false;
+  }
+}
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
