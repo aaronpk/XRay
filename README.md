@@ -1,6 +1,8 @@
 XRay
 ====
 
+XRay parses structured content from a URL.
+
 
 ## Discovering Content
 
@@ -23,7 +25,7 @@ To parse a page and return structured data for the contents of the page, simply 
 GET /parse?url=https://aaronparecki.com/2016/01/16/11/
 ```
 
-To conditionally parse the page after first checking if it contains a link to a target URL, also include the target URL as a parameter. This is useful if using XRay to verify an incoming webmention.
+To conditionally parse the page after first checking if it contains a link to a target URL, also include the target URL as a parameter. This is useful when using XRay to verify an incoming webmention.
 
 ```
 GET /parse?url=https://aaronparecki.com/2016/01/16/11/&target=http://example.com
@@ -35,7 +37,7 @@ You can also make a POST request with the same parameter names.
 
 ### Authentication
 
-If the URL you are fetching requires authentication, include the access token in the parameter "token", and it will be included in an "Authorization" header when fetching the URL. (It is recommended to use a POST request in this case, to avoid the access token potentially being logged as part of the query string.)
+If the URL you are fetching requires authentication, include the access token in the parameter "token", and it will be included in an "Authorization" header when fetching the URL. (It is recommended to use a POST request in this case, to avoid the access token potentially being logged as part of the query string.) This is useful for [Private Webmention](https://indieweb.org/Private-Webmention) verification.
 
 ```
 POST /parse
@@ -186,4 +188,34 @@ If there was a problem fetching the access token, you will get one of the errors
 
 * `no_token_endpoint` - Unable to find an HTTP header specifying the token endpoint.
 
+
+## Installation
+
+### From Source
+
+```
+# Clone this repository
+
+git clone git@github.com:aaronpk/XRay.git
+cd XRay
+
+# Install dependencies
+composer install
+```
+
+### From Zip Archive
+
+* Download the latest release from https://github.com/aaronpk/XRay/releases
+* Extract to a folder on your web server
+
+
+### Web Server Configuration
+
+Configure your web server to point to the `public` folder.
+
+Make sure all requests are routed to `index.php`. XRay ships with `.htaccess` files for Apache. For nginx, you'll need a rule like the following in your server config block.
+
+```
+  try_files $uri /index.php?$args;
+```
 

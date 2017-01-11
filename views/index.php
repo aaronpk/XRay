@@ -5,14 +5,14 @@
   <h1>X-Ray</h1>
 
   <div class="section url-form">
-    <form class="" action="/parse" method="get">
+    <form class="" action="parse" method="get">
       <div class="field"><input type="url" name="url" placeholder="http://example.com"></div>
       <div class="field"><button type="submit" class="button" value="Go">Go</button></div>
     </form>
   </div>
 
   <div class="section html-form">
-    <form class="" action="/parse" method="post">
+    <form class="" action="parse" method="post">
       <div class="field"><textarea name="html" rows="4" placeholder="HTML"></textarea></div>
       <div class="field"><input type="url" name="url" placeholder="http://example.com"></div>
       <div class="field"><input type="submit" class="button" value="Go"></div>
