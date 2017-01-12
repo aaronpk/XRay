@@ -5,7 +5,8 @@
     "mf2/mf2": "~0.3",
     "ezyang/htmlpurifier": "4.*",
     "indieweb/link-rel-parser": "0.1.*",
-    "dg/twitter-php": "^3.6"
+    "dg/twitter-php": "^3.6",
+    "p3k/timezone": "*"
   },
   "autoload": {
     "files": [
@@ -13,7 +14,6 @@
       "controllers/Main.php",
       "controllers/Parse.php",
       "controllers/Token.php",
-      "lib/Timezone.php",
       "lib/HTTPCurl.php",
       "lib/HTTPStream.php",
       "lib/HTTP.php",
