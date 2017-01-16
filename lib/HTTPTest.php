@@ -4,12 +4,14 @@ namespace p3k;
 class HTTPTest extends HTTPCurl {
 
   private $_testDataPath;
+  private $_redirects_remaining;
 
   public function __construct($testDataPath) {
     $this->_testDataPath = $testDataPath;
   }
 
   public function get($url, $headers=[]) {
+    $this->_redirects_remaining = $this->max_redirects;
     $parts = parse_url($url);
     unset($parts['fragment']);
     $url = \build_url($parts);
@@ -60,6 +62,19 @@ class HTTPTest extends HTTPCurl {
 
     if(array_key_exists('Location', $parsedHeaders)) {
       $effectiveUrl = \mf2\resolveUrl($url, $parsedHeaders['Location']);
+      if($this->_redirects_remaining > 0) {
+        $this->_redirects_remaining--;
+        return $this->_read_file($effectiveUrl);
+      } else {
+        return [
+          'code' => 0,
+          'headers' => $parsedHeaders,
+          'body' => $body,
+          'error' => 'too_many_redirects',
+          'error_description' => '',
+          'url' => $effectiveUrl
+        ];
+      }
     } else {
       $effectiveUrl = $url;
     }

@@ -1,0 +1,14 @@
+HTTP/1.1 418 I'm a Teapot
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>I'm a Teapot</title>
+  </head>
+  <body>
+    I'm a Teapot
+  </body>
+</html>

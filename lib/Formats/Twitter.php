@@ -24,12 +24,12 @@ class Twitter {
       try { 
         $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
       } catch(\TwitterException $e) {
-        return false;
+        return [false, false];
       }
     }
 
     if(!$tweet)
-      return false;
+      return [false, false];
 
     $entry = array(
       'type' => 'entry',

@@ -105,9 +105,14 @@ Possible errors are listed below:
       "html": "Now that <a href=\"https://twitter.com/MozillaPersona\">@MozillaPersona</a> is shutting down, the only good way to do email-based login is how <a href=\"https://twitter.com/poetica\">@poetica</a> does it.",
       "text": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it."
     },
-  }
+  },
+  "url": "https://aaronparecki.com/2016/01/16/11/"
 }
 ```
+
+#### Primary Data 
+
+The primary object on the page is returned in the `data` property. This will indicate the type of object (e.g. `entry`), and will contain the vocabulary's properties that it was able to parse from the page.
 
 If a property supports multiple values, it will always be returned as an array. The following properties support multiple values:
 
@@ -160,6 +165,14 @@ In a future version, replies, likes, reposts, etc. of this post will be included
 }
 
 ```
+
+#### Other Properties
+
+Other properties are returned in the response at the same level as the `data` property.
+
+* `url` - The effective URL that the document was retrieved from. This will be the final URL after following any redirects.
+* `code` - The HTTP response code returned by the URL. Typically this will be 200, but if the URL returned an alternate HTTP code that also included an h-entry (such as a 410 deleted notice with a stub h-entry), you can use this to find out that the original URL was actually deleted.
+
 
 ## Token API
 

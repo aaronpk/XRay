@@ -21,6 +21,8 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
   private function loadTweet($id) {
     $url = 'https://twitter.com/_/status/'.$id;
     $json = file_get_contents(dirname(__FILE__).'/data/api.twitter.com/'.$id.'.json');
+    $parsed = json_decode($json);
+    $url = 'https://twitter.com/'.$parsed->user->screen_name.'/status/'.$id;
     return [$url, $json];
   }
 
@@ -51,6 +53,8 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
 
     $data = $this->parse(['url' => $url, 'json' => $json]);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('https://twitter.com/pkdev/status/818913630569664512', $data['url']);
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('A tweet with a URL https://indieweb.org/ #and #some #hashtags', $data['data']['content']['text']);
     $this->assertContains('and', $data['data']['category']);

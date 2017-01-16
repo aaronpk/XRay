@@ -119,12 +119,16 @@ class Parse {
         if($data) {
           if($request->get('include_original'))
             $data['original'] = $parsed;
+          $data['url'] = $url;
+          $data['code'] = 200;
           return $this->respond($response, 200, $data);
         } else {
           return $this->respond($response, 200, [
             'data' => [
               'type' => 'unknown'
-            ]
+            ],
+            'url' => $url,
+            'code' => 0
           ]);
         }
       }
@@ -155,14 +159,29 @@ class Parse {
       if($result['error']) {
         return $this->respond($response, 200, [
           'error' => $result['error'],
-          'error_description' => $result['error_description']
+          'error_description' => $result['error_description'],
+          'url' => $result['url'],
+          'code' => $result['code']
         ]);
       }
 
       if(trim($result['body']) == '') {
+        if($result['code'] == 410) {
+          // 410 Gone responses are valid and should not return an error
+          return $this->respond($response, 200, [
+            'data' => [
+              'type' => 'unknown'
+            ],
+            'url' => $result['url'],
+            'code' => $result['code']
+          ]);
+        }
+
         return $this->respond($response, 200, [
           'error' => 'no_content',
-          'error_description' => 'We did not get a response body when fetching the URL'
+          'error_description' => 'We did not get a response body when fetching the URL',
+          'url' => $result['url'],
+          'code' => $result['code']
         ]);
       }
 
@@ -171,12 +190,16 @@ class Parse {
         return $this->respond($response, 200, [
           'error' => 'unauthorized',
           'error_description' => 'The URL returned "HTTP 401 Unauthorized"',
+          'url' => $result['url'],
+          'code' => 401
         ]);
       }
       if($result['code'] == 403) {
         return $this->respond($response, 200, [
           'error' => 'forbidden',
           'error_description' => 'The URL returned "HTTP 403 Forbidden"',
+          'url' => $result['url'],
+          'code' => 403
         ]);
       }
 
@@ -189,6 +212,8 @@ class Parse {
       list($data, $parsed) = Formats\Instagram::parse($result['body'], $result['url'], $this->http);
       if($request->get('include_original'))
         $data['original'] = $parsed;
+      $data['url'] = $result['url'];
+      $data['code'] = $result['code'];
       return $this->respond($response, 200, $data);
     }
 
@@ -266,6 +291,8 @@ class Parse {
         }
         if($request->get('include_original'))
           $data['original'] = $html;
+        $data['url'] = $result['url']; // this will be the effective URL after following redirects
+        $data['code'] = $result['code'];
         return $this->respond($response, 200, $data);
       }
     }
@@ -275,7 +302,9 @@ class Parse {
     return $this->respond($response, 200, [
       'data' => [
         'type' => 'unknown',
-      ]
+      ],
+      'url' => $result['url'],
+      'code' => $result['code']
     ]);
   }
 
