@@ -117,6 +117,20 @@ class FetchTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This post has been deleted.', $data->data->content->text);
   }
 
+  public function testMetaEquivDeletedCaps() {
+    $url = 'http://source.example.com/deleted-2';
+    $response = $this->parse([
+      'url' => $url
+    ]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertEquals(410, $data->code);
+    $this->assertEquals('This post has been deleted.', $data->data->content->text);
+  }
+
   public function testMetaEquivDeletedTargetProvided() {
     // for example when verifying a webmention but the source was replaced with an html deleted page
 

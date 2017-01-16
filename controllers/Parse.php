@@ -193,7 +193,7 @@ class Parse {
     $xpath = new DOMXPath($doc);
 
     // Check for meta http equiv and replace the status code if present
-    foreach($xpath->query('//meta[@http-equiv=\'status\']') as $el) {
+    foreach($xpath->query('//meta[translate(@http-equiv,\'STATUS\',\'status\')=\'status\']') as $el) {
       $equivStatus = ''.$el->getAttribute('content');
       if($equivStatus && is_string($equivStatus)) {
         if(preg_match('/^(\d+)/', $equivStatus, $match)) {
