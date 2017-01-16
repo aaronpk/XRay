@@ -192,6 +192,16 @@ class Parse {
 
     $xpath = new DOMXPath($doc);
 
+    // Check for meta http equiv and replace the status code if present
+    foreach($xpath->query('//meta[@http-equiv=\'status\']') as $el) {
+      $equivStatus = ''.$el->getAttribute('content');
+      if($equivStatus && is_string($equivStatus)) {
+        if(preg_match('/^(\d+)/', $equivStatus, $match)) {
+          $result['code'] = (int)$match[1];
+        }
+      }
+    }
+
     // If a target parameter was provided, make sure a link to it exists on the page
     if($target=$request->get('target')) {
       $found = [];
@@ -225,16 +235,6 @@ class Parse {
           'url' => $result['url'],
           'code' => $result['code'],
         ]);
-      }
-    }
-
-    // Check for meta http equiv and replace the status code if present
-    foreach($xpath->query('//meta[@http-equiv=\'status\']') as $el) {
-      $equivStatus = ''.$el->getAttribute('content');
-      if($equivStatus && is_string($equivStatus)) {
-        if(preg_match('/^(\d+)/', $equivStatus, $match)) {
-          $result['code'] = (int)$match[1];
-        }
       }
     }
 
