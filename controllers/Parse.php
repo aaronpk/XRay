@@ -221,7 +221,9 @@ class Parse {
       if(!$found) {
         return $this->respond($response, 200, [
           'error' => 'no_link_found',
-          'error_description' => 'The source document does not have a link to the target URL'
+          'error_description' => 'The source document does not have a link to the target URL',
+          'url' => $result['url'],
+          'code' => $result['code'],
         ]);
       }
     }

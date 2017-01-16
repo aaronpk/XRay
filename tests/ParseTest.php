@@ -48,6 +48,8 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body);
     $this->assertObjectHasAttribute('error', $data);
     $this->assertEquals('no_link_found', $data->error);
+    $this->assertEquals('200', $data->code);
+    $this->assertEquals($url, $data->url);
   }
 
   public function testTargetFound() {
@@ -57,7 +59,6 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
-    $this->assertObjectNotHasAttribute('error', $data);
     $this->assertObjectNotHasAttribute('error', $data);
   }
 
