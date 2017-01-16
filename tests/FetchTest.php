@@ -103,4 +103,17 @@ class FetchTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(401, $data->code);
   }
 
+  public function testMetaEquivDeleted() {
+    $url = 'http://source.example.com/deleted';
+    $response = $this->parse([
+      'url' => $url
+    ]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertEquals(410, $data->code);
+    $this->assertEquals('This post has been deleted.', $data->data->content->text);
+  }
 }

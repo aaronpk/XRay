@@ -226,6 +226,16 @@ class Parse {
       }
     }
 
+    // Check for meta http equiv and replace the status code if present
+    foreach($xpath->query('//meta[@http-equiv=\'status\']') as $el) {
+      $equivStatus = ''.$el->getAttribute('content');
+      if($equivStatus && is_string($equivStatus)) {
+        if(preg_match('/^(\d+)/', $equivStatus, $match)) {
+          $result['code'] = (int)$match[1];
+        }
+      }
+    }
+
     // If the URL has a fragment ID, find the DOM starting at that node and parse it instead
     $html = $result['body'];
 
