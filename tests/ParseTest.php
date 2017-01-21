@@ -214,6 +214,18 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Alice', $data['refs']['http://alice.example.com/']['name']);
   }
 
+  public function testSyndicationIsURL() {
+    $url = 'http://source.example.com/has-syndication';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    print_r($data['data']);
+    $this->assertEquals('http://syndicated.example/', $data['data']['syndication'][0]);
+  }
+
   public function testHEntryIsNotFirstObject() {
     $url = 'http://source.example.com/h-entry-is-not-first';
     $response = $this->parse(['url' => $url]);

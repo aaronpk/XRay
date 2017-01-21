@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <p class="e-content">This page has links to <a href="http://target.example.com">target.example.com</a> and <a href="http://target2.example.com">target2.example.com</a>.</p>
+    <a href="http://syndicated.example/" class="u-syndication">syndicated post</a>
+  </body>
+</html>
