@@ -222,7 +222,6 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
-    print_r($data['data']);
     $this->assertEquals('http://syndicated.example/', $data['data']['syndication'][0]);
   }
 
@@ -355,6 +354,73 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('card', $data['refs']['http://source.example.com/venue']['type']);
     $this->assertEquals('http://source.example.com/venue', $data['refs']['http://source.example.com/venue']['url']);
     $this->assertEquals('Venue', $data['refs']['http://source.example.com/venue']['name']);
+  }
+
+  public function testMf2ReviewOfProduct() {
+    $url = 'http://source.example.com/h-review-of-product';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('review', $data['data']['type']);
+    $this->assertEquals('Review', $data['data']['name']);
+    $this->assertEquals('Not great', $data['data']['summary']);
+    $this->assertEquals('3', $data['data']['rating']);
+    $this->assertEquals('5', $data['data']['best']);
+    $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
+    $this->assertContains('red', $data['data']['category']);
+    $this->assertContains('blue', $data['data']['category']);
+    $this->assertContains('http://product.example.com/', $data['data']['item']);
+    $this->assertArrayHasKey('http://product.example.com/', $data['refs']);
+    $this->assertEquals('product', $data['refs']['http://product.example.com/']['type']);
+    $this->assertEquals('The Reviewed Product', $data['refs']['http://product.example.com/']['name']);
+    $this->assertEquals('http://product.example.com/', $data['refs']['http://product.example.com/']['url']);
+  }
+
+  public function testMf2ReviewOfHCard() {
+    $url = 'http://source.example.com/h-review-of-h-card';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('review', $data['data']['type']);
+    $this->assertEquals('Review', $data['data']['name']);
+    $this->assertEquals('Not great', $data['data']['summary']);
+    $this->assertEquals('3', $data['data']['rating']);
+    $this->assertEquals('5', $data['data']['best']);
+    $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
+    $this->assertContains('http://business.example.com/', $data['data']['item']);
+    $this->assertArrayHasKey('http://business.example.com/', $data['refs']);
+    $this->assertEquals('card', $data['refs']['http://business.example.com/']['type']);
+    $this->assertEquals('The Reviewed Business', $data['refs']['http://business.example.com/']['name']);
+    $this->assertEquals('http://business.example.com/', $data['refs']['http://business.example.com/']['url']);
+  }
+
+  public function testMf1Review() {
+    $url = 'http://source.example.com/hReview';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('review', $data['data']['type']);
+    $this->assertEquals('Review', $data['data']['name']);
+    # TODO: backcompat of mf1 parser is kind of messed up right now
+    #$this->assertEquals('Not great', $data['data']['summary']);
+    $this->assertEquals('3', $data['data']['rating']);
+    $this->assertEquals('5', $data['data']['best']);
+    #$this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
+    // $this->assertContains('http://product.example.com/', $data['data']['item']);
+    // $this->assertArrayHasKey('http://product.example.com/', $data['refs']);
+    // $this->assertEquals('product', $data['refs']['http://product.example.com/']['type']);
+    // $this->assertEquals('The Reviewed Product', $data['refs']['http://product.example.com/']['name']);
+    // $this->assertEquals('http://product.example.com/', $data['refs']['http://product.example.com/']['url']);
+
   }
 
   public function testEntryIsAnInvitee() {

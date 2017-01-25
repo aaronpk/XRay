@@ -1,0 +1,32 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Review</title>
+  </head>
+  <body class="h-review">
+    <h2 class="p-name">Review</h2>
+
+    <a href="/h-review" class="u-url">permalink</a>
+
+    <h3><a href="http://product.example.com/" class="p-item h-product">The Reviewed Product</a></h3>
+
+    <span class="rating"><span class="p-rating">3</span> out of <span class="p-best">5</span></span>
+
+    <div class="p-summary">Not great</div>
+
+    <div class="e-content">
+      This is the full text of the review
+    </div>
+
+    <ul>
+      <li class="p-category">red</li>
+      <li class="p-category">blue</li>
+    </ul>
+
+  </body>
+</html>

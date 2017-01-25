@@ -9,6 +9,7 @@ class Mf2 {
   public static function parse($mf2, $url, $http) {
     if(count($mf2['items']) == 0)
       return false;
+
     // If there is only one item on the page, just use that
     if(count($mf2['items']) == 1) {
       $item = $mf2['items'][0];
@@ -20,31 +21,82 @@ class Mf2 {
         Parse::debug("mf2:0: Recognized $url as an h-event it is the only item on the page");
         return self::parseAsHEvent($mf2, $item, $http);
       }
+      if(in_array('h-review', $item['type'])) {
+        Parse::debug("mf2:0: Recognized $url as an h-review it is the only item on the page");
+        return self::parseAsHReview($mf2, $item, $http);
+      }
+      if(in_array('h-product', $item['type'])) {
+        Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
+        return self::parseAsHProduct($mf2, $item, $http);
+      }
+      if(in_array('h-feed', $item['type'])) {
+        Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
+        return self::parseAsHFeed($mf2, $http);
+      }
     }
 
-    // Check if the list of items is a bunch of h-entrys and return as a feed
-    // Unless this page's URL matches one of the entries, then treat it as a permalink
-    $hentrys = 0;
-    $lastSeenEntry = false;
+    // Check the list of items on the page to see if one matches the URL of the page, 
+    // and treat as a permalink for that object if so. Otherwise, parse as a feed.
     foreach($mf2['items'] as $item) {
-      if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        if(array_key_exists('url', $item['properties'])) {
-          $urls = $item['properties']['url'];
-          $urls = array_map('self::normalize_url', $urls);
-          if(in_array($url, $urls)) {
-            Parse::debug("mf2:1: Recognized $url as an h-entry because an h-entry on the page matched the URL of the request");
+      if(array_key_exists('url', $item['properties'])) {
+        $urls = $item['properties']['url'];
+        $urls = array_map('self::normalize_url', $urls);
+        if(in_array($url, $urls)) {
+          Parse::debug("mf2:1: Recognized $url as a permalink because an object on the page matched the URL of the request");
+          if(in_array('h-card', $item['type'])) {
+            return self::parseAsHCard($item, $http, $url);
+          } elseif(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
             return self::parseAsHEntry($mf2, $item, $http);
+          } elseif(in_array('h-event', $item['type'])) {
+            return self::parseAsHEvent($mf2, $item, $http);
+          } elseif(in_array('h-review', $item['type'])) {
+            return self::parseAsHReview($mf2, $item, $http);
+          } elseif(in_array('h-product', $item['type'])) {
+            return self::parseAsHProduct($mf2, $item, $http);
+          } else {
+            Parse::debug('This object was not a recognized type.');
+            return false;
           }
-          $lastSeenEntry = $item;
         }
-        $hentrys++;
+      }
+    }
+
+    // Check for an h-card matching rel=author or the author URL of any h-* on the page,
+    // and return the h-* object if so
+    if(isset($mf2['rels']['author'])) {
+      foreach($mf2['items'] as $card) {
+        if(in_array('h-card', $card['type']) && array_key_exists('url', $card['properties'])) {
+          $urls = $card['properties']['url'];
+          $urls = array_map('self::normalize_url', $urls);
+          if(count(array_intersect($urls, $mf2['rels']['author'])) > 0) {
+            // There is an author h-card on this page
+            // Now look for the first h-* object other than an h-card and use that as the object
+            foreach($mf2['items'] as $item) {
+              if(!in_array('h-card', $item['type'])) {
+                if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
+                  return self::parseAsHEntry($mf2, $item, $http);
+                } elseif(in_array('h-event', $item['type'])) {
+                  return self::parseAsHEvent($mf2, $item, $http);
+                } elseif(in_array('h-review', $item['type'])) {
+                  return self::parseAsHReview($mf2, $item, $http);
+                } elseif(in_array('h-product', $item['type'])) {
+                  return self::parseAsHProduct($mf2, $item, $http);
+                }
+              }
+            }
+          }
+        }
       }
     }
 
     // If there was more than one h-entry on the page, treat the whole page as a feed
-    if($hentrys > 1) {
-      Parse::debug("mf2:2: Recognized $url as an h-feed because there are more than one h-entry on the page");
-      return self::parseAsHFeed($mf2, $http);
+    if(count($mf2['items']) > 1) {
+      if(count(array_filter($mf2['items'], function($item){
+        return in_array('h-entry', $item['type']);
+      })) > 1) {
+        Parse::debug("mf2:2: Recognized $url as an h-feed because there are more than one object on the page");
+        return self::parseAsHFeed($mf2, $http);
+      }
     }
 
     // If the first item is an h-feed, parse as a feed
@@ -54,45 +106,21 @@ class Mf2 {
       return self::parseAsHFeed($mf2, $http);
     }
 
-    // Check each top-level h-card and h-event, and if there is one that matches this URL, the page is an h-card
-    foreach($mf2['items'] as $item) {
-      if((in_array('h-card', $item['type']) or in_array('h-event', $item['type']))
-        and array_key_exists('url', $item['properties'])
-      ) {
-        $urls = $item['properties']['url'];
-        $urls = array_map('self::normalize_url', $urls);
-        if(in_array($url, $urls)) {
-          // TODO: check for children h-entrys (like tantek.com), or sibling h-entries (like aaronparecki.com)
-          // and return the result as a feed instead
-          if(in_array('h-card', $item['type'])) {
-            Parse::debug("mf2:4: Recognized $url as an h-card because an h-card on the page matched the URL of the request");
-            return self::parseAsHCard($item, $http, $url);
-          } else {
-            Parse::debug("mf2:4: Recognized $url as an h-event because an h-event on the page matched the URL of the request");
-            return self::parseAsHEvent($mf2, $item, $http);
-          }
-        }
-      }
-    }
-
-    // If there was only one h-entry, but the URL for it is not the same as this page, then treat as a feed
-    if($hentrys == 1) {
-      if($lastSeenEntry) {
-        $urls = $lastSeenEntry['properties']['url'];
-        $urls = array_map('self::normalize_url', $urls);
-        if(count($urls) && !in_array($url, $urls)) {
-          Parse::debug("mf2:5: Recognized $url as an h-feed no h-entrys on the page matched the URL of the request");
-          return self::parseAsHFeed($mf2, $http);
-        }
-      }
-    }
-
     // Fallback case, but hopefully we have found something before this point
     foreach($mf2['items'] as $item) {
-      // Otherwise check for an h-entry
+      // Otherwise check for a recognized h-entr* object
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         Parse::debug("mf2:6: $url is falling back to the first h-entry on the page");
         return self::parseAsHEntry($mf2, $item, $http);
+      } elseif(in_array('h-event', $item['type'])) {
+        Parse::debug("mf2:6: $url is falling back to the first h-event on the page");
+        return self::parseAsHEvent($mf2, $item, $http);
+      } elseif(in_array('h-review', $item['type'])) {
+        Parse::debug("mf2:6: $url is falling back to the first h-review on the page");
+        return self::parseAsHReview($mf2, $item, $http);
+      } elseif(in_array('h-product', $item['type'])) {
+        Parse::debug("mf2:6: $url is falling back to the first h-product on the page");
+        return self::parseAsHProduct($mf2, $item, $http);
       }
     }
 
@@ -101,27 +129,48 @@ class Mf2 {
     return false;
   }
 
-  private static function parseAsHEntry($mf2, $item, $http) {
-    $data = [
-      'type' => 'entry'
-    ];
-    $refs = [];
-
-    // Single plaintext values
-    $properties = ['url','published','summary','rsvp'];
+  private static function collectSingleValues($properties, $urlProperties, $item, &$data) {
     foreach($properties as $p) {
       if(($v = self::getPlaintext($item, $p)) !== null) {
-        if($p == 'url') {
-          if(self::isURL($v))
-            $data[$p] = $v;
-        } else {
+        $data[$p] = $v;
+      }
+    }
+    foreach($urlProperties as $p) {
+      if(($v = self::getPlaintext($item, $p)) !== null) {
+        if(self::isURL($v))
           $data[$p] = $v;
+      }
+    }
+  }
+
+  // Always return arrays, and may contain plaintext content
+  // Nested objects are added to refs and the URL is used as the value if present
+  private static function collectArrayValues($properties, $item, &$data, &$refs, &$http) {
+    foreach($properties as $p) {
+      if(array_key_exists($p, $item['properties'])) {
+        foreach($item['properties'][$p] as $v) {
+          if(is_string($v)) {
+            if(!array_key_exists($p, $data)) $data[$p] = [];
+            $data[$p][] = $v;
+          } elseif(self::isMicroformat($v)) {
+            if(($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
+              if(!array_key_exists($p, $data)) $data[$p] = [];
+              $data[$p][] = $u;
+              $ref = self::parse(['items'=>[$v]], $u, $http);
+              if($ref) {
+                $refs[$u] = $ref['data'];
+              }
+            } else {
+              if(!array_key_exists($p, $data)) $data[$p] = [];
+              $data[$p][] = $v['value'];
+            }
+          }
         }
       }
     }
+  }
 
-    // Always arrays
-    $properties = ['photo','video','audio','syndication'];
+  private static function collectArrayURLValues($properties, $item, &$data, &$refs, &$http) {
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         foreach($item['properties'][$p] as $v) {
@@ -129,42 +178,21 @@ class Mf2 {
             if(!array_key_exists($p, $data)) $data[$p] = [];
             $data[$p][] = $v;
           }
-          elseif(is_array($v) and array_key_exists('value', $v) && self::isURL($v['value'])) {
+          elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
             if(!array_key_exists($p, $data)) $data[$p] = [];
-            $data[$p][] = $v['value'];
+            $data[$p][] = $u;
+            // parse the object and put the result in the "refs" object
+            $ref = self::parse(['items'=>[$v]], $u, $http);
+            if($ref) {
+              $refs[$u] = $ref['data'];
+            }
           }
         }
-      }
+      }      
     }
+  }
 
-    // Always returned as arrays, and may also create external references
-    // If these are not objects, they must be URLs
-    $set = [
-      'normal' => ['category','invitee'],
-      'url' => ['in-reply-to','like-of','repost-of','bookmark-of']
-    ];
-    foreach($set as $type=>$properties) {
-      foreach($properties as $p) {
-        if(array_key_exists($p, $item['properties'])) {
-          foreach($item['properties'][$p] as $v) {
-            if(is_string($v) && ($type == 'normal' || self::isURL($v))) {
-              if(!array_key_exists($p, $data)) $data[$p] = [];
-              $data[$p][] = $v;
-            }
-            elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
-              if(!array_key_exists($p, $data)) $data[$p] = [];
-              $data[$p][] = $u;
-              // parse the object and put the result in the "refs" object
-              $ref = self::parse(['items'=>[$v]], $u, $http);
-              if($ref) {
-                $refs[$u] = $ref['data'];
-              }
-            }
-          }
-        }      
-      }
-    }
-
+  private static function determineNameAndContent($item, &$data) {
     // Determine if the name is distinct from the content
     $name = self::getPlaintext($item, 'name');
     $content = null;
@@ -210,7 +238,26 @@ class Mf2 {
         $data['content']['html'] = $htmlContent;
       }
       // TODO: If no HTML content was included in the post, create HTML by autolinking?
-    }
+    }    
+  }
+
+  private static function parseAsHEntry($mf2, $item, $http) {
+    $data = [
+      'type' => 'entry'
+    ];
+    $refs = [];
+
+    // Single plaintext and URL values
+    self::collectSingleValues(['published','summary','rsvp'], ['url'], $item, $data);
+
+    // These properties are always returned as arrays and may contain plaintext content
+    self::collectArrayValues(['category','invitee'], $item, $data, $refs, $http);
+
+    // These properties are always returned as arrays and always URLs
+    // If the value is an h-* object with a URL, the URL is used and a "ref" is added as well
+    self::collectArrayURLValues(['photo','video','audio','syndication','in-reply-to','like-of','repost-of','bookmark-of'], $item, $data, $refs, $http);
+
+    self::determineNameAndContent($item, $data);
 
     if($author = self::findAuthor($mf2, $item, $http))
       $data['author'] = $author;
@@ -226,61 +273,68 @@ class Mf2 {
     return $response;
   }
 
+  private static function parseAsHReview($mf2, $item, $http) {
+    $data = [
+      'type' => 'review'
+    ];
+    $refs = [];
+
+    // TODO: add description as an HTML value
+    self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $data);
+
+    self::collectArrayValues(['category'], $item, $data, $refs, $http);
+
+    self::collectArrayURLValues(['item'], $item, $data, $refs, $http);
+
+    self::determineNameAndContent($item, $data);
+
+    if($author = self::findAuthor($mf2, $item, $http))
+      $data['author'] = $author;
+
+    $response = [
+      'data' => $data
+    ];
+
+    if(count($refs)) {
+      $response['refs'] = $refs;
+    }
+
+    return $response;
+  }
+
+  private static function parseAsHProduct($mf2, $item, $http) {
+    $data = [
+      'type' => 'product'
+    ];
+
+    self::collectSingleValues(['name','identifier','price'], ['url'], $item, $data);
+
+    self::collectArrayValues(['category','brand'], $item, $data, $refs, $http);
+
+    self::collectArrayURLValues(['photo','video','audio'], $item, $data, $refs, $http);
+
+    $response = [
+      'data' => $data
+    ];
+
+    return $response;
+  }
+
   private static function parseAsHEvent($mf2, $item, $http) {
     $data = [
       'type' => 'event'
     ];
     $refs = [];
 
-    // Single plaintext values
-    $properties = ['name','summary','url','published','start','end','duration'];
-    foreach($properties as $p) {
-      if(($v = self::getPlaintext($item, $p)) !== null) {
-        if($p == 'url') {
-          if(self::isURL($v))
-            $data[$p] = $v;
-        } else {
-          $data[$p] = $v;
-        }
-      }
-    }
+    // Single plaintext and URL values
+    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $data);
 
-    // Always arrays
-    $properties = ['photo','video','audio','syndication'];
-    foreach($properties as $p) {
-      if(array_key_exists($p, $item['properties'])) {
-        foreach($item['properties'][$p] as $v) {
-          if(is_string($v) && self::isURL($v)) {
-            if(!array_key_exists($p, $data)) $data[$p] = [];
-            $data[$p][] = $v;
-          }
-          elseif(is_array($v) and array_key_exists('value', $v) && self::isURL($v['value'])) {
-            if(!array_key_exists($p, $data)) $data[$p] = [];
-            $data[$p][] = $v['value'];
-          }
-        }
-      }
-    }
+    // These properties are always returned as arrays and may contain plaintext content
+    self::collectArrayValues(['category','location','attendee'], $item, $data, $refs, $http);
 
-    // Always returned as arrays, and may also create external references
-    $properties = ['category','location','attendee'];
-    foreach($properties as $p) {
-      if(array_key_exists($p, $item['properties'])) {
-        $data[$p] = [];
-        foreach($item['properties'][$p] as $v) {
-          if(is_string($v))
-            $data[$p][] = $v;
-          elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
-            $data[$p][] = $u;
-            // parse the object and put the result in the "refs" object
-            $ref = self::parse(['items'=>[$v]], $u, $http);
-            if($ref) {
-              $refs[$u] = $ref['data'];
-            }
-          }
-        }
-      }      
-    }
+    // These properties are always returned as arrays and always URLs
+    // If the value is an h-* object with a URL, the URL is used and a "ref" is added as well
+    self::collectArrayURLValues(['photo','video','audio','syndication'], $item, $data, $refs, $http);
 
     // If there is a description, always return the plaintext description, and return HTML description if it's different
     $textDescription = null;

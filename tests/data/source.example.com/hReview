@@ -1,0 +1,34 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Review</title>
+  </head>
+  <body class="hreview">
+    <h2 class="fn">Review</h2>
+
+    <a href="/hReview" class="permalink">permalink</a>
+
+    <div class="item">
+      <h3><a href="http://product.example.com/" class="url fn">The Reviewed Product</a></h3>
+    </div>
+
+    <span class="rating"><span class="value">3</span> out of <span class="best">5</span></span>
+
+    <span class="reviewer vcard"><a class="url fn" href="https://author.example.com/">Aaron Parecki</a></span>
+
+    <span class="dtreviewed">2016-12-15T22:32:42+01:00</span>
+
+    <div class="summary">Not great</div>
+
+    <div class="description">
+      This is the full text of the review
+    </div>
+
+  </body>
+</html>
+

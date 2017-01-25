@@ -48,7 +48,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
 
-    $this->assertEquals('feed', $data->data->type);
+    $this->assertEquals('entry', $data->data->type);
   }
 
   public function testTopLevelHFeed() {
