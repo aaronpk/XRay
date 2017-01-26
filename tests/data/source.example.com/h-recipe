@@ -1,0 +1,40 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Cookies</title>
+  </head>
+  <body class="h-recipe">
+    <h2 class="p-name">Cookie Recipe</h2>
+
+    <a href="/h-recipe" class="u-url">permalink</a>
+
+    <div class="p-yield">12 Cookies</div>
+    
+    <time class="dt-duration" datetime="PT30M">30 Minutes</time>
+
+    <div class="p-summary">The best chocolate chip cookie recipe</div>
+
+    <h3>Ingredients</h3>
+    <ul>
+      <li class="p-ingredient">3 cups flour</li>
+      <li class="p-ingredient">1/2 cup sugar</li>
+      <li class="p-ingredient">1 cup butter</li>
+      <li class="p-ingredient">chocolate chips</li>
+    </ul>
+
+    <h3>Instructions</h3>
+    <div class="e-instructions">
+      <ul>
+        <li>Mix the ingredients</li>
+        <li>Spoon onto a cookie sheet</li>
+        <li>Bake until they're done</li>
+      </ul>
+    </div>
+
+  </body>
+</html>

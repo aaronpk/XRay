@@ -414,13 +414,30 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     #$this->assertEquals('Not great', $data['data']['summary']);
     $this->assertEquals('3', $data['data']['rating']);
     $this->assertEquals('5', $data['data']['best']);
-    #$this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
+    $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
     // $this->assertContains('http://product.example.com/', $data['data']['item']);
     // $this->assertArrayHasKey('http://product.example.com/', $data['refs']);
     // $this->assertEquals('product', $data['refs']['http://product.example.com/']['type']);
     // $this->assertEquals('The Reviewed Product', $data['refs']['http://product.example.com/']['name']);
     // $this->assertEquals('http://product.example.com/', $data['refs']['http://product.example.com/']['url']);
 
+  }
+
+  public function testMf2Recipe() {
+    $url = 'http://source.example.com/h-recipe';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('recipe', $data['data']['type']);
+    $this->assertEquals('Cookie Recipe', $data['data']['name']);
+    $this->assertEquals('12 Cookies', $data['data']['yield']);
+    $this->assertEquals('PT30M', $data['data']['duration']);
+    $this->assertEquals('The best chocolate chip cookie recipe', $data['data']['summary']);
+    $this->assertContains('3 cups flour', $data['data']['ingredient']);
+    $this->assertContains('chocolate chips', $data['data']['ingredient']);
   }
 
   public function testEntryIsAnInvitee() {

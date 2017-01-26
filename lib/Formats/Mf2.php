@@ -25,6 +25,10 @@ class Mf2 {
         Parse::debug("mf2:0: Recognized $url as an h-review it is the only item on the page");
         return self::parseAsHReview($mf2, $item, $http);
       }
+      if(in_array('h-recipe', $item['type'])) {
+        Parse::debug("mf2:0: Recognized $url as an h-recipe it is the only item on the page");
+        return self::parseAsHRecipe($mf2, $item, $http);
+      }
       if(in_array('h-product', $item['type'])) {
         Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
         return self::parseAsHProduct($mf2, $item, $http);
@@ -51,6 +55,8 @@ class Mf2 {
             return self::parseAsHEvent($mf2, $item, $http);
           } elseif(in_array('h-review', $item['type'])) {
             return self::parseAsHReview($mf2, $item, $http);
+          } elseif(in_array('h-recipe', $item['type'])) {
+            return self::parseAsHRecipe($mf2, $item, $http);
           } elseif(in_array('h-product', $item['type'])) {
             return self::parseAsHProduct($mf2, $item, $http);
           } else {
@@ -79,6 +85,8 @@ class Mf2 {
                   return self::parseAsHEvent($mf2, $item, $http);
                 } elseif(in_array('h-review', $item['type'])) {
                   return self::parseAsHReview($mf2, $item, $http);
+                } elseif(in_array('h-recipe', $item['type'])) {
+                  return self::parseAsHRecipe($mf2, $item, $http);
                 } elseif(in_array('h-product', $item['type'])) {
                   return self::parseAsHProduct($mf2, $item, $http);
                 }
@@ -118,6 +126,9 @@ class Mf2 {
       } elseif(in_array('h-review', $item['type'])) {
         Parse::debug("mf2:6: $url is falling back to the first h-review on the page");
         return self::parseAsHReview($mf2, $item, $http);
+      } elseif(in_array('h-recipe', $item['type'])) {
+        Parse::debug("mf2:6: $url is falling back to the first h-recipe on the page");
+        return self::parseAsHReview($mf2, $item, $http);
       } elseif(in_array('h-product', $item['type'])) {
         Parse::debug("mf2:6: $url is falling back to the first h-product on the page");
         return self::parseAsHProduct($mf2, $item, $http);
@@ -141,6 +152,35 @@ class Mf2 {
           $data[$p] = $v;
       }
     }
+  }
+
+  private static function parseHTMLValue($property, $item) {
+    if(!array_key_exists($property, $item['properties']))
+      return null;
+
+    $textContent = false;
+    $htmlContent = false;
+
+    $content = $item['properties'][$property][0];
+    if(is_string($content)) {
+      $textContent = $content;
+    } elseif(!is_string($content) && is_array($content) && array_key_exists('value', $content)) {
+      if(array_key_exists('html', $content)) {
+        $htmlContent = trim(self::sanitizeHTML($content['html']));
+        #$textContent = trim(str_replace("&#xD;","\r",strip_tags($htmlContent)));
+        $textContent = trim(str_replace("&#xD;","\r",$content['value']));
+      } else {
+        $textContent = trim($content['value']);
+      }
+    }
+
+    $data = [
+      'text' => $textContent
+    ];
+    if($htmlContent && $textContent != $htmlContent) {
+      $data['html'] = $htmlContent;
+    }
+    return $data;
   }
 
   // Always return arrays, and may contain plaintext content
@@ -195,23 +235,17 @@ class Mf2 {
   private static function determineNameAndContent($item, &$data) {
     // Determine if the name is distinct from the content
     $name = self::getPlaintext($item, 'name');
-    $content = null;
+
     $textContent = null;
     $htmlContent = null;
-    if(array_key_exists('content', $item['properties'])) {
-      $content = $item['properties']['content'][0];
-      if(is_string($content)) {
-        $textContent = $content;
-      } elseif(!is_string($content) && is_array($content) && array_key_exists('value', $content)) {
-        if(array_key_exists('html', $content)) {
-          $htmlContent = trim(self::sanitizeHTML($content['html']));
-          $textContent = trim(str_replace("&#xD;","\r",strip_tags($htmlContent)));
-          $textContent = trim(str_replace("&#xD;","\r",$content['value']));
-        } else {
-          $textContent = trim($content['value']);
-        }
-      }
 
+    $content = self::parseHTMLValue('content', $item);
+    if($content) {
+      $htmlContent = array_key_exists('html', $content) ? $content['html'] : null;
+      $textContent = array_key_exists('text', $content) ? $content['text'] : null;
+    }
+
+    if($content) {
       // Trim ellipses from the name
       $name = preg_replace('/ ?(\.\.\.|…)$/', '', $name);
 
@@ -231,13 +265,9 @@ class Mf2 {
 
     // If there is content, always return the plaintext content, and return HTML content if it's different
     if($content) {
-      $data['content'] = [
-        'text' => $textContent
-      ];
-      if($htmlContent && $textContent != $htmlContent) {
-        $data['content']['html'] = $htmlContent;
-      }
-      // TODO: If no HTML content was included in the post, create HTML by autolinking?
+      $data['content']['text'] = $content['text'];
+      if(array_key_exists('html', $content))
+        $data['content']['html'] = $content['html'];
     }    
   }
 
@@ -279,14 +309,50 @@ class Mf2 {
     ];
     $refs = [];
 
-    // TODO: add description as an HTML value
     self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $data);
+
+    // Fallback for Mf1 "description" as content. The PHP parser does not properly map this to "content"
+    $description = self::parseHTMLValue('description', $item);
+    if($description) {
+      $data['content'] = $description;
+    }
 
     self::collectArrayValues(['category'], $item, $data, $refs, $http);
 
     self::collectArrayURLValues(['item'], $item, $data, $refs, $http);
 
     self::determineNameAndContent($item, $data);
+
+    if($author = self::findAuthor($mf2, $item, $http))
+      $data['author'] = $author;
+
+    $response = [
+      'data' => $data
+    ];
+
+    if(count($refs)) {
+      $response['refs'] = $refs;
+    }
+
+    return $response;
+  }
+
+  private static function parseAsHRecipe($mf2, $item, $http) {
+    $data = [
+      'type' => 'recipe'
+    ];
+    $refs = [];
+
+    self::collectSingleValues(['name','summary','published','duration','yield','nutrition'], ['url'], $item, $data);
+
+    $instructions = self::parseHTMLValue('instructions', $item);
+    if($instructions) {
+      $data['instructions'] = $instructions;
+    }
+
+    self::collectArrayValues(['category','ingredient'], $item, $data, $refs, $http);
+
+    self::collectArrayURLValues(['photo'], $item, $data, $refs, $http);
 
     if($author = self::findAuthor($mf2, $item, $http))
       $data['author'] = $author;
@@ -309,6 +375,11 @@ class Mf2 {
 
     self::collectSingleValues(['name','identifier','price'], ['url'], $item, $data);
 
+    $description = self::parseHTMLValue('description', $item);
+    if($description) {
+      $data['description'] = $description;
+    }
+
     self::collectArrayValues(['category','brand'], $item, $data, $refs, $http);
 
     self::collectArrayURLValues(['photo','video','audio'], $item, $data, $refs, $http);
@@ -316,6 +387,10 @@ class Mf2 {
     $response = [
       'data' => $data
     ];
+
+    if(count($refs)) {
+      $response['refs'] = $refs;
+    }
 
     return $response;
   }
