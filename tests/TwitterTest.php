@@ -148,6 +148,20 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Yeah that\'s me http://xkcd.com/1782/', $tweet['content']['text']);
   }
 
+  public function testRetweetWithPhoto() {
+    list($url, $json) = $this->loadTweet('820039442773798912');
+
+    $data = $this->parse(['url' => $url, 'json' => $json]);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertArrayNotHasKey('content', $data['data']);
+    $this->assertArrayNotHasKey('photo', $data['data']);
+    $repostOf = 'https://twitter.com/phlaimeaux/status/819943954724556800';
+    $this->assertEquals($repostOf, $data['data']['repost-of']);
+    $tweet = $data['refs'][$repostOf];
+    $this->assertEquals('this headline is such a rollercoaster', $tweet['content']['text']);
+  }
+
   public function testQuotedTweet() {
     list($url, $json) = $this->loadTweet('818913488609251331');
 

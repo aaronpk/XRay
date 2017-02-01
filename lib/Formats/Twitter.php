@@ -93,45 +93,49 @@ class Twitter {
       }
     }
 
-    // Photos and Videos
-    if(property_exists($tweet, 'extended_entities') && property_exists($tweet->extended_entities, 'media')) {
-      foreach($tweet->extended_entities->media as $media) {
-        if($media->type == 'photo') {
-          if(!array_key_exists('photo', $entry))
-            $entry['photo'] = [];
+    // Don't include the RT'd photo or video in the main object. 
+    // They get included in the reposted object instead.
+    if(!property_exists($tweet, 'retweeted_status')) {
+      // Photos and Videos
+      if(property_exists($tweet, 'extended_entities') && property_exists($tweet->extended_entities, 'media')) {
+        foreach($tweet->extended_entities->media as $media) {
+          if($media->type == 'photo') {
+            if(!array_key_exists('photo', $entry))
+              $entry['photo'] = [];
 
-          $entry['photo'][] = $media->media_url_https;
+            $entry['photo'][] = $media->media_url_https;
 
-        } elseif($media->type == 'video') {
-          if(!array_key_exists('video', $entry))
-            $entry['video'] = [];
+          } elseif($media->type == 'video') {
+            if(!array_key_exists('video', $entry))
+              $entry['video'] = [];
 
-          // Find the highest bitrate video that is mp4
-          $videos = $media->video_info->variants;
-          $videos = array_filter($videos, function($v) {
-            return property_exists($v, 'bitrate') && $v->content_type == 'video/mp4';
-          });
-          if(count($videos)) {
-            usort($videos, function($a,$b) {
-              return $a->bitrate < $b->bitrate;
+            // Find the highest bitrate video that is mp4
+            $videos = $media->video_info->variants;
+            $videos = array_filter($videos, function($v) {
+              return property_exists($v, 'bitrate') && $v->content_type == 'video/mp4';
             });
-            $entry['video'][] = $videos[0]->url;
+            if(count($videos)) {
+              usort($videos, function($a,$b) {
+                return $a->bitrate < $b->bitrate;
+              });
+              $entry['video'][] = $videos[0]->url;
+            }
           }
         }
       }
-    }
 
-    // Place
-    if(property_exists($tweet, 'place') && $tweet->place) {
-      $place = $tweet->place;
-      if($place->place_type == 'city') {
-        $entry['location'] = $place->url;
-        $refs[$place->url] = [
-          'type' => 'adr',
-          'name' => $place->full_name,
-          'locality' => $place->name,
-          'country-name' => $place->country,
-        ];
+      // Place
+      if(property_exists($tweet, 'place') && $tweet->place) {
+        $place = $tweet->place;
+        if($place->place_type == 'city') {
+          $entry['location'] = $place->url;
+          $refs[$place->url] = [
+            'type' => 'adr',
+            'name' => $place->full_name,
+            'locality' => $place->name,
+            'country-name' => $place->country,
+          ];
+        }
       }
     }
 
