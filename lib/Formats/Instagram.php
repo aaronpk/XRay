@@ -129,7 +129,7 @@ class Instagram {
     if(isset($profile['external_url']) && $profile['external_url'])
       $author['url'] = $profile['external_url'];
     else
-      $author['url'] = 'https://www.instagram.com/' . $username;
+      $author['url'] = 'https://www.instagram.com/' . $profile['username'];
 
     if(isset($profile['profile_pic_url_hd']))
       $author['photo'] = $profile['profile_pic_url_hd'];
