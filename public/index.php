@@ -10,6 +10,7 @@ if(file_exists(dirname(__FILE__).'/../config.php')) {
 } else {
   class Config {
     public static $cache = false;
+    public static $admins = [];
   }
 }
 
@@ -22,6 +23,13 @@ $router->addRoute('GET', '/', 'Main::index');
 $router->addRoute('GET', '/parse', 'Parse::parse');
 $router->addRoute('POST', '/parse', 'Parse::parse');
 $router->addRoute('POST', '/token', 'Token::token');
+
+$router->addRoute('GET', '/cert', 'Certbot::index');
+$router->addRoute('GET', '/cert/auth', 'Certbot::start_auth');
+$router->addRoute('GET', '/cert/logout', 'Certbot::logout');
+$router->addRoute('GET', '/cert/redirect', 'Certbot::redirect');
+$router->addRoute('POST', '/cert/save-challenge', 'Certbot::save_challenge');
+$router->addRoute('GET', '/.well-known/acme-challenge/{token}', 'Certbot::challenge');
 
 $dispatcher = $router->getDispatcher();
 $request = Request::createFromGlobals();
