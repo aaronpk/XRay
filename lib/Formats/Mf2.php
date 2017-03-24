@@ -278,7 +278,7 @@ class Mf2 {
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['published','summary','rsvp'], ['url'], $item, $data);
+    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data);
 
     // These properties are always returned as arrays and may contain plaintext content
     self::collectArrayValues(['category','invitee'], $item, $data, $refs, $http);
