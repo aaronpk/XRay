@@ -17,7 +17,7 @@ class Rels {
       $response->headers->set($k, $v);
     }
     $response->headers->set('Content-Type', 'application/json');
-    $opts = JSON_UNESCAPED_SLASHES + JSON_FORCE_OBJECT;
+    $opts = JSON_UNESCAPED_SLASHES;
     if($this->_pretty) $opts += JSON_PRETTY_PRINT;
     $response->setContent(json_encode($params, $opts)."\n");
     return $response;
@@ -82,6 +82,9 @@ class Rels {
         $rels[$rel][$i] = $value;
       }
     }
+
+    if(count($rels) == 0)
+      $rels = new StdClass;
 
     return $this->respond($response, 200, [
       'url' => $result['url'],
