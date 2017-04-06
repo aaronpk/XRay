@@ -14,6 +14,7 @@
       "controllers/Main.php",
       "controllers/Parse.php",
       "controllers/Token.php",
+      "controllers/Rels.php",
       "controllers/Certbot.php",
       "lib/HTTPCurl.php",
       "lib/HTTPStream.php",

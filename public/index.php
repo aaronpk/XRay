@@ -24,6 +24,8 @@ $router->addRoute('GET', '/parse', 'Parse::parse');
 $router->addRoute('POST', '/parse', 'Parse::parse');
 $router->addRoute('POST', '/token', 'Token::token');
 
+$router->addRoute('GET', '/rels', 'Rels::fetch');
+
 $router->addRoute('GET', '/cert', 'Certbot::index');
 $router->addRoute('GET', '/cert/auth', 'Certbot::start_auth');
 $router->addRoute('GET', '/cert/logout', 'Certbot::logout');
