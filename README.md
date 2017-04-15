@@ -13,8 +13,6 @@ The contents of the URL is checked in the following order:
 ** Twitter
 ** (more coming soon)
 * h-entry, h-event, h-card
-* OEmbed (coming soon)
-* OGP (coming soon)
 
 
 ## Parse API
@@ -84,29 +82,33 @@ Possible errors are listed below:
 
 ```json
 {
-  "data": {
-    "type": "entry",
-    "author": {
-    	"type": "card",
-    	"name": "Aaron Parecki",
-    	"photo": "https://aaronparecki.com/images/aaronpk-256.jpg",
-    	"url": "https://aaronparecki.com/"
-    },
-    "url": "https://aaronparecki.com/2016/01/16/11/",
-    "published": "2016-01-16T16:26:43-08:00",
-    "photo": [
-      "https://aaronparecki.com/2016/01/16/11/photo.png"
+  "data":{
+    "type":"entry",
+    "published":"2017-03-01T19:00:33-08:00",
+    "url":"https://aaronparecki.com/2017/03/01/14/hwc",
+    "category":[
+      "indieweb",
+      "hwc"
     ],
-    "syndication": [
-      "https://twitter.com/aaronpk/status/688518372170977280"
+    "photo":[
+      "https://aaronparecki.com/2017/03/01/14/photo.jpg"
     ],
-    "summary": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it.",
-    "content": {
-      "html": "Now that <a href=\"https://twitter.com/MozillaPersona\">@MozillaPersona</a> is shutting down, the only good way to do email-based login is how <a href=\"https://twitter.com/poetica\">@poetica</a> does it.",
-      "text": "Now that @MozillaPersona is shutting down, the only good way to do email-based login is how @poetica does it."
+    "syndication":[
+      "https://twitter.com/aaronpk/status/837135519427395584"
+    ],
+    "content":{
+      "text":"Hello from Homebrew Website Club PDX! Thanks to @DreamHost for hosting us! 🍕🎉 #indieweb",
+      "html":"Hello from Homebrew Website Club PDX! Thanks to <a href=\"https://twitter.com/DreamHost\">@DreamHost</a> for hosting us! <a href=\"https://aaronparecki.com/emoji/%F0%9F%8D%95\">🍕</a><a href=\"https://aaronparecki.com/emoji/%F0%9F%8E%89\">🎉</a> <a href=\"https://aaronparecki.com/tag/indieweb\">#indieweb</a>"
     },
+    "author":{
+      "type":"card",
+      "name":"Aaron Parecki",
+      "url":"https://aaronparecki.com/",
+      "photo":"https://aaronparecki.com/images/profile.jpg"
+    }
   },
-  "url": "https://aaronparecki.com/2016/01/16/11/"
+  "url":"https://aaronparecki.com/2017/03/01/14/hwc",
+  "code":200
 }
 ```
 
