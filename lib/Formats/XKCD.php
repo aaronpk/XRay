@@ -25,6 +25,10 @@ class XKCD {
     ];
 
     $name = $doc->getElementById('ctitle');
+
+    if(!$name)
+      return self::_unknown();
+    
     $entry['name'] = $name->nodeValue;
 
     $photo = $xpath->query("//div[@id='comic']/img");

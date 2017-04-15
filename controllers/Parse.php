@@ -179,7 +179,7 @@ class Parse {
       return $this->respond($response, 200, $data);
     }
 
-    if($host == 'xkcd.com') {
+    if($host == 'xkcd.com' && parse_url($url, PHP_URL_PATH) != '/') {
       $data = Formats\XKCD::parse($result['body'], $url);
       $data['url'] = $result['url'];
       $data['code'] = $result['code'];
