@@ -501,4 +501,17 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertFalse($data['info']['found_fragment']);
   }
 
+  public function testXKCD() {
+    $url = 'http://xkcd.com/1810/';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('http://xkcd.com/1810/', $data['data']['url']);
+    $this->assertEquals('Chat Systems', $data['data']['name']);
+    $this->assertContains('http://imgs.xkcd.com/comics/chat_systems_2x.png', $data['data']['photo']);
+  }
+
 }

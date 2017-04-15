@@ -179,6 +179,13 @@ class Parse {
       return $this->respond($response, 200, $data);
     }
 
+    if($host == 'xkcd.com') {
+      $data = Formats\XKCD::parse($result['body'], $url);
+      $data['url'] = $result['url'];
+      $data['code'] = $result['code'];
+      return $this->respond($response, 200, $data);
+    }
+
     // attempt to parse the page as HTML
     $doc = new DOMDocument();
     @$doc->loadHTML(self::toHtmlEntities($result['body']));

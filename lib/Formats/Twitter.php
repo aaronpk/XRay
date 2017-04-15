@@ -1,7 +1,6 @@
 <?php
 namespace XRay\Formats;
 
-use DOMDocument, DOMXPath;
 use DateTime, DateTimeZone;
 use Parse;
 
