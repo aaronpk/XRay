@@ -195,18 +195,21 @@ class Mf2 {
         foreach($item['properties'][$p] as $v) {
           if(is_string($v)) {
             if(!array_key_exists($p, $data)) $data[$p] = [];
-            $data[$p][] = $v;
+            if(!in_array($v, $data[$p]))
+              $data[$p][] = $v;
           } elseif(self::isMicroformat($v)) {
             if(($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
               if(!array_key_exists($p, $data)) $data[$p] = [];
-              $data[$p][] = $u;
+              if(!in_array($u, $data[$p]))
+                $data[$p][] = $u;
               $ref = self::parse(['items'=>[$v]], $u, $http);
               if($ref) {
                 $refs[$u] = $ref['data'];
               }
             } else {
               if(!array_key_exists($p, $data)) $data[$p] = [];
-              $data[$p][] = $v['value'];
+              if(!in_array($v['value'], $data[$p]))
+                $data[$p][] = $v['value'];
             }
           }
         }
@@ -285,6 +288,13 @@ class Mf2 {
     self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data);
 
     // These properties are always returned as arrays and may contain plaintext content
+    // First strip leading hashtags from category values if present
+    if(array_key_exists('category', $item['properties'])) {
+      foreach($item['properties']['category'] as $i=>$c) {
+        if(is_string($c))
+          $item['properties']['category'][$i] = ltrim($c, '#');
+      }
+    }
     self::collectArrayValues(['category','invitee'], $item, $data, $refs, $http);
 
     // These properties are always returned as arrays and always URLs

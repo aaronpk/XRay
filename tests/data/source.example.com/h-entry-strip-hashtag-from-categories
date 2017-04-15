@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <p class="e-content">This page is an h-entry and has some duplicate categories #<span class="p-category">indieweb</span>.</p>
+
+    <ul>
+      <li class="p-category">#indieweb</li>
+      <li class="p-category">#xray</li>
+    </ul>
+  </body>
+</html>
