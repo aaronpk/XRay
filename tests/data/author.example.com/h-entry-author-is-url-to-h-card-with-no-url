@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Example</title>
+</head>
+<body>
+
+  <div class="h-entry">
+    <a href="/about-no-url" class="u-author">Author</a>
+    <p class="p-name e-content">Hello World</p>
+    <a href="/h-entry-author-is-url-to-h-card-with-no-url" class="u-url">permalink</a>
+  </div>
+
+</body>
+</html>

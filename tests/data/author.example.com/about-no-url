@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Author</title>
+</head>
+<body>
+
+  <div class="h-card">
+    <h2 class="p-name">Author Full Name</h2>
+    <a href="xmpp://user@host.example" class="u-url" rel="me">xmpp</a>
+    <img src="/photo.jpg" class="u-photo">
+  </div>
+  <!-- this page has no u-url or rel=me pointing to itself but there is only one h-card -->
+  
+</body>
+</html>

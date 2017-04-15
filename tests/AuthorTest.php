@@ -98,6 +98,20 @@ class AuthorTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('http://author.example.com/photo.jpg', $data->data->author->photo);
   }
 
+  public function testHEntryAuthorIsUrlToHCardWithNoURL() {
+    $url = 'http://author.example.com/h-entry-author-is-url-to-h-card-with-no-url';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertEquals('http://author.example.com/about-no-url', $data->data->author->url);
+    $this->assertEquals('Author Full Name', $data->data->author->name);
+    $this->assertEquals('http://author.example.com/photo.jpg', $data->data->author->photo);
+  }
+
   public function testHEntryHasHCardAndUrlAuthor() {
     $url = 'http://author.example.com/h-entry-has-h-card-and-url-author';
     $response = $this->parse(['url' => $url]);
@@ -135,6 +149,20 @@ class AuthorTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('card', $data->data->type);
     $this->assertEquals('http://author.example.com/about', $data->data->url);
     $this->assertEquals('Author Full Name', $data->data->name);
+    $this->assertEquals('http://author.example.com/photo.jpg', $data->data->photo);
+  }
+
+  public function testPageIsHCardWithNoURL() {
+    $url = 'http://author.example.com/about-no-url';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertEquals('card', $data->data->type);
+    $this->assertEquals('Author Full Name', $data->data->name);
+    $this->assertEquals($url, $data->data->url);
     $this->assertEquals('http://author.example.com/photo.jpg', $data->data->photo);
   }
 

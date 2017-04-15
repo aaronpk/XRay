@@ -37,6 +37,10 @@ class Mf2 {
         Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
         return self::parseAsHFeed($mf2, $http);
       }
+      if(in_array('h-card', $item['type'])) {
+        Parse::debug("mf2:0: Recognized $url as an h-card it is the only item on the page");
+        return self::parseAsHCard($item, $http, $url);
+      }
     }
 
     // Check the list of items on the page to see if one matches the URL of the page, 
@@ -502,6 +506,10 @@ class Mf2 {
         }
       }
     }
+
+    // If no URL property was found, use the $authorURL provided
+    if(!$data['url'])
+      $data['url'] = $authorURL;
 
     $response = [
       'data' => $data
