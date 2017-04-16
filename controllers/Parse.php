@@ -11,6 +11,10 @@ class Parse {
   private $_cacheTime = 120;
   private $_pretty = false;
 
+  public static function useragent() {
+    return 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36 XRay/1.0.0 ('.\Config::$base.')';
+  }
+
   public function __construct() {
     $this->http = new p3k\HTTP();
     if(Config::$cache && class_exists('Memcache')) {
@@ -103,14 +107,14 @@ class Parse {
           $result = json_decode($cached, true);
           self::debug('using HTML from cache', 'X-Cache-Debug');
         } else {
-          $result = $this->http->get($url);
+          $result = $this->http->get($url, [self::useragent()]);
           $cacheData = json_encode($result);
           // App Engine limits the size of cached items, so don't cache ones larger than that
           if(strlen($cacheData) < 1000000) 
             $this->mc->set($cacheKey, $cacheData, MEMCACHE_COMPRESSED, $this->_cacheTime);
         }
       } else {
-        $headers = [];
+        $headers = [self::useragent()];
         if($request->get('token')) {
           $headers[] = 'Authorization: Bearer ' . $request->get('token');
         }
