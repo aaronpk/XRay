@@ -37,8 +37,17 @@ class Instagram {
     }
 
     // Content and hashtags
+    $caption = false;
+
+
     if(isset($photoData['caption'])) {
-      if(preg_match_all('/#([a-z0-9_-]+)/i', $photoData['caption'], $matches)) {
+      $caption = $photoData['caption'];
+    } elseif(isset($photoData['edge_media_to_caption']['edges'][0]['node']['text'])) {
+      $caption = $photoData['edge_media_to_caption']['edges'][0]['node']['text'];
+    }
+
+    if($caption) {
+      if(preg_match_all('/#([a-z0-9_-]+)/i', $caption, $matches)) {
         $entry['category'] = [];
         foreach($matches[1] as $match) {
           $entry['category'][] = $match;
@@ -46,13 +55,16 @@ class Instagram {
       }
 
       $entry['content'] = [
-        'text' => $photoData['caption']
+        'text' => $caption
       ];
     }
 
     // Include the photo/video media URLs
     // (Always return arrays)
-    $entry['photo'] = [$photoData['display_src']];
+    if(array_key_exists('display_src', $photoData))
+      $entry['photo'] = [$photoData['display_src']];
+    elseif(array_key_exists('display_url', $photoData))
+      $entry['photo'] = [$photoData['display_url']];
 
     if(array_key_exists('is_video', $photoData) && $photoData['is_video']) {
       $entry['video'] = [$photoData['video_url']];
@@ -61,7 +73,9 @@ class Instagram {
     $refs = [];
 
     // Find person tags and fetch user profiles
-    if(array_key_exists('usertags', $photoData) && $photoData['usertags']['nodes']) {
+
+    // old json
+    if(isset($photoData['usertags']['nodes'])) {
       if(!isset($entry['category'])) $entry['category'] = [];
 
       foreach($photoData['usertags']['nodes'] as $tag) {
@@ -75,8 +89,26 @@ class Instagram {
       }
     }
 
+    // new json as of approximately 2017-04-19
+    if(isset($photoData['edge_media_to_tagged_user']['edges'])) {
+      if(!isset($entry['category'])) $entry['category'] = [];
+
+      foreach($photoData['edge_media_to_tagged_user']['edges'] as $edge) {
+        $profile = self::_getInstagramProfile($edge['node']['user']['username'], $http);
+        if($profile) {
+          $card = self::_buildHCardFromInstagramProfile($profile);
+          $entry['category'][] = $card['url'];
+          $refs[$card['url']] = $card;
+          $profiles[] = $profile;
+        }
+      }
+    }
+
     // Published date
-    $published = DateTime::createFromFormat('U', $photoData['date']);
+    if(array_key_exists('taken_at_timestamp', $photoData))
+      $published = DateTime::createFromFormat('U', $photoData['taken_at_timestamp']);
+    elseif(array_key_exists('date', $photoData))
+      $published = DateTime::createFromFormat('U', $photoData['date']);
 
     // Include venue data
     $locations = [];
@@ -176,10 +208,12 @@ class Instagram {
     if($data && is_array($data) && array_key_exists('entry_data', $data)) {
       if(is_array($data['entry_data']) && array_key_exists('PostPage', $data['entry_data'])) {
         $post = $data['entry_data']['PostPage'];
-        if(is_array($post) && array_key_exists(0, $post) && array_key_exists('media', $post[0])) {
-          $media = $post[0]['media'];
-
-          return $media;
+        if(isset($post[0]['graphql']['shortcode_media'])) {
+          return $post[0]['graphql']['shortcode_media'];
+        } elseif(isset($post[0]['graphql']['media'])) {
+          return $post[0]['graphql']['media'];
+        } elseif(isset($post[0]['media'])) {
+          return $post[0]['media'];
         }
       }
     }
@@ -191,9 +225,9 @@ class Instagram {
     $data = self::_extractIGData($html);
 
     if($data && is_array($data) && array_key_exists('entry_data', $data)) {
-      if(is_array($data['entry_data']) && array_key_exists('LocationsPage', $data['entry_data'])) {
+      if(isset($data['entry_data']['LocationsPage'])) {
         $data = $data['entry_data']['LocationsPage'];
-        if(is_array($data) && array_key_exists(0, $data) && array_key_exists('location', $data[0])) {
+        if(isset($data[0]['location'])) {
           $location = $data[0]['location'];
 
           # we don't need these and they're huge, so drop them now
