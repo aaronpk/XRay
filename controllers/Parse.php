@@ -365,17 +365,17 @@ class Parse {
     $json = $request->get('json');
     if($json) {
       // Accept GitHub JSON and parse that if provided
-      list($data, $json) = Formats\GitHub::parse($this->http, $url, null, $json);
+      list($data, $json, $code) = Formats\GitHub::parse($this->http, $url, null, $json);
     } else {
       // Otherwise fetch the post unauthenticated or with the provided access token
-      list($data, $json) = Formats\GitHub::parse($this->http, $url, $creds);
+      list($data, $json, $code) = Formats\GitHub::parse($this->http, $url, $creds);
     }
 
     if($data) {
       if($request->get('include_original'))
         $data['original'] = $json;
       $data['url'] = $url;
-      $data['code'] = 200;
+      $data['code'] = $code;
       return $this->respond($response, 200, $data);
     } else {
       return $this->respond($response, 200, [
@@ -383,7 +383,7 @@ class Parse {
           'type' => 'unknown'
         ],
         'url' => $url,
-        'code' => 0
+        'code' => $code
       ]);
     }
   }

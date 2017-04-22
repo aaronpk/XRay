@@ -40,12 +40,12 @@ class GitHub {
         $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/issues/comments/'.$comment;
 
       } else {
-        return [null, null];
+        return [null, null, 0];
       }
 
       $response = $http->get($apiurl, ['User-Agent: XRay ('.Config::$base.')']);
       if($response['code'] != 200) {
-        return [null, $response['body']];
+        return [null, $response['body'], $response['code']];
       }
 
       $data = json_decode($response['body'], true);
@@ -54,7 +54,7 @@ class GitHub {
     }
 
     if(!$data) {
-      return [null, null];
+      return [null, null, 0];
     }
 
     // Start building the h-entry
@@ -110,7 +110,7 @@ class GitHub {
       'data' => $entry
     ];
 
-    return [$response, $json];
+    return [$response, $json, $response['code']];
   }
 
 }
