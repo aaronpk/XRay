@@ -1,0 +1,95 @@
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Sat, 22 Apr 2017 21:40:46 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 2949
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 51
+X-RateLimit-Reset: 1492900051
+Cache-Control: public, max-age=60, s-maxage=60
+Vary: Accept
+ETag: "2e3e539de3e0bc6453a1330f364c2798"
+Last-Modified: Sat, 22 Apr 2017 21:23:40 GMT
+X-GitHub-Media-Type: github.v3; format=json
+Access-Control-Expose-Headers: ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+Content-Security-Policy: default-src 'none'
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Vary: Accept-Encoding
+X-Served-By: 77fbfb53269bbb85f82f23584d59f7c1
+X-GitHub-Request-Id: E449:2FCF:1C52A08:239875B:58FBCDDD
+
+{
+  "url": "https://api.github.com/repos/aaronpk/XRay/issues/20",
+  "repository_url": "https://api.github.com/repos/aaronpk/XRay",
+  "labels_url": "https://api.github.com/repos/aaronpk/XRay/issues/20/labels{/name}",
+  "comments_url": "https://api.github.com/repos/aaronpk/XRay/issues/20/comments",
+  "events_url": "https://api.github.com/repos/aaronpk/XRay/issues/20/events",
+  "html_url": "https://github.com/aaronpk/XRay/issues/20",
+  "id": 199968615,
+  "number": 20,
+  "title": "Parse GitHub posts",
+  "user": {
+    "login": "aaronpk",
+    "id": 113001,
+    "avatar_url": "https://avatars2.githubusercontent.com/u/113001?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/aaronpk",
+    "html_url": "https://github.com/aaronpk",
+    "followers_url": "https://api.github.com/users/aaronpk/followers",
+    "following_url": "https://api.github.com/users/aaronpk/following{/other_user}",
+    "gists_url": "https://api.github.com/users/aaronpk/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/aaronpk/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/aaronpk/subscriptions",
+    "organizations_url": "https://api.github.com/users/aaronpk/orgs",
+    "repos_url": "https://api.github.com/users/aaronpk/repos",
+    "events_url": "https://api.github.com/users/aaronpk/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/aaronpk/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "labels": [
+    {
+      "id": 519686101,
+      "url": "https://api.github.com/repos/aaronpk/XRay/labels/silo",
+      "name": "silo",
+      "color": "1d76db",
+      "default": false
+    }
+  ],
+  "state": "closed",
+  "locked": false,
+  "assignee": null,
+  "assignees": [
+
+  ],
+  "milestone": null,
+  "comments": 0,
+  "created_at": "2017-01-11T00:04:28Z",
+  "updated_at": "2017-04-22T21:23:40Z",
+  "closed_at": "2017-04-22T21:23:40Z",
+  "body": "* [x] Issues\r\n* [x] Issue comments\r\n",
+  "closed_by": {
+    "login": "aaronpk",
+    "id": 113001,
+    "avatar_url": "https://avatars2.githubusercontent.com/u/113001?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/aaronpk",
+    "html_url": "https://github.com/aaronpk",
+    "followers_url": "https://api.github.com/users/aaronpk/followers",
+    "following_url": "https://api.github.com/users/aaronpk/following{/other_user}",
+    "gists_url": "https://api.github.com/users/aaronpk/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/aaronpk/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/aaronpk/subscriptions",
+    "organizations_url": "https://api.github.com/users/aaronpk/orgs",
+    "repos_url": "https://api.github.com/users/aaronpk/repos",
+    "events_url": "https://api.github.com/users/aaronpk/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/aaronpk/received_events",
+    "type": "User",
+    "site_admin": false
+  }
+}

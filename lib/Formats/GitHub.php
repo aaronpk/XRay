@@ -101,7 +101,9 @@ class GitHub {
     }
 
     if(!empty($data['labels'])) {
-      $entry['category'] = $data['labels'];
+      $entry['category'] = array_map(function($l){
+        return $l['name'];
+      }, $data['labels']);
     }
 
     $entry['published'] = $data['created_at'];

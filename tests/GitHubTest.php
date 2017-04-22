@@ -56,6 +56,18 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('> sebsel', $data['data']['content']['text']);
   }
 
+  public function testGitHubIssueWithCategory() {
+    $url = 'https://github.com/aaronpk/XRay/issues/20';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertContains('silo', $data['data']['category']);
+  }
+
   public function testGitHubRepo() {
     $url = 'https://github.com/aaronpk/XRay';
     $response = $this->parse(['url' => $url]);
