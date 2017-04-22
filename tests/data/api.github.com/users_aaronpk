@@ -1,0 +1,57 @@
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Fri, 21 Apr 2017 15:41:52 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1275
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 57
+X-RateLimit-Reset: 1492790890
+Cache-Control: public, max-age=60, s-maxage=60
+Vary: Accept
+ETag: "7c20a2777e3c14616a18c07f4b8f8b64"
+Last-Modified: Tue, 18 Apr 2017 22:02:28 GMT
+X-GitHub-Media-Type: github.v3; format=json
+Access-Control-Expose-Headers: ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+Content-Security-Policy: default-src 'none'
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Vary: Accept-Encoding
+X-Served-By: d0b3c2c33a23690498aa8e70a435a259
+X-GitHub-Request-Id: C713:2FD0:192EF2D:1F4D147:58FA2840
+
+{
+  "login": "aaronpk",
+  "id": 113001,
+  "avatar_url": "https://avatars2.githubusercontent.com/u/113001?v=3",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/aaronpk",
+  "html_url": "https://github.com/aaronpk",
+  "followers_url": "https://api.github.com/users/aaronpk/followers",
+  "following_url": "https://api.github.com/users/aaronpk/following{/other_user}",
+  "gists_url": "https://api.github.com/users/aaronpk/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/aaronpk/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/aaronpk/subscriptions",
+  "organizations_url": "https://api.github.com/users/aaronpk/orgs",
+  "repos_url": "https://api.github.com/users/aaronpk/repos",
+  "events_url": "https://api.github.com/users/aaronpk/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/aaronpk/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "Aaron Parecki",
+  "company": null,
+  "blog": "https://aaronparecki.com",
+  "location": "Portland, OR",
+  "email": "aaron@parecki.com",
+  "hireable": null,
+  "bio": null,
+  "public_repos": 217,
+  "public_gists": 143,
+  "followers": 785,
+  "following": 51,
+  "created_at": "2009-08-07T18:27:56Z",
+  "updated_at": "2017-04-18T22:02:28Z"
+}

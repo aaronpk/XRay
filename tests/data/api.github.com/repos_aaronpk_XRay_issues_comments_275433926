@@ -1,0 +1,53 @@
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Sat, 22 Apr 2017 20:45:04 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 3408
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 58
+X-RateLimit-Reset: 1492894908
+Cache-Control: public, max-age=60, s-maxage=60
+Vary: Accept
+ETag: "fc180b8dec148356f2bfb61fd5b1a7c8"
+Last-Modified: Tue, 11 Apr 2017 10:12:57 GMT
+X-GitHub-Media-Type: github.v3; format=json
+Access-Control-Expose-Headers: ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+Content-Security-Policy: default-src 'none'
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Vary: Accept-Encoding
+X-Served-By: 46808ddc41c302090177e58148908b23
+X-GitHub-Request-Id: CA6A:2FD0:280B9D7:3215E95:58FBC0CF
+
+{
+  "url": "https://api.github.com/repos/aaronpk/XRay/issues/comments/275433926",
+  "html_url": "https://github.com/aaronpk/XRay/issues/25#issuecomment-275433926",
+  "issue_url": "https://api.github.com/repos/aaronpk/XRay/issues/25",
+  "id": 275433926,
+  "user": {
+    "login": "sebsel",
+    "id": 16517999,
+    "avatar_url": "https://avatars3.githubusercontent.com/u/16517999?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/sebsel",
+    "html_url": "https://github.com/sebsel",
+    "followers_url": "https://api.github.com/users/sebsel/followers",
+    "following_url": "https://api.github.com/users/sebsel/following{/other_user}",
+    "gists_url": "https://api.github.com/users/sebsel/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/sebsel/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/sebsel/subscriptions",
+    "organizations_url": "https://api.github.com/users/sebsel/orgs",
+    "repos_url": "https://api.github.com/users/sebsel/repos",
+    "events_url": "https://api.github.com/users/sebsel/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/sebsel/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "created_at": "2017-01-26T16:24:37Z",
+  "updated_at": "2017-01-29T17:59:31Z",
+  "body": "Well it's just that php-comments does more than XRay does currently. But that's no good reason.\r\n\r\nThinking about it: yes, I actually use this.\r\nhttps://indieweb.org/facepile#Sebastiaan_Andeweg\r\n\r\nMy webmentions are sorted by the type-field from php-comments. (That's how the plugin originally worked.) I use it to display in the facepile, with proper icon, or as a comment below it.\r\n\r\nOf course I can write my own logic for it, which I did today to sort my own posts in my indexing database. I had enough of writing checks like that all the time, and creating separate bool fields in my database table. (An entry with a name is an article, but a bookmark with a name is no article.)\r\nThe database-example is NOT a use case for XRay though.\r\n\r\nBelow is my current $page->postType() method (in Kirby), including commented-out things that I don't use, but found on the wiki.\r\n\r\n```php\r\n  public function postType() {\r\n    if($this->has('like_of'))     return 'like';\r\n    if($this->has('bookmark_of')) return 'bookmark';\r\n  //if($this->has('tag_of'))      return 'tag';\r\n    if($this->has('repost_of'))   return 'repost';\r\n    if($this->has('read_of'))     return 'read'; // << haven't implemented myself, now\r\n    if($this->has('watch_of'))    return 'watch'; // << posting as text notes, but I have them!\r\n    if($this->has('checkin'))     return 'checkin';\r\n  //if($this->has('invitee'))     return 'invitation';\r\n    if($this->has('rsvp'))        return 'rsvp';\r\n    if($this->has('in_reply_to')) return 'reply';\r\n    if($this->type() == 'event')  return 'event';\r\n    if($this->type() == 'review') return 'review';\r\n    if($this->has('wrote'))       return 'wrote';  // << is one is for myself only :/\r\n    if($this->has('video'))       return 'video';\r\n    if($this->has('photo'))       return 'photo';\r\n    if($this->has('name'))        return 'article';\r\n    if($this->has('text'))        return 'note'; // << 'text' = 'content'\r\n    return 'entry';\r\n  }\r\n```\r\n\r\nOh, and I totally agree on keeping 'type' for Mf2 :)"
+}

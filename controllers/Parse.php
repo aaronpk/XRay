@@ -99,6 +99,10 @@ class Parse {
         return $this->parseTwitterURL($request, $response, $url, $match);
       }
 
+      if($host == 'github.com') {
+        return $this->parseGitHubURL($request, $response, $url);
+      }
+
       // Now fetch the URL and check for any curl errors
       // Don't cache the response if a token is used to fetch it
       if($this->mc && !$request->get('token')) {
@@ -348,7 +352,41 @@ class Parse {
         'code' => 0
       ]);
     }
-
   }
+
+  private function parseGitHubURL(&$request, &$response, $url) {
+    $fields = ['github_access_token'];
+    $creds = [];
+    foreach($fields as $f) {
+      if($v=$request->get($f))
+        $creds[$f] = $v;
+    }
+    $data = false;
+    $json = $request->get('json');
+    if($json) {
+      // Accept GitHub JSON and parse that if provided
+      list($data, $json) = Formats\GitHub::parse($this->http, $url, null, $json);
+    } else {
+      // Otherwise fetch the post unauthenticated or with the provided access token
+      list($data, $json) = Formats\GitHub::parse($this->http, $url, $creds);
+    }
+
+    if($data) {
+      if($request->get('include_original'))
+        $data['original'] = $json;
+      $data['url'] = $url;
+      $data['code'] = 200;
+      return $this->respond($response, 200, $data);
+    } else {
+      return $this->respond($response, 200, [
+        'data' => [
+          'type' => 'unknown'
+        ],
+        'url' => $url,
+        'code' => 0
+      ]);
+    }
+  }
+
 
 }

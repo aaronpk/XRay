@@ -1,0 +1,71 @@
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Fri, 21 Apr 2017 15:57:52 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 2188
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 51
+X-RateLimit-Reset: 1492790890
+Cache-Control: public, max-age=60, s-maxage=60
+Vary: Accept
+ETag: "9bd5ea8062c126b9d42f9b86b74337e5"
+Last-Modified: Tue, 11 Apr 2017 10:12:57 GMT
+X-GitHub-Media-Type: github.v3; format=json
+Access-Control-Expose-Headers: ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+Content-Security-Policy: default-src 'none'
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Vary: Accept-Encoding
+X-Served-By: 15bc4ab707db6d6b474783868c7cc828
+X-GitHub-Request-Id: CE5A:2FD1:1A1AFDC:209084E:58FA2C00
+
+{
+  "url": "https://api.github.com/repos/aaronpk/XRay/issues/25",
+  "repository_url": "https://api.github.com/repos/aaronpk/XRay",
+  "labels_url": "https://api.github.com/repos/aaronpk/XRay/issues/25/labels{/name}",
+  "comments_url": "https://api.github.com/repos/aaronpk/XRay/issues/25/comments",
+  "events_url": "https://api.github.com/repos/aaronpk/XRay/issues/25/events",
+  "html_url": "https://github.com/aaronpk/XRay/issues/25",
+  "id": 203380820,
+  "number": 25,
+  "title": "Post type discovery",
+  "user": {
+    "login": "sebsel",
+    "id": 16517999,
+    "avatar_url": "https://avatars3.githubusercontent.com/u/16517999?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/sebsel",
+    "html_url": "https://github.com/sebsel",
+    "followers_url": "https://api.github.com/users/sebsel/followers",
+    "following_url": "https://api.github.com/users/sebsel/following{/other_user}",
+    "gists_url": "https://api.github.com/users/sebsel/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/sebsel/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/sebsel/subscriptions",
+    "organizations_url": "https://api.github.com/users/sebsel/orgs",
+    "repos_url": "https://api.github.com/users/sebsel/repos",
+    "events_url": "https://api.github.com/users/sebsel/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/sebsel/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "labels": [
+
+  ],
+  "state": "open",
+  "locked": false,
+  "assignee": null,
+  "assignees": [
+
+  ],
+  "milestone": null,
+  "comments": 3,
+  "created_at": "2017-01-26T14:13:42Z",
+  "updated_at": "2017-01-29T17:59:31Z",
+  "closed_at": null,
+  "body": "I don't know if this is the right place, but since I was trying to capture some of php-comments shortcomings, here is a shortcoming of XRay I found :)\r\n\r\n> sebsel a thing to note: php-comments gives a 'type' with values like 'reply' and 'like', but XRay just gives 'type=entry' with a 'like-of'. So they do different things.\r\nhttps://chat.indieweb.org/dev/2017-01-02#t1483372296121000\r\n\r\nhttps://www.w3.org/TR/post-type-discovery/",
+  "closed_by": null
+}

@@ -6,7 +6,8 @@
     "ezyang/htmlpurifier": "4.*",
     "indieweb/link-rel-parser": "0.1.*",
     "dg/twitter-php": "^3.6",
-    "p3k/timezone": "*"
+    "p3k/timezone": "*",
+    "cebe/markdown": "~1.1.1"
   },
   "autoload": {
     "files": [
@@ -21,6 +22,7 @@
       "lib/HTTP.php",
       "lib/Formats/Mf2.php",
       "lib/Formats/Instagram.php",
+      "lib/Formats/GitHub.php",
       "lib/Formats/Twitter.php",
       "lib/Formats/XKCD.php",
       "lib/Formats/HTMLPurifier_AttrDef_HTML_Microformats2.php"

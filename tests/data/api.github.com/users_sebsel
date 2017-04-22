@@ -1,0 +1,57 @@
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Sat, 22 Apr 2017 20:46:05 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1258
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 57
+X-RateLimit-Reset: 1492894908
+Cache-Control: public, max-age=60, s-maxage=60
+Vary: Accept
+ETag: "525266177afd22f738e334958dedfc8f"
+Last-Modified: Tue, 11 Apr 2017 10:12:57 GMT
+X-GitHub-Media-Type: github.v3; format=json
+Access-Control-Expose-Headers: ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+Content-Security-Policy: default-src 'none'
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Vary: Accept-Encoding
+X-Served-By: eef8b8685a106934dcbb4b7c59fba0bf
+X-GitHub-Request-Id: CAE2:2FD0:280DE43:3218CDC:58FBC10C
+
+{
+  "login": "sebsel",
+  "id": 16517999,
+  "avatar_url": "https://avatars3.githubusercontent.com/u/16517999?v=3",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/sebsel",
+  "html_url": "https://github.com/sebsel",
+  "followers_url": "https://api.github.com/users/sebsel/followers",
+  "following_url": "https://api.github.com/users/sebsel/following{/other_user}",
+  "gists_url": "https://api.github.com/users/sebsel/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/sebsel/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/sebsel/subscriptions",
+  "organizations_url": "https://api.github.com/users/sebsel/orgs",
+  "repos_url": "https://api.github.com/users/sebsel/repos",
+  "events_url": "https://api.github.com/users/sebsel/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/sebsel/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "Sebastiaan Andeweg",
+  "company": null,
+  "blog": "https://seblog.nl/",
+  "location": "Nijmegen, The Netherlands",
+  "email": null,
+  "hireable": null,
+  "bio": null,
+  "public_repos": 16,
+  "public_gists": 2,
+  "followers": 5,
+  "following": 3,
+  "created_at": "2016-01-02T15:39:15Z",
+  "updated_at": "2017-04-11T10:12:57Z"
+}
