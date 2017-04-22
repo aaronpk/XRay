@@ -2,7 +2,7 @@
 namespace XRay\Formats;
 
 use DateTime, DateTimeZone;
-use Parse;
+use Parse, Config;
 use cebe\markdown\GithubMarkdown;
 
 class GitHub {
@@ -43,9 +43,9 @@ class GitHub {
         return [null, null];
       }
 
-      $response = $http->get($apiurl);
+      $response = $http->get($apiurl, ['User-Agent: XRay ('.Config::$base.')']);
       if($response['code'] != 200) {
-        return [null, null];
+        return [null, $response['body']];
       }
 
       $data = json_decode($response['body'], true);
@@ -105,9 +105,6 @@ class GitHub {
     }
 
     $entry['published'] = $data['created_at'];
-
-    #$entry['author']
-
 
     $response = [
       'data' => $entry
