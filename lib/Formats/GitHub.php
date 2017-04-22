@@ -106,11 +106,11 @@ class GitHub {
 
     $entry['published'] = $data['created_at'];
 
-    $response = [
+    $r = [
       'data' => $entry
     ];
 
-    return [$response, $json, $response['code']];
+    return [$r, $json, $response['code']];
   }
 
 }
