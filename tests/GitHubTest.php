@@ -102,6 +102,7 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('<code class="language-php">', $data['data']['content']['html']);
     $this->assertContains('```php', $data['data']['content']['text']);
     $this->assertNotContains('name', $data['data']);
+    $this->assertContains('https://github.com/aaronpk/XRay/issues/25', $data['data']['in-reply-to']);
   }
 
 

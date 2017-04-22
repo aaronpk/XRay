@@ -100,6 +100,10 @@ class GitHub {
       ];
     }
 
+    if($type == 'comment') {
+      $entry['in-reply-to'] = ['https://github.com/'.$org.'/'.$repo.'/issues/'.$issue];
+    }
+
     if(!empty($data['labels'])) {
       $entry['category'] = array_map(function($l){
         return $l['name'];
