@@ -18,7 +18,8 @@
       "p3k\\XRay\\": "lib/XRay"
     },
     "files": [
-      "lib/helpers.php"
+      "lib/helpers.php",
+      "lib/XRay.php"
     ]
   },
   "require-dev": {
