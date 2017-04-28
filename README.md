@@ -119,8 +119,14 @@ The primary object on the page is returned in the `data` property. This will ind
 If a property supports multiple values, it will always be returned as an array. The following properties support multiple values:
 
 * in-reply-to
+* like-of
+* repost-of
+* bookmark-of
 * syndication
 * photo (of entry, not of a card)
+* video
+* audio
+* category
 
 The content will be an object that always contains a "text" property and may contain an "html" property if the source documented published HTML content. The "text" property must always be HTML escaped before displaying it as HTML, as it may include unescaped characters such as `<` and `>`.
 
