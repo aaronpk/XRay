@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "64404924cbc0d9b0e604d99859f3d673",
+    "content-hash": "10235592166c486bf7cf2601c9811861",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -253,6 +253,44 @@
                 "semantic"
             ],
             "time": "2016-03-14T12:13:34+00:00"
+        },
+        {
+            "name": "p3k/http",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aaronpk/p3k-http.git",
+                "reference": "7409b0a44f190b053d694304e716de7ce5b3568b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/7409b0a44f190b053d694304e716de7ce5b3568b",
+                "reference": "7409b0a44f190b053d694304e716de7ce5b3568b",
+                "shasum": ""
+            },
+            "require": {
+                "indieweb/link-rel-parser": "0.1.*",
+                "mf2/mf2": "0.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "p3k\\": "src/p3k"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Parecki",
+                    "homepage": "https://aaronparecki.com"
+                }
+            ],
+            "description": "A simple wrapper API around the PHP curl functions",
+            "homepage": "https://github.com/aaronpk/p3k-http",
+            "time": "2017-04-28T18:51:28+00:00"
         },
         {
             "name": "p3k/timezone",

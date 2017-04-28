@@ -12,11 +12,11 @@ class Parse {
   private $_pretty = false;
 
   public static function useragent() {
-    return 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36 XRay/1.0.0 ('.\Config::$base.')';
+    return 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36 XRay/1.0.0 ('.\Config::$base.')';
   }
 
   public function __construct() {
-    $this->http = new p3k\HTTP();
+    $this->http = new p3k\HTTP(self::useragent());
     if(Config::$cache && class_exists('Memcache')) {
       $this->mc = new Memcache();
       $this->mc->addServer('127.0.0.1');
@@ -49,11 +49,11 @@ class Parse {
 
     if($request->get('timeout')) {
       // We might make 2 HTTP requests, so each request gets half the desired timeout
-      $this->http->timeout = $request->get('timeout') / 2;
+      $this->http->set_timeout($request->get('timeout') / 2);
     }
 
-    if($request->get('max_redirects')) {
-      $this->http->max_redirects = (int)$request->get('max_redirects');
+    if($request->get('max_redirects') !== null) {
+      $this->http->set_max_redirects((int)$request->get('max_redirects'));
     }
 
     if($request->get('pretty')) {
@@ -103,6 +103,11 @@ class Parse {
         return $this->parseGitHubURL($request, $response, $url);
       }
 
+      if(!should_follow_redirects($url))
+        $this->http->set_transport(new p3k\HTTP\Stream());
+      else
+        $this->http->set_transport(new p3k\HTTP\Curl());
+
       // Now fetch the URL and check for any curl errors
       // Don't cache the response if a token is used to fetch it
       if($this->mc && !$request->get('token')) {
@@ -111,14 +116,14 @@ class Parse {
           $result = json_decode($cached, true);
           self::debug('using HTML from cache', 'X-Cache-Debug');
         } else {
-          $result = $this->http->get($url, [self::useragent()]);
+          $result = $this->http->get($url);
           $cacheData = json_encode($result);
           // App Engine limits the size of cached items, so don't cache ones larger than that
           if(strlen($cacheData) < 1000000) 
             $this->mc->set($cacheKey, $cacheData, MEMCACHE_COMPRESSED, $this->_cacheTime);
         }
       } else {
-        $headers = [self::useragent()];
+        $headers = [];
         if($request->get('token')) {
           $headers[] = 'Authorization: Bearer ' . $request->get('token');
         }

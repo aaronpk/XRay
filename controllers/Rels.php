@@ -70,7 +70,7 @@ class Rels {
     $html = $result['body'];
     $mf2 = mf2\Parse($html, $result['url']);
 
-    $rels = p3k\HTTP::link_rels($result['headers']);
+    $rels = $result['rels'];
     if(isset($mf2['rels'])) {
       $rels = array_merge($rels, $mf2['rels']);
     }

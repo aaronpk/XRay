@@ -1,12 +1,14 @@
 {
   "name": "p3k/xray",
+  "type": "library",
   "require": {
     "mf2/mf2": "~0.3",
     "ezyang/htmlpurifier": "4.*",
     "indieweb/link-rel-parser": "0.1.*",
-    "dg/twitter-php": "^3.6",
+    "dg/twitter-php": "3.6.*",
     "p3k/timezone": "*",
-    "cebe/markdown": "~1.1.1"
+    "p3k/http": "*",
+    "cebe/markdown": "1.1.*"
   },
   "require-dev": {
     "league/plates": "3.*",
@@ -14,22 +16,15 @@
     "phpunit/phpunit": "5.7.*"
   },
   "autoload": {
+    "psr-4": {
+      "XRay\\": "lib/XRay"
+    },
     "files": [
-      "lib/helpers.php",
-      "lib/HTTPCurl.php",
-      "lib/HTTPStream.php",
-      "lib/HTTP.php",
-      "lib/Formats/Mf2.php",
-      "lib/Formats/Instagram.php",
-      "lib/Formats/GitHub.php",
-      "lib/Formats/Twitter.php",
-      "lib/Formats/XKCD.php",
-      "lib/Formats/HTMLPurifier_AttrDef_HTML_Microformats2.php"
+      "lib/helpers.php"
     ]
   },
   "autoload-dev": {
     "files": [
-      "lib/HTTPTest.php",
       "controllers/Main.php",
       "controllers/Parse.php",
       "controllers/Token.php",

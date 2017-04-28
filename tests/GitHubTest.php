@@ -8,7 +8,7 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
 
   public function setUp() {
     $this->client = new Parse();
-    $this->client->http = new p3k\HTTPTest(dirname(__FILE__).'/data/');
+    $this->client->http = new p3k\HTTP\Test(dirname(__FILE__).'/data/');
     $this->client->mc = null;
   }
 
