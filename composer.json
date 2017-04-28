@@ -1,19 +1,17 @@
 {
   "name": "p3k/xray",
   "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/aaronpk/XRay",
+  "description": "X-Ray returns structured data from any URL",
   "require": {
     "mf2/mf2": "~0.3",
     "ezyang/htmlpurifier": "4.*",
     "indieweb/link-rel-parser": "0.1.*",
     "dg/twitter-php": "3.6.*",
     "p3k/timezone": "*",
-    "p3k/http": "*",
+    "p3k/http": "0.1.*",
     "cebe/markdown": "1.1.*"
-  },
-  "require-dev": {
-    "league/plates": "3.*",
-    "league/route": "1.*",
-    "phpunit/phpunit": "5.7.*"
   },
   "autoload": {
     "psr-4": {
@@ -22,6 +20,11 @@
     "files": [
       "lib/helpers.php"
     ]
+  },
+  "require-dev": {
+    "league/plates": "3.*",
+    "league/route": "1.*",
+    "phpunit/phpunit": "5.7.*"
   },
   "autoload-dev": {
     "files": [
