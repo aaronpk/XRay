@@ -1,5 +1,5 @@
 <?php
-namespace XRay\Formats;
+namespace p3k\XRay\Formats;
 
 use HTMLPurifier, HTMLPurifier_Config;
 use Parse;
@@ -48,7 +48,7 @@ class Mf2 {
     foreach($mf2['items'] as $item) {
       if(array_key_exists('url', $item['properties'])) {
         $urls = $item['properties']['url'];
-        $urls = array_map('self::normalize_url', $urls);
+        $urls = array_map('\p3k\XRay\normalize_url', $urls);
         if(in_array($url, $urls)) {
           Parse::debug("mf2:1: Recognized $url as a permalink because an object on the page matched the URL of the request");
           if(in_array('h-card', $item['type'])) {
@@ -77,7 +77,7 @@ class Mf2 {
       foreach($mf2['items'] as $card) {
         if(in_array('h-card', $card['type']) && array_key_exists('url', $card['properties'])) {
           $urls = $card['properties']['url'];
-          $urls = array_map('self::normalize_url', $urls);
+          $urls = array_map('\p3k\XRay\normalize_url', $urls);
           if(count(array_intersect($urls, $mf2['rels']['author'])) > 0) {
             // There is an author h-card on this page
             // Now look for the first h-* object other than an h-card and use that as the object
@@ -496,7 +496,7 @@ class Mf2 {
         $found = false;
         foreach($item['properties']['url'] as $url) {
           if(self::isURL($url)) {
-            $url = self::normalize_url($url);
+            $url = \p3k\XRay\normalize_url($url);
             if($url == $authorURL) {
               $data['url'] = $url;
               $found = true;
@@ -722,26 +722,5 @@ class Mf2 {
       return null;
     }
     return \mf2\Parse($result['body'], $url);
-  }
-
-  private static function normalize_url($url) {
-    $parts = parse_url($url);
-    if(empty($parts['path']))
-      $parts['path'] = '/';
-    $parts['host'] = strtolower($parts['host']);
-    return self::build_url($parts);
-  }
-
-  private static function build_url($parsed_url) {
-    $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
-    $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
-    $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
-    $user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
-    $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
-    $pass     = ($user || $pass) ? "$pass@" : '';
-    $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
-    $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
-    $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
-    return "$scheme$user$pass$host$port$path$query$fragment";
   }
 }

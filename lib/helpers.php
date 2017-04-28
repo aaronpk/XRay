@@ -1,4 +1,5 @@
 <?php
+namespace p3k\XRay;
 
 function view($template, $data=[]) {
   global $templates;

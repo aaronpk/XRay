@@ -1,5 +1,5 @@
 <?php
-namespace XRay\Formats;
+namespace p3k\XRay\Formats;
 
 /**
  * Allows Microformats2 classes but rejects any others

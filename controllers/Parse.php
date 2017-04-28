@@ -2,7 +2,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use XRay\Formats;
+use p3k\XRay\Formats;
 
 class Parse {
 
@@ -92,7 +92,7 @@ class Parse {
         ]);
       }
 
-      $url = \normalize_url($url);
+      $url = p3k\XRay\normalize_url($url);
 
       // Check if this is a Twitter URL and if they've provided API credentials, use the API
       if(preg_match('/https?:\/\/(?:mobile\.twitter\.com|twitter\.com|twtr\.io)\/(?:[a-z0-9_\/!#]+statuse?s?\/([0-9]+)|([a-zA-Z0-9_]+))/i', $url, $match)) {
@@ -103,10 +103,14 @@ class Parse {
         return $this->parseGitHubURL($request, $response, $url);
       }
 
-      if(!should_follow_redirects($url))
+      // Special-case appspot.com URLs to not follow redirects.
+      // https://cloud.google.com/appengine/docs/php/urlfetch/
+      if(!p3k\XRay\should_follow_redirects($url)) {
+        $this->http->set_max_redirects(0);
         $this->http->set_transport(new p3k\HTTP\Stream());
-      else
+      } else {
         $this->http->set_transport(new p3k\HTTP\Curl());
+      }
 
       // Now fetch the URL and check for any curl errors
       // Don't cache the response if a token is used to fetch it

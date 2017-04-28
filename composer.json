@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "XRay\\": "lib/XRay"
+      "p3k\\XRay\\": "lib/XRay"
     },
     "files": [
       "lib/helpers.php"

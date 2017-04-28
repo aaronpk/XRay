@@ -63,7 +63,7 @@ class Rels {
       ]);
     }
 
-    $url = \normalize_url($url);
+    $url = p3k\XRay\normalize_url($url);
 
     $result = $this->http->get($url);
 

@@ -1,5 +1,5 @@
 <?php
-namespace XRay\Formats;
+namespace p3k\XRay\Formats;
 
 use DateTime, DateTimeZone;
 use Parse;

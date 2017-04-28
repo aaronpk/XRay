@@ -13,7 +13,7 @@ class Certbot {
     $state = mt_rand(10000,99999);
     $_SESSION['state'] = $state;
 
-    $response->setContent(view('certbot', [
+    $response->setContent(p3k\XRay\view('certbot', [
       'title' => 'X-Ray',
       'state' => $state
     ]));
@@ -109,7 +109,7 @@ class Certbot {
       'challenge' => $challenge
     ]), 0, 600);
 
-    $response->setContent(view('certbot', [
+    $response->setContent(p3k\XRay\view('certbot', [
       'title' => 'X-Ray',
       'challenge' => $challenge,
       'token' => $token,
