@@ -9,13 +9,18 @@ XRay parses structured content from a URL.
 The contents of the URL is checked in the following order:
 
 * A silo URL from one of the following websites:
-** Instagram
-** Twitter
-** GitHub
-** XKCD
-** (more coming soon)
-* h-entry, h-event, h-card
-
+ * Instagram
+ * Twitter
+ * GitHub
+ * XKCD
+ * (more coming soon)
+* Microformats
+ * h-card
+ * h-entry
+ * h-event
+ * h-review
+ * h-recipe
+ * h-product
 
 ## Parse API
 
