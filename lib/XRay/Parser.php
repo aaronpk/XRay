@@ -26,7 +26,9 @@ class Parser {
       return Formats\GitHub::parse($body, $url);
     }
 
-    
+    if(Formats\XKCD::matches($url)) {
+      return Formats\XKCD::parse($body, $url);
+    }
 
     return [
       'data' => [
