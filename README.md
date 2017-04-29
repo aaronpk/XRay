@@ -30,7 +30,7 @@ XRay can be used as a library in your PHP project. The easiest way to install it
 composer require p3k/xray
 ```
 
-Basic usage:
+### Parsing
 
 ```php
 $xray = new p3k\XRay();
@@ -65,6 +65,67 @@ $parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html, [
   'target' => 'http://example.com/'
 ]);
 ```
+
+The `$parsed` return value will look like the below. See "Primary Data" below for an explanation of the vocabularies returned.
+
+```
+$parsed = Array
+(
+    [data] => Array
+        (
+            [type] => card
+            [name] => Aaron Parecki
+            [url] => https://aaronparecki.com/
+            [photo] => https://aaronparecki.com/images/profile.jpg
+        )
+
+    [url] => https://aaronparecki.com/
+    [code] => 200
+)
+```
+
+### Rels
+
+You can also use XRay to fetch all the rel values on a page, merging the list of HTTP `Link` headers with rel values with the HTML rel values on the page.
+
+```php
+$xray = new p3k\XRay();
+$xray->http = $this->http;
+$rels = $xray->rels('https://aaronparecki.com/');
+```
+
+This will return a similar response to the parser, but instead of a `data` key containing the parsed page, there will be `rels`, an associative array. Each key will contain an array of all the values that match that rel value.
+
+```
+$rels = Array
+(
+    [url] => https://aaronparecki.com/
+    [code] => 200
+    [rels] => Array
+        (
+            [hub] => Array
+                (
+                    [0] => https://switchboard.p3k.io/
+                )
+
+            [authorization_endpoint] => Array
+                (
+                    [0] => https://aaronparecki.com/auth
+                )
+            ...
+```
+
+
+### Customizing the User Agent
+
+To set a unique user agent, (some websites will require a user agent be set), you can set the `http` property of the object to a `p3k\HTTP` object.
+
+```php
+$xray = new p3k\XRay();
+$xray->http = new p3k\HTTP('MyProject/1.0.0 (http://example.com/)');
+$xray->parse('http://example.com/');
+```
+
 
 ## API
 
@@ -260,6 +321,15 @@ Other properties are returned in the response at the same level as the `data` pr
 
 * `url` - The effective URL that the document was retrieved from. This will be the final URL after following any redirects.
 * `code` - The HTTP response code returned by the URL. Typically this will be 200, but if the URL returned an alternate HTTP code that also included an h-entry (such as a 410 deleted notice with a stub h-entry), you can use this to find out that the original URL was actually deleted.
+
+
+## Rels
+
+There is also an API method to parse and return all rel values on the page, including HTTP `Link` headers and HTML rel values.
+
+```
+GET /rels?url=https://aaronparecki.com/
+```
 
 
 ## Token API
