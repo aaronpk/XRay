@@ -62,12 +62,12 @@ class Parse {
     }
 
     $url = $request->get('url');
-    $html = $request->get('html');
+    $html = $request->get('html') ?: $request->get('body');
 
     if(!$url && !$html) {
       return $this->respond($response, 400, [
         'error' => 'missing_url',
-        'error_description' => 'Provide a URL or HTML to fetch'
+        'error_description' => 'Provide a URL or HTML to fetch',
       ]);
     }
 
@@ -234,82 +234,6 @@ class Parse {
       $element = $el;
     }
     return $element;
-  }
-
-  private function parseTwitterURL(&$request, &$response, $url, $match) {
-    $fields = ['twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret'];
-    $creds = [];
-    foreach($fields as $f) {
-      if($v=$request->get($f))
-        $creds[$f] = $v;
-    }
-    $data = false;
-    if(count($creds) == 4) {
-      list($data, $parsed) = Formats\Twitter::parse($url, $match[1], $creds);
-    } elseif(count($creds) > 0) {
-      // If only some Twitter credentials were present, return an error  
-      return $this->respond($response, 400, [
-        'error' => 'missing_parameters',
-        'error_description' => 'All 4 Twitter credentials must be included in the request'
-      ]);
-    } else {
-      // Accept Tweet JSON and parse that if provided
-      $json = $request->get('json');
-      if($json) {
-        list($data, $parsed) = Formats\Twitter::parse($url, $match[1], null, $json);
-      }
-      // Skip parsing from the Twitter API if they didn't include credentials
-    }
-
-    if($data) {
-      if($request->get('include_original'))
-        $data['original'] = $parsed;
-      $data['url'] = $url;
-      $data['code'] = 200;
-      return $this->respond($response, 200, $data);
-    } else {
-      return $this->respond($response, 200, [
-        'data' => [
-          'type' => 'unknown'
-        ],
-        'url' => $url,
-        'code' => 0
-      ]);
-    }
-  }
-
-  private function parseGitHubURL(&$request, &$response, $url) {
-    $fields = ['github_access_token'];
-    $creds = [];
-    foreach($fields as $f) {
-      if($v=$request->get($f))
-        $creds[$f] = $v;
-    }
-    $data = false;
-    $json = $request->get('json');
-    if($json) {
-      // Accept GitHub JSON and parse that if provided
-      list($data, $json, $code) = Formats\GitHub::parse($this->http, $url, null, $json);
-    } else {
-      // Otherwise fetch the post unauthenticated or with the provided access token
-      list($data, $json, $code) = Formats\GitHub::parse($this->http, $url, $creds);
-    }
-
-    if($data) {
-      if($request->get('include_original'))
-        $data['original'] = $json;
-      $data['url'] = $url;
-      $data['code'] = $code;
-      return $this->respond($response, 200, $data);
-    } else {
-      return $this->respond($response, 200, [
-        'data' => [
-          'type' => 'unknown'
-        ],
-        'url' => $url,
-        'code' => $code
-      ]);
-    }
   }
 
 

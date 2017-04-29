@@ -40,6 +40,26 @@ In both cases, the response will be a JSON object containing a key of "type". If
 
 You can also make a POST request with the same parameter names.
 
+If you already have an HTML or JSON document you want to parse, you can include that in the parameter `body`. This POST request would look like the below:
+
+```
+POST /parse
+Content-type: application/x-www-form-urlencoded
+
+url=https://aaronparecki.com/2016/01/16/11/
+&body=<html>....</html>
+```
+
+or for Twitter/GitHub where you might have JSON,
+
+```
+POST /parse
+Content-type: application/x-www-form-urlencoded
+
+url=https://github.com/aaronpk/XRay
+&body={"repo":......}
+```
+
 ### Authentication
 
 If the URL you are fetching requires authentication, include the access token in the parameter "token", and it will be included in an "Authorization" header when fetching the URL. (It is recommended to use a POST request in this case, to avoid the access token potentially being logged as part of the query string.) This is useful for [Private Webmention](https://indieweb.org/Private-Webmention) verification.

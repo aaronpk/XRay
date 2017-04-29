@@ -10,7 +10,7 @@ class Fetcher {
 
   public function fetch($url, $opts=[]) {
     if($opts == false) $opts = [];
-    
+
     if(isset($opts['timeout']))
       $this->http->set_timeout($opts['timeout']);
     if(isset($opts['max_redirects']))
@@ -127,6 +127,7 @@ class Fetcher {
     }
 
     if(count($creds) < 4) {
+print_r(debug_backtrace()[1]);
       return [
         'error_code' => 400,
         'error' => 'missing_parameters',

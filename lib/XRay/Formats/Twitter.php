@@ -39,29 +39,16 @@ class Twitter extends Format {
     return $tweet;
   }
 
-  public static function parse($url, $tweet_id, $creds, $json=null) {
+  public static function parse($json, $url) {
 
-    $host = parse_url($url, PHP_URL_HOST);
-    if($host == 'twtr.io') {
-      $tweet_id = self::b60to10($tweet_id);
+    if(is_string($json))
+      $tweet = json_decode($json);
+    else
+      $tweet = $json;
+
+    if(!$tweet) {
+      return self::_unknown();
     }
-
-    if($json) {
-      if(is_string($json))
-        $tweet = json_decode($json);
-      else
-        $tweet = $json;
-    } else {
-      $twitter = new \Twitter($creds['twitter_api_key'], $creds['twitter_api_secret'], $creds['twitter_access_token'], $creds['twitter_access_token_secret']);
-      try { 
-        $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
-      } catch(\TwitterException $e) {
-        return [false, false];
-      }
-    }
-
-    if(!$tweet)
-      return [false, false];
 
     $entry = array(
       'type' => 'entry',
@@ -89,9 +76,9 @@ class Twitter extends Format {
       $repostOf = 'https://twitter.com/' . $reposted->user->screen_name . '/status/' . $reposted->id_str;
       $entry['repost-of'] = $repostOf;
 
-      list($repostedEntry) = self::parse($repostOf, $reposted->id_str, null, $reposted);
-      if(isset($repostedEntry['refs'])) {
-        foreach($repostedEntry['refs'] as $k=>$v) {
+      $repostedEntry = self::parse($reposted, $repostOf);
+      if(isset($repostedEntry['data']['refs'])) {
+        foreach($repostedEntry['data']['refs'] as $k=>$v) {
           $refs[$k] = $v;
         }
       }
@@ -174,28 +161,27 @@ class Twitter extends Format {
     // Quoted Status
     if(property_exists($tweet, 'quoted_status')) {
       $quoteOf = 'https://twitter.com/' . $tweet->quoted_status->user->screen_name . '/status/' . $tweet->quoted_status_id_str;
-      list($quoted) = self::parse($quoteOf, $tweet->quoted_status_id_str, null, $tweet->quoted_status);
-      if(isset($quoted['refs'])) {
-        foreach($quoted['refs'] as $k=>$v) {
+      $quotedEntry = self::parse($tweet->quoted_status, $quoteOf);
+      if(isset($quotedEntry['data']['refs'])) {
+        foreach($quotedEntry['data']['refs'] as $k=>$v) {
           $refs[$k] = $v;
         }
       }
-      $refs[$quoteOf] = $quoted['data'];
+      $refs[$quoteOf] = $quotedEntry['data'];
     }
 
     if($author = self::_buildHCardFromTwitterProfile($tweet->user)) {
       $entry['author'] = $author;
     }
 
-    $response = [
-      'data' => $entry
-    ];
-
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $entry['refs'] = $refs;
     }
 
-    return [$response, $tweet];
+    return [
+      'data' => $entry,
+      'original' => $tweet,
+    ];
   }
 
   private static function _buildHCardFromTwitterProfile($profile) {

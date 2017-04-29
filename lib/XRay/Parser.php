@@ -26,6 +26,10 @@ class Parser {
       return Formats\GitHub::parse($body, $url);
     }
 
+    if(Formats\Twitter::matches($url)) {
+      return Formats\Twitter::parse($body, $url);
+    }
+
     if(Formats\XKCD::matches($url)) {
       return Formats\XKCD::parse($body, $url);
     }
