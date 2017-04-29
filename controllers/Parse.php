@@ -41,10 +41,6 @@ class Parse {
     return $response;
   }
 
-  private static function toHtmlEntities($input) {
-    return mb_convert_encoding($input, 'HTML-ENTITIES', mb_detect_encoding($input));
-  }
-
   public function parse(Request $request, Response $response) {
     $opts = [];
 
@@ -55,6 +51,10 @@ class Parse {
 
     if($request->get('max_redirects') !== null) {
       $opts['max_redirects'] = (int)$request->get('max_redirects');
+    }
+
+    if($request->get('target')) {
+      $opts['target'] = $request->get('target');
     }
 
     if($request->get('pretty')) {
@@ -105,136 +105,23 @@ class Parse {
     if(isset($parsed['code']))
       $result['code'] = $parsed['code'];
 
-    $data = [
-      'data' => $parsed['data'],
-      'url' => $result['url'],
-      'code' => $result['code']
-    ];
-    if($request->get('include_original') && isset($parsed['original']))
-      $data['original'] = $parsed['original'];
+    if(!empty($parsed['error'])) {
+      $error_code = isset($parsed['error_code']) ? $parsed['error_code'] : 200;
+      unset($parsed['error_code']);
+      return $this->respond($response, $error_code, $parsed);
+    } else {
+      $data = [
+        'data' => $parsed['data'],
+        'url' => $result['url'],
+        'code' => $result['code']
+      ];
+      if(isset($parsed['info']))
+        $data['info'] = $parsed['info'];
+      if($request->get('include_original') && isset($parsed['original']))
+        $data['original'] = $parsed['original'];
 
-    return $this->respond($response, 200, $data);
-
-
-
-
-    // attempt to parse the page as HTML
-    $doc = new DOMDocument();
-    @$doc->loadHTML(self::toHtmlEntities($result['body']));
-
-    if(!$doc) {
-      return $this->respond($response, 200, [
-        'error' => 'invalid_content',
-        'error_description' => 'The document could not be parsed as HTML'
-      ]);
-    }
-
-    $xpath = new DOMXPath($doc);
-
-    // Check for meta http equiv and replace the status code if present
-    foreach($xpath->query('//meta[translate(@http-equiv,\'STATUS\',\'status\')=\'status\']') as $el) {
-      $equivStatus = ''.$el->getAttribute('content');
-      if($equivStatus && is_string($equivStatus)) {
-        if(preg_match('/^(\d+)/', $equivStatus, $match)) {
-          $result['code'] = (int)$match[1];
-        }
-      }
-    }
-
-    // If a target parameter was provided, make sure a link to it exists on the page
-    if($target=$request->get('target')) {
-      $found = [];
-      if($target) {
-        self::xPathFindNodeWithAttribute($xpath, 'a', 'href', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
-        self::xPathFindNodeWithAttribute($xpath, 'img', 'src', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
-        self::xPathFindNodeWithAttribute($xpath, 'video', 'src', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
-        self::xPathFindNodeWithAttribute($xpath, 'audio', 'src', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
-      }
-
-      if(!$found) {
-        return $this->respond($response, 200, [
-          'error' => 'no_link_found',
-          'error_description' => 'The source document does not have a link to the target URL',
-          'url' => $result['url'],
-          'code' => $result['code'],
-        ]);
-      }
-    }
-
-    // If the URL has a fragment ID, find the DOM starting at that node and parse it instead
-    $html = $result['body'];
-
-    $fragment = parse_url($url, PHP_URL_FRAGMENT);
-    if($fragment) {
-      $fragElement = self::xPathGetElementById($xpath, $fragment);
-      if($fragElement) {
-        $html = $doc->saveHTML($fragElement);
-        $foundFragment = true;
-      } else {
-        $foundFragment = false;
-      }
-    }
-
-    // Now start pulling in the data from the page. Start by looking for microformats2
-    $mf2 = mf2\Parse($html, $result['url']);
-
-    if($mf2 && count($mf2['items']) > 0) {
-      $data = Formats\Mf2::parse($mf2, $result['url'], $this->http);
-      if($data) {
-        if($fragment) {
-          $data['info'] = [
-            'found_fragment' => $foundFragment
-          ];
-        }
-        if($request->get('include_original'))
-          $data['original'] = $html;
-        $data['url'] = $result['url']; // this will be the effective URL after following redirects
-        $data['code'] = $result['code'];
-        return $this->respond($response, 200, $data);
-      }
-    }
-
-    // TODO: look for other content like OEmbed or other known services later
-
-    return $this->respond($response, 200, [
-      'data' => [
-        'type' => 'unknown',
-      ],
-      'url' => $result['url'],
-      'code' => $result['code']
-    ]);
-  }
-
-  private static function xPathFindNodeWithAttribute($xpath, $node, $attr, $callback) {
-    foreach($xpath->query('//'.$node.'[@'.$attr.']') as $el) {
-      $v = $el->getAttribute($attr);
-      $callback($v);
+      return $this->respond($response, 200, $data);
     }
   }
-
-  private static function xPathGetElementById($xpath, $id) {
-    $element = null;
-    foreach($xpath->query("//*[@id='$id']") as $el) {
-      $element = $el;
-    }
-    return $element;
-  }
-
 
 }

@@ -22,7 +22,53 @@ The contents of the URL is checked in the following order:
   * h-recipe
   * h-product
 
-## Parse API
+## Library
+
+XRay can be used as a library in your PHP project. The easiest way to install it and its dependencies is via composer.
+
+```
+composer require p3k/xray
+```
+
+Basic usage:
+
+```php
+$xray = new p3k\XRay();
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/');
+```
+
+If you already have an HTML or JSON document you want to parse, you can pass it as a string in the second parameter.
+
+```php
+$xray = new p3k\XRay();
+$html = '<html>....</html>';
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html);
+```
+
+In both cases, you can add an additional parameter to configure various options of how XRay will behave. Below is a list of the options.
+
+* `timeout` - The timeout in seconds to wait for any HTTP requests
+* `max_redirects` - The maximum number of redirects to follow
+* `include_original` - Will also return the full document fetched
+* `target` - Specify a target URL, and XRay will first check if that URL is on the page, and only if it is, will continue to parse the page. This is useful when you're using XRay to verify an incoming webmention.
+
+Additionally, the following parameters are supported when making requests that use the Twitter or GitHub API. See the authentication section below for details.
+
+```php
+$xray = new p3k\XRay();
+
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', [
+  'timeout' => 30
+]);
+
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html, [
+  'target' => 'http://example.com/'
+]);
+```
+
+## API
+
+XRay can also be used as an API to provide its parsing capabilities over an HTTP service.
 
 To parse a page and return structured data for the contents of the page, simply pass a url to the parse route.
 
@@ -82,6 +128,13 @@ You should only send Twitter credentials when the URL you are trying to parse is
 * twitter_api_secret - Your application's API secret
 * twitter_access_token - Your Twitter access token
 * twitter_access_token_secret - Your Twitter secret access token
+
+
+### GitHub Authentication
+
+XRay uses the GitHub API to fetch GitHub URLs, which provides higher rate limits when used with authentication. You can pass a GitHub access token along with the request and XRay will use it when making requests to the API.
+
+* github_access_token - A GitHub access token
 
 
 ### Error Response

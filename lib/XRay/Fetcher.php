@@ -78,7 +78,8 @@ class Fetcher {
       if($result['code'] == 410) {
         // 410 Gone responses are valid and should not return an error
         return $this->respond($response, 200, [
-          'TODO' => [
+          'data' => [
+            'type' => 'unknown'
           ],
           'url' => $result['url'],
           'code' => $result['code']
@@ -111,6 +112,11 @@ class Fetcher {
       ];
     }
 
+    // If the original URL had a fragment, include it in the final URL
+    if(($fragment=parse_url($url, PHP_URL_FRAGMENT)) && !parse_url($result['url'], PHP_URL_FRAGMENT)) {
+      $result['url'] .= '#'.$fragment;
+    }
+
     return [
       'url' => $result['url'],
       'body' => $result['body'],
@@ -127,7 +133,6 @@ class Fetcher {
     }
 
     if(count($creds) < 4) {
-print_r(debug_backtrace()[1]);
       return [
         'error_code' => 400,
         'error' => 'missing_parameters',

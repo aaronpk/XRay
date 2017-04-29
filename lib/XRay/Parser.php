@@ -34,11 +34,8 @@ class Parser {
       return Formats\XKCD::parse($body, $url);
     }
 
-    return [
-      'data' => [
-        'type' => 'unknown'
-      ]
-    ];
+    // No special parsers matched, parse for Microformats now
+    return Formats\HTML::parse($this->http, $body, $url, $opts);
   }
 
 }
