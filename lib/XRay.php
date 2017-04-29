@@ -14,8 +14,14 @@ class XRay {
   }
 
   public function parse($url, $opts=[]) {
-    $parser = new XRay\Parser($this->http);
-    return $parser->parse($url, $opts);
+    $fetch = new XRay\Fetch($this->http);
+    $response = $fetch->fetch($url, $opts);
+    return $this->parse_doc($response, $url, $opts);
+  }
+
+  public function parse_doc($response, $url=false, $opts=[]) {
+    
+    
   }
 
 }

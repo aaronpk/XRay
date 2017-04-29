@@ -2,53 +2,85 @@
 namespace p3k\XRay\Formats;
 
 use DateTime, DateTimeZone;
-use Parse, Config;
+use Config;
 use cebe\markdown\GithubMarkdown;
 
-class GitHub {
+class GitHub extends Format {
+
+  public static function matches_host($url) {
+    $host = parse_url($url, PHP_URL_HOST);
+    return $host == 'github.com';
+  }
+
+  public static function matches($url) {
+    return preg_match('~https://github.com/([^/]+)/([^/]+)/pull/(\d+)$~', $url, $match)
+      || preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)$~', $url, $match)
+      || preg_match('~https://github.com/([^/]+)/([^/]+)$~', $url, $match)
+      || preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)#issuecomment-(\d+)~', $url, $match);
+  }
+
+  public static function fetch($http, $url, $creds) {
+    // Transform the GitHub URL to an API request
+    if(preg_match('~https://github.com/([^/]+)/([^/]+)/pull/(\d+)$~', $url, $match)) {
+      $type = 'pull';
+      $org = $match[1];
+      $repo = $match[2];
+      $pull = $match[3];
+      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/pulls/'.$pull;
+
+    } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)$~', $url, $match)) {
+      $type = 'issue';
+      $org = $match[1];
+      $repo = $match[2];
+      $issue = $match[3];
+      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/issues/'.$issue;
+
+    } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)$~', $url, $match)) {
+      $type = 'repo';
+      $org = $match[1];
+      $repo = $match[2];
+      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo;
+
+    } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)#issuecomment-(\d+)~', $url, $match)) {
+      $type = 'comment';
+      $org = $match[1];
+      $repo = $match[2];
+      $issue = $match[3];
+      $comment = $match[4];
+      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/issues/comments/'.$comment;
+
+    } else {
+      return [
+        'error' => 'unsupported_url',
+        'error_description' => 'This GitHub URL is not supported',
+        'error_code' => 400,
+      ];
+    }
+
+    $headers = [];
+    if(isset($creds['github_access_token'])) {
+      $headers[] = 'Authorization: Bearer ' . $creds['github_access_token'];
+    }
+
+    $response = $http->get($apiurl, $headers);
+    if($response['code'] != 200) {
+      return [
+        'error' => 'github_error',
+        'error_description' => $response['body'],
+        'code' => $response['code'],
+      ];
+    }
+
+    return [
+      'url' => $url,
+      'body' => $response['body'],
+      'code' => $response['code'],
+    ];
+  }
 
   public static function parse($http, $url, $creds, $json=null) {
 
-    if(!$json) {
-      // Transform the GitHub URL to an API request
-      if(preg_match('~https://github.com/([^/]+)/([^/]+)/pull/(\d+)$~', $url, $match)) {
-        $type = 'pull';
-        $org = $match[1];
-        $repo = $match[2];
-        $pull = $match[3];
-        $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/pulls/'.$pull;
-
-      } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)$~', $url, $match)) {
-        $type = 'issue';
-        $org = $match[1];
-        $repo = $match[2];
-        $issue = $match[3];
-        $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/issues/'.$issue;
-
-      } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)$~', $url, $match)) {
-        $type = 'repo';
-        $org = $match[1];
-        $repo = $match[2];
-        $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo;
-
-      } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)#issuecomment-(\d+)~', $url, $match)) {
-        $type = 'comment';
-        $org = $match[1];
-        $repo = $match[2];
-        $issue = $match[3];
-        $comment = $match[4];
-        $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/issues/comments/'.$comment;
-
-      } else {
-        return [null, null, 0];
-      }
-
-      $response = $http->get($apiurl, ['User-Agent: XRay ('.Config::$base.')']);
-      if($response['code'] != 200) {
-        return [null, $response['body'], $response['code']];
-      }
-
-      $data = json_decode($response['body'], true);
+    if(false) {
     } else {
       $data = json_decode($json, true);
     }

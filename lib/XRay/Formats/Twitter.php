@@ -2,9 +2,42 @@
 namespace p3k\XRay\Formats;
 
 use DateTime, DateTimeZone;
-use Parse;
 
-class Twitter {
+class Twitter extends Format {
+
+  public static function matches_host($url) {
+    $host = parse_url($url, PHP_URL_HOST);
+    return in_array($host, ['mobile.twitter.com','twitter.com','www.twitter.com','twtr.io']);
+  }
+
+  public static function matches($url) {
+    if(preg_match('/https?:\/\/(?:mobile\.twitter\.com|twitter\.com|twtr\.io)\/(?:[a-z0-9_\/!#]+statuse?s?\/([0-9]+)|([a-zA-Z0-9_]+))/i', $url, $match))
+      return $match;
+    else
+      return false;
+  }
+
+  public static function fetch($url, $creds) {
+    if(!($match = self::matches($url))) {
+      return false;
+    }
+
+    $tweet_id = $match[1];
+
+    $host = parse_url($url, PHP_URL_HOST);
+    if($host == 'twtr.io') {
+      $tweet_id = self::b60to10($tweet_id);
+    }
+
+    $twitter = new \Twitter($creds['twitter_api_key'], $creds['twitter_api_secret'], $creds['twitter_access_token'], $creds['twitter_access_token_secret']);
+    try { 
+      $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
+    } catch(\TwitterException $e) {
+      return false;
+    }
+
+    return $tweet;
+  }
 
   public static function parse($url, $tweet_id, $creds, $json=null) {
 

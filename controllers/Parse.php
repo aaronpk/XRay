@@ -46,14 +46,15 @@ class Parse {
   }
 
   public function parse(Request $request, Response $response) {
+    $opts = [];
 
     if($request->get('timeout')) {
       // We might make 2 HTTP requests, so each request gets half the desired timeout
-      $this->http->set_timeout($request->get('timeout') / 2);
+      $opts['timeout'] = $request->get('timeout') / 2;
     }
 
     if($request->get('max_redirects') !== null) {
-      $this->http->set_max_redirects((int)$request->get('max_redirects'));
+      $opts['max_redirects'] = (int)$request->get('max_redirects');
     }
 
     if($request->get('pretty')) {
@@ -74,115 +75,30 @@ class Parse {
       // If HTML is provided in the request, parse that, and use the URL provided as the base URL for mf2 resolving
       $result['body'] = $html;
       $result['url'] = $url;
+      $result['code'] = null;
     } else {
-      // Attempt some basic URL validation
-      $scheme = parse_url($url, PHP_URL_SCHEME);
-      if(!in_array($scheme, ['http','https'])) {
-        return $this->respond($response, 400, [
-          'error' => 'invalid_url',
-          'error_description' => 'Only http and https URLs are supported'
-        ]);
+      $fetch = new p3k\XRay\Fetch($this->http);
+
+      $fields = [
+        'twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret',
+        'github_access_token',
+        'token'
+      ];
+      foreach($fields as $f) {
+        if($v=$request->get($f))
+          $opts[$f] = $v;
       }
 
-      $host = parse_url($url, PHP_URL_HOST);
-      if(!$host) {
-        return $this->respond($response, 400, [
-          'error' => 'invalid_url',
-          'error_description' => 'The URL provided was not valid'
-        ]);
+      $result = $fetch->fetch($url, $opts);
+
+      if(!empty($result['error'])) {
+        $error_code = isset($result['error_code']) ? $result['error_code'] : 200;
+        unset($result['error_code']);
+        return $this->respond($response, $error_code, $result);
       }
-
-      $url = p3k\XRay\normalize_url($url);
-
-      // Check if this is a Twitter URL and if they've provided API credentials, use the API
-      if(preg_match('/https?:\/\/(?:mobile\.twitter\.com|twitter\.com|twtr\.io)\/(?:[a-z0-9_\/!#]+statuse?s?\/([0-9]+)|([a-zA-Z0-9_]+))/i', $url, $match)) {
-        return $this->parseTwitterURL($request, $response, $url, $match);
-      }
-
-      if($host == 'github.com') {
-        return $this->parseGitHubURL($request, $response, $url);
-      }
-
-      // Special-case appspot.com URLs to not follow redirects.
-      // https://cloud.google.com/appengine/docs/php/urlfetch/
-      if(!p3k\XRay\should_follow_redirects($url)) {
-        $this->http->set_max_redirects(0);
-        $this->http->set_transport(new p3k\HTTP\Stream());
-      } else {
-        $this->http->set_transport(new p3k\HTTP\Curl());
-      }
-
-      // Now fetch the URL and check for any curl errors
-      // Don't cache the response if a token is used to fetch it
-      if($this->mc && !$request->get('token')) {
-        $cacheKey = 'xray-'.md5($url);
-        if($cached=$this->mc->get($cacheKey)) {
-          $result = json_decode($cached, true);
-          self::debug('using HTML from cache', 'X-Cache-Debug');
-        } else {
-          $result = $this->http->get($url);
-          $cacheData = json_encode($result);
-          // App Engine limits the size of cached items, so don't cache ones larger than that
-          if(strlen($cacheData) < 1000000) 
-            $this->mc->set($cacheKey, $cacheData, MEMCACHE_COMPRESSED, $this->_cacheTime);
-        }
-      } else {
-        $headers = [];
-        if($request->get('token')) {
-          $headers[] = 'Authorization: Bearer ' . $request->get('token');
-        }
-
-        $result = $this->http->get($url, $headers);
-      }
-
-      if($result['error']) {
-        return $this->respond($response, 200, [
-          'error' => $result['error'],
-          'error_description' => $result['error_description'],
-          'url' => $result['url'],
-          'code' => $result['code']
-        ]);
-      }
-
-      if(trim($result['body']) == '') {
-        if($result['code'] == 410) {
-          // 410 Gone responses are valid and should not return an error
-          return $this->respond($response, 200, [
-            'data' => [
-              'type' => 'unknown'
-            ],
-            'url' => $result['url'],
-            'code' => $result['code']
-          ]);
-        }
-
-        return $this->respond($response, 200, [
-          'error' => 'no_content',
-          'error_description' => 'We did not get a response body when fetching the URL',
-          'url' => $result['url'],
-          'code' => $result['code']
-        ]);
-      }
-
-      // Check for HTTP 401/403
-      if($result['code'] == 401) {
-        return $this->respond($response, 200, [
-          'error' => 'unauthorized',
-          'error_description' => 'The URL returned "HTTP 401 Unauthorized"',
-          'url' => $result['url'],
-          'code' => 401
-        ]);
-      }
-      if($result['code'] == 403) {
-        return $this->respond($response, 200, [
-          'error' => 'forbidden',
-          'error_description' => 'The URL returned "HTTP 403 Forbidden"',
-          'url' => $result['url'],
-          'code' => 403
-        ]);
-      }
-
     }
+
+
 
     // Check for known services
     $host = parse_url($result['url'], PHP_URL_HOST);

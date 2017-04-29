@@ -1,11 +1,19 @@
 <?php
 namespace p3k\XRay\Formats;
 
-use DOMDocument, DOMXPath;
 use DateTime, DateTimeZone;
-use Parse, Config;
+use Config;
 
-class XKCD {
+class XKCD extends Format {
+
+  public static function matches_host($url) {
+    $host = parse_url($url, PHP_URL_HOST);
+    return $host == 'xkcd.com';
+  }
+
+  public static function matches($url) {
+    return self::matches_host($url) && parse_url($url, PHP_URL_PATH) != '/';
+  }
 
   public static function parse($html, $url) {
     list($doc, $xpath) = self::_loadHTML($html);
@@ -54,27 +62,6 @@ class XKCD {
     ];
 
     return $response;
-  }
-
-  private static function _unknown() {
-    return [
-      'data' => [
-        'type' => 'unknown'
-      ]
-    ];
-  }
-
-  private static function _loadHTML($html) {
-    $doc = new DOMDocument();
-    @$doc->loadHTML($html);
-
-    if(!$doc) {
-      return [null, null];
-    }
-
-    $xpath = new DOMXPath($doc);
-
-    return [$doc, $xpath];
   }
 
 }

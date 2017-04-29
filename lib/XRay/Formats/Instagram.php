@@ -7,6 +7,15 @@ use Parse;
 
 class Instagram {
 
+  public static function matches_host($url) {
+    $host = parse_url($url, PHP_URL_HOST);
+    return in_array($host, ['www.instagram.com','instagram.com']);
+  }
+
+  public static function matches($url) {
+    return self::matches_host($url);
+  }
+
   public static function parse($html, $url, $http) {
 
     $photoData = self::_extractPhotoDataFromPhotoPage($html);
