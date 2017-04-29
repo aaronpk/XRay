@@ -1,36 +1,39 @@
 {
+  "name": "p3k/xray",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/aaronpk/XRay",
+  "description": "X-Ray returns structured data from any URL",
   "require": {
-    "league/plates": "3.*",
-    "league/route": "1.*",
     "mf2/mf2": "~0.3",
     "ezyang/htmlpurifier": "4.*",
     "indieweb/link-rel-parser": "0.1.*",
-    "dg/twitter-php": "^3.6",
+    "dg/twitter-php": "3.6.*",
     "p3k/timezone": "*",
-    "cebe/markdown": "~1.1.1"
+    "p3k/http": "0.1.*",
+    "cebe/markdown": "1.1.*"
   },
   "autoload": {
+    "psr-4": {
+      "p3k\\XRay\\": "lib/XRay"
+    },
     "files": [
       "lib/helpers.php",
+      "lib/XRay.php"
+    ]
+  },
+  "require-dev": {
+    "league/plates": "3.*",
+    "league/route": "1.*",
+    "phpunit/phpunit": "4.8.*"
+  },
+  "autoload-dev": {
+    "files": [
       "controllers/Main.php",
       "controllers/Parse.php",
       "controllers/Token.php",
       "controllers/Rels.php",
-      "controllers/Certbot.php",
-      "lib/HTTPCurl.php",
-      "lib/HTTPStream.php",
-      "lib/HTTP.php",
-      "lib/Formats/Mf2.php",
-      "lib/Formats/Instagram.php",
-      "lib/Formats/GitHub.php",
-      "lib/Formats/Twitter.php",
-      "lib/Formats/XKCD.php",
-      "lib/Formats/HTMLPurifier_AttrDef_HTML_Microformats2.php"
-    ]
-  },
-  "autoload-dev": {
-    "files": [
-      "lib/HTTPTest.php"
+      "controllers/Certbot.php"
     ]
   }
 }

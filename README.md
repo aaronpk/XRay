@@ -9,13 +9,66 @@ XRay parses structured content from a URL.
 The contents of the URL is checked in the following order:
 
 * A silo URL from one of the following websites:
-** Instagram
-** Twitter
-** (more coming soon)
-* h-entry, h-event, h-card
+  * Instagram
+  * Twitter
+  * GitHub
+  * XKCD
+  * (more coming soon)
+* Microformats
+  * h-card
+  * h-entry
+  * h-event
+  * h-review
+  * h-recipe
+  * h-product
 
+## Library
 
-## Parse API
+XRay can be used as a library in your PHP project. The easiest way to install it and its dependencies is via composer.
+
+```
+composer require p3k/xray
+```
+
+Basic usage:
+
+```php
+$xray = new p3k\XRay();
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/');
+```
+
+If you already have an HTML or JSON document you want to parse, you can pass it as a string in the second parameter.
+
+```php
+$xray = new p3k\XRay();
+$html = '<html>....</html>';
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html);
+```
+
+In both cases, you can add an additional parameter to configure various options of how XRay will behave. Below is a list of the options.
+
+* `timeout` - The timeout in seconds to wait for any HTTP requests
+* `max_redirects` - The maximum number of redirects to follow
+* `include_original` - Will also return the full document fetched
+* `target` - Specify a target URL, and XRay will first check if that URL is on the page, and only if it is, will continue to parse the page. This is useful when you're using XRay to verify an incoming webmention.
+
+Additionally, the following parameters are supported when making requests that use the Twitter or GitHub API. See the authentication section below for details.
+
+```php
+$xray = new p3k\XRay();
+
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', [
+  'timeout' => 30
+]);
+
+$parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html, [
+  'target' => 'http://example.com/'
+]);
+```
+
+## API
+
+XRay can also be used as an API to provide its parsing capabilities over an HTTP service.
 
 To parse a page and return structured data for the contents of the page, simply pass a url to the parse route.
 
@@ -32,6 +85,26 @@ GET /parse?url=https://aaronparecki.com/2016/01/16/11/&target=http://example.com
 In both cases, the response will be a JSON object containing a key of "type". If there was an error, "type" will be set to the string "error", otherwise it will refer to the kind of content that was found at the URL, most often "entry".
 
 You can also make a POST request with the same parameter names.
+
+If you already have an HTML or JSON document you want to parse, you can include that in the parameter `body`. This POST request would look like the below:
+
+```
+POST /parse
+Content-type: application/x-www-form-urlencoded
+
+url=https://aaronparecki.com/2016/01/16/11/
+&body=<html>....</html>
+```
+
+or for Twitter/GitHub where you might have JSON,
+
+```
+POST /parse
+Content-type: application/x-www-form-urlencoded
+
+url=https://github.com/aaronpk/XRay
+&body={"repo":......}
+```
 
 ### Authentication
 
@@ -55,6 +128,13 @@ You should only send Twitter credentials when the URL you are trying to parse is
 * twitter_api_secret - Your application's API secret
 * twitter_access_token - Your Twitter access token
 * twitter_access_token_secret - Your Twitter secret access token
+
+
+### GitHub Authentication
+
+XRay uses the GitHub API to fetch GitHub URLs, which provides higher rate limits when used with authentication. You can pass a GitHub access token along with the request and XRay will use it when making requests to the API.
+
+* github_access_token - A GitHub access token
 
 
 ### Error Response
@@ -119,8 +199,14 @@ The primary object on the page is returned in the `data` property. This will ind
 If a property supports multiple values, it will always be returned as an array. The following properties support multiple values:
 
 * in-reply-to
+* like-of
+* repost-of
+* bookmark-of
 * syndication
 * photo (of entry, not of a card)
+* video
+* audio
+* category
 
 The content will be an object that always contains a "text" property and may contain an "html" property if the source documented published HTML content. The "text" property must always be HTML escaped before displaying it as HTML, as it may include unescaped characters such as `<` and `>`.
 

@@ -1,4 +1,5 @@
 .DS_Store
 config.php
 vendor/
+php_errors.log
 XRay-*.json

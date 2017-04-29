@@ -55,7 +55,7 @@ class Token {
     if(is_string($head['headers']['Link']))
       $head['headers']['Link'] = [$head['headers']['Link']];
 
-    $rels = p3k\HTTP::link_rels($head['headers']);
+    $rels = $head['rels'];
 
     $endpoint = false;
     if(array_key_exists('token_endpoint', $rels)) {

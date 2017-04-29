@@ -8,7 +8,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
   public function setUp() {
     $this->client = new Parse();
-    $this->client->http = new p3k\HTTPTest(dirname(__FILE__).'/data/');
+    $this->client->http = new p3k\HTTP\Test(dirname(__FILE__).'/data/');
     $this->client->mc = null;
   }
 
@@ -205,9 +205,9 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);    
     $this->assertEquals('http://example.com/100', $data['data']['in-reply-to'][0]);
-    $this->assertArrayHasKey('http://example.com/100', $data['refs']);
-    $this->assertEquals('Example Post', $data['refs']['http://example.com/100']['name']);
-    $this->assertEquals('http://example.com/100', $data['refs']['http://example.com/100']['url']);
+    $this->assertArrayHasKey('http://example.com/100', $data['data']['refs']);
+    $this->assertEquals('Example Post', $data['data']['refs']['http://example.com/100']['name']);
+    $this->assertEquals('http://example.com/100', $data['data']['refs']['http://example.com/100']['url']);
   }
 
   public function testPersonTagIsURL() {
@@ -230,10 +230,10 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('http://alice.example.com/', $data['data']['category'][0]);
-    $this->assertArrayHasKey('http://alice.example.com/', $data['refs']);
-    $this->assertEquals('card', $data['refs']['http://alice.example.com/']['type']);
-    $this->assertEquals('http://alice.example.com/', $data['refs']['http://alice.example.com/']['url']);
-    $this->assertEquals('Alice', $data['refs']['http://alice.example.com/']['name']);
+    $this->assertArrayHasKey('http://alice.example.com/', $data['data']['refs']);
+    $this->assertEquals('card', $data['data']['refs']['http://alice.example.com/']['type']);
+    $this->assertEquals('http://alice.example.com/', $data['data']['refs']['http://alice.example.com/']['url']);
+    $this->assertEquals('Alice', $data['data']['refs']['http://alice.example.com/']['name']);
   }
 
   public function testSyndicationIsURL() {
@@ -372,10 +372,10 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($url, $data['data']['url']);
     $this->assertEquals('2016-02-09T18:30', $data['data']['start']);
     $this->assertEquals('2016-02-09T19:30', $data['data']['end']);
-    $this->assertArrayHasKey('http://source.example.com/venue', $data['refs']);
-    $this->assertEquals('card', $data['refs']['http://source.example.com/venue']['type']);
-    $this->assertEquals('http://source.example.com/venue', $data['refs']['http://source.example.com/venue']['url']);
-    $this->assertEquals('Venue', $data['refs']['http://source.example.com/venue']['name']);
+    $this->assertArrayHasKey('http://source.example.com/venue', $data['data']['refs']);
+    $this->assertEquals('card', $data['data']['refs']['http://source.example.com/venue']['type']);
+    $this->assertEquals('http://source.example.com/venue', $data['data']['refs']['http://source.example.com/venue']['url']);
+    $this->assertEquals('Venue', $data['data']['refs']['http://source.example.com/venue']['name']);
   }
 
   public function testMf2ReviewOfProduct() {
@@ -395,10 +395,10 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('red', $data['data']['category']);
     $this->assertContains('blue', $data['data']['category']);
     $this->assertContains('http://product.example.com/', $data['data']['item']);
-    $this->assertArrayHasKey('http://product.example.com/', $data['refs']);
-    $this->assertEquals('product', $data['refs']['http://product.example.com/']['type']);
-    $this->assertEquals('The Reviewed Product', $data['refs']['http://product.example.com/']['name']);
-    $this->assertEquals('http://product.example.com/', $data['refs']['http://product.example.com/']['url']);
+    $this->assertArrayHasKey('http://product.example.com/', $data['data']['refs']);
+    $this->assertEquals('product', $data['data']['refs']['http://product.example.com/']['type']);
+    $this->assertEquals('The Reviewed Product', $data['data']['refs']['http://product.example.com/']['name']);
+    $this->assertEquals('http://product.example.com/', $data['data']['refs']['http://product.example.com/']['url']);
   }
 
   public function testMf2ReviewOfHCard() {
@@ -416,10 +416,10 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('5', $data['data']['best']);
     $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
     $this->assertContains('http://business.example.com/', $data['data']['item']);
-    $this->assertArrayHasKey('http://business.example.com/', $data['refs']);
-    $this->assertEquals('card', $data['refs']['http://business.example.com/']['type']);
-    $this->assertEquals('The Reviewed Business', $data['refs']['http://business.example.com/']['name']);
-    $this->assertEquals('http://business.example.com/', $data['refs']['http://business.example.com/']['url']);
+    $this->assertArrayHasKey('http://business.example.com/', $data['data']['refs']);
+    $this->assertEquals('card', $data['data']['refs']['http://business.example.com/']['type']);
+    $this->assertEquals('The Reviewed Business', $data['data']['refs']['http://business.example.com/']['name']);
+    $this->assertEquals('http://business.example.com/', $data['data']['refs']['http://business.example.com/']['url']);
   }
 
   public function testMf1Review() {
@@ -438,10 +438,10 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('5', $data['data']['best']);
     $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
     // $this->assertContains('http://product.example.com/', $data['data']['item']);
-    // $this->assertArrayHasKey('http://product.example.com/', $data['refs']);
-    // $this->assertEquals('product', $data['refs']['http://product.example.com/']['type']);
-    // $this->assertEquals('The Reviewed Product', $data['refs']['http://product.example.com/']['name']);
-    // $this->assertEquals('http://product.example.com/', $data['refs']['http://product.example.com/']['url']);
+    // $this->assertArrayHasKey('http://product.example.com/', $data['data']['refs']);
+    // $this->assertEquals('product', $data['data']['refs']['http://product.example.com/']['type']);
+    // $this->assertEquals('The Reviewed Product', $data['data']['refs']['http://product.example.com/']['name']);
+    // $this->assertEquals('http://product.example.com/', $data['data']['refs']['http://product.example.com/']['url']);
 
   }
 
@@ -473,8 +473,8 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('https://www.facebook.com/555707837940351#tantek', $data['data']['url']);
     $this->assertContains('https://www.facebook.com/tantek.celik', $data['data']['invitee']);
-    $this->assertArrayHasKey('https://www.facebook.com/tantek.celik', $data['refs']);
-    $this->assertEquals('Tantek Çelik', $data['refs']['https://www.facebook.com/tantek.celik']['name']);
+    $this->assertArrayHasKey('https://www.facebook.com/tantek.celik', $data['data']['refs']);
+    $this->assertEquals('Tantek Çelik', $data['data']['refs']['https://www.facebook.com/tantek.celik']['name']);
   }
 
   public function testEntryAtFragmentID() {
@@ -485,6 +485,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Comment text', $data['data']['content']['text']);
     $this->assertEquals('http://source.example.com/fragment-id#comment-1000', $data['data']['url']);
     $this->assertTrue($data['info']['found_fragment']);
   }

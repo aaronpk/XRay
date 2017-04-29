@@ -1,34 +1,54 @@
 <?php
-namespace XRay\Formats;
+namespace p3k\XRay\Formats;
 
 use DateTime, DateTimeZone;
-use Parse;
 
-class Twitter {
+class Twitter extends Format {
 
-  public static function parse($url, $tweet_id, $creds, $json=null) {
+  public static function matches_host($url) {
+    $host = parse_url($url, PHP_URL_HOST);
+    return in_array($host, ['mobile.twitter.com','twitter.com','www.twitter.com','twtr.io']);
+  }
+
+  public static function matches($url) {
+    if(preg_match('/https?:\/\/(?:mobile\.twitter\.com|twitter\.com|twtr\.io)\/(?:[a-z0-9_\/!#]+statuse?s?\/([0-9]+)|([a-zA-Z0-9_]+))/i', $url, $match))
+      return $match;
+    else
+      return false;
+  }
+
+  public static function fetch($url, $creds) {
+    if(!($match = self::matches($url))) {
+      return false;
+    }
+
+    $tweet_id = $match[1];
 
     $host = parse_url($url, PHP_URL_HOST);
     if($host == 'twtr.io') {
       $tweet_id = self::b60to10($tweet_id);
     }
 
-    if($json) {
-      if(is_string($json))
-        $tweet = json_decode($json);
-      else
-        $tweet = $json;
-    } else {
-      $twitter = new \Twitter($creds['twitter_api_key'], $creds['twitter_api_secret'], $creds['twitter_access_token'], $creds['twitter_access_token_secret']);
-      try { 
-        $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
-      } catch(\TwitterException $e) {
-        return [false, false];
-      }
+    $twitter = new \Twitter($creds['twitter_api_key'], $creds['twitter_api_secret'], $creds['twitter_access_token'], $creds['twitter_access_token_secret']);
+    try { 
+      $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
+    } catch(\TwitterException $e) {
+      return false;
     }
 
-    if(!$tweet)
-      return [false, false];
+    return $tweet;
+  }
+
+  public static function parse($json, $url) {
+
+    if(is_string($json))
+      $tweet = json_decode($json);
+    else
+      $tweet = $json;
+
+    if(!$tweet) {
+      return self::_unknown();
+    }
 
     $entry = array(
       'type' => 'entry',
@@ -56,9 +76,9 @@ class Twitter {
       $repostOf = 'https://twitter.com/' . $reposted->user->screen_name . '/status/' . $reposted->id_str;
       $entry['repost-of'] = $repostOf;
 
-      list($repostedEntry) = self::parse($repostOf, $reposted->id_str, null, $reposted);
-      if(isset($repostedEntry['refs'])) {
-        foreach($repostedEntry['refs'] as $k=>$v) {
+      $repostedEntry = self::parse($reposted, $repostOf);
+      if(isset($repostedEntry['data']['refs'])) {
+        foreach($repostedEntry['data']['refs'] as $k=>$v) {
           $refs[$k] = $v;
         }
       }
@@ -141,28 +161,27 @@ class Twitter {
     // Quoted Status
     if(property_exists($tweet, 'quoted_status')) {
       $quoteOf = 'https://twitter.com/' . $tweet->quoted_status->user->screen_name . '/status/' . $tweet->quoted_status_id_str;
-      list($quoted) = self::parse($quoteOf, $tweet->quoted_status_id_str, null, $tweet->quoted_status);
-      if(isset($quoted['refs'])) {
-        foreach($quoted['refs'] as $k=>$v) {
+      $quotedEntry = self::parse($tweet->quoted_status, $quoteOf);
+      if(isset($quotedEntry['data']['refs'])) {
+        foreach($quotedEntry['data']['refs'] as $k=>$v) {
           $refs[$k] = $v;
         }
       }
-      $refs[$quoteOf] = $quoted['data'];
+      $refs[$quoteOf] = $quotedEntry['data'];
     }
 
     if($author = self::_buildHCardFromTwitterProfile($tweet->user)) {
       $entry['author'] = $author;
     }
 
-    $response = [
-      'data' => $entry
-    ];
-
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $entry['refs'] = $refs;
     }
 
-    return [$response, $tweet];
+    return [
+      'data' => $entry,
+      'original' => $tweet,
+    ];
   }
 
   private static function _buildHCardFromTwitterProfile($profile) {

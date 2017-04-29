@@ -1,8 +1,7 @@
 <?php
-namespace XRay\Formats;
+namespace p3k\XRay\Formats;
 
 use HTMLPurifier, HTMLPurifier_Config;
-use Parse;
 
 class Mf2 {
 
@@ -14,31 +13,31 @@ class Mf2 {
     if(count($mf2['items']) == 1) {
       $item = $mf2['items'][0];
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        Parse::debug("mf2:0: Recognized $url as an h-entry it is the only item on the page");
+        #Parse::debug("mf2:0: Recognized $url as an h-entry it is the only item on the page");
         return self::parseAsHEntry($mf2, $item, $http);
       }
       if(in_array('h-event', $item['type'])) {
-        Parse::debug("mf2:0: Recognized $url as an h-event it is the only item on the page");
+        #Parse::debug("mf2:0: Recognized $url as an h-event it is the only item on the page");
         return self::parseAsHEvent($mf2, $item, $http);
       }
       if(in_array('h-review', $item['type'])) {
-        Parse::debug("mf2:0: Recognized $url as an h-review it is the only item on the page");
+        #Parse::debug("mf2:0: Recognized $url as an h-review it is the only item on the page");
         return self::parseAsHReview($mf2, $item, $http);
       }
       if(in_array('h-recipe', $item['type'])) {
-        Parse::debug("mf2:0: Recognized $url as an h-recipe it is the only item on the page");
+        #Parse::debug("mf2:0: Recognized $url as an h-recipe it is the only item on the page");
         return self::parseAsHRecipe($mf2, $item, $http);
       }
       if(in_array('h-product', $item['type'])) {
-        Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
+        #Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
         return self::parseAsHProduct($mf2, $item, $http);
       }
       if(in_array('h-feed', $item['type'])) {
-        Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
+        #Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
         return self::parseAsHFeed($mf2, $http);
       }
       if(in_array('h-card', $item['type'])) {
-        Parse::debug("mf2:0: Recognized $url as an h-card it is the only item on the page");
+        #Parse::debug("mf2:0: Recognized $url as an h-card it is the only item on the page");
         return self::parseAsHCard($item, $http, $url);
       }
     }
@@ -48,9 +47,9 @@ class Mf2 {
     foreach($mf2['items'] as $item) {
       if(array_key_exists('url', $item['properties'])) {
         $urls = $item['properties']['url'];
-        $urls = array_map('self::normalize_url', $urls);
+        $urls = array_map('\p3k\XRay\normalize_url', $urls);
         if(in_array($url, $urls)) {
-          Parse::debug("mf2:1: Recognized $url as a permalink because an object on the page matched the URL of the request");
+          #Parse::debug("mf2:1: Recognized $url as a permalink because an object on the page matched the URL of the request");
           if(in_array('h-card', $item['type'])) {
             return self::parseAsHCard($item, $http, $url);
           } elseif(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
@@ -64,7 +63,7 @@ class Mf2 {
           } elseif(in_array('h-product', $item['type'])) {
             return self::parseAsHProduct($mf2, $item, $http);
           } else {
-            Parse::debug('This object was not a recognized type.');
+            #Parse::debug('This object was not a recognized type.');
             return false;
           }
         }
@@ -77,7 +76,7 @@ class Mf2 {
       foreach($mf2['items'] as $card) {
         if(in_array('h-card', $card['type']) && array_key_exists('url', $card['properties'])) {
           $urls = $card['properties']['url'];
-          $urls = array_map('self::normalize_url', $urls);
+          $urls = array_map('\p3k\XRay\normalize_url', $urls);
           if(count(array_intersect($urls, $mf2['rels']['author'])) > 0) {
             // There is an author h-card on this page
             // Now look for the first h-* object other than an h-card and use that as the object
@@ -106,7 +105,7 @@ class Mf2 {
       if(count(array_filter($mf2['items'], function($item){
         return in_array('h-entry', $item['type']);
       })) > 1) {
-        Parse::debug("mf2:2: Recognized $url as an h-feed because there are more than one object on the page");
+        #Parse::debug("mf2:2: Recognized $url as an h-feed because there are more than one object on the page");
         return self::parseAsHFeed($mf2, $http);
       }
     }
@@ -114,7 +113,7 @@ class Mf2 {
     // If the first item is an h-feed, parse as a feed
     $first = $mf2['items'][0];
     if(in_array('h-feed', $first['type'])) {
-      Parse::debug("mf2:3: Recognized $url as an h-feed because the first item is an h-feed");
+      #Parse::debug("mf2:3: Recognized $url as an h-feed because the first item is an h-feed");
       return self::parseAsHFeed($mf2, $http);
     }
 
@@ -122,24 +121,24 @@ class Mf2 {
     foreach($mf2['items'] as $item) {
       // Otherwise check for a recognized h-entr* object
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        Parse::debug("mf2:6: $url is falling back to the first h-entry on the page");
+        #Parse::debug("mf2:6: $url is falling back to the first h-entry on the page");
         return self::parseAsHEntry($mf2, $item, $http);
       } elseif(in_array('h-event', $item['type'])) {
-        Parse::debug("mf2:6: $url is falling back to the first h-event on the page");
+        #Parse::debug("mf2:6: $url is falling back to the first h-event on the page");
         return self::parseAsHEvent($mf2, $item, $http);
       } elseif(in_array('h-review', $item['type'])) {
-        Parse::debug("mf2:6: $url is falling back to the first h-review on the page");
+        #Parse::debug("mf2:6: $url is falling back to the first h-review on the page");
         return self::parseAsHReview($mf2, $item, $http);
       } elseif(in_array('h-recipe', $item['type'])) {
-        Parse::debug("mf2:6: $url is falling back to the first h-recipe on the page");
+        #Parse::debug("mf2:6: $url is falling back to the first h-recipe on the page");
         return self::parseAsHReview($mf2, $item, $http);
       } elseif(in_array('h-product', $item['type'])) {
-        Parse::debug("mf2:6: $url is falling back to the first h-product on the page");
+        #Parse::debug("mf2:6: $url is falling back to the first h-product on the page");
         return self::parseAsHProduct($mf2, $item, $http);
       }
     }
 
-    Parse::debug("mf2:E: No object at $url was recognized");
+    #Parse::debug("mf2:E: No object at $url was recognized");
 
     return false;
   }
@@ -311,7 +310,7 @@ class Mf2 {
     ];
 
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $response['data']['refs'] = $refs;
     }
 
     return $response;
@@ -345,7 +344,7 @@ class Mf2 {
     ];
 
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $response['data']['refs'] = $refs;
     }
 
     return $response;
@@ -376,7 +375,7 @@ class Mf2 {
     ];
 
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $response['data']['refs'] = $refs;
     }
 
     return $response;
@@ -403,7 +402,7 @@ class Mf2 {
     ];
 
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $response['data']['refs'] = $refs;
     }
 
     return $response;
@@ -457,7 +456,7 @@ class Mf2 {
     ];
 
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $response['data']['refs'] = $refs;
     }
 
     return $response;
@@ -496,7 +495,7 @@ class Mf2 {
         $found = false;
         foreach($item['properties']['url'] as $url) {
           if(self::isURL($url)) {
-            $url = self::normalize_url($url);
+            $url = \p3k\XRay\normalize_url($url);
             if($url == $authorURL) {
               $data['url'] = $url;
               $found = true;
@@ -722,26 +721,5 @@ class Mf2 {
       return null;
     }
     return \mf2\Parse($result['body'], $url);
-  }
-
-  private static function normalize_url($url) {
-    $parts = parse_url($url);
-    if(empty($parts['path']))
-      $parts['path'] = '/';
-    $parts['host'] = strtolower($parts['host']);
-    return self::build_url($parts);
-  }
-
-  private static function build_url($parsed_url) {
-    $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
-    $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
-    $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
-    $user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
-    $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
-    $pass     = ($user || $pass) ? "$pass@" : '';
-    $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
-    $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
-    $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
-    return "$scheme$user$pass$host$port$path$query$fragment";
   }
 }
