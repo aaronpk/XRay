@@ -98,6 +98,23 @@ class Parse {
       }
     }
 
+    $parser = new p3k\XRay\Parser($this->http);
+    $parsed = $parser->parse($result['body'], $result['url'], $opts);
+
+    // Allow the parser to override the HTTP response code, e.g. a meta-equiv tag
+    if(isset($parsed['code']))
+      $result['code'] = $parsed['code'];
+
+    $data = [
+      'data' => $parsed['data'],
+      'url' => $result['url'],
+      'code' => $result['code']
+    ];
+    if($request->get('include_original') && isset($parsed['original']))
+      $data['original'] = $parsed['original'];
+
+    return $this->respond($response, 200, $data);
+
 
 
     // Check for known services

@@ -71,8 +71,8 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals(2, count($data['data']['category']));
     $this->assertContains('http://tinyletter.com/kmikeym', $data['data']['category']);
-    $this->assertArrayHasKey('http://tinyletter.com/kmikeym', $data['refs']);
-    $this->assertEquals(['type'=>'card','name'=>'Mike Merrill','url'=>'http://tinyletter.com/kmikeym','photo'=>'https://instagram.fsjc1-3.fna.fbcdn.net/t51.2885-19/s320x320/12627953_686238411518831_1544976311_a.jpg'], $data['refs']['http://tinyletter.com/kmikeym']);
+    $this->assertArrayHasKey('http://tinyletter.com/kmikeym', $data['data']['refs']);
+    $this->assertEquals(['type'=>'card','name'=>'Mike Merrill','url'=>'http://tinyletter.com/kmikeym','photo'=>'https://instagram.fsjc1-3.fna.fbcdn.net/t51.2885-19/s320x320/12627953_686238411518831_1544976311_a.jpg'], $data['data']['refs']['http://tinyletter.com/kmikeym']);
   }
 
   public function testInstagramPhotoWithVenue() {
@@ -86,8 +86,8 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals(1, count($data['data']['location']));
     $this->assertContains('https://www.instagram.com/explore/locations/109284789535230/', $data['data']['location']);
-    $this->assertArrayHasKey('https://www.instagram.com/explore/locations/109284789535230/', $data['refs']);
-    $venue = $data['refs']['https://www.instagram.com/explore/locations/109284789535230/'];
+    $this->assertArrayHasKey('https://www.instagram.com/explore/locations/109284789535230/', $data['data']['refs']);
+    $venue = $data['data']['refs']['https://www.instagram.com/explore/locations/109284789535230/'];
     $this->assertEquals('XOXO Outpost', $venue['name']);
     $this->assertEquals('45.5261002', $venue['latitude']);
     $this->assertEquals('-122.6558081', $venue['longitude']);

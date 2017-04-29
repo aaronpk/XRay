@@ -13,15 +13,29 @@ class XRay {
     return $rels->parse($url, $opts);
   }
 
-  public function parse($url, $opts=[]) {
-    $fetch = new XRay\Fetch($this->http);
-    $response = $fetch->fetch($url, $opts);
-    return $this->parse_doc($response, $url, $opts);
-  }
+  public function parse($url, $opts_or_body=false, $opts_for_body=[]) {
+    if(!$opts_or_body || is_array($opts_or_body)) {
+      $fetch = new XRay\Fetcher($this->http);
+      $response = $fetch->fetch($url, $opts_or_body);
+      if(!empty($response['error']))
+        return $response;
+      $body = $response['body'];
+      $url = $response['url'];
+      $code = $response['code'];
+      $opts = is_array($opts_or_body) ? $opts_or_body : $opts_for_body;
+    } else {
+      $body = $opts_or_body;
+      $opts = $opts_for_body;
+      $code = null;
+    }
+    $parser = new XRay\Parser($this->http);
 
-  public function parse_doc($response, $url=false, $opts=[]) {
-    
-    
+    $result = $parser->parse($body, $url, $opts);
+    if(!isset($opts['include_original']) || !$opts['include_original'])
+      unset($result['original']);
+    $result['url'] = $url;
+    $result['code'] = isset($result['code']) ? $result['code'] : $code;
+    return $result;
   }
 
 }

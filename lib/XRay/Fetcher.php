@@ -9,6 +9,8 @@ class Fetcher {
   }
 
   public function fetch($url, $opts=[]) {
+    if($opts == false) $opts = [];
+    
     if(isset($opts['timeout']))
       $this->http->set_timeout($opts['timeout']);
     if(isset($opts['max_redirects']))

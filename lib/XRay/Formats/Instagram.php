@@ -3,9 +3,8 @@ namespace p3k\XRay\Formats;
 
 use DOMDocument, DOMXPath;
 use DateTime, DateTimeZone;
-use Parse;
 
-class Instagram {
+class Instagram extends Format {
 
   public static function matches_host($url) {
     $host = parse_url($url, PHP_URL_HOST);
@@ -16,12 +15,12 @@ class Instagram {
     return self::matches_host($url);
   }
 
-  public static function parse($html, $url, $http) {
+  public static function parse($http, $html, $url) {
 
     $photoData = self::_extractPhotoDataFromPhotoPage($html);
 
     if(!$photoData)
-      return false;
+      return self::_unknown();
 
     // Start building the h-entry
     $entry = array(
@@ -140,19 +139,18 @@ class Instagram {
 
     $entry['published'] = $published->format('c');
 
-    $response = [
-      'data' => $entry
-    ];
-
     if(count($refs)) {
-      $response['refs'] = $refs;
+      $entry['refs'] = $refs;
     }
 
-    return [$response, [
-      'photo' => $photoData,
-      'profiles' => $profiles,
-      'locations' => $locations
-    ]];
+    return [
+      'data' => $entry,
+      'original' => json_encode([
+        'photo' => $photoData,
+        'profiles' => $profiles,
+        'locations' => $locations
+      ])
+    ];
   }
 
   private static function _buildHCardFromInstagramProfile($profile) {

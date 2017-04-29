@@ -19,37 +19,50 @@ class GitHub extends Format {
       || preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)#issuecomment-(\d+)~', $url, $match);
   }
 
-  public static function fetch($http, $url, $creds) {
-    // Transform the GitHub URL to an API request
+  private static function extract_url_parts($url) {
+    $response = false;
+
     if(preg_match('~https://github.com/([^/]+)/([^/]+)/pull/(\d+)$~', $url, $match)) {
-      $type = 'pull';
-      $org = $match[1];
-      $repo = $match[2];
-      $pull = $match[3];
-      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/pulls/'.$pull;
+      $response = [];
+      $response['type'] = 'pull';
+      $response['org'] = $match[1];
+      $response['repo'] = $match[2];
+      $response['pull'] = $match[3];
+      $response['apiurl'] = 'https://api.github.com/repos/'.$response['org'].'/'.$response['repo'].'/pulls/'.$response['pull'];
 
     } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)$~', $url, $match)) {
-      $type = 'issue';
-      $org = $match[1];
-      $repo = $match[2];
-      $issue = $match[3];
-      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/issues/'.$issue;
+      $response = [];
+      $response['type'] = 'issue';
+      $response['org'] = $match[1];
+      $response['repo'] = $match[2];
+      $response['issue'] = $match[3];
+      $response['apiurl'] = 'https://api.github.com/repos/'.$response['org'].'/'.$response['repo'].'/issues/'.$response['issue'];
 
     } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)$~', $url, $match)) {
-      $type = 'repo';
-      $org = $match[1];
-      $repo = $match[2];
-      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo;
+      $response = [];
+      $response['type'] = 'repo';
+      $response['org'] = $match[1];
+      $response['repo'] = $match[2];
+      $response['apiurl'] = 'https://api.github.com/repos/'.$response['org'].'/'.$response['repo'];
 
     } elseif(preg_match('~https://github.com/([^/]+)/([^/]+)/issues/(\d+)#issuecomment-(\d+)~', $url, $match)) {
-      $type = 'comment';
-      $org = $match[1];
-      $repo = $match[2];
-      $issue = $match[3];
-      $comment = $match[4];
-      $apiurl = 'https://api.github.com/repos/'.$org.'/'.$repo.'/issues/comments/'.$comment;
+      $response = [];
+      $response['type'] = 'comment';
+      $response['org'] = $match[1];
+      $response['repo'] = $match[2];
+      $response['issue'] = $match[3];
+      $response['comment'] = $match[4];
+      $response['apiurl'] = 'https://api.github.com/repos/'.$response['org'].'/'.$response['repo'].'/issues/comments/'.$response['comment'];
 
-    } else {
+    }
+
+    return $response;
+  }
+
+  public static function fetch($http, $url, $creds) {
+    $parts = self::extract_url_parts($url);
+
+    if(!$parts) {
       return [
         'error' => 'unsupported_url',
         'error_description' => 'This GitHub URL is not supported',
@@ -62,7 +75,7 @@ class GitHub extends Format {
       $headers[] = 'Authorization: Bearer ' . $creds['github_access_token'];
     }
 
-    $response = $http->get($apiurl, $headers);
+    $response = $http->get($parts['apiurl'], $headers);
     if($response['code'] != 200) {
       return [
         'error' => 'github_error',
@@ -78,20 +91,20 @@ class GitHub extends Format {
     ];
   }
 
-  public static function parse($http, $url, $creds, $json=null) {
+  public static function parse($json, $url) {
+    $data = @json_decode($json, true);
 
-    if(false) {
-    } else {
-      $data = json_decode($json, true);
-    }
+    if(!$data)
+      return self::_unknown();
 
-    if(!$data) {
-      return [null, null, 0];
-    }
+    $parts = self::extract_url_parts($url);
+
+    if(!$parts)
+      return self::_unknown();
 
     // Start building the h-entry
     $entry = array(
-      'type' => ($type == 'repo' ? 'repo' : 'entry'),
+      'type' => ($parts['type'] == 'repo' ? 'repo' : 'entry'),
       'url' => $url,
       'author' => [
         'type' => 'card',
@@ -101,7 +114,7 @@ class GitHub extends Format {
       ]
     );
 
-    if($type == 'repo')
+    if($parts['type'] == 'repo')
       $authorkey = 'owner';
     else
       $authorkey = 'user';
@@ -110,20 +123,20 @@ class GitHub extends Format {
     $entry['author']['photo'] = $data[$authorkey]['avatar_url'];
     $entry['author']['url'] = $data[$authorkey]['html_url'];
 
-    if($type == 'pull') {
-      $entry['name'] = '#' . $pull . ' ' . $data['title'];
-    } elseif($type == 'issue') {
-      $entry['name'] = '#' . $issue . ' ' . $data['title'];
-    } elseif($type == 'repo') {
+    if($parts['type'] == 'pull') {
+      $entry['name'] = '#' . $parts['pull'] . ' ' . $data['title'];
+    } elseif($parts['type'] == 'issue') {
+      $entry['name'] = '#' . $parts['issue'] . ' ' . $data['title'];
+    } elseif($parts['type'] == 'repo') {
       $entry['name'] = $data['name'];
     }
 
-    if($type == 'repo') {
+    if($parts['type'] == 'repo') {
       if(!empty($data['description']))
         $entry['summary'] = $data['description'];
     }
 
-    if($type != 'repo' && !empty($data['body'])) {
+    if($parts['type'] != 'repo' && !empty($data['body'])) {
       $parser = new GithubMarkdown();
 
       $entry['content'] = [
@@ -132,8 +145,8 @@ class GitHub extends Format {
       ];
     }
 
-    if($type == 'comment') {
-      $entry['in-reply-to'] = ['https://github.com/'.$org.'/'.$repo.'/issues/'.$issue];
+    if($parts['type'] == 'comment') {
+      $entry['in-reply-to'] = ['https://github.com/'.$parts['org'].'/'.$parts['repo'].'/issues/'.$parts['issue']];
     }
 
     if(!empty($data['labels'])) {
@@ -144,11 +157,10 @@ class GitHub extends Format {
 
     $entry['published'] = $data['created_at'];
 
-    $r = [
-      'data' => $entry
+    return [
+      'data' => $entry,
+      'original' => $json
     ];
-
-    return [$r, $json, $response['code']];
   }
 
 }
