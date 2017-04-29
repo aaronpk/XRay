@@ -1,7 +1,7 @@
 <?php
 namespace p3k\XRay;
 
-class Fetch {
+class Fetcher {
   private $http;
 
   public function __construct($http) {
@@ -36,14 +36,17 @@ class Fetch {
     $url = normalize_url($url);
     $host = parse_url($url, PHP_URL_HOST);
 
-    // Check if this is a Twitter URL and if they've provided API credentials, use the API
+    // Check if this is a Twitter URL and use the API
     if(Formats\Twitter::matches_host($url)) {
       return $this->_fetch_tweet($url, $opts);
     }
 
+    // Transform the HTML GitHub URL into an GitHub API request and fetch the API response
     if(Formats\GitHub::matches_host($url)) {
       return $this->_fetch_github($url, $opts);
     }
+
+    // All other URLs are fetched normally
 
     // Special-case appspot.com URLs to not follow redirects.
     // https://cloud.google.com/appengine/docs/php/urlfetch/

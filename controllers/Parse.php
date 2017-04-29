@@ -77,7 +77,7 @@ class Parse {
       $result['url'] = $url;
       $result['code'] = null;
     } else {
-      $fetch = new p3k\XRay\Fetch($this->http);
+      $fetcher = new p3k\XRay\Fetcher($this->http);
 
       $fields = [
         'twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret',
@@ -89,7 +89,7 @@ class Parse {
           $opts[$f] = $v;
       }
 
-      $result = $fetch->fetch($url, $opts);
+      $result = $fetcher->fetch($url, $opts);
 
       if(!empty($result['error'])) {
         $error_code = isset($result['error_code']) ? $result['error_code'] : 200;
