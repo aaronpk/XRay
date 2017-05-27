@@ -36,3 +36,14 @@ function should_follow_redirects($url) {
     return true;
   }
 }
+
+function phpmf2_version() {
+  $composer = json_decode(file_get_contents(dirname(__FILE__).'/../composer.lock'));
+  $version = 'unknown';
+  foreach($composer->packages as $pkg) {
+    if($pkg->name == 'mf2/mf2') {
+      $version = $pkg->version;
+    }
+  }
+  return $version;
+}

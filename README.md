@@ -21,6 +21,7 @@ The contents of the URL is checked in the following order:
   * h-review
   * h-recipe
   * h-product
+  * h-item
 
 ## Library
 

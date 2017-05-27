@@ -10,9 +10,10 @@ class Parse {
   public $mc;
   private $_cacheTime = 120;
   private $_pretty = false;
+  private static $_version = '1.2.1';
 
   public static function useragent() {
-    return 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36 XRay/1.0.0 ('.\Config::$base.')';
+    return 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36 XRay/'.self::$_version.' ('.\Config::$base.')';
   }
 
   public function __construct() {
@@ -35,6 +36,7 @@ class Parse {
       $response->headers->set($k, $v);
     }
     $response->headers->set('Content-Type', 'application/json');
+    $response->headers->set('Version', 'XRay/'.self::$_version.' php-mf2/'.p3k\XRay\phpmf2_version());
     $opts = JSON_UNESCAPED_SLASHES;
     if($this->_pretty) $opts += JSON_PRETTY_PRINT;
     $response->setContent(json_encode($params, $opts)."\n");

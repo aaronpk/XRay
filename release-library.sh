@@ -1,10 +1,10 @@
 #!/bin/bash
 
-release_dir=../XRay-release
+release_dir=../XRay-library-release
 
 current=`pwd`
 
-composer install
+composer install --no-dev
 
 rsync -ap --delete controllers $release_dir/
 rsync -ap --delete lib $release_dir/
