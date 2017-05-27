@@ -32,6 +32,10 @@ class Mf2 {
         #Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
         return self::parseAsHProduct($mf2, $item, $http);
       }
+      if(in_array('h-item', $item['type'])) {
+        #Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
+        return self::parseAsHItem($mf2, $item, $http);
+      }
       if(in_array('h-feed', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
         return self::parseAsHFeed($mf2, $http);
@@ -62,6 +66,8 @@ class Mf2 {
             return self::parseAsHRecipe($mf2, $item, $http);
           } elseif(in_array('h-product', $item['type'])) {
             return self::parseAsHProduct($mf2, $item, $http);
+          } elseif(in_array('h-item', $item['type'])) {
+            return self::parseAsHItem($mf2, $item, $http);
           } else {
             #Parse::debug('This object was not a recognized type.');
             return false;
@@ -92,6 +98,8 @@ class Mf2 {
                   return self::parseAsHRecipe($mf2, $item, $http);
                 } elseif(in_array('h-product', $item['type'])) {
                   return self::parseAsHProduct($mf2, $item, $http);
+                } elseif(in_array('h-item', $item['type'])) {
+                  return self::parseAsHItem($mf2, $item, $http);
                 }
               }
             }
@@ -135,6 +143,9 @@ class Mf2 {
       } elseif(in_array('h-product', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-product on the page");
         return self::parseAsHProduct($mf2, $item, $http);
+      } elseif(in_array('h-item', $item['type'])) {
+        #Parse::debug("mf2:6: $url is falling back to the first h-item on the page");
+        return self::parseAsHItem($mf2, $item, $http);
       }
     }
 
@@ -394,6 +405,26 @@ class Mf2 {
     }
 
     self::collectArrayValues(['category','brand'], $item, $data, $refs, $http);
+
+    self::collectArrayURLValues(['photo','video','audio'], $item, $data, $refs, $http);
+
+    $response = [
+      'data' => $data
+    ];
+
+    if(count($refs)) {
+      $response['data']['refs'] = $refs;
+    }
+
+    return $response;
+  }
+
+  private static function parseAsHItem($mf2, $item, $http) {
+    $data = [
+      'type' => 'item'
+    ];
+
+    self::collectSingleValues(['name'], ['url'], $item, $data);
 
     self::collectArrayURLValues(['photo','video','audio'], $item, $data, $refs, $http);
 

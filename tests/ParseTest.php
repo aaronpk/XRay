@@ -431,18 +431,15 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('review', $data['data']['type']);
-    $this->assertEquals('Review', $data['data']['name']);
-    # TODO: backcompat of mf1 parser is kind of messed up right now
-    #$this->assertEquals('Not great', $data['data']['summary']);
+    $this->assertEquals('Not great', $data['data']['summary']);
     $this->assertEquals('3', $data['data']['rating']);
     $this->assertEquals('5', $data['data']['best']);
     $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
-    // $this->assertContains('http://product.example.com/', $data['data']['item']);
-    // $this->assertArrayHasKey('http://product.example.com/', $data['data']['refs']);
-    // $this->assertEquals('product', $data['data']['refs']['http://product.example.com/']['type']);
-    // $this->assertEquals('The Reviewed Product', $data['data']['refs']['http://product.example.com/']['name']);
-    // $this->assertEquals('http://product.example.com/', $data['data']['refs']['http://product.example.com/']['url']);
-
+    $this->assertContains('http://product.example.com/', $data['data']['item']);
+    $this->assertArrayHasKey('http://product.example.com/', $data['data']['refs']);
+    $this->assertEquals('item', $data['data']['refs']['http://product.example.com/']['type']);
+    $this->assertEquals('The Reviewed Product', $data['data']['refs']['http://product.example.com/']['name']);
+    $this->assertEquals('http://product.example.com/', $data['data']['refs']['http://product.example.com/']['url']);
   }
 
   public function testMf2Recipe() {

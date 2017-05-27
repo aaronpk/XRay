@@ -9,7 +9,7 @@ Connection: keep-alive
     <title>Review</title>
   </head>
   <body class="hreview">
-    <h2 class="fn">Review</h2>
+    <h2>Review</h2>
 
     <a href="/hReview" class="permalink">permalink</a>
 
