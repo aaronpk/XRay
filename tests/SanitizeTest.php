@@ -36,7 +36,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('<del>delete</del>,', $html, '<del> missing'); 
     $this->assertContains('<em>emphasis</em>,', $html, '<em> missing'); 
     $this->assertContains('<i>italics</i>,', $html, '<i> missing'); 
-    $this->assertContains('<img alt="images are allowed" src="http://sanitize.example/example.jpg" />', $html, '<img> missing'); 
+    $this->assertContains('<img src="http://sanitize.example/example.jpg" alt="images are allowed" />', $html, '<img> missing'); 
     $this->assertContains('<q>inline quote</q>,', $html, '<q> missing');
     $this->assertContains('<strike>strikethrough</strike>,', $html, '<strike> missing');
     $this->assertContains('<strong>strong text</strong>,', $html, '<strong> missing');
