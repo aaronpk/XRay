@@ -34,6 +34,10 @@ class Parser {
       return Formats\XKCD::parse($body, $url);
     }
 
+    if(Formats\Hackernews::matches($url)) {
+      return Formats\Hackernews::parse($body, $url);
+    }
+
     // No special parsers matched, parse for Microformats now
     return Formats\HTML::parse($this->http, $body, $url, $opts);
   }

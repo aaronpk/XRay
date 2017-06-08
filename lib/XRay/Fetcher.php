@@ -48,6 +48,11 @@ class Fetcher {
       return $this->_fetch_github($url, $opts);
     }
 
+    // Check if this is a Hackernews URL and use the API
+    if(Formats\Hackernews::matches($url)) {
+      return Formats\Hackernews::fetch($this->http, $url, $opts);
+    }
+
     // All other URLs are fetched normally
 
     // Special-case appspot.com URLs to not follow redirects.
