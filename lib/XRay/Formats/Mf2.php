@@ -235,6 +235,31 @@ class Mf2 extends Format {
     }
   }
 
+  private static function parseEmbeddedHCard($property, $item, &$http) {
+    if(array_key_exists($property, $item['properties'])) {
+      $mf2 = $item['properties'][$property][0];
+      if(is_string($mf2) && self::isURL($mf2)) {
+        $hcard = [
+          'type' => 'card',
+          'url' => $mf2
+        ];
+        return $hcard;
+      } if(self::isMicroformat($mf2) && in_array('h-card', $mf2['type'])) {
+        $hcard = [
+          'type' => 'card',
+        ];
+        $properties = ['name','latitude','longitude','locality','region','country','url'];
+        foreach($properties as $p) {
+          if($v=self::getPlaintext($mf2, $p)) {
+            $hcard[$p] = $v;
+          }
+        }
+        return $hcard;
+      }
+    }
+    return false;
+  }
+
   private static function collectArrayURLValues($properties, $item, &$data, &$refs, &$http) {
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
@@ -303,7 +328,7 @@ class Mf2 extends Format {
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data);
+    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data, $http);
 
     // These properties are always returned as arrays and may contain plaintext content
     // First strip leading hashtags from category values if present
@@ -324,6 +349,9 @@ class Mf2 extends Format {
     if($author = self::findAuthor($mf2, $item, $http))
       $data['author'] = $author;
 
+    if($checkin = self::parseEmbeddedHCard('checkin', $item, $http))
+      $data['checkin'] = $checkin;
+
     $response = [
       'data' => $data
     ];
@@ -341,7 +369,7 @@ class Mf2 extends Format {
     ];
     $refs = [];
 
-    self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $data);
+    self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $data, $http);
 
     // Fallback for Mf1 "description" as content. The PHP parser does not properly map this to "content"
     $description = self::parseHTMLValue('description', $item);
@@ -405,7 +433,7 @@ class Mf2 extends Format {
       'type' => 'product'
     ];
 
-    self::collectSingleValues(['name','identifier','price'], ['url'], $item, $data);
+    self::collectSingleValues(['name','identifier','price'], ['url'], $item, $data, $http);
 
     $description = self::parseHTMLValue('description', $item);
     if($description) {
@@ -454,7 +482,7 @@ class Mf2 extends Format {
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $data);
+    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $data, $http);
 
     // These properties are always returned as arrays and may contain plaintext content
     self::collectArrayValues(['category','location','attendee'], $item, $data, $refs, $http);
