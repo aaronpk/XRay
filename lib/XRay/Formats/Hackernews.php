@@ -67,7 +67,7 @@ class Hackernews extends Format {
 
     if(isset($data['text'])) {
       $htmlContent = trim(self::sanitizeHTML($data['text']));
-      $textContent = str_replace('</p><p>', "</p>\n<p>", $htmlContent);
+      $textContent = str_replace('<p>', "\n<p>", $htmlContent);
       $textContent = strip_tags($textContent);
       $entry['content'] = [
         'html' => $htmlContent,
