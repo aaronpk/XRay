@@ -33,10 +33,17 @@ class Twitter extends Format {
     try { 
       $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
     } catch(\TwitterException $e) {
-      return false;
+      return [
+        'error' => 'twitter_error',
+        'error_description' => $e->getMessage()
+      ];
     }
 
-    return $tweet;
+    return [
+      'url' => $url,
+      'body' => $tweet,
+      'code' => 200,
+    ];
   }
 
   public static function parse($json, $url) {

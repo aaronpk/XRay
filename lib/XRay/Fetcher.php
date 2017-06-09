@@ -145,19 +145,7 @@ class Fetcher {
       ];
     }
 
-    $tweet = Formats\Twitter::fetch($url, $creds);
-    if(!$tweet) {
-      return [
-        'error' => 'twitter_error',
-        'error_description' => $e->getMessage()
-      ];
-    }
-
-    return [
-      'url' => $url,
-      'body' => $tweet,
-      'code' => 200,
-    ];
+    return Formats\Twitter::fetch($url, $creds);
   }
 
   private function _fetch_github($url, $opts) {
