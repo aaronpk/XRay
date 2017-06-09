@@ -75,6 +75,10 @@ class Hackernews extends Format {
       ];
     }
 
+    if(isset($data['parent'])) {
+      $entry['in-reply-to'] = ['https://news.ycombinator.com/item?id='.$data['parent']];
+    }
+
     return [
       'data' => $entry,
       'original' => $json
