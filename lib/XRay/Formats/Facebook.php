@@ -26,10 +26,10 @@ class Facebook extends Format {
         'type' => 'event',
         'url' => $url,
         'name' => $fbObject['name'],
-        'start' => $fbObject['start_time'],
-        'end' => $fbObject['end_time']
+        'start' => $fbObject['start_time']
       );
 
+      if(isset($fbObject['end_time'])) $event['end'] = $fbObject['end_time'];
       if(isset($fbObject['description'])) $event['summary'] = $fbObject['description'];
 
       // Is the event linked to a Page?
@@ -48,10 +48,10 @@ class Facebook extends Format {
           if(isset($location['zip']))       $card['postal-code'] = $location['zip'];
           if(isset($location['city']))      $card['locality'] = $location['city'];
           if(isset($location['state']))     $card['region'] = $location['state'];
-          if(isset($location['street']))    $card['adr'] = $location['street'];
-          if(isset($location['country']))   $card['country-name'] =  $location['country'];
-          if(isset($location['latitude']))  $card['latitude'] =  $location['latitude'];
-          if(isset($location['longitude'])) $card['longitude'] = $location['longitude'];
+          if(isset($location['street']))    $card['street-address'] = $location['street'];
+          if(isset($location['country']))   $card['country'] =  $location['country'];
+          if(isset($location['latitude']))  $card['latitude'] =  (string)$location['latitude'];
+          if(isset($location['longitude'])) $card['longitude'] = (string)$location['longitude'];
 
         }
 
@@ -82,11 +82,11 @@ class Facebook extends Format {
       ];
     }
 
-    $fb = new \Facebook\Facebook([
+    $fb = new \Facebook\Facebook(array(
       'app_id' => $creds['facebook_app_id'],
       'app_secret' => $creds['facebook_app_secret'],
       'default_graph_version' => 'v2.9',
-      ]);
+    ));
 
     $fbApp = new \Facebook\FacebookApp($creds['facebook_app_id'], $creds['facebook_app_secret']);
     $token = $fbApp->getAccessToken();
