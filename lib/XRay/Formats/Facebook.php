@@ -27,12 +27,41 @@ class Facebook extends Format {
         'url' => $url,
         'name' => $fbObject['name'],
         'start' => $fbObject['start_time'],
-        'end' => $fbObject['end_time'],
-        'summary' => $fbObject['description'],
-        'location' => [
-          $fbObject['place']['name']
-        ]
+        'end' => $fbObject['end_time']
       );
+
+      if(isset($fbObject['description'])) $event['summary'] = $fbObject['description'];
+
+      // Is the event linked to a Page?
+      if(isset($fbObject['place']['id'])) {
+
+        $card = array(
+          'type' => 'card',
+          'url' => 'https://facebook.com/'.$fbObject['place']['id'],
+          'name' => $fbObject['place']['name']
+        );
+
+        if(isset($fbObject['place']['location'])) {
+
+          $location = $fbObject['place']['location'];
+
+          if(isset($location['zip']))       $card['postal-code'] = $location['zip'];
+          if(isset($location['city']))      $card['locality'] = $location['city'];
+          if(isset($location['state']))     $card['region'] = $location['state'];
+          if(isset($location['street']))    $card['adr'] = $location['street'];
+          if(isset($location['country']))   $card['country-name'] =  $location['country'];
+          if(isset($location['latitude']))  $card['latitude'] =  $location['latitude'];
+          if(isset($location['longitude'])) $card['longitude'] = $location['longitude'];
+
+        }
+
+        $event['location'] = $card['url'];
+        $event['refs'] = array($card);
+
+      // If we only have a name, use that
+      } elseif(isset($fbObject['place']['name'])) {
+        $event['location'] = $fbObject['place']['name'];
+      }
 
       return [
         'data' => $event,
