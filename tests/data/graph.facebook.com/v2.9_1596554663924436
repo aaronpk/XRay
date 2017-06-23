@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+ETag: "dd72a86bf1349e65bf77eb6ea08dd8df8ead9100"
+Pragma: no-cache
+Cache-Control: private, no-cache, no-store, must-revalidate
+x-fb-rev: 3113126
+Content-Type: application/json; charset=UTF-8
+x-fb-trace-id: GBOFw9pYkZY
+facebook-api-version: v2.9
+Expires: Sat, 01 Jan 2000 00:00:00 GMT
+Vary: Accept-Encoding
+X-FB-Debug: J6wZdSjkKDtf5Tyc3RO0VzVdsjAOdRwB1q7NxbzSmkUGPheeqeYYQ4nSHCjHxFTGuqsXhLzdAt4UVnK56yvR8Q==
+Date: Fri, 23 Jun 2017 22:59:59 GMT
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+{"description":"Are you building your own website? Indie reader? Personal publishing web app? Or some other digital magic-cloud proxy? If so, come on by and join a gathering of people with like-minded interests. Bring your friends that want to start a personal web site. Exchange information, swap ideas, talk shop, help work on a project. \n\n Contact (914) 414-1775 when you arrive to be admitted. \n\n\nMore information: \u0040[NjQyMTgzOTU5MjA4MTA3Omh0dHBzXGEvL2luZGlld2ViY2FtcC5jb20vZXZlbnRzLzIwMTUtMDQtMjItaG9tZWJyZXctd2Vic2l0ZS1jbHViOjo=:\u0040[NjQyMTgzOTU5MjA4MTA3Omh0dHBzXGEvL2luZGlld2ViY2FtcC5jb20vZXZlbnRzLzIwMTUtMDQtMjItaG9tZWJyZXctd2Vic2l0ZS1jbHViOjo=:https:\/\/indiewebcamp.com\/events\/2015-04-22-homebrew-website-club]]","name":"Homebrew Website Club","place":{"name":"Charging Bull - WeeWork - 25 Broadway, New York, NY 10004"},"start_time":"2015-04-22T19:00:00-0400","id":"1596554663924436"}

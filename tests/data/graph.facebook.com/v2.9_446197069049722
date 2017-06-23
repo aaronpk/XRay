@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+ETag: "cf33fe9966e2a664781acc2043f226d67946b048"
+Pragma: no-cache
+Cache-Control: private, no-cache, no-store, must-revalidate
+x-fb-rev: 3113126
+Content-Type: application/json; charset=UTF-8
+x-fb-trace-id: Ad/GSn3EwKN
+facebook-api-version: v2.9
+Expires: Sat, 01 Jan 2000 00:00:00 GMT
+Vary: Accept-Encoding
+X-FB-Debug: 4p8L2dOeNMJ5Ay6meL3zW4mh9TZgCNUEOsNRDUS8twNTtlvnkHiHfqSuQBIyvTlppBpOG8sWF+2MNQT4LaENtg==
+Date: Fri, 23 Jun 2017 22:57:08 GMT
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+{"description":"The seventh annual gathering for independent web creators of all kinds, from graphic artists, to designers, UX engineers, coders, hackers, to share ideas, actively work on creating for their own personal websites, and build upon each others creations.\n\nIMPORTANT: Please register for a ticket from https:\/\/2017.indieweb.org\/ to attend! RSVPing on Facebook is not enough. Your registration will ensure that we get enough food for everyone!\n\nOriginally posted at https:\/\/aaronparecki.com\/2017\/06\/24\/1\/indieweb-summit","end_time":"2017-06-25T18:00:00-0700","name":"IndieWeb Summit","place":{"name":"Mozilla PDX","location":{"city":"Portland","country":"United States","latitude":45.5233192,"longitude":-122.6824722,"state":"OR","street":"1120 NW Couch St, Ste 320","zip":"97209"},"id":"332204056925945"},"start_time":"2017-06-24T09:00:00-0700","id":"446197069049722"}
