@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <a class="u-checkin" href="https://foursquare.com/v/57104d2e498ece022e169dca">
+      at DreamHost
+    </a>
+    <p class="e-content p-name">Homebrew Website Club!</p>
+    <img src="https://aaronparecki.com/2017/06/07/12/photo.jpg" class="u-photo">
+
+    <a href="http://source.example.com/checkin" class="u-url">
+      <time class="dt-published" datetime="2017-06-07T17:14:40-07:00">
+        Wed, Jun 7, 2017 5:14pm -07:00
+      </time>
+    </a>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 08 Jun 2017 21:28:24 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 949
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Strict-Transport-Security: max-age=31556926; includeSubDomains; preload
+
+{"by":"vkb","descendants":51,"id":14516538,"kids":[14516923,14517320,14517322,14517224,14516999,14516850,14517290,14516926,14516808,14517088,14517137,14516981,14516706,14517080,14517055,14516805,14516785,14516890,14517104,14516723,14516853,14517094],"score":84,"text":"There have been many, many posts about how toxic advertising and Facebook are (I&#x27;ve written many myself[1][2][3]) for our internet ecosystem today.<p>What projects or companies are you working on to combat filter bubbles, walled gardens, emotional manipulation, and the like, and how can the HN community help you in your goals?<p>[1]http:&#x2F;&#x2F;veekaybee.github.io&#x2F;facebook-is-collecting-this&#x2F;\n[2]http:&#x2F;&#x2F;veekaybee.github.io&#x2F;content-is-dead&#x2F;\n[3] http:&#x2F;&#x2F;veekaybee.github.io&#x2F;who-is-doing-this-to-my-internet&#x2F;","time":1496950332,"title":"What are we doing about Facebook, Google, and the closed internet?","type":"story"}

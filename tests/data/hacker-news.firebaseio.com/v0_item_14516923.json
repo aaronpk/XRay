@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 09 Jun 2017 14:30:19 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1701
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Strict-Transport-Security: max-age=31556926; includeSubDomains; preload
+
+{"by":"aaronpk","id":14516923,"kids":[14517124,14517655,14516983,14518902,14518663],"parent":14516538,"text":"I am a member of the W3C Social Web Working Group (<a href=\"https:&#x2F;&#x2F;www.w3.org&#x2F;wiki&#x2F;Socialwg\" rel=\"nofollow\">https:&#x2F;&#x2F;www.w3.org&#x2F;wiki&#x2F;Socialwg</a>), and have been organizing IndieWebCamp (<a href=\"https:&#x2F;&#x2F;indieweb.org&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;indieweb.org&#x2F;</a>) conferences in this space for the last 7 years. We&#x27;ve been making a lot of progress:<p>* <a href=\"https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;webmention&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;webmention&#x2F;</a> - cross-site commenting<p>* <a href=\"https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;micropub&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;micropub&#x2F;</a> - API for apps to create posts on various servers<p>* <a href=\"https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;websub&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;websub&#x2F;</a> - realtime subscriptions to feeds<p>* More: <a href=\"https:&#x2F;&#x2F;indieweb.org&#x2F;specs\" rel=\"nofollow\">https:&#x2F;&#x2F;indieweb.org&#x2F;specs</a><p>We focus on making sure there are a plurality of implementations and approaches rather than trying to build a single software solution to solve everything.<p>Try commenting on my copy of this post on my website by sending me a webmention! <a href=\"https:&#x2F;&#x2F;aaronparecki.com&#x2F;2017&#x2F;06&#x2F;08&#x2F;9&#x2F;indieweb\" rel=\"nofollow\">https:&#x2F;&#x2F;aaronparecki.com&#x2F;2017&#x2F;06&#x2F;08&#x2F;9&#x2F;indieweb</a>","time":1496953400,"type":"comment"}

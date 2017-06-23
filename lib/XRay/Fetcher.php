@@ -53,6 +53,11 @@ class Fetcher {
       return $this->_fetch_github($url, $opts);
     }
 
+    // Check if this is a Hackernews URL and use the API
+    if(Formats\Hackernews::matches($url)) {
+      return Formats\Hackernews::fetch($this->http, $url, $opts);
+    }
+
     // All other URLs are fetched normally
 
     // Special-case appspot.com URLs to not follow redirects.
@@ -145,19 +150,7 @@ class Fetcher {
       ];
     }
 
-    $tweet = Formats\Twitter::fetch($url, $creds);
-    if(!$tweet) {
-      return [
-        'error' => 'twitter_error',
-        'error_description' => $e->getMessage()
-      ];
-    }
-
-    return [
-      'url' => $url,
-      'body' => $tweet,
-      'code' => 200,
-    ];
+    return Formats\Twitter::fetch($url, $creds);
   }
 
   private function _fetch_facebook($url, $opts) {

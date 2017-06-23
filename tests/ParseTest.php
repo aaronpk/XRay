@@ -499,6 +499,42 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertFalse($data['info']['found_fragment']);
   }
 
+  public function testCheckin() {
+    $url = 'http://source.example.com/checkin';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $venue = $data['data']['checkin'];
+    $this->assertEquals('https://foursquare.com/v/57104d2e498ece022e169dca', $venue['url']);
+    $this->assertEquals('DreamHost', $venue['name']);
+    $this->assertEquals('45.518716', $venue['latitude']);
+    $this->assertEquals('Homebrew Website Club!', $data['data']['content']['text']);
+    $this->assertEquals('https://aaronparecki.com/2017/06/07/12/photo.jpg', $data['data']['photo'][0]);
+    $this->assertEquals('2017-06-07T17:14:40-07:00', $data['data']['published']);
+    $this->assertArrayNotHasKey('name', $data['data']);
+  }
+
+  public function testCheckinURLOnly() {
+    $url = 'http://source.example.com/checkin-url';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $venue = $data['data']['checkin'];
+    $this->assertEquals('https://foursquare.com/v/57104d2e498ece022e169dca', $venue['url']);
+    $this->assertEquals('Homebrew Website Club!', $data['data']['content']['text']);
+    $this->assertEquals('https://aaronparecki.com/2017/06/07/12/photo.jpg', $data['data']['photo'][0]);
+    $this->assertEquals('2017-06-07T17:14:40-07:00', $data['data']['published']);
+    $this->assertArrayNotHasKey('name', $data['data']);
+  }
+
   public function testXKCD() {
     $url = 'http://xkcd.com/1810/';
     $response = $this->parse(['url' => $url]);

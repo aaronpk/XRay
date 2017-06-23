@@ -3,7 +3,15 @@ namespace p3k\XRay\Formats;
 
 use HTMLPurifier, HTMLPurifier_Config;
 
-class Mf2 {
+class Mf2 extends Format {
+
+  public static function matches_host($url) {
+    return true;
+  }
+
+  public static function matches($url) {
+    return true;
+  }
 
   public static function parse($mf2, $url, $http) {
     if(count($mf2['items']) == 0)
@@ -227,6 +235,31 @@ class Mf2 {
     }
   }
 
+  private static function parseEmbeddedHCard($property, $item, &$http) {
+    if(array_key_exists($property, $item['properties'])) {
+      $mf2 = $item['properties'][$property][0];
+      if(is_string($mf2) && self::isURL($mf2)) {
+        $hcard = [
+          'type' => 'card',
+          'url' => $mf2
+        ];
+        return $hcard;
+      } if(self::isMicroformat($mf2) && in_array('h-card', $mf2['type'])) {
+        $hcard = [
+          'type' => 'card',
+        ];
+        $properties = ['name','latitude','longitude','locality','region','country','url'];
+        foreach($properties as $p) {
+          if($v=self::getPlaintext($mf2, $p)) {
+            $hcard[$p] = $v;
+          }
+        }
+        return $hcard;
+      }
+    }
+    return false;
+  }
+
   private static function collectArrayURLValues($properties, $item, &$data, &$refs, &$http) {
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
@@ -295,7 +328,7 @@ class Mf2 {
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data);
+    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data, $http);
 
     // These properties are always returned as arrays and may contain plaintext content
     // First strip leading hashtags from category values if present
@@ -316,6 +349,9 @@ class Mf2 {
     if($author = self::findAuthor($mf2, $item, $http))
       $data['author'] = $author;
 
+    if($checkin = self::parseEmbeddedHCard('checkin', $item, $http))
+      $data['checkin'] = $checkin;
+
     $response = [
       'data' => $data
     ];
@@ -333,7 +369,7 @@ class Mf2 {
     ];
     $refs = [];
 
-    self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $data);
+    self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $data, $http);
 
     // Fallback for Mf1 "description" as content. The PHP parser does not properly map this to "content"
     $description = self::parseHTMLValue('description', $item);
@@ -397,7 +433,7 @@ class Mf2 {
       'type' => 'product'
     ];
 
-    self::collectSingleValues(['name','identifier','price'], ['url'], $item, $data);
+    self::collectSingleValues(['name','identifier','price'], ['url'], $item, $data, $http);
 
     $description = self::parseHTMLValue('description', $item);
     if($description) {
@@ -446,7 +482,7 @@ class Mf2 {
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $data);
+    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $data, $http);
 
     // These properties are always returned as arrays and may contain plaintext content
     self::collectArrayValues(['category','location','attendee'], $item, $data, $refs, $http);
@@ -653,53 +689,6 @@ class Mf2 {
       return null;
 
     return $author;
-  }
-
-  private static function sanitizeHTML($html) {
-    $config = HTMLPurifier_Config::createDefault();
-    $config->set('Cache.DefinitionImpl', null);
-    $config->set('HTML.AllowedElements', [
-      'a',
-      'abbr',
-      'b',
-      'code',
-      'del',
-      'em',
-      'i',
-      'img',
-      'q',
-      'strike',
-      'strong',
-      'time',
-      'blockquote',
-      'pre',
-      'p',
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'ul',
-      'li',
-      'ol'
-    ]);
-    $def = $config->getHTMLDefinition(true);
-    $def->addElement(
-      'time',
-      'Inline',
-      'Inline',
-      'Common',
-      [
-        'datetime' => 'Text'
-      ]
-    );
-    // Override the allowed classes to only support Microformats2 classes
-    $def->manager->attrTypes->set('Class', new HTMLPurifier_AttrDef_HTML_Microformats2());
-    $purifier = new HTMLPurifier($config);
-    $sanitized = $purifier->purify($html);
-    $sanitized = str_replace("&#xD;","\r",$sanitized);
-    return $sanitized;
   }
 
   private static function hasNumericKeys(array $arr) {
