@@ -17,6 +17,7 @@ class Facebook extends Format {
   }
 
   public static function parse($fbObject, $url) {
+    if(is_string($fbObject)) $fbObject = json_decode($fbObject, true);
 
     $parts = self::extract_url_parts($url);
 

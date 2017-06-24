@@ -8,24 +8,28 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
 
   public function setUp() {
     $this->client = new Parse();
-    $this->client->http = new p3k\HTTP\Test(dirname(__FILE__).'/data/');
     $this->client->mc = null;
   }
 
   private function parse($params) {
     $request = new Request($params);
     $response = new Response();
-    return $this->client->parse($request, $response);
+
+    $result = $this->client->parse($request, $response);
+    $body = $result->getContent();
+    $this->assertEquals(200, $result->getStatusCode());
+    return json_decode($body, true);
+  }
+
+  private function loadFbObject($id) {
+    return file_get_contents(dirname(__FILE__).'/data/graph.facebook.com/'.$id.'.json');
   }
 
   public function testFacebookEventWithHCard() {
     $url = 'https://www.facebook.com/events/446197069049722/';
-    $response = $this->parse(['url' => $url]);
+    $json = $this->loadFbObject('446197069049722');
 
-    $body = $response->getContent();
-    $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body, true);
-    $card = $data['data']['refs'][0];
+    $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('event', $data['data']['type']);
     $this->assertEquals('IndieWeb Summit', $data['data']['name']);
@@ -34,6 +38,7 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('The seventh annual gathering for independent web creators of all kinds,', $data['data']['summary']);
     $this->assertEquals('https://facebook.com/332204056925945', $data['data']['location']);
 
+    $card = $data['data']['refs'][0];
     $this->assertEquals('card', $card['type']);
     $this->assertEquals('https://facebook.com/332204056925945', $card['url']);
     $this->assertEquals('Mozilla PDX', $card['name']);
@@ -48,12 +53,9 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
 
   public function testFacebookEvent() {
     $url = 'https://www.facebook.com/events/1596554663924436/';
-    $response = $this->parse(['url' => $url]);
+    $json = $this->loadFbObject('1596554663924436');
 
-    $body = $response->getContent();
-    $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body, true);
-    $card = $data['data']['refs'][0];
+    $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('event', $data['data']['type']);
     $this->assertEquals('Homebrew Website Club', $data['data']['name']);
