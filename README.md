@@ -182,7 +182,7 @@ url=https://aaronparecki.com/2016/01/16/11/
 ```
 
 
-### Twitter Authentication
+### API Authentication
 
 XRay uses the Twitter, Github and Facebook APIs to fetch posts, and those API require authentication. In order to keep XRay stateless, it is required that you pass in the credentials to the parse call.
 
