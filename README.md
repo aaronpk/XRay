@@ -13,6 +13,7 @@ The contents of the URL is checked in the following order:
   * Twitter
   * GitHub
   * XKCD
+  * Facebook (public events)
   * (more coming soon)
 * Microformats
   * h-card
@@ -158,7 +159,7 @@ url=https://aaronparecki.com/2016/01/16/11/
 &body=<html>....</html>
 ```
 
-or for Twitter/GitHub where you might have JSON,
+or for Twitter/GitHub/Facebook where you might have JSON,
 
 ```
 POST /parse
@@ -180,11 +181,17 @@ url=https://aaronparecki.com/2016/01/16/11/
 &token=12341234123412341234
 ```
 
+
 ### Twitter Authentication
 
-XRay uses the Twitter API to fetch posts, and the Twitter API requires authentication. In order to keep XRay stateless, it is required that you pass in Twitter credentials to the parse call. You can register an application on the Twitter developer website, and generate an access token for your account without writing any code, and then use those credentials when making an API request to XRay.
+XRay uses the Twitter, Github and Facebook APIs to fetch posts, and those API require authentication. In order to keep XRay stateless, it is required that you pass in the credentials to the parse call.
 
-You should only send Twitter credentials when the URL you are trying to parse is a Twitter URL, so you'll want to check for whether the hostname is `twitter.com` before you include credentials in this call.
+You should only send the credentials when the URL you are trying to parse is a Twitter URL, a GitHub URL or a Facebook URL, so you'll want to check for whether the hostname is `twitter.com`, `github.com`, etc. before you include credentials in this call.
+
+
+#### Twitter Authentication
+
+XRay uses the Twitter API to fetch Twitter URLs. You can register an application on the Twitter developer website, and generate an access token for your account without writing any code, and then use those credentials when making an API request to XRay.
 
 * twitter_api_key - Your application's API key
 * twitter_api_secret - Your application's API secret
@@ -192,11 +199,21 @@ You should only send Twitter credentials when the URL you are trying to parse is
 * twitter_access_token_secret - Your Twitter secret access token
 
 
-### GitHub Authentication
+#### GitHub Authentication
 
 XRay uses the GitHub API to fetch GitHub URLs, which provides higher rate limits when used with authentication. You can pass a GitHub access token along with the request and XRay will use it when making requests to the API.
 
 * github_access_token - A GitHub access token
+
+
+#### Facebook Authentication
+
+XRay uses the Facebook API to fetch Facebook URLs. You can create a Facebook App on Facebooks developer website.
+
+* facebook_app_id - Your application's App ID
+* facebook_app_secret - Your application's App Secret
+
+At this moment, XRay is able to get it's own access token from those credentials.
 
 
 ### Error Response
@@ -254,7 +271,7 @@ Possible errors are listed below:
 }
 ```
 
-#### Primary Data 
+#### Primary Data
 
 The primary object on the page is returned in the `data` property. This will indicate the type of object (e.g. `entry`), and will contain the vocabulary's properties that it was able to parse from the page.
 
