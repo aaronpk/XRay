@@ -330,6 +330,9 @@ class Mf2 extends Format {
     // Single plaintext and URL values
     self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data, $http);
 
+    if(isset($data['rsvp']))
+      $data['rsvp'] = strtolower($data['rsvp']);
+
     // These properties are always returned as arrays and may contain plaintext content
     // First strip leading hashtags from category values if present
     if(array_key_exists('category', $item['properties'])) {
