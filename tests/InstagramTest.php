@@ -95,4 +95,37 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('2016-12-10T21:48:56-08:00', $data['data']['published']);
   }
 
+  public function testTwoPhotos() {
+    // Original URL: https://www.instagram.com/p/BZWmUB_DVtp/
+    $url = 'http://www.instagram.com/two_photos.html';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals(2, count($data['data']['photo']));
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/t51.2885-15/e35/21827424_134752690591737_8093088291252862976_n.jpg', $data['data']['photo'][0]);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/t51.2885-15/e35/21909774_347707439021016_5237540582556958720_n.jpg', $data['data']['photo'][1]);
+    $this->assertArrayNotHasKey('video', $data['data']);
+    $this->assertEquals(2, count($data['data']['category']));
+  }
+
+  public function testMixPhotosAndVideos() {
+    // Original URL: https://www.instagram.com/p/BZWmpecjBwN/
+    $url = 'http://www.instagram.com/photos_and_video.html';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals(3, count($data['data']['photo']));
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/t51.2885-15/e35/21878922_686481254874005_8468823712617988096_n.jpg', $data['data']['photo'][0]);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/t51.2885-15/e15/21910026_1507234999368159_6974261907783942144_n.jpg', $data['data']['photo'][1]);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/t51.2885-15/e35/21878800_273567963151023_7672178549897297920_n.jpg', $data['data']['photo'][2]);
+    $this->assertArrayNotHasKey('video', $data['data']);
+    $this->assertEquals(2, count($data['data']['category']));
+  }
+
 }

@@ -67,22 +67,36 @@ class Instagram extends Format {
       ];
     }
 
-    // Include the photo/video media URLs
-    // (Always return arrays)
-    if(array_key_exists('display_src', $photoData))
-      $entry['photo'] = [$photoData['display_src']];
-    elseif(array_key_exists('display_url', $photoData))
-      $entry['photo'] = [$photoData['display_url']];
-
-    if(array_key_exists('is_video', $photoData) && $photoData['is_video']) {
-      $entry['video'] = [$photoData['video_url']];
-    }
-
     $refs = [];
+    
+    // Include the photo/video media URLs
+    // (Always return arrays, even for single images)
+    if(array_key_exists('edge_sidecar_to_children', $photoData)) {
+      // Multi-post
+      // For now, we will only pull photos from multi-posts, and skip videos.
+
+      $entry['photo'] = [];
+      foreach($photoData['edge_sidecar_to_children']['edges'] as $edge) {
+        $entry['photo'][] = $edge['node']['display_url'];
+        // Don't need to pull person-tags from here because the main parent object already has them.
+      }
+
+    } else {
+      // Single photo or video
+
+      if(array_key_exists('display_src', $photoData))
+        $entry['photo'] = [$photoData['display_src']];
+      elseif(array_key_exists('display_url', $photoData))
+        $entry['photo'] = [$photoData['display_url']];
+
+      if(array_key_exists('is_video', $photoData) && $photoData['is_video']) {
+        $entry['video'] = [$photoData['video_url']];
+      }
+    }
 
     // Find person tags and fetch user profiles
 
-    // old json
+    // old instagram json
     if(isset($photoData['usertags']['nodes'])) {
       if(!isset($entry['category'])) $entry['category'] = [];
 
@@ -97,7 +111,7 @@ class Instagram extends Format {
       }
     }
 
-    // new json as of approximately 2017-04-19
+    // new instagram json as of approximately 2017-04-19
     if(isset($photoData['edge_media_to_tagged_user']['edges'])) {
       if(!isset($entry['category'])) $entry['category'] = [];
 
