@@ -6,6 +6,7 @@ current=`pwd`
 
 composer install
 
+rm $release_dir/xray-app.zip
 rsync -ap --delete controllers $release_dir/
 rsync -ap --delete lib $release_dir/
 rsync -ap --delete public $release_dir/
@@ -18,6 +19,6 @@ cp .htaccess $release_dir/
 cp controllers/.htaccess $release_dir/vendor/
 
 cd $release_dir
-zip -r xray.zip .
+zip -r xray-app.zip .
 
 cd $current
