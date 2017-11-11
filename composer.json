@@ -12,7 +12,8 @@
     "p3k/timezone": "*",
     "p3k/http": "0.1.*",
     "cebe/markdown": "1.1.*",
-    "miniflux/picofeed": "^0.1.37"
+    "miniflux/picofeed": "^0.1.37",
+    "facebook/graph-sdk": "^5.5"
   },
   "autoload": {
     "psr-4": {
