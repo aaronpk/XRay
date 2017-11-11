@@ -1,0 +1,297 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: application/rss+xml; charset=utf-8
+Connection: keep-alive
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="https://percolator.today/stylesheet.xsl" ?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  >
+<channel>
+  <title>Percolator</title>
+  <atom:link href="https://percolator.today/podcast.xml" rel="self" type="application/rss+xml" />
+  <atom:link href="https://switchboard.p3k.io/" rel="hub" />
+  <link>https://percolator.today/</link>
+  <description>A microcast with Aaron Parecki</description>
+  <lastBuildDate>Wed, 20 Sep 2017 07:00:00 +0000</lastBuildDate>
+  <language>en-US</language>
+  <copyright>2017 Aaron Parecki</copyright>
+  <itunes:subtitle></itunes:subtitle>
+  <itunes:author>Aaron Parecki</itunes:author>
+  <itunes:summary>A microcast with Aaron Parecki</itunes:summary>
+  <itunes:owner>
+    <itunes:name>Aaron Parecki</itunes:name>
+    <itunes:email>aaron@parecki.com</itunes:email>
+  </itunes:owner>
+  <itunes:explicit>No</itunes:explicit>
+  <itunes:image href="https://percolator.today/images/cover.jpg"></itunes:image>
+  <itunes:category text="Society &amp; Culture">
+    <itunes:category text="Personal Journals"></itunes:category>
+  </itunes:category>
+      <item>
+      <title>Episode 12: To Poll or Not to Poll</title>
+      <link>https://percolator.today/episode/12</link>
+      <pubDate>Fri, 10 Nov 2017 00:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/12</guid>
+      <description><![CDATA[<p>Building out a feed polling infrastructure is daunting. Thankfully Superfeedr has done it for me.</p>
+
+<ul>
+<li><a href="http://superfeedr.com/">Superfeedr</a></li>
+<li><a href="https://indieweb.org/Microsub">Microsub</a></li>
+<li><a href="https://monocle.p3k.io/">Monocle</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[Building out a feed polling infrastructure is daunting.]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FEpisode_12.mp3" length="3734380" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>03:07</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 11: What are Instagram Stories?</title>
+      <link>https://percolator.today/episode/11</link>
+      <pubDate>Sat, 04 Nov 2017 00:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/11</guid>
+      <description><![CDATA[<p>A bit of a diversion from my normal routine where I implemented Instagram Stories on my own website.</p>
+
+<ul>
+<li><a href="https://aaronparecki.com">aaronparecki.com</a></li>
+<li><a href="https://indieweb.org/story">indieweb.org/story</a></li>
+<li><a href="https://streampdx.com">streampdx.com</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[A bit of a diversion from my normal routine where I implemented Instagram Stories on my own website.]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FEpisode_11.mp3" length="3642429" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>03:01</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 10: Microsub for Readers</title>
+      <link>https://percolator.today/episode/10</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/10</guid>
+      <description><![CDATA[<p>Itching to get started rebuilding Monocle.</p>
+
+<ul>
+<li><a href="https://indieweb.org/Microsub-spec">Microsub draft spec</a></li>
+<li><a href="https://aaronparecki.com/2016/04/26/3/monocle">Monocle is Offline</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[Itching to get started rebuilding Monocle]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FEpisode_10.mp3" length="2414883" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>01:44</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 9: Streamlining my Microcast Workflow</title>
+      <link>https://percolator.today/episode/9</link>
+      <pubDate>Mon, 30 Oct 2017 00:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/9</guid>
+      <description><![CDATA[<p>I wrote a new Micropub app to help me publish Microcast episodes quicker. You can use it too! My podcast website also receives webmentions now!</p>
+
+<ul>
+<li><a href="https://gramophone.p3k.io">Gramophone</a></li>
+<li><a href="https://micropub.net/">Micropub</a></li>
+<li><a href="https://webmention.net/">Webmention</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[I wrote a new Micropub app to help me publish Microcast episodes quicker]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FEpisode_9.mp3" length="3351530" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>02:43</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 8: Back from the Woods</title>
+      <link>https://percolator.today/episode/8</link>
+      <pubDate>Sat, 28 Oct 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/8</guid>
+      <description><![CDATA[<p>Reflections on how I control what I consume online.</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="https://monocle.p3k.io/">Monocle</a></li>
+<li><a href="https://aaronparecki.com/2015/08/29/8/why-i-live-in-irc">Why I Live in IRC</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[Reflections on how I control what I consume online]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FEpisode_8.mp3" length="4036147" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>03:25</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 7: Making Micropub More Useful</title>
+      <link>https://percolator.today/episode/7</link>
+      <pubDate>Thu, 12 Oct 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/7</guid>
+      <description><![CDATA[<p>Thinking about what is needed for the Micropub spec for it to be even more useful.</p>
+
+<p>Links</p>
+
+<ul>
+<li><a href="https://quill.p3k.io">Quill</a> - a web-based Micropub app</li>
+<li><a href="https://micro.blog">Micro.blog</a></li>
+<li><a href="https://omnibear.com/">Omnibear</a> - a Micropub browser extension</li>
+<li><a href="https://indieweb.org/POSSE">POSSE</a> - Publish On your Own Site, Syndicate Elsewhere</li>
+<li><a href="https://indieauth.net">IndieAuth</a></li>
+<li><a href="https://micropub.net">Micropub</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[Thinking about what is needed for the Micropub spec for it to be even more useful.]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_7.mp3" length="4719178" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>05:31</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 6: My New Superpower</title>
+      <link>https://percolator.today/episode/6</link>
+      <pubDate>Mon, 09 Oct 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/6</guid>
+      <description><![CDATA[<p>My Overland GPS tracker app is live in the app store!</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="https://overland.p3k.io/">overland.p3k.io</a></li>
+<li><a href="https://github.com/aaronpk/Overland-iOS">source code</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[My Overland GPS tracker app is live in the app store!]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_6.mp3" length="3214274" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>03:26</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 5: Homebrew Website Club</title>
+      <link>https://percolator.today/episode/5</link>
+      <pubDate>Fri, 06 Oct 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/5</guid>
+      <description><![CDATA[<p>We had a great Portland Homebrew Website Club!</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="https://indieweb.org/events/2017-10-04-homebrew-website-club">Homebrew Website Club October 4th</a></li>
+<li><a href="https://aaronparecki.com/2017/10/04/23/passwordless-logins">Passwordless Logins on my Website</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[We had a great Portland Homebrew Website Club!]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_5.mp3" length="2303424" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>02:10</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 4: Pretending to be an iOS Developer</title>
+      <link>https://percolator.today/episode/4</link>
+      <pubDate>Wed, 04 Oct 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/4</guid>
+      <description><![CDATA[<p>Talking about what it takes to publish an app on the iOS app store.</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="https://aaronparecki.com/gps/">about my GPS logs</a></li>
+<li><a href="https://overland.p3k.io">Overland website</a></li>
+<li><a href="https://github.com/aaronpk/Overland-iOS">Overland on GitHub</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[Talking about what it takes to publish an app on the iOS app store.]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_4.mp3" length="4631320" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>05:24</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 3: Following</title>
+      <link>https://percolator.today/episode/3</link>
+      <pubDate>Fri, 29 Sep 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/3</guid>
+      <description><![CDATA[<p>Thinking about how I want to follow people on the IndieWeb.</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="https://indieweb.org/follow">follow</a></li>
+<li><a href="https://indieweb.org/webactions#Issues">issues with webactions</a></li>
+<li><a href="https://keithjgrant.com/">Keith Grant</a></li>
+<li><a href="https://omnibear.com/">Omnibear browser extension</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[Thinking about how I want to follow people on the IndieWeb.]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_3.mp3" length="4343275" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>05:00</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 2: Publishing a Podcast</title>
+      <link>https://percolator.today/episode/2</link>
+      <pubDate>Fri, 22 Sep 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/2</guid>
+      <description><![CDATA[<p>Building a website for this podcast, enjoying a new coffee shop.</p>
+
+<p><a href="https://aaronparecki.com/2017/09/21/5/">Foxy coffee</a></p>
+]]></description>
+      <itunes:summary><![CDATA[Building a website for this podcast, enjoying a new coffee shop.]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_2.mp3" length="3657711" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>04:02</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+      <item>
+      <title>Episode 1: Welcome</title>
+      <link>https://percolator.today/episode/1</link>
+      <pubDate>Wed, 20 Sep 2017 07:00:00 +0000</pubDate>
+      <dc:creator>Aaron Parecki</dc:creator>
+      <guid isPermaLink="true">https://percolator.today/episode/1</guid>
+      <description><![CDATA[<p>What is Percolator? Some thoughts about multi-photos in Instagram.</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="https://indieweb.org/multi-photo_vs_collection">multi-photo vs collection</a></li>
+</ul>
+]]></description>
+      <itunes:summary><![CDATA[What is Percolator? Some thoughts about multi-photos in Instagram.]]></itunes:summary>
+      <enclosure url="https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_1.mp3" length="3090320" type="audio/mpeg"></enclosure>
+      <itunes:explicit>No</itunes:explicit>
+      <itunes:block>No</itunes:block>
+      <itunes:duration>03:15</itunes:duration>
+      <itunes:author>Aaron Parecki</itunes:author>
+    </item>
+  </channel>
+</rss>

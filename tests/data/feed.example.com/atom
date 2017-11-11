@@ -1,0 +1,201 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: application/atom+xml; charset=utf-8
+Connection: keep-alive
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
+  <title>Tantek Çelik</title>
+  <link href="http://tantek.com/" rel="alternate" title="Tantek Çelik" type="text/html"/>
+  <link href="http://tantek.com/updates.atom" rel="self"/>
+  <link rel="hub" href="https://pubsubhubbub.superfeedr.com/"/>
+  <id>http://tantek.com/updates.atom</id>
+  <author>
+    <name>Tantek</name>
+    <uri>http://tantek.com/</uri>
+  </author>
+  <updated>2017-11-08T23:53:00-08:00</updated>
+  <entry>
+    <updated>2017-11-08T23:53:00-08:00</updated>
+    <published>2017-11-08T23:53:00-08:00</published>
+    <link href="http://tantek.com/2017/312/t3/tam-trail-run-first-trail-half" rel="alternate" title="going to Mt. Tam Trail Run 2017-11-11 07:00 at Stinson Beach! signed up for the half (my first trail half marathon!)" type="text/html"/>
+    <id>http://tantek.com/2017/312/t3/tam-trail-run-first-trail-half</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">going to Mt. Tam Trail Run 2017-11-11 07:00 at Stinson Beach!
+signed up for the half (my first trail half marathon!)</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">going to Mt. Tam Trail Run 2017-11-11 07:00 at Stinson Beach!<br class="auto-break"/>signed up for the half (my first trail half marathon!)</div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">note</object-type>
+  </entry>
+  <entry>
+    <updated>2017-11-08T23:29:00-08:00</updated>
+    <published>2017-11-08T23:29:00-08:00</published>
+    <link href="http://tantek.com/2017/312/t2/more-pancakes-this-morning" rel="alternate" title="went to MORE Pancakes! this morning @RunJanji pop-up on California st after #NPSF. Picked up a new running shirt." type="text/html"/>
+    <id>http://tantek.com/2017/312/t2/more-pancakes-this-morning</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">went to MORE Pancakes! this morning @RunJanji pop-up on California st after #NPSF. Picked up a new running shirt.</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">went to MORE Pancakes! this morning <a class="auto-link h-cassis-username" href="https://twitter.com/RunJanji">@RunJanji</a> pop-up on California st after #<span class="p-category auto-tag">NPSF</span>. Picked up a new running shirt.</div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">note</object-type>
+  </entry>
+  <entry>
+    <updated>2017-11-08T13:19:00-08:00</updated>
+    <published>2017-11-08T13:19:00-08:00</published>
+    <link href="http://tantek.com/2017/312/t1/w3ctpac-csswg-new-draft-barcamp" rel="alternate" title="at #w3cTPAC all week: MT @CSSWG; I made a new draft W  Intro’d &amp; facilitated @W3C Plenary day #BarCamp ThF #WPWG #WICG" type="text/html"/>
+    <id>http://tantek.com/2017/312/t1/w3ctpac-csswg-new-draft-barcamp</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">at #w3cTPAC all week:
+MT @CSSWG; I made a new draft
+W  Intro’d &amp; facilitated @W3C Plenary day #BarCamp
+ThF #WPWG #WICG</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">at #<span class="p-category auto-tag">w3cTPAC</span> all week:<br class="auto-break"/>MT <a class="auto-link h-cassis-username" href="https://twitter.com/CSSWG">@CSSWG</a>; I made a new draft<br class="auto-break"/>W  Intro’d &amp; facilitated <a class="auto-link h-cassis-username" href="https://twitter.com/W3C">@W3C</a> Plenary day #<span class="p-category auto-tag">BarCamp</span><br class="auto-break"/>ThF #<span class="p-category auto-tag">WPWG</span> #<span class="p-category auto-tag">WICG</span></div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">note</object-type>
+  </entry>
+  <entry>
+    <updated>2017-10-31T20:16:00-07:00</updated>
+    <published>2017-10-31T20:16:00-07:00</published>
+    <link href="http://tantek.com/2017/304/t1/run-bay-to-breakers-2018" rel="alternate" title="going to run Bay to Breakers 2018-05-20 + Bonus 3k = 15k! join me in Corral A: https://baytobreakers.com/ $40 today only!" type="text/html"/>
+    <id>http://tantek.com/2017/304/t1/run-bay-to-breakers-2018</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">going to run Bay to Breakers 2018-05-20 + Bonus 3k = 15k!
+join me in Corral A: https://baytobreakers.com/
+$40 today only!</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">going to run Bay to Breakers 2018-05-20 + Bonus 3k = 15k!<br class="auto-break"/>join me in Corral A: <a class="auto-link" href="https://baytobreakers.com/">https://baytobreakers.com/</a><br class="auto-break"/>$40 today only!</div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">note</object-type>
+  </entry>
+  <entry>
+    <updated>2017-10-30T21:20:00-07:00</updated>
+    <published>2017-10-30T21:20:00-07:00</published>
+    <link href="http://tantek.com/2017/303/t3/amp-openwashing-like-schema" rel="alternate" title=".@beep https://ethanmarcotte.com/wrote/seven-into-seven/ &amp; @adactio https://adactio.com/journal/13035 I.e. #AMP is #openwashing not #openweb, similar to #schema before it.  It has appearances or aspects of being open (e.g. with defensive statements like &quot;non-google committers&quot;), but in practice is proprietarily controlled/governed (free community labor for corporate leaders), and designed (perhaps unintentionally) to bias an otherwise seemingly open ecosystem towards a single company or small anti-competitive oligopoly in practice.  Nevermind the #doublespeak of caching vs hosting, or placement within &quot;search results&quot; implying part of a page vs the more practically meaningful &quot;SERP&quot; (search engine results *page*) placement, regardless of styling as a horizontal carousel or vertical list.  I still think an actually open alternative could be beneficial.  Previously, previously, previously: * tantek.com/2017/261/t2/open-alternatives-googleamp  * tantek.com/2017/262/t1/amp-yourself-worse-than-html  * tantek.com/2017/262/t2/amp-worse-than-html-subset  * tantek.com/2017/263/t1/open-html-subset-interacts-quickly * tantek.com/2015/280/t1/js-dr-amp-not-include-javascript  * tantek.com/2015/280/t2/make-amp-smaller-ban-jsonld-schema-org  More: https://indieweb.org/AMP" type="text/html"/>
+    <id>http://tantek.com/2017/303/t3/amp-openwashing-like-schema</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">.@beep https://ethanmarcotte.com/wrote/seven-into-seven/
+&amp; @adactio https://adactio.com/journal/13035
+I.e. #AMP is #openwashing not #openweb, similar to #schema before it.
+
+It has appearances or aspects of being open (e.g. with defensive statements like "non-google committers"), but in practice is proprietarily controlled/governed (free community labor for corporate leaders), and designed (perhaps unintentionally) to bias an otherwise seemingly open ecosystem towards a single company or small anti-competitive oligopoly in practice.
+
+Nevermind the #doublespeak of caching vs hosting, or placement within "search results" implying part of a page vs the more practically meaningful "SERP" (search engine results *page*) placement, regardless of styling as a horizontal carousel or vertical list.
+
+I still think an actually open alternative could be beneficial.
+
+Previously, previously, previously:
+* tantek.com/2017/261/t2/open-alternatives-googleamp
+ * tantek.com/2017/262/t1/amp-yourself-worse-than-html
+ * tantek.com/2017/262/t2/amp-worse-than-html-subset
+ * tantek.com/2017/263/t1/open-html-subset-interacts-quickly
+* tantek.com/2015/280/t1/js-dr-amp-not-include-javascript
+ * tantek.com/2015/280/t2/make-amp-smaller-ban-jsonld-schema-org
+
+More: https://indieweb.org/AMP</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">.<a class="auto-link h-cassis-username" href="https://twitter.com/beep">@beep</a> <a class="auto-link" href="https://ethanmarcotte.com/wrote/seven-into-seven/">https://ethanmarcotte.com/wrote/seven-into-seven/</a><br class="auto-break"/>&amp; <a class="auto-link h-cassis-username" href="https://twitter.com/adactio">@adactio</a> <a class="auto-link" href="https://adactio.com/journal/13035">https://adactio.com/journal/13035</a><br class="auto-break"/>I.e. #<span class="p-category auto-tag">AMP</span> is #<span class="p-category auto-tag">openwashing</span> not #<span class="p-category auto-tag">openweb</span>, similar to #<span class="p-category auto-tag">schema</span> before it.<br class="auto-break"/><br class="auto-break"/>It has appearances or aspects of being open (e.g. with defensive statements like "non-google committers"), but in practice is proprietarily controlled/governed (free community labor for corporate leaders), and designed (perhaps unintentionally) to bias an otherwise seemingly open ecosystem towards a single company or small anti-competitive oligopoly in practice.<br class="auto-break"/><br class="auto-break"/>Nevermind the #<span class="p-category auto-tag">doublespeak</span> of caching vs hosting, or placement within "search results" implying part of a page vs the more practically meaningful "SERP" (search engine results *page*) placement, regardless of styling as a horizontal carousel or vertical list.<br class="auto-break"/><br class="auto-break"/>I still think an actually open alternative could be beneficial.<br class="auto-break"/><br class="auto-break"/>Previously, previously, previously:<br class="auto-break"/>* <a class="auto-link" href="http://tantek.com/2017/261/t2/open-alternatives-googleamp">tantek.com/2017/261/t2/open-alternatives-googleamp</a><br class="auto-break"/> * <a class="auto-link" href="http://tantek.com/2017/262/t1/amp-yourself-worse-than-html">tantek.com/2017/262/t1/amp-yourself-worse-than-html</a><br class="auto-break"/> * <a class="auto-link" href="http://tantek.com/2017/262/t2/amp-worse-than-html-subset">tantek.com/2017/262/t2/amp-worse-than-html-subset</a><br class="auto-break"/> * <a class="auto-link" href="http://tantek.com/2017/263/t1/open-html-subset-interacts-quickly">tantek.com/2017/263/t1/open-html-subset-interacts-quickly</a><br class="auto-break"/>* <a class="auto-link" href="http://tantek.com/2015/280/t1/js-dr-amp-not-include-javascript">tantek.com/2015/280/t1/js-dr-amp-not-include-javascript</a><br class="auto-break"/> * <a class="auto-link" href="http://tantek.com/2015/280/t2/make-amp-smaller-ban-jsonld-schema-org">tantek.com/2015/280/t2/make-amp-smaller-ban-jsonld-schema-org</a><br class="auto-break"/><br class="auto-break"/>More: <a class="auto-link" href="https://indieweb.org/AMP">https://indieweb.org/AMP</a></div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">note</object-type>
+  </entry>
+  <entry>
+    <updated>2017-10-30T16:57:00-07:00</updated>
+    <published>2017-10-30T16:57:00-07:00</published>
+    <link href="http://tantek.com/2017/303/t2/frontend-web-dev-designer-fullstack-follow-aeasf" rel="alternate" title="If you’re a frontend web dev designer or fullstack-*, you must follow #AEASF for pure awesome: https://twitter.com/hashtag/aeasf?f=tweets&amp;vertical=default" type="text/html"/>
+    <id>http://tantek.com/2017/303/t2/frontend-web-dev-designer-fullstack-follow-aeasf</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">If you’re a frontend web dev designer or fullstack-*, you must follow #AEASF for pure awesome: https://twitter.com/hashtag/aeasf?f=tweets&amp;vertical=default</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">If you’re a frontend web dev designer or fullstack-*, you must follow #<span class="p-category auto-tag">AEASF</span> for pure awesome: <a class="auto-link" href="https://twitter.com/hashtag/aeasf?f=tweets&amp;vertical=default">https://twitter.com/hashtag/aeasf?f=tweets&amp;vertical=default</a></div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">note</object-type>
+  </entry>
+  <entry>
+    <updated>2017-10-30T08:30:00-07:00</updated>
+    <published>2017-10-30T08:30:00-07:00</published>
+    <link href="http://tantek.com/2017/303/t1/four-years-nov-project-sf-npversary" rel="alternate" title="Four years ago: my first @Nov_Project_SF. #NPversary This past year: ran my first marathon &amp; led #NP_Yoga   #NovemberProject is an amazing community.  Grateful to be a part of it, across so many cities, and especially grateful for all the support which helped me breakthrough limitations I had previously accepted, and achieve goals I had thought were impossible or had never even considered.  Let’s see what I can do in year 5.  Previously: * tantek.com/2014/308/b2/my-first-year-november-project * tantek.com/2014/303/t1/one-year-ago-justshowup-npsf-npversary * tantek.com/2013/303/t3/novemberproject-different-level-fitness" type="text/html"/>
+    <id>http://tantek.com/2017/303/t1/four-years-nov-project-sf-npversary</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">Four years ago: my first @Nov_Project_SF. #NPversary
+This past year: ran my first marathon &amp; led #NP_Yoga 
+
+#NovemberProject is an amazing community.
+
+Grateful to be a part of it, across so many cities, and especially grateful for all the support which helped me breakthrough limitations I had previously accepted, and achieve goals I had thought were impossible or had never even considered.
+
+Let’s see what I can do in year 5.
+
+Previously:
+* tantek.com/2014/308/b2/my-first-year-november-project
+* tantek.com/2014/303/t1/one-year-ago-justshowup-npsf-npversary
+* tantek.com/2013/303/t3/novemberproject-different-level-fitness</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">Four years ago: my first <a class="auto-link h-cassis-username" href="https://twitter.com/Nov_Project_SF">@Nov_Project_SF</a>. #<span class="p-category auto-tag">NPversary</span><br class="auto-break"/>This past year: ran my first marathon &amp; led #<span class="p-category auto-tag">NP_Yoga</span> <br class="auto-break"/><br class="auto-break"/>#<span class="p-category auto-tag">NovemberProject</span> is an amazing community.<br class="auto-break"/><br class="auto-break"/>Grateful to be a part of it, across so many cities, and especially grateful for all the support which helped me breakthrough limitations I had previously accepted, and achieve goals I had thought were impossible or had never even considered.<br class="auto-break"/><br class="auto-break"/>Let’s see what I can do in year 5.<br class="auto-break"/><br class="auto-break"/>Previously:<br class="auto-break"/>* <a class="auto-link" href="http://tantek.com/2014/308/b2/my-first-year-november-project">tantek.com/2014/308/b2/my-first-year-november-project</a><br class="auto-break"/>* <a class="auto-link" href="http://tantek.com/2014/303/t1/one-year-ago-justshowup-npsf-npversary">tantek.com/2014/303/t1/one-year-ago-justshowup-npsf-npversary</a><br class="auto-break"/>* <a class="auto-link" href="http://tantek.com/2013/303/t3/novemberproject-different-level-fitness">tantek.com/2013/303/t3/novemberproject-different-level-fitness</a></div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">note</object-type>
+  </entry>
+  <entry>
+    <updated>2017-10-29T16:26:00-07:00</updated>
+    <published>2017-10-29T16:26:00-07:00</published>
+    <link href="http://tantek.com/2017/305/e1/homebrew-website-club" rel="alternate" title="Homebrew Website Club SF" type="text/html"/>
+    <id>http://tantek.com/2017/305/e1/homebrew-website-club</id>
+    <title type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="if-your-feed-reader-displays-this-then-it-is-violating-the-Atom-spec-RFC-4287-section-4.2.14">Event</div>
+    </title>
+    <content type="xhtml" xml:base="http://tantek.com/2017/" xml:space="preserve">
+      <div xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+        <div class="entry-content">
+<p>
+When: <time class="dt-start dtstart">2017-11-01 17:30</time>…<time class="dt-end dtend">19:30</time>
+<span style="display:block">
+Where: <a class="u-location h-card location" href="https://wiki.mozilla.org/SF">Mozilla San Francisco</a>
+</span>
+Host: <a class="u-organizer h-card" href="http://tantek.com/">Tantek Çelik</a>
+</p>
+<div class="p-summary description">
+<p>
+17:30: Optional writing hour and quiet socializing<br/>
+18:30: IndieWeb demos and hack night
+</p>
+<p><img class="u-featured" style="max-width:100%;width:100%;height:300px;object-fit:cover;object-position:50% 40%" src="https://indieweb.org/images/b/b1/2017-hwc-80s-retro.jpg" alt="Photo of previous Homebrew Website Club participants"/></p>
+<p>
+Demos of personal website breakthroughs. Create or update your personal web site!
+</p>
+<p>
+Join a community with like-minded interests. Bring friends that want a personal site, or are interested in a healthy, independent web!
+</p>
+<p>Topics for this week:</p>
+<ul>
+<li><a href="https://indieweb.org/2017/Berlin">IndieWebCamp Berlin</a> coming up this weekend!</li>
+<li><a href="https://indieweb.org/post#Thoughts_on_why_post">Why post (or not)</a></li>
+<li><a href="https://indieweb.org/WebSub">WebSub</a> (IndieWeb building block) is a <a href="https://www.w3.org/blog/news/archives/6555">W3C Proposed Recommendation</a></li>
+<li><a href="https://www.w3.org/wiki/TPAC/2017">W3C TPAC is next week</a> in Burlingame (near SF)</li>
+<li><a href="https://indieweb.org/2018-01-01-commitments">2018-01-01-commitments</a></li>
+</ul>
+<p>
+Any questions? Ask in 
+<a href="https://indieweb.org/discuss">#indieweb Slack or IRC</a>
+</p>
+<p>
+More information: 
+<a class="u-url" href="https://indieweb.org/events/2017-11-01-homebrew-website-club">IndieWeb Wiki Event Page</a>
+</p>
+<p>
+RSVP: <a class="u-syndication" href="https://www.facebook.com/events/475348969517825">on the Facebook event</a> or post an <a href="https://indieweb.org/rsvp">indie RSVP</a> on your own site!
+</p>
+</div>
+</div>
+      </div>
+    </content>
+    <object-type xmlns="http://activitystrea.ms/spec/1.0/">event</object-type>
+  </entry>
+</feed>

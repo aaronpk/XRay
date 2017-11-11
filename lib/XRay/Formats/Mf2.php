@@ -535,18 +535,12 @@ class Mf2 extends Format {
   private static function parseAsHFeed($mf2, $http) {
     $data = [
       'type' => 'feed',
-      'author' => [
-        'type' => 'card',
-        'name' => null,
-        'url' => null,
-        'photo' => null
-      ],
-      'todo' => 'Not yet implemented. Please see https://github.com/aaronpk/XRay/issues/1'
+      'todo' => 'Not yet implemented. Please see https://github.com/aaronpk/XRay/issues/1',
+      'items' => [],
     ];
 
     return [
-      'data' => $data,
-      'entries' => []
+      'data' => $data
     ];
   }
 

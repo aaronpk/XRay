@@ -1,0 +1,197 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: application/rss+xml; charset=utf-8
+Connection: keep-alive
+
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+  >
+
+<channel>
+  <title>snarfed.org</title>
+  <atom:link href="https://snarfed.org/feed" rel="self" type="application/rss+xml" />
+  <link>https://snarfed.org</link>
+  <description>Ryan Barrett&#039;s blog</description>
+  <lastBuildDate>Sat, 11 Nov 2017 00:30:06 +0000</lastBuildDate>
+  <language>en-US</language>
+  <sy:updatePeriod>hourly</sy:updatePeriod>
+  <sy:updateFrequency>1</sy:updateFrequency>
+  <generator>https://wordpress.org/?v=4.8.3</generator>
+  <item>
+    <title></title>
+    <link>https://snarfed.org/2017-11-05_25889</link>
+    <comments>https://snarfed.org/2017-11-05_25889#comments</comments>
+    <pubDate>Mon, 06 Nov 2017 02:15:02 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/?p=25889</guid>
+    <description><![CDATA[]]></description>
+        <content:encoded><![CDATA[<p><a class="shadow" href="https://i2.wp.com/snarfed.org/w/wp-content/uploads/2017/11/IMG_20171105_173400_955.jpg?ssl=1"><img class="size-full shadow" src="https://i2.wp.com/snarfed.org/w/wp-content/uploads/2017/11/IMG_20171105_173400_955.jpg?resize=696%2C696&#038;ssl=1"  data-recalc-dims="1"></a></p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-11-05_25889/feed</wfw:commentRss>
+    <slash:comments>12</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-10-31_25851</link>
+    <comments>https://snarfed.org/2017-10-31_25851#comments</comments>
+    <pubDate>Tue, 31 Oct 2017 15:28:04 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/2017-10-31_25851</guid>
+    <description><![CDATA[]]></description>
+        <content:encoded><![CDATA[<p><a href="https://i0.wp.com/snarfed.org/w/wp-content/uploads/2017/10/IMG_20171030_200005.jpg?ssl=1"><img class="shadow size-full" data-wpid="272" src="https://i0.wp.com/snarfed.org/w/wp-content/uploads/2017/10/IMG_20171030_200005.jpg?w=696&#038;ssl=1" data-recalc-dims="1"></a></p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-10-31_25851/feed</wfw:commentRss>
+    <slash:comments>38</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-10-25_25812</link>
+    <comments>https://snarfed.org/2017-10-25_25812#respond</comments>
+    <pubDate>Wed, 25 Oct 2017 17:01:49 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/?p=25812</guid>
+    <description><![CDATA[Whoa. Microsoft is killing the Kinect. It&#8217;s been a while coming, I guess, but still. End of an era!]]></description>
+        <content:encoded><![CDATA[<p>Whoa. <a href="https://www.fastcodesign.com/90147868/exclusive-microsoft-has-stopped-manufacturing-the-kinect">Microsoft is killing the Kinect.</a> It&#8217;s been a while coming, I guess, but still. End of an era!</p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-10-25_25812/feed</wfw:commentRss>
+    <slash:comments>0</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-10-23_25792</link>
+    <comments>https://snarfed.org/2017-10-23_25792#respond</comments>
+    <pubDate>Mon, 23 Oct 2017 20:06:25 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/?p=25792</guid>
+    <description><![CDATA[Nothing as good will ever be built again, so let us make proper use of what we&#8217;ve got. &#160;&#160; &#8211; Clerk of Works, Chatsworth Estate, ~1960 &#160;&#160;&#160; via Deborah Cavendish, Duchess of Devonshire, The Estate &#160;&#160;&#160; via Stewart Brand, How Buildings Learn]]></description>
+        <content:encoded><![CDATA[<blockquote>
+  <p>Nothing as good will ever be built again, so let us make proper use of what we&#8217;ve got.</p>
+</blockquote>
+
+<p>&nbsp;&nbsp; &#8211; Clerk of Works, <a href="https://en.wikipedia.org/wiki/Chatsworth_House#Estate">Chatsworth Estate</a>, ~1960<br />
+&nbsp;&nbsp;&nbsp; via <a href="https://en.wikipedia.org/wiki/Deborah_Cavendish,_Duchess_of_Devonshire">Deborah Cavendish, Duchess of Devonshire</a>, <em><a href="https://books.google.com/books/about/The_Estate.html?id=DuVCNQAACAAJ">The Estate</a></em><br />
+&nbsp;&nbsp;&nbsp; via <a href="https://books.google.com/books?id=zkgRgdVN2GIC">Stewart Brand, <em>How Buildings Learn</em></a></p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-10-23_25792/feed</wfw:commentRss>
+    <slash:comments>0</slash:comments>
+    </item>
+    <item>
+    <title>Bridgy Fed</title>
+    <link>https://snarfed.org/2017-10-22_bridgy-fed</link>
+    <comments>https://snarfed.org/2017-10-22_bridgy-fed#respond</comments>
+    <pubDate>Mon, 23 Oct 2017 04:01:46 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/?p=25785</guid>
+    <description><![CDATA[I&#8217;m launching a new side project! Bridgy Fed connects your IndieWeb site with federated social networks like Mastodon and Hubzilla. If your site can send and receive webmentions, Bridgy Fed can federate it with the fediverse! I originally discovered the IndieWeb after I started connecting this web site with social networks like Facebook and Twitter. [&#8230;]]]></description>
+        <content:encoded><![CDATA[<p class="right third">
+ <a href="https://fed.brid.gy/">
+  <img src="/bridgy_fed.png"></a></p>
+
+<p>I&#8217;m launching a new side project! <a href="https://fed.brid.gy/">Bridgy Fed</a> connects your <a href="https://indieweb.org/">IndieWeb</a> site with federated social networks like <a href="https://joinmastodon.org/">Mastodon</a> and <a href="https://project.hubzilla.org/">Hubzilla</a>. If your site can send and receive <a href="https://indieweb.org/webmention">webmentions</a>, Bridgy Fed can federate it with the <a href="https://en.wikipedia.org/wiki/Fediverse">fediverse</a>!</p>
+
+<p>I originally discovered the IndieWeb after I started <a href="/2011-07-27_facebook_app_for_ostatus">connecting this web site</a> with social networks like Facebook and Twitter. That led to <a href="https://brid.gy/">Bridgy</a>, which has grown bigger than I care to admit. I still have that desire to bridge different communities and networks, and Bridgy Fed is just the latest incarnation. Give it a whirl, kick the tires, and <a href="https://github.com/snarfed/bridgy-fed/issues">let me know what you think</a>!</p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-10-22_bridgy-fed/feed</wfw:commentRss>
+    <slash:comments>0</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-10-15_25692</link>
+    <comments>https://snarfed.org/2017-10-15_25692#comments</comments>
+    <pubDate>Sun, 15 Oct 2017 13:43:58 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/?p=25692</guid>
+    <description><![CDATA[That feeling when you Google something obscure and only find your own old stuff.]]></description>
+        <content:encoded><![CDATA[<p>That feeling when you Google something obscure and only find your own old stuff.</p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-10-15_25692/feed</wfw:commentRss>
+    <slash:comments>21</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-10-10_25648</link>
+    <comments>https://snarfed.org/2017-10-10_25648#comments</comments>
+    <pubDate>Tue, 10 Oct 2017 18:11:51 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/2017-10-10_25648</guid>
+    <description><![CDATA[Found this front page of the Feb. 18, 1976 New Nigerian blowing down our street in San Francisco.]]></description>
+        <content:encoded><![CDATA[<p>Found this front page of the Feb. 18, 1976 <a href="http://www.newnigeriannewspaper.com/">New Nigerian</a> blowing down our street in San Francisco.</p>
+
+<p><img class="size-full shadow" data-wpid="271" src="https://i2.wp.com/snarfed.org/w/wp-content/uploads/2017/10/IMG_20171010_110709_484.jpg?w=696&#038;ssl=1" data-recalc-dims="1"></p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-10-10_25648/feed</wfw:commentRss>
+    <slash:comments>11</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-10-08_25636</link>
+    <comments>https://snarfed.org/2017-10-08_25636#comments</comments>
+    <pubDate>Sun, 08 Oct 2017 17:07:08 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/2017-10-08_25636</guid>
+    <description><![CDATA[Seeing more and more cards with red edges these days. Different networks, issuing banks, etc. What&#8217;s the secret?]]></description>
+        <content:encoded><![CDATA[<p>Seeing more and more cards with red edges these days. Different networks, issuing banks, etc. What&#8217;s the secret?</p>
+
+<p><img class="shadow size-full" data-wpid="270" src="https://i2.wp.com/snarfed.org/w/wp-content/uploads/2017/10/IMG_20171008_115950_71101.jpg?w=696&#038;ssl=1" data-recalc-dims="1"></p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-10-08_25636/feed</wfw:commentRss>
+    <slash:comments>6</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-09-28_25563</link>
+    <comments>https://snarfed.org/2017-09-28_25563#comments</comments>
+    <pubDate>Thu, 28 Sep 2017 13:48:30 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/2017-09-28_25563</guid>
+    <description><![CDATA[Morning, @karlthefog.]]></description>
+        <content:encoded><![CDATA[<p>Morning, <a href="https://twitter.com/KarlTheFog">@karlthefog</a>.</p>
+
+<p><img class="shadow size-full" data-wpid="264" src="https://i0.wp.com/snarfed.org/w/wp-content/uploads/2017/09/IMG_20170928_064056_754.jpg?w=696&#038;ssl=1" data-recalc-dims="1"></p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-09-28_25563/feed</wfw:commentRss>
+    <slash:comments>14</slash:comments>
+    </item>
+    <item>
+    <title></title>
+    <link>https://snarfed.org/2017-09-12_25492</link>
+    <comments>https://snarfed.org/2017-09-12_25492#comments</comments>
+    <pubDate>Tue, 12 Sep 2017 20:09:12 +0000</pubDate>
+    <dc:creator><![CDATA[Ryan Barrett]]></dc:creator>
+        <category><![CDATA[Uncategorized]]></category>
+
+    <guid isPermaLink="false">https://snarfed.org/2017-09-12_25492</guid>
+    <description><![CDATA[new business cards &#x1f602;]]></description>
+        <content:encoded><![CDATA[<p>new business cards <img src="https://s.w.org/images/core/emoji/2.3/72x72/1f602.png" alt="😂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+<p><img data-wpid="262" src="https://i0.wp.com/snarfed.org/w/wp-content/uploads/2017/09/IMG_20170912_131414_767.jpg?w=696&#038;ssl=1" class="size-full shadow" data-recalc-dims="1"></p>
+]]></content:encoded>
+      <wfw:commentRss>https://snarfed.org/2017-09-12_25492/feed</wfw:commentRss>
+    <slash:comments>84</slash:comments>
+    </item>
+  </channel>
+</rss>

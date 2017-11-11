@@ -81,5 +81,9 @@ abstract class Format implements iFormat {
     return $sanitized;
   }
 
+  protected static function stripHTML($html) {
+    return trim(strip_tags($html));
+  }
+
 
 }

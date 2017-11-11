@@ -38,6 +38,10 @@ class Parser {
       return Formats\Hackernews::parse($body, $url);
     }
 
+    if(substr($body, 0, 5) == '<?xml') {
+      return Formats\XML::parse($body, $url);
+    }
+
     // No special parsers matched, parse for Microformats now
     return Formats\HTML::parse($this->http, $body, $url, $opts);
   }
