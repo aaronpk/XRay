@@ -6,22 +6,26 @@ XRay parses structured content from a URL.
 
 ## Discovering Content
 
-The contents of the URL is checked in the following order:
+XRay will parse content in the following formats. First the URL is checked against known services:
 
-* A silo URL from one of the following websites:
-  * Instagram
-  * Twitter
-  * GitHub
-  * XKCD
-  * (more coming soon)
-* Microformats
-  * h-card
-  * h-entry
-  * h-event
-  * h-review
-  * h-recipe
-  * h-product
-  * h-item
+* Instagram
+* Twitter
+* GitHub
+* XKCD
+* Hackernews
+
+If the contents of the URL is XML or JSON, then XRay will parse the Atom, RSS or JSONFeed formats.
+
+Finally, XRay looks for Microformats on the page and will determine the content from that.
+
+* h-card
+* h-entry
+* h-event
+* h-review
+* h-recipe
+* h-product
+* h-item
+* h-feed
 
 ## Library
 
@@ -30,6 +34,8 @@ XRay can be used as a library in your PHP project. The easiest way to install it
 ```
 composer require p3k/xray
 ```
+
+You can also [download a release](https://github.com/aaronpk/XRay/releases) which is a zip file with all dependencies already installed.
 
 ### Parsing
 
@@ -54,7 +60,7 @@ In both cases, you can add an additional parameter to configure various options 
 * `target` - Specify a target URL, and XRay will first check if that URL is on the page, and only if it is, will continue to parse the page. This is useful when you're using XRay to verify an incoming webmention.
 * `expect=feed` - If you know the thing you are parsing is a feed, include this parameter which will avoid running the autodetection rules and will provide better results for some feeds.
 
-Additionally, the following parameters are supported when making requests that use the Twitter or GitHub API. See the authentication section below for details.
+Additional parameters are supported when making requests that use the Twitter or GitHub API. See the Authentication section below for details.
 
 ```php
 $xray = new p3k\XRay();
@@ -133,7 +139,7 @@ $xray->parse('http://example.com/');
 
 XRay can also be used as an API to provide its parsing capabilities over an HTTP service.
 
-To parse a page and return structured data for the contents of the page, simply pass a url to the parse route.
+To parse a page and return structured data for the contents of the page, simply pass a url to the `/parse` route.
 
 ```
 GET /parse?url=https://aaronparecki.com/2016/01/16/11/
@@ -149,7 +155,7 @@ In both cases, the response will be a JSON object containing a key of "type". If
 
 You can also make a POST request with the same parameter names.
 
-If you already have an HTML or JSON document you want to parse, you can include that in the parameter `body`. This POST request would look like the below:
+If you already have an HTML or JSON document you want to parse, you can include that in the POST parameter `body`. This POST request would look like the below:
 
 ```
 POST /parse
@@ -169,6 +175,18 @@ url=https://github.com/aaronpk/XRay
 &body={"repo":......}
 ```
 
+### Parameters
+
+XRay accepts the following parameters when calling `/parse`
+
+* `url` - the URL of the page to parse
+* `target` - Specify a target URL, and XRay will first check if that URL is on the page, and only if it is, will continue to parse the page. This is useful when you're using XRay to verify an incoming webmention.
+* `timeout` - The timeout in seconds to wait for any HTTP requests
+* `max_redirects` - The maximum number of redirects to follow
+* `include_original` - Will also return the full document fetched
+* `expect=feed` - If you know the thing you are parsing is a feed, include this parameter which will avoid running the autodetection rules and will provide better results for some feeds.
+
+
 ### Authentication
 
 If the URL you are fetching requires authentication, include the access token in the parameter "token", and it will be included in an "Authorization" header when fetching the URL. (It is recommended to use a POST request in this case, to avoid the access token potentially being logged as part of the query string.) This is useful for [Private Webmention](https://indieweb.org/Private-Webmention) verification.
@@ -187,17 +205,17 @@ XRay uses the Twitter API to fetch posts, and the Twitter API requires authentic
 
 You should only send Twitter credentials when the URL you are trying to parse is a Twitter URL, so you'll want to check for whether the hostname is `twitter.com` before you include credentials in this call.
 
-* twitter_api_key - Your application's API key
-* twitter_api_secret - Your application's API secret
-* twitter_access_token - Your Twitter access token
-* twitter_access_token_secret - Your Twitter secret access token
+* `twitter_api_key` - Your application's API key
+* `twitter_api_secret` - Your application's API secret
+* `twitter_access_token` - Your Twitter access token
+* `twitter_access_token_secret` - Your Twitter secret access token
 
 
 ### GitHub Authentication
 
 XRay uses the GitHub API to fetch GitHub URLs, which provides higher rate limits when used with authentication. You can pass a GitHub access token along with the request and XRay will use it when making requests to the API.
 
-* github_access_token - A GitHub access token
+* `github_access_token` - A GitHub access token
 
 
 ### Error Response
@@ -261,15 +279,15 @@ The primary object on the page is returned in the `data` property. This will ind
 
 If a property supports multiple values, it will always be returned as an array. The following properties support multiple values:
 
-* in-reply-to
-* like-of
-* repost-of
-* bookmark-of
-* syndication
-* photo (of entry, not of a card)
-* video
-* audio
-* category
+* `in-reply-to`
+* `like-of`
+* `repost-of`
+* `bookmark-of`
+* `syndication`
+* `photo` (of entry, not of a card)
+* `video`
+* `audio`
+* `category`
 
 The content will be an object that always contains a "text" property and may contain an "html" property if the source documented published HTML content. The "text" property must always be HTML escaped before displaying it as HTML, as it may include unescaped characters such as `<` and `>`.
 
