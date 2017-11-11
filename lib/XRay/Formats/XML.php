@@ -49,6 +49,11 @@ class XML extends Format {
       ]
     ];
 
+    if(is_array($guid=$item->getTag('guid')) && count($guid))
+      $entry['uid'] = $guid[0];
+    elseif(is_array($guid=$item->getTag('id')) && count($guid))
+      $entry['uid'] = $guid[0];
+
     if($item->getUrl())
       $entry['url'] = $item->getUrl();
 

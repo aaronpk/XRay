@@ -78,7 +78,7 @@ abstract class Format implements iFormat {
     $purifier = new HTMLPurifier($config);
     $sanitized = $purifier->purify($html);
     $sanitized = str_replace("&#xD;","\r",$sanitized);
-    return $sanitized;
+    return trim($sanitized);
   }
 
   protected static function stripHTML($html) {

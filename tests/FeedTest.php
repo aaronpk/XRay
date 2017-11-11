@@ -84,6 +84,35 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('feed', $data->type);
   }
 
+  public function testJSONFeed() {
+    $url = 'http://feed.example.com/jsonfeed';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals(10, count($data->items));
+    for($i=0; $i<8; $i++) {
+      $this->assertEquals('entry', $data->items[$i]->type);
+      $this->assertEquals('manton', $data->items[$i]->author->name);
+      $this->assertEquals('http://www.manton.org', $data->items[$i]->author->url);
+      $this->assertNotEmpty($data->items[$i]->url);
+      $this->assertNotEmpty($data->items[$i]->uid);
+      $this->assertNotEmpty($data->items[$i]->published);
+      $this->assertNotEmpty($data->items[$i]->content->html);
+      $this->assertNotEmpty($data->items[$i]->content->text);
+    }
+
+    $this->assertEquals('<p>Lots of good feedback on <a href="http://help.micro.blog/2017/wordpress-import/">the WordPress import</a>. Made a couple improvements this morning. Overall, pretty good.</p>', $data->items[9]->content->html);
+    $this->assertEquals('Lots of good feedback on the WordPress import. Made a couple improvements this morning. Overall, pretty good.', $data->items[9]->content->text);
+    $this->assertEquals('http://www.manton.org/2017/11/5975.html', $data->items[9]->url);
+    $this->assertEquals('http://www.manton.org/2017/11/5975.html', $data->items[9]->uid);
+    $this->assertEquals('2017-11-07T15:04:01+00:00', $data->items[9]->published);
+
+    $this->assertEquals('feed', $data->type);
+  }
+
   public function testAtomFeed() {
     $url = 'http://feed.example.com/atom';
     $response = $this->parse(['url' => $url, 'expect' => 'feed']);
