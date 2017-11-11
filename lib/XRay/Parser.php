@@ -30,6 +30,10 @@ class Parser {
       return Formats\Twitter::parse($body, $url);
     }
 
+    if(Formats\Facebook::matches($url)) {
+      return Formats\Facebook::parse($body, $url);
+    }
+
     if(Formats\XKCD::matches($url)) {
       return Formats\XKCD::parse($body, $url);
     }
