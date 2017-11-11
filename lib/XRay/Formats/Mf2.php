@@ -5,6 +5,8 @@ use HTMLPurifier, HTMLPurifier_Config;
 
 class Mf2 extends Format {
 
+  use Mf2Feed;
+
   public static function matches_host($url) {
     return true;
   }
@@ -13,9 +15,14 @@ class Mf2 extends Format {
     return true;
   }
 
-  public static function parse($mf2, $url, $http) {
+  public static function parse($mf2, $url, $http, $opts=[]) {
     if(count($mf2['items']) == 0)
       return false;
+
+    // If they are expecting a feed, always return a feed or an error
+    if(isset($opts['expect']) && $opts['expect'] == 'feed') {
+      return self::parseAsHFeed($mf2, $http);
+    }
 
     // If there is only one item on the page, just use that
     if(count($mf2['items']) == 1) {
@@ -44,18 +51,18 @@ class Mf2 extends Format {
         #Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
         return self::parseAsHItem($mf2, $item, $http);
       }
-      if(in_array('h-feed', $item['type'])) {
-        #Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
-        return self::parseAsHFeed($mf2, $http);
-      }
       if(in_array('h-card', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-card it is the only item on the page");
         return self::parseAsHCard($item, $http, $url);
       }
+      if(in_array('h-feed', $item['type'])) {
+        #Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
+        return self::parseAsHFeed($mf2, $http);
+      }
     }
 
     // Check the list of items on the page to see if one matches the URL of the page, 
-    // and treat as a permalink for that object if so. Otherwise, parse as a feed.
+    // and treat as a permalink for that object if so.
     foreach($mf2['items'] as $item) {
       if(array_key_exists('url', $item['properties'])) {
         $urls = $item['properties']['url'];
@@ -76,6 +83,8 @@ class Mf2 extends Format {
             return self::parseAsHProduct($mf2, $item, $http);
           } elseif(in_array('h-item', $item['type'])) {
             return self::parseAsHItem($mf2, $item, $http);
+          } elseif(in_array('h-feed', $item['type'])) {
+            return self::parseAsHFeed($mf2, $http);
           } else {
             #Parse::debug('This object was not a recognized type.');
             return false;
@@ -135,7 +144,7 @@ class Mf2 extends Format {
 
     // Fallback case, but hopefully we have found something before this point
     foreach($mf2['items'] as $item) {
-      // Otherwise check for a recognized h-entr* object
+      // Otherwise check for a recognized h-* object
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-entry on the page");
         return self::parseAsHEntry($mf2, $item, $http);
@@ -532,18 +541,6 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function parseAsHFeed($mf2, $http) {
-    $data = [
-      'type' => 'feed',
-      'todo' => 'Not yet implemented. Please see https://github.com/aaronpk/XRay/issues/1',
-      'items' => [],
-    ];
-
-    return [
-      'data' => $data
-    ];
-  }
-
   private static function parseAsHCard($item, $http, $authorURL=false) {
     $data = [
       'type' => 'card',
@@ -731,7 +728,7 @@ class Mf2 extends Format {
   }
 
   private static function getURL($url, $http) {
-    if(!$url) return null;
+    if(!$url || !$http) return null;
     // TODO: consider adding caching here
     $result = $http->get($url);
     if($result['error'] || !$result['body']) {

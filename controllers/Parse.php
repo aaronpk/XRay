@@ -59,6 +59,10 @@ class Parse {
       $opts['target'] = $request->get('target');
     }
 
+    if($request->get('expect')) {
+      $opts['expect'] = $request->get('expect');
+    }
+
     if($request->get('pretty')) {
       $this->_pretty = true;
     }

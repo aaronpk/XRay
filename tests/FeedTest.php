@@ -27,6 +27,11 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body)->data;
 
     $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
   }
 
   public function testListOfHEntrysWithHCard() {
@@ -38,6 +43,17 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body)->data;
 
     $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
+
+    // Check that the author h-card was matched up with each h-entry
+    $this->assertEquals('Author Name', $data->items[0]->author->name);
+    $this->assertEquals('Author Name', $data->items[1]->author->name);
+    $this->assertEquals('Author Name', $data->items[2]->author->name);
+    $this->assertEquals('Author Name', $data->items[3]->author->name);
   }
 
   public function testShortListOfHEntrysWithHCard() {
@@ -49,6 +65,10 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body)->data;
 
     $this->assertEquals('feed', $data->type);
+    // This test should find the h-entry rather than the h-card, because expect=feed
+    $this->assertEquals('entry', $data->items[0]->type);
+    $this->assertEquals('http://feed.example.com/1', $data->items[0]->url);
+    $this->assertEquals('Author', $data->items[0]->author->name);
   }
 
   public function testTopLevelHFeed() {
@@ -60,6 +80,11 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body)->data;
 
     $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
   }
 
   public function testHCardWithChildHEntrys() {
@@ -71,6 +96,32 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body)->data;
 
     $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
+  }
+
+  public function testHCardWithSiblingHEntrys() {
+    $url = 'http://feed.example.com/h-card-with-sibling-h-entrys';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
+    // Check that the author h-card was matched up with each h-entry
+    $this->assertEquals('Author Name', $data->items[0]->author->name);
+    $this->assertEquals('Author Name', $data->items[1]->author->name);
+    $this->assertEquals('Author Name', $data->items[2]->author->name);
+    $this->assertEquals('Author Name', $data->items[3]->author->name);
   }
 
   public function testHCardWithChildHFeed() {
@@ -82,6 +133,28 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body)->data;
 
     $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
+    // Check that the author h-card was matched up with each h-entry
+    $this->assertEquals('Author Name', $data->items[0]->author->name);
+    $this->assertEquals('Author Name', $data->items[1]->author->name);
+    $this->assertEquals('Author Name', $data->items[2]->author->name);
+    $this->assertEquals('Author Name', $data->items[3]->author->name);
+  }
+
+  public function testHCardWithChildHFeedNoExpect() {
+    $url = 'http://feed.example.com/h-card-with-child-h-feed';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals('card', $data->type);
+    $this->assertEquals('Author Name', $data->name);
   }
 
   public function testJSONFeed() {

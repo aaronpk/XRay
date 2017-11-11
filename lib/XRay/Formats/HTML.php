@@ -95,7 +95,7 @@ class HTML extends Format {
     $mf2 = \mf2\Parse($html, $url);
 
     if($mf2 && count($mf2['items']) > 0) {
-      $data = Formats\Mf2::parse($mf2, $url, $http);
+      $data = Formats\Mf2::parse($mf2, $url, $http, $opts);
       $result = array_merge($result, $data);
       if($data) {
         if($fragment) {

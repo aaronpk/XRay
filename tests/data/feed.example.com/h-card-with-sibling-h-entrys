@@ -10,6 +10,8 @@ Connection: keep-alive
   </head>
   <body>
 
+    <a href="/author" class="h-card">Author Name</a>
+
     <ul>
       <li class="h-entry">
         <a href="/1" class="u-url p-name">One</a>
@@ -28,8 +30,6 @@ Connection: keep-alive
         <a href="/author" class="u-author"></a>
       </li>
     </ul>
-
-    <a href="/author" class="h-card">Author Name</a>
 
   </body>
 </html>

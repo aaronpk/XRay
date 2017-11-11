@@ -52,6 +52,7 @@ In both cases, you can add an additional parameter to configure various options 
 * `max_redirects` - The maximum number of redirects to follow
 * `include_original` - Will also return the full document fetched
 * `target` - Specify a target URL, and XRay will first check if that URL is on the page, and only if it is, will continue to parse the page. This is useful when you're using XRay to verify an incoming webmention.
+* `expect=feed` - If you know the thing you are parsing is a feed, include this parameter which will avoid running the autodetection rules and will provide better results for some feeds.
 
 Additionally, the following parameters are supported when making requests that use the Twitter or GitHub API. See the authentication section below for details.
 
@@ -272,49 +273,10 @@ If a property supports multiple values, it will always be returned as an array. 
 
 The content will be an object that always contains a "text" property and may contain an "html" property if the source documented published HTML content. The "text" property must always be HTML escaped before displaying it as HTML, as it may include unescaped characters such as `<` and `>`.
 
-The author will always be set in the entry if available. The service follows the [authorship discovery](http://indiewebcamp.com/authorship) algorithm to try to find the author information elsewhere on the page if it is not inside the entry in the source document.
+The author will always be set in the entry if available. The service follows the [authorship discovery](https://indieweb.org/authorship) algorithm to try to find the author information elsewhere on the page if it is not inside the entry in the source document.
 
 All URLs provided in the output are absolute URLs. If the source document contains a relative URL, it will be resolved first.
 
-In a future version, replies, likes, reposts, etc. of this post will be included if they are listed on the page.
-
-```json
-{
-  "data": {
-    "type": "entry",
-    ...
-    "like": [
-      {
-        "type": "cite",
-        "author": {
-          "type": "card",
-          "name": "Thomas Dunlap",
-          "photo": "https://s3-us-west-2.amazonaws.com/aaronparecki.com/twitter.com/9055c458a67762637c0071006b16c78f25cb610b224dbc98f48961d772faff4d.jpeg",
-          "url": "https://twitter.com/spladow"
-        },
-        "url": "https://twitter.com/aaronpk/status/688518372170977280#favorited-by-16467582"
-      }
-    ],
-    "comment": [
-      {
-        "type": "cite",
-        "author": {
-          "type": "card",
-          "name": "Poetica",
-          "photo": "https://s3-us-west-2.amazonaws.com/aaronparecki.com/twitter.com/192664bb706b2998ed42a50a860490b6aa1bb4926b458ba293b4578af599aa6f.png",
-          "url": "http://poetica.com/"
-        },
-        "url": "https://twitter.com/poetica/status/689045331426803712",
-        "published": "2016-01-18T03:23:03-08:00",
-        "content": {
-          "text": "@aaronpk @mozillapersona thanks very much! :)"
-        }
-      }
-    ]
-  }
-}
-
-```
 
 #### Other Properties
 
@@ -323,6 +285,31 @@ Other properties are returned in the response at the same level as the `data` pr
 * `url` - The effective URL that the document was retrieved from. This will be the final URL after following any redirects.
 * `code` - The HTTP response code returned by the URL. Typically this will be 200, but if the URL returned an alternate HTTP code that also included an h-entry (such as a 410 deleted notice with a stub h-entry), you can use this to find out that the original URL was actually deleted.
 
+
+#### Feeds
+
+XRay can return information for several kinds of feeds. The URL (or body) passed to XRay will be checked for the following formats:
+
+* XML (Atom and RSS)
+* JSONFeed (https://jsonfeed.org)
+* Microformats [h-feed](https://indieweb.org/h-feed)
+
+If the page being parsed represents a feed, then the response will look like the following:
+
+```json
+{
+  "data": {
+    "type": "feed",
+    "items": [
+
+    ]
+  }
+}
+```
+
+Each object in the `items` array will contain a parsed version of the item, in the same format that XRay normally returns. When parsing Microformats feeds, the [authorship discovery](https://indieweb.org/authorship) will be run for each item to build out the author info.
+
+Atom, RSS and JSONFeed will all be normalized to XRay's vocabulary, and only recognized properties will be returned.
 
 ## Rels
 

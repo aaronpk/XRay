@@ -16,15 +16,19 @@ Connection: keep-alive
       <ul class="h-feed">
         <li class="h-entry">
           <a href="/1" class="u-url p-name">One</a>
+          <a href="/h-card-with-child-h-feed" class="u-author">Author Name</a>
         </li>
         <li class="h-entry">
           <a href="/2" class="u-url p-name">Two</a>
+          <a href="/h-card-with-child-h-feed" class="u-author">Author Name</a>
         </li>
         <li class="h-entry">
           <a href="/3" class="u-url p-name">Three</a>
+          <a href="/h-card-with-child-h-feed" class="u-author">Author Name</a>
         </li>
         <li class="h-entry">
           <a href="/4" class="u-url p-name">Four</a>
+          <a href="/h-card-with-child-h-feed" class="u-author">Author Name</a>
         </li>
       </ul>
     </div>
