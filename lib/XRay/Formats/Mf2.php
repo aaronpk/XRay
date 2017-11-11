@@ -98,9 +98,8 @@ class Mf2 extends Format {
     if(isset($mf2['rels']['author'])) {
       foreach($mf2['items'] as $card) {
         if(in_array('h-card', $card['type']) && array_key_exists('url', $card['properties'])) {
-          $urls = $card['properties']['url'];
-          $urls = array_map('\p3k\XRay\normalize_url', $urls);
-          if(count(array_intersect($urls, $mf2['rels']['author'])) > 0) {
+          $urls = \p3k\XRay\normalize_urls($card['properties']['url']);
+          if(count(array_intersect($urls, \p3k\XRay\normalize_urls($mf2['rels']['author']))) > 0) {
             // There is an author h-card on this page
             // Now look for the first h-* object other than an h-card and use that as the object
             foreach($mf2['items'] as $item) {
@@ -557,7 +556,7 @@ class Mf2 extends Format {
         foreach($item['properties']['url'] as $url) {
           if(self::isURL($url)) {
             $url = \p3k\XRay\normalize_url($url);
-            if($url == $authorURL) {
+            if($url == \p3k\XRay\normalize_url($authorURL)) {
               $data['url'] = $url;
               $found = true;
             }
@@ -644,9 +643,9 @@ class Mf2 extends Format {
 
             // 7.2 "if author-page has 1+ h-card with url == uid == author-page's URL, then use first such h-card, exit."
             if(array_key_exists('url', $i['properties'])
-              and in_array($authorPage, $i['properties']['url'])
+              and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['url']))
               and array_key_exists('uid', $i['properties'])
-              and in_array($authorPage, $i['properties']['uid'])
+              and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['uid']))
             ) { 
               return self::parseAsHCard($i, $http, $authorPage)['data'];
             }
@@ -655,7 +654,7 @@ class Mf2 extends Format {
             $relMeLinks = (isset($authorPageContents['rels']) && isset($authorPageContents['rels']['me'])) ? $authorPageContents['rels']['me'] : [];
             if(count($relMeLinks) > 0
               and array_key_exists('url', $i['properties'])
-              and count(array_intersect($i['properties']['url'], $relMeLinks)) > 0
+              and count(array_intersect(\p3k\XRay\normalize_urls($i['properties']['url']), \p3k\XRay\normalize_urls($relMeLinks))) > 0
             ) {
               return self::parseAsHCard($i, $http, $authorPage)['data'];
             }
@@ -669,7 +668,7 @@ class Mf2 extends Format {
         if(self::isHCard($i)) {
 
           if(array_key_exists('url', $i['properties'])
-            and in_array($authorPage, $i['properties']['url'])
+            and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['url']))
           ) {
             return self::parseAsHCard($i, $http)['data'];
           }
@@ -682,7 +681,7 @@ class Mf2 extends Format {
             if(self::isHCard($ic)) {
 
               if(array_key_exists('url', $ic['properties'])
-                and in_array($authorPage, $ic['properties']['url'])
+                and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($ic['properties']['url']))
               ) {
                 return self::parseAsHCard($ic, $http)['data'];
               }

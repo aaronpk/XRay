@@ -19,4 +19,10 @@ class HelpersTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('https://example.com/', $result);
   }
 
+  public function testURLEquality() {
+    $url1 = 'https://example.com/';
+    $url2 = 'https://example.com';
+    $result = p3k\XRay\urls_are_equal($url1, $url2);
+  }
+
 }

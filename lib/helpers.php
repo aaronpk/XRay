@@ -15,6 +15,16 @@ function normalize_url($url) {
   return build_url($parts);
 }
 
+function normalize_urls($urls) {
+  return array_map('\p3k\XRay\normalize_url', $urls);
+}
+
+function urls_are_equal($url1, $url2) {
+  $url1 = normalize_url($url1);
+  $url2 = normalize_url($url2);
+  return $url1 == $url2;
+}
+
 function build_url($parsed_url) {
   $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
   $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
