@@ -87,6 +87,26 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Four', $data->items[3]->name);
   }
 
+  public function testTopLevelHFeedWithChildAuthor() {
+    $url = 'http://feed.example.com/h-feed-with-child-author';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
+    $this->assertEquals('Author Name', $data->items[0]->author->name);
+    $this->assertEquals('Author Name', $data->items[1]->author->name);
+    $this->assertEquals('Author Name', $data->items[2]->author->name);
+    $this->assertEquals('Author Name', $data->items[3]->author->name);
+  }
+
   public function testHCardWithChildHEntrys() {
     $url = 'http://feed.example.com/h-card-with-child-h-entrys';
     $response = $this->parse(['url' => $url, 'expect' => 'feed']);

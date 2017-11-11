@@ -675,6 +675,21 @@ class Mf2 extends Format {
           }
 
         }
+        // Also check the "author" property 
+        // (for finding the author of an h-feed's children when the author is the p-author property of the h-feed)
+        if(isset($i['properties']['author'])) {
+          foreach($i['properties']['author'] as $ic) {
+            if(self::isHCard($ic)) {
+
+              if(array_key_exists('url', $ic['properties'])
+                and in_array($authorPage, $ic['properties']['url'])
+              ) {
+                return self::parseAsHCard($ic, $http)['data'];
+              }
+
+            }
+          }
+        }
       }
 
     }
