@@ -13,6 +13,11 @@ class XRay {
     return $rels->parse($url, $opts);
   }
 
+  public function feeds($url, $opts=[]) {
+    $feeds = new XRay\Feeds($this->http);
+    return $feeds->find($url, $opts);
+  }
+
   public function parse($url, $opts_or_body=false, $opts_for_body=[]) {
     if(!$opts_or_body || is_array($opts_or_body)) {
       $fetch = new XRay\Fetcher($this->http);

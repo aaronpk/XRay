@@ -99,14 +99,13 @@ You can also use XRay to fetch all the rel values on a page, merging the list of
 
 ```php
 $xray = new p3k\XRay();
-$xray->http = $this->http;
 $rels = $xray->rels('https://aaronparecki.com/');
 ```
 
 This will return a similar response to the parser, but instead of a `data` key containing the parsed page, there will be `rels`, an associative array. Each key will contain an array of all the values that match that rel value.
 
 ```
-$rels = Array
+Array
 (
     [url] => https://aaronparecki.com/
     [code] => 200
@@ -124,6 +123,41 @@ $rels = Array
             ...
 ```
 
+
+### Feed Discovery
+
+You can use XRay to discover the types of feeds available at a URL.
+
+```php
+$xray = new p3k\XRay();
+$feeds = $xray->feeds('http://percolator.today');
+```
+
+This will fetch the URL, check for a Microformats feed, as well as check for rel=alternates pointing to Atom, RSS or JSONFeed URLs. The response will look like the below.
+
+```
+Array
+(
+    [url] => https://percolator.today/
+    [code] => 200
+    [feeds] => Array
+        (
+            [0] => Array
+                (
+                    [url] => https://percolator.today/
+                    [type] => microformats
+                )
+
+            [1] => Array
+                (
+                    [url] => https://percolator.today/podcast.xml
+                    [type] => rss
+                )
+
+        )
+
+)
+```
 
 ### Customizing the User Agent
 
@@ -336,7 +370,8 @@ If the page being parsed represents a feed, then the response will look like the
   "data": {
     "type": "feed",
     "items": [
-
+      {...},
+      {...}
     ]
   }
 }
@@ -346,13 +381,23 @@ Each object in the `items` array will contain a parsed version of the item, in t
 
 Atom, RSS and JSONFeed will all be normalized to XRay's vocabulary, and only recognized properties will be returned.
 
-## Rels
+## Rels API
 
 There is also an API method to parse and return all rel values on the page, including HTTP `Link` headers and HTML rel values.
 
 ```
 GET /rels?url=https://aaronparecki.com/
 ```
+
+See [above](#rels) for the response format.
+
+## Feed Discovery API
+
+```
+GET /feeds?url=https://aaronparecki.com/
+```
+
+See [above](#feed-discovery) for the response format.
 
 
 ## Token API

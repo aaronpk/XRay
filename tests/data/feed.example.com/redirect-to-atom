@@ -1,0 +1,15 @@
+HTTP/1.1 301 Moved Permanently
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Location: http://feed.example.com/atom
+
+<html>
+  <head>
+    <title>Moved</title>
+  </head>
+  <body>
+    This page has moved
+  </body>
+</html>

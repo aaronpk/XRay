@@ -35,6 +35,7 @@
       "controllers/Parse.php",
       "controllers/Token.php",
       "controllers/Rels.php",
+      "controllers/Feeds.php",
       "controllers/Certbot.php"
     ]
   }

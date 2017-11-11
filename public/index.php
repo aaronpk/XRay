@@ -24,6 +24,9 @@ $router->addRoute('GET', '/parse', 'Parse::parse');
 $router->addRoute('POST', '/parse', 'Parse::parse');
 $router->addRoute('POST', '/token', 'Token::token');
 
+$router->addRoute('GET', '/feeds', 'Feeds::find');
+$router->addRoute('POST', '/feeds', 'Feeds::find');
+
 $router->addRoute('GET', '/rels', 'Rels::fetch');
 
 $router->addRoute('GET', '/cert', 'Certbot::index');

@@ -1,0 +1,37 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+    <link rel="alternate" type="application/atom+xml" href="/atom">
+    <link rel="alternate" type="application/json" href="/jsonfeed">
+  </head>
+  <body>
+
+    <h1><a href="/author">Author Name</a></h1>
+
+    <ul>
+      <li>
+        <a href="/1">One</a>
+        <a href="/author"></a>
+      </li>
+      <li>
+        <a href="/2">Two</a>
+        <a href="/author"></a>
+      </li>
+      <li>
+        <a href="/3">Three</a>
+        <a href="/author"></a>
+      </li>
+      <li>
+        <a href="/4">Four</a>
+        <a href="/author"></a>
+      </li>
+    </ul>
+
+  </body>
+</html>
