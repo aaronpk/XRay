@@ -27,8 +27,7 @@ class Feeds {
     $opts = [];
 
     if($request->get('timeout')) {
-      // We might make 2 HTTP requests, so each request gets half the desired timeout
-      $opts['timeout'] = $request->get('timeout') / 2;
+      $opts['timeout'] = $request->get('timeout');
     }
 
     if($request->get('max_redirects')) {
