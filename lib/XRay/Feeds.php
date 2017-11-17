@@ -50,7 +50,7 @@ class Feeds {
         'url' => $result['url'],
         'type' => 'atom'
       ];
-    } elseif(strpos($contentType, 'application/rss+xml') !== false) {
+    } elseif(strpos($contentType, 'application/rss+xml') !== false || strpos($contentType, 'text/xml') !== false) {
       $feeds[] = [
         'url' => $result['url'],
         'type' => 'rss'
