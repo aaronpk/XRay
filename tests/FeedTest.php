@@ -287,7 +287,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Episode 1: Welcome', $data->items[11]->name);
     $this->assertEquals('https://percolator.today/episode/1', $data->items[11]->url);
     $this->assertEquals('2017-09-20T07:00:00+00:00', $data->items[11]->published);
-    $this->assertEquals('https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_1.mp3', $data->items[11]->audio);
+    $this->assertEquals('https://percolator.today/redirect.php?url=https%3A%2F%2Fpercolator.today%2Fmedia%2FPercolator_Episode_1.mp3', $data->items[11]->audio[0]);
     $this->assertContains('What is Percolator? Some thoughts about multi-photos in Instagram.', $data->items[11]->content->text);
     $this->assertContains('What is Percolator? Some thoughts about multi-photos in Instagram.', $data->items[11]->content->html);
     $this->assertContains('<li><a href="https://indieweb.org/multi-photo_vs_collection">multi-photo vs collection</a></li>', $data->items[11]->content->html);

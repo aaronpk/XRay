@@ -88,7 +88,7 @@ class XML extends Format {
           $prop = 'photo'; break;
       }
       if($prop)
-        $entry[$prop] = $item->getEnclosureUrl();
+        $entry[$prop] = [$item->getEnclosureUrl()];
     }
 
     return $entry;
