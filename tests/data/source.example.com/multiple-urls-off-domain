@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <p class="e-content p-name">Homebrew Website Club!</p>
+    <img src="/photo.jpg" class="u-photo">
+
+    <a href="http://one.example.com/test" class="u-url"></a>
+    <a href="http://two.example.com/test" class="u-url"></a>
+  </body>
+</html>

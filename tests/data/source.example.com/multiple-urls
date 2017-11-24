@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <p class="e-content p-name">Homebrew Website Club!</p>
+    <img src="/photo.jpg" class="u-photo">
+
+    <a href="http://otherdomain.example/multiple-urls" class="u-url"></a>
+
+    <a href="http://source.example.com/multiple-urls" class="u-url">
+      <time class="dt-published" datetime="2017-06-07T17:14:40-07:00">
+        Wed, Jun 7, 2017 5:14pm -07:00
+      </time>
+    </a>
+  </body>
+</html>

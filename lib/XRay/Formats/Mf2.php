@@ -21,7 +21,7 @@ class Mf2 extends Format {
 
     // If they are expecting a feed, always return a feed or an error
     if(isset($opts['expect']) && $opts['expect'] == 'feed') {
-      return self::parseAsHFeed($mf2, $http);
+      return self::parseAsHFeed($mf2, $http, $url);
     }
 
     // If there is only one item on the page, just use that
@@ -29,35 +29,35 @@ class Mf2 extends Format {
       $item = $mf2['items'][0];
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-entry it is the only item on the page");
-        return self::parseAsHEntry($mf2, $item, $http);
+        return self::parseAsHEntry($mf2, $item, $http, $url);
       }
       if(in_array('h-event', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-event it is the only item on the page");
-        return self::parseAsHEvent($mf2, $item, $http);
+        return self::parseAsHEvent($mf2, $item, $http, $url);
       }
       if(in_array('h-review', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-review it is the only item on the page");
-        return self::parseAsHReview($mf2, $item, $http);
+        return self::parseAsHReview($mf2, $item, $http, $url);
       }
       if(in_array('h-recipe', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-recipe it is the only item on the page");
-        return self::parseAsHRecipe($mf2, $item, $http);
+        return self::parseAsHRecipe($mf2, $item, $http, $url);
       }
       if(in_array('h-product', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
-        return self::parseAsHProduct($mf2, $item, $http);
+        return self::parseAsHProduct($mf2, $item, $http, $url);
       }
       if(in_array('h-item', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-product it is the only item on the page");
-        return self::parseAsHItem($mf2, $item, $http);
+        return self::parseAsHItem($mf2, $item, $http, $url);
       }
       if(in_array('h-card', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-card it is the only item on the page");
-        return self::parseAsHCard($item, $http, $url);
+        return self::parseAsHCard($item, $http, $url, $url);
       }
       if(in_array('h-feed', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
-        return self::parseAsHFeed($mf2, $http);
+        return self::parseAsHFeed($mf2, $http, $url);
       }
     }
 
@@ -70,21 +70,21 @@ class Mf2 extends Format {
         if(in_array($url, $urls)) {
           #Parse::debug("mf2:1: Recognized $url as a permalink because an object on the page matched the URL of the request");
           if(in_array('h-card', $item['type'])) {
-            return self::parseAsHCard($item, $http, $url);
+            return self::parseAsHCard($item, $http, $url, $url);
           } elseif(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-            return self::parseAsHEntry($mf2, $item, $http);
+            return self::parseAsHEntry($mf2, $item, $http, $url);
           } elseif(in_array('h-event', $item['type'])) {
-            return self::parseAsHEvent($mf2, $item, $http);
+            return self::parseAsHEvent($mf2, $item, $http, $url);
           } elseif(in_array('h-review', $item['type'])) {
-            return self::parseAsHReview($mf2, $item, $http);
+            return self::parseAsHReview($mf2, $item, $http, $url);
           } elseif(in_array('h-recipe', $item['type'])) {
-            return self::parseAsHRecipe($mf2, $item, $http);
+            return self::parseAsHRecipe($mf2, $item, $http, $url);
           } elseif(in_array('h-product', $item['type'])) {
-            return self::parseAsHProduct($mf2, $item, $http);
+            return self::parseAsHProduct($mf2, $item, $http, $url);
           } elseif(in_array('h-item', $item['type'])) {
-            return self::parseAsHItem($mf2, $item, $http);
+            return self::parseAsHItem($mf2, $item, $http, $url);
           } elseif(in_array('h-feed', $item['type'])) {
-            return self::parseAsHFeed($mf2, $http);
+            return self::parseAsHFeed($mf2, $http, $url);
           } else {
             #Parse::debug('This object was not a recognized type.');
             return false;
@@ -105,17 +105,17 @@ class Mf2 extends Format {
             foreach($mf2['items'] as $item) {
               if(!in_array('h-card', $item['type'])) {
                 if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-                  return self::parseAsHEntry($mf2, $item, $http);
+                  return self::parseAsHEntry($mf2, $item, $http, $url);
                 } elseif(in_array('h-event', $item['type'])) {
-                  return self::parseAsHEvent($mf2, $item, $http);
+                  return self::parseAsHEvent($mf2, $item, $http, $url);
                 } elseif(in_array('h-review', $item['type'])) {
-                  return self::parseAsHReview($mf2, $item, $http);
+                  return self::parseAsHReview($mf2, $item, $http, $url);
                 } elseif(in_array('h-recipe', $item['type'])) {
-                  return self::parseAsHRecipe($mf2, $item, $http);
+                  return self::parseAsHRecipe($mf2, $item, $http, $url);
                 } elseif(in_array('h-product', $item['type'])) {
-                  return self::parseAsHProduct($mf2, $item, $http);
+                  return self::parseAsHProduct($mf2, $item, $http, $url);
                 } elseif(in_array('h-item', $item['type'])) {
-                  return self::parseAsHItem($mf2, $item, $http);
+                  return self::parseAsHItem($mf2, $item, $http, $url);
                 }
               }
             }
@@ -130,7 +130,7 @@ class Mf2 extends Format {
         return in_array('h-entry', $item['type']);
       })) > 1) {
         #Parse::debug("mf2:2: Recognized $url as an h-feed because there are more than one object on the page");
-        return self::parseAsHFeed($mf2, $http);
+        return self::parseAsHFeed($mf2, $http, $url);
       }
     }
 
@@ -138,7 +138,7 @@ class Mf2 extends Format {
     $first = $mf2['items'][0];
     if(in_array('h-feed', $first['type'])) {
       #Parse::debug("mf2:3: Recognized $url as an h-feed because the first item is an h-feed");
-      return self::parseAsHFeed($mf2, $http);
+      return self::parseAsHFeed($mf2, $http, $url);
     }
 
     // Fallback case, but hopefully we have found something before this point
@@ -146,22 +146,22 @@ class Mf2 extends Format {
       // Otherwise check for a recognized h-* object
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-entry on the page");
-        return self::parseAsHEntry($mf2, $item, $http);
+        return self::parseAsHEntry($mf2, $item, $http, $url);
       } elseif(in_array('h-event', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-event on the page");
-        return self::parseAsHEvent($mf2, $item, $http);
+        return self::parseAsHEvent($mf2, $item, $http, $url);
       } elseif(in_array('h-review', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-review on the page");
-        return self::parseAsHReview($mf2, $item, $http);
+        return self::parseAsHReview($mf2, $item, $http, $url);
       } elseif(in_array('h-recipe', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-recipe on the page");
-        return self::parseAsHReview($mf2, $item, $http);
+        return self::parseAsHReview($mf2, $item, $http, $url);
       } elseif(in_array('h-product', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-product on the page");
-        return self::parseAsHProduct($mf2, $item, $http);
+        return self::parseAsHProduct($mf2, $item, $http, $url);
       } elseif(in_array('h-item', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-item on the page");
-        return self::parseAsHItem($mf2, $item, $http);
+        return self::parseAsHItem($mf2, $item, $http, $url);
       }
     }
 
@@ -170,16 +170,40 @@ class Mf2 extends Format {
     return false;
   }
 
-  private static function collectSingleValues($properties, $urlProperties, $item, &$data) {
+  private static function collectSingleValues($properties, $urlProperties, $item, $url, &$data) {
     foreach($properties as $p) {
       if(($v = self::getPlaintext($item, $p)) !== null) {
         $data[$p] = $v;
       }
     }
     foreach($urlProperties as $p) {
-      if(($v = self::getPlaintext($item, $p)) !== null) {
-        if(self::isURL($v))
-          $data[$p] = $v;
+      if($p == 'url') {
+        // Special handling for the 'url' property to prioritize finding the URL on the same domain
+        if($values = self::getPlaintextValues($item, 'url')) {
+          if(count($values) == 1) {
+            if(self::isURL($values[0]))
+              $data['url'] = $values[0];
+          }
+          else {
+            $set = false;
+            foreach($values as $v) {
+              if(self::isURL($v) && parse_url($v, PHP_URL_HOST) == parse_url($url, PHP_URL_HOST)) {
+                $set = true;
+                $data['url'] = $v;
+              }
+            }
+            if(!$set) {
+              // Fall back to the first URL if there isn't one on the domain
+              if(self::isURL($values[0]))
+                $data['url'] = $values[0];
+            }
+          }
+        }
+      } else {
+        if(($v = self::getPlaintext($item, $p)) !== null) {
+          if(self::isURL($v))
+            $data[$p] = $v;
+        }
       }
     }
   }
@@ -329,14 +353,14 @@ class Mf2 extends Format {
     }    
   }
 
-  private static function parseAsHEntry($mf2, $item, $http) {
+  private static function parseAsHEntry($mf2, $item, $http, $url) {
     $data = [
       'type' => 'entry'
     ];
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $data, $http);
+    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url'], $item, $url, $data);
 
     if(isset($data['rsvp']))
       $data['rsvp'] = strtolower($data['rsvp']);
@@ -357,7 +381,7 @@ class Mf2 extends Format {
 
     self::determineNameAndContent($item, $data);
 
-    if($author = self::findAuthor($mf2, $item, $http))
+    if($author = self::findAuthor($mf2, $item, $http, $url))
       $data['author'] = $author;
 
     if($checkin = self::parseEmbeddedHCard('checkin', $item, $http))
@@ -374,13 +398,13 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function parseAsHReview($mf2, $item, $http) {
+  private static function parseAsHReview($mf2, $item, $http, $url) {
     $data = [
       'type' => 'review'
     ];
     $refs = [];
 
-    self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $data, $http);
+    self::collectSingleValues(['summary','published','rating','best','worst'], ['url'], $item, $url, $data);
 
     // Fallback for Mf1 "description" as content. The PHP parser does not properly map this to "content"
     $description = self::parseHTMLValue('description', $item);
@@ -394,7 +418,7 @@ class Mf2 extends Format {
 
     self::determineNameAndContent($item, $data);
 
-    if($author = self::findAuthor($mf2, $item, $http))
+    if($author = self::findAuthor($mf2, $item, $http, $url))
       $data['author'] = $author;
 
     $response = [
@@ -408,13 +432,13 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function parseAsHRecipe($mf2, $item, $http) {
+  private static function parseAsHRecipe($mf2, $item, $http, $url) {
     $data = [
       'type' => 'recipe'
     ];
     $refs = [];
 
-    self::collectSingleValues(['name','summary','published','duration','yield','nutrition'], ['url'], $item, $data);
+    self::collectSingleValues(['name','summary','published','duration','yield','nutrition'], ['url'], $item, $url, $data);
 
     $instructions = self::parseHTMLValue('instructions', $item);
     if($instructions) {
@@ -425,7 +449,7 @@ class Mf2 extends Format {
 
     self::collectArrayURLValues(['photo'], $item, $data, $refs, $http);
 
-    if($author = self::findAuthor($mf2, $item, $http))
+    if($author = self::findAuthor($mf2, $item, $http, $url))
       $data['author'] = $author;
 
     $response = [
@@ -439,12 +463,12 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function parseAsHProduct($mf2, $item, $http) {
+  private static function parseAsHProduct($mf2, $item, $http, $url) {
     $data = [
       'type' => 'product'
     ];
 
-    self::collectSingleValues(['name','identifier','price'], ['url'], $item, $data, $http);
+    self::collectSingleValues(['name','identifier','price'], ['url'], $item, $url, $data);
 
     $description = self::parseHTMLValue('description', $item);
     if($description) {
@@ -466,12 +490,12 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function parseAsHItem($mf2, $item, $http) {
+  private static function parseAsHItem($mf2, $item, $http, $url) {
     $data = [
       'type' => 'item'
     ];
 
-    self::collectSingleValues(['name'], ['url'], $item, $data);
+    self::collectSingleValues(['name'], ['url'], $item, $url, $data);
 
     self::collectArrayURLValues(['photo','video','audio'], $item, $data, $refs, $http);
 
@@ -486,14 +510,14 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function parseAsHEvent($mf2, $item, $http) {
+  private static function parseAsHEvent($mf2, $item, $http, $url) {
     $data = [
       'type' => 'event'
     ];
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $data, $http);
+    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $url, $data);
 
     // These properties are always returned as arrays and may contain plaintext content
     self::collectArrayValues(['category','location','attendee'], $item, $data, $refs, $http);
@@ -540,7 +564,7 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function parseAsHCard($item, $http, $authorURL=false) {
+  private static function parseAsHCard($item, $http, $url, $authorURL=false) {
     $data = [
       'type' => 'card',
       'name' => null,
@@ -587,7 +611,7 @@ class Mf2 extends Format {
     return $response;
   }
 
-  private static function findAuthor($mf2, $item, $http) {
+  private static function findAuthor($mf2, $item, $http, $url) {
     $author = [
       'type' => 'card',
       'name' => null,
@@ -605,7 +629,7 @@ class Mf2 extends Format {
       foreach($item['properties']['author'] as $a) {
         if(self::isHCard($a)) {
           // 5.1 "if it has an h-card, use it, exit."
-          return self::parseAsHCard($a, $http)['data'];
+          return self::parseAsHCard($a, $http, $url)['data'];
         } elseif(is_string($a)) {
           if(self::isURL($a)) {
             // 5.2 "otherwise if author property is an http(s) URL, let the author-page have that URL"
@@ -647,7 +671,7 @@ class Mf2 extends Format {
               and array_key_exists('uid', $i['properties'])
               and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['uid']))
             ) { 
-              return self::parseAsHCard($i, $http, $authorPage)['data'];
+              return self::parseAsHCard($i, $http, $url, $authorPage)['data'];
             }
 
             // 7.3 "else if author-page has 1+ h-card with url property which matches the href of a rel-me link on the author-page"
@@ -656,7 +680,7 @@ class Mf2 extends Format {
               and array_key_exists('url', $i['properties'])
               and count(array_intersect(\p3k\XRay\normalize_urls($i['properties']['url']), \p3k\XRay\normalize_urls($relMeLinks))) > 0
             ) {
-              return self::parseAsHCard($i, $http, $authorPage)['data'];
+              return self::parseAsHCard($i, $http, $url, $authorPage)['data'];
             }
 
           }
@@ -670,7 +694,7 @@ class Mf2 extends Format {
           if(array_key_exists('url', $i['properties'])
             and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['url']))
           ) {
-            return self::parseAsHCard($i, $http)['data'];
+            return self::parseAsHCard($i, $http, $url)['data'];
           }
 
         }
@@ -683,7 +707,7 @@ class Mf2 extends Format {
               if(array_key_exists('url', $ic['properties'])
                 and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($ic['properties']['url']))
               ) {
-                return self::parseAsHCard($ic, $http)['data'];
+                return self::parseAsHCard($ic, $http, $url)['data'];
               }
 
             }
@@ -739,6 +763,19 @@ class Mf2 extends Format {
       }
     }
     return $fallback;
+  }
+
+  private static function getPlaintextValues($mf2, $k, $values=[]) {
+    if(!empty($mf2['properties'][$k]) and is_array($mf2['properties'][$k])) {
+      foreach($mf2['properties'][$k] as $value) {
+        if(is_string($value)) {
+          $values[] = $value;
+        } elseif(self::isMicroformat($value) && array_key_exists('value', $value)) {
+          $values[] = $value['value'];
+        }
+      }
+    }
+    return $values;
   }
 
   private static function getURL($url, $http) {

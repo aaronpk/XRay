@@ -3,7 +3,7 @@ namespace p3k\XRay\Formats;
 
 trait Mf2Feed {
 
-  private static function parseAsHFeed($mf2, $http) {
+  private static function parseAsHFeed($mf2, $http, $url) {
     $data = [
       'type' => 'feed',
       'items' => [],
@@ -41,25 +41,25 @@ trait Mf2Feed {
     foreach($feed['children'] as $item) {
       $parsed = false;
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        $parsed = self::parseAsHEntry($mf2, $item, false);
+        $parsed = self::parseAsHEntry($mf2, $item, false, $url);
       }
       elseif(in_array('h-event', $item['type'])) {
-        $parsed = self::parseAsHEvent($mf2, $item, false);
+        $parsed = self::parseAsHEvent($mf2, $item, false, $url);
       }
       elseif(in_array('h-review', $item['type'])) {
-        $parsed = self::parseAsHReview($mf2, $item, false);
+        $parsed = self::parseAsHReview($mf2, $item, false, $url);
       }
       elseif(in_array('h-recipe', $item['type'])) {
-        $parsed = self::parseAsHRecipe($mf2, $item, false);
+        $parsed = self::parseAsHRecipe($mf2, $item, false, $url);
       }
       elseif(in_array('h-product', $item['type'])) {
-        $parsed = self::parseAsHProduct($mf2, $item, false);
+        $parsed = self::parseAsHProduct($mf2, $item, false, $url);
       }
       elseif(in_array('h-item', $item['type'])) {
-        $parsed = self::parseAsHItem($mf2, $item, false);
+        $parsed = self::parseAsHItem($mf2, $item, false, $url);
       }
       elseif(in_array('h-card', $item['type'])) {
-        $parsed = self::parseAsHCard($mf2, $item, false);
+        $parsed = self::parseAsHCard($item, false, $url);
       }
       if($parsed) {
         $data['items'][] = $parsed['data'];

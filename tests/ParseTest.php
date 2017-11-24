@@ -548,4 +548,28 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('http://imgs.xkcd.com/comics/chat_systems_2x.png', $data['data']['photo']);
   }
 
+  public function testEntryHasMultipleURLs() {
+    $url = 'http://source.example.com/multiple-urls';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    // Should prioritize the URL on the same domain
+    $this->assertEquals($url, $data['data']['url']);
+  }
+
+  public function testEntryHasMultipleURLsOffDomain() {
+    $url = 'http://source.example.com/multiple-urls-off-domain';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    // Neither URL is on the same domain, so should use the first
+    $this->assertEquals('http://one.example.com/test', $data['data']['url']);
+  }
+
 }
