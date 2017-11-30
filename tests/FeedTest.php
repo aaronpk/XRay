@@ -295,4 +295,23 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('feed', $data->type);
   }
 
+  public function testInstagramAtomFeed() {
+    $url = 'http://feed.example.com/instagram-atom';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals(12, count($data->items));
+
+    $this->assertEquals('Marshall Kirkpatrick', $data->items[11]->author->name);
+    $this->assertEquals('https://www.instagram.com/marshallk/', $data->items[11]->author->url);
+    $this->assertEquals('https://www.instagram.com/p/BcFjw9SHYql/', $data->items[11]->url);
+    $this->assertEquals('2017-11-29T17:04:00+00:00', $data->items[11]->published);
+    // Should remove the "name" since it's a prefix of the content
+    $this->assertObjectNotHasAttribute('name', $data->items[11]);
+    $this->assertEquals('Sometimes my job requires me to listen to 55 minutes of an hour long phone call while I go for a long walk on a sunny morning and wait for my turn to give an update. Pretty nice!', $data->items[11]->content->text);
+  }
+
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1330f39bf5204a5cc6bdd1222915639",
+    "content-hash": "c61ccebf0105e57a0a60f431a95fcaed",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -316,16 +316,16 @@
         },
         {
             "name": "miniflux/picofeed",
-            "version": "v0.1.37",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/miniflux/picoFeed.git",
-                "reference": "402b7f07629577e7929625e78bc88d3d5831a22d"
+                "url": "https://github.com/aaronpk/picoFeed.git",
+                "reference": "989c0bcf2eac016a4104abce1aadff791fc287ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miniflux/picoFeed/zipball/402b7f07629577e7929625e78bc88d3d5831a22d",
-                "reference": "402b7f07629577e7929625e78bc88d3d5831a22d",
+                "url": "https://api.github.com/repos/aaronpk/picoFeed/zipball/989c0bcf2eac016a4104abce1aadff791fc287ab",
+                "reference": "989c0bcf2eac016a4104abce1aadff791fc287ab",
                 "shasum": ""
             },
             "require": {
@@ -354,7 +354,6 @@
                     "PicoFeed": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -365,7 +364,7 @@
             ],
             "description": "Modern library to handle RSS/Atom feeds",
             "homepage": "https://github.com/miniflux/picoFeed",
-            "time": "2017-11-02T03:20:36+00:00"
+            "time": "2017-11-30T00:16:58+00:00"
         },
         {
             "name": "p3k/http",
@@ -2090,7 +2089,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "miniflux/picofeed": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

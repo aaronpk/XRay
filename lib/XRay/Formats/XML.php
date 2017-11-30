@@ -60,20 +60,38 @@ class XML extends Format {
     if($item->getPublishedDate())
       $entry['published'] = $item->getPublishedDate()->format('c');
 
-    if($item->getTitle() && $item->getTitle() != $item->getUrl())
-      $entry['name'] = $item->getTitle();
-
     if($item->getContent())
       $entry['content'] = [
         'html' => self::sanitizeHTML($item->getContent()),
         'text' => self::stripHTML($item->getContent())
       ];
 
+    if($item->getTitle() && $item->getTitle() != $item->getUrl()) {
+      $title = $item->getTitle();
+      $entry['name'] = $title;
+
+      // Check if the title is a prefix of the content and drop if so
+      if(isset($entry['content'])) {
+        if(substr($title, -3) == '...' || substr($title, -1) == '…') {
+          if(substr($title, -3) == '...') {
+            $trimmedTitle = substr($title, 0, -3);
+          } else {
+            $trimmedTitle = substr($title, 0, -1);
+          }
+          if(substr($entry['content']['text'], 0, strlen($trimmedTitle)) == $trimmedTitle) {
+            unset($entry['name']);
+          }
+        }
+      }
+    }
+
     if($item->getAuthor()) {
       $entry['author']['name'] = $item->getAuthor();
     }
 
-    if($feed->siteUrl) {
+    if($item->getAuthorUrl()) {
+      $entry['author']['url'] = $item->getAuthorUrl();
+    } else if($feed->siteUrl) {
       $entry['author']['url'] = $feed->siteUrl;
     }
 
