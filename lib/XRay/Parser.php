@@ -46,8 +46,11 @@ class Parser {
       return Formats\XML::parse($body, $url);
     }
 
-    if(substr($body, 0, 1) == '{' && strpos(substr($body, 0, 100), 'https://jsonfeed.org/version/1')) {
-      return Formats\JSONFeed::parse($body, $url);
+    if(substr($body, 0, 1) == '{') {
+      $feeddata = json_decode($body, true);
+      if($feeddata && isset($feeddata['version']) && $feeddata['version'] == 'https://jsonfeed.org/version/1') {
+        return Formats\JSONFeed::parse($feeddata, $url);
+      }
     }
 
     // No special parsers matched, parse for Microformats now

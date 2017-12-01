@@ -55,12 +55,14 @@ class Feeds {
         'url' => $result['url'],
         'type' => 'rss'
       ];
-    } elseif(strpos($contentType, 'application/json') !== false
-      && substr($body, 0, 1) == '{' && strpos(substr($body, 0, 100), 'https://jsonfeed.org/version/1')) {
-      $feeds[] = [
-        'url' => $result['url'],
-        'type' => 'jsonfeed'
-      ];
+    } elseif(strpos($contentType, 'application/json') !== false && substr($body, 0, 1) == '{') {
+      $feeddata = json_decode($body, true);
+      if($feeddata && isset($feeddata['version']) && $feeddata['version'] == 'https://jsonfeed.org/version/1') {
+        $feeds[] = [
+          'url' => $result['url'],
+          'type' => 'jsonfeed'
+        ];
+      }
     } else {
       // Some other document was returned, parse the HTML and look for rel alternates and Microformats
 
