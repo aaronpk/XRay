@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c61ccebf0105e57a0a60f431a95fcaed",
+    "content-hash": "03386594e351101daf18ef93a40494a5",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -316,7 +316,7 @@
         },
         {
             "name": "miniflux/picofeed",
-            "version": "dev-master",
+            "version": "v0.1.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aaronpk/picoFeed.git",
@@ -2089,9 +2089,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "miniflux/picofeed": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
