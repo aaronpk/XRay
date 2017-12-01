@@ -69,23 +69,25 @@ class Feeds {
       $mf2 = \mf2\Parse($body, $result['url']);
       if(isset($mf2['alternates'])) {
         foreach($mf2['alternates'] as $alt) {
-          if(strpos($alt['type'], 'application/json') !== false) {
-            $feeds[] = [
-              'url' => $alt['url'],
-              'type' => 'jsonfeed'
-            ];
-          }
-          if(strpos($alt['type'], 'application/atom+xml') !== false) {
-            $feeds[] = [
-              'url' => $alt['url'],
-              'type' => 'atom'
-            ];
-          }
-          if(strpos($alt['type'], 'application/rss+xml') !== false) {
-            $feeds[] = [
-              'url' => $alt['url'],
-              'type' => 'rss'
-            ];
+          if(isset($alt['type'])) {
+            if(strpos($alt['type'], 'application/json') !== false) {
+              $feeds[] = [
+                'url' => $alt['url'],
+                'type' => 'jsonfeed'
+              ];
+            }
+            if(strpos($alt['type'], 'application/atom+xml') !== false) {
+              $feeds[] = [
+                'url' => $alt['url'],
+                'type' => 'atom'
+              ];
+            }
+            if(strpos($alt['type'], 'application/rss+xml') !== false) {
+              $feeds[] = [
+                'url' => $alt['url'],
+                'type' => 'rss'
+              ];
+            }
           }
         }
       }
