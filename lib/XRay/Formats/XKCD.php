@@ -12,7 +12,7 @@ class XKCD extends Format {
   }
 
   public static function matches($url) {
-    return self::matches_host($url) && parse_url($url, PHP_URL_PATH) != '/';
+    return self::matches_host($url) && preg_match('/^\/\d+\/$/', ''.parse_url($url, PHP_URL_PATH));
   }
 
   public static function parse($html, $url) {
