@@ -11,6 +11,7 @@ if(file_exists(dirname(__FILE__).'/../config.php')) {
   class Config {
     public static $cache = false;
     public static $admins = [];
+    public static $base = '';
   }
 }
 
