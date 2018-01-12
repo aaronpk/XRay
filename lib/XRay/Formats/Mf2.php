@@ -220,21 +220,39 @@ class Mf2 extends Format {
       $textContent = $content;
     } elseif(!is_string($content) && is_array($content) && array_key_exists('value', $content)) {
       if(array_key_exists('html', $content)) {
-        $htmlContent = trim(self::sanitizeHTML($content['html']));
-        #$textContent = trim(str_replace("&#xD;","\r",strip_tags($htmlContent)));
+        // Only allow images in the content if there is no photo property set
+        if(isset($item['properties']['photo']))
+          $allowImg = false;
+        else
+          $allowImg = true;
+
+        $htmlContent = trim(self::sanitizeHTML($content['html'], $allowImg));
         $textContent = trim(str_replace("&#xD;","\r",$content['value']));
       } else {
         $textContent = trim($content['value']);
       }
     }
 
-    $data = [
-      'text' => $textContent
-    ];
-    if($htmlContent && $textContent != $htmlContent) {
-      $data['html'] = $htmlContent;
+    if($textContent || $htmlContent) {
+      $data = [
+        'text' => $textContent
+      ];
+      // Only add HTML content if there is actual content.
+      // If the text content ends up empty, then the HTML should be too
+      // e.g. <div class="e-content"><a href=""><img src="" class="u-photo"></a></div>
+      // should not return content of <a href=""></a>
+      // TODO: still need to remove empty <a> tags when there is other text in the content
+      if($htmlContent && $textContent && $textContent != $htmlContent) {
+        $data['html'] = $htmlContent;
+      }
+
+      if(!$data['text'])
+        return null;
+
+      return $data;
+    } else {
+      return null;
     }
-    return $data;
   }
 
   // Always return arrays, and may contain plaintext content

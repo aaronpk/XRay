@@ -1,0 +1,73 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+<body class="post hentry h-entry as-note">
+<header><div class="header">
+<h1><a href="../" rel="author home">tantek.com</a></h1>
+
+<form class="search" action="https://duckduckgo.com/html/" method="get">
+<input type="hidden" name="type" value="list" />
+<input type="search" value="site:tantek.com " name="q" />
+<button type="submit">Search</button>
+</form>
+
+</div></header>
+
+<div class="sidestuff">
+<ul class="snav">
+<li><a href="003/t2/first-yoga-class-this-year" id="previtem" title="View the previous (older) item in the stream." rel="prev"><abbr>&#x2190;</abbr></a></li><li><a href="005/t1/yesterday-rest-homework-day" id="nextitem" title="View the next (newer) item in the stream" rel="next"><abbr>&#x2192;</abbr></a></li>
+</ul>
+</div>
+<a href="../" class="p-author h-card author-icon" rel="author" title="Tantek Çelik"><img src="../logo.jpg" alt="Tantek Çelik" /></a>
+
+<p class="p-name entry-title e-content entry-content article"><a class="auto-link figure u-photo" href="https://igx.4sqi.net/img/general/original/476_g7yruXflacsGr7PyVmECefyTBMB_R99zmPQxW7pftzA.jpg"><img class="auto-embed" alt="a jpg. " src="https://igx.4sqi.net/img/general/width960/476_g7yruXflacsGr7PyVmECefyTBMB_R99zmPQxW7pftzA.jpg"/></a><a class="auto-link figure u-photo" href="https://igx.4sqi.net/img/general/original/476_zM3UgU9JHNhom907Ac_1WCEcUhGOJZaNWGlRmev86YA.jpg"><img class="auto-embed" alt="a jpg. " src="https://igx.4sqi.net/img/general/width960/476_zM3UgU9JHNhom907Ac_1WCEcUhGOJZaNWGlRmev86YA.jpg"/></a>🌆 Made it to the first #<span class="p-category auto-tag">NPSF</span> #<span class="p-category auto-tag">earlygang</span> of the year, did in-betweeners abs, and 6:30 workout with a brutal burnout that was really its own workout. But wow pretty sunrise. Plus 50+ deg F? I’ll take it. #<span class="p-category auto-tag">100PDPD</span><br class="auto-break"/><br class="auto-break"/>#<span class="p-category auto-tag">justshowup</span> #<span class="p-category auto-tag">darknesstodawn</span> #<span class="p-category auto-tag">wakeupthesun</span> #<span class="p-category auto-tag">fromwhereirun</span> #<span class="p-category auto-tag">NovemberProject</span> #<span class="p-category auto-tag">sunrise</span> #<span class="p-category auto-tag">latergram</span> #<span class="p-category auto-tag">nofilter</span></p><span class="info footer">
+  <span class="dt-published published dt-updated updated">
+  <time class="value" datetime="21:08-0800">21:08</time> on <time class="value">2018-01-03</time>  </span>
+ <span class="lt">
+ (ttk.me t4sE3) </span>
+  using <span class="using">BBEdit</span> </span> 
+<div class="info footer">
+<form action="http://tantek.com/2018/003/t3/first-npsf-earlygang-year"><div>
+<label><span class="lt">URL:</span>
+<input class="u-url url u-uid uid bookmark" type="url" size="70" style="max-width:100%" value="http://tantek.com/2018/003/t3/first-npsf-earlygang-year" />
+</label>
+</div></form>
+</div>
+<div class="info footer">
+<a class="u-syndication" rel="syndication" style="float:right; clear:right; margin-left:1em; height:2em"
+   href="https://www.instagram.com/p/BdhBVjNFi35">
+   <img src="/icon/instagram.png" style="vertical-align:-30%;margin:-3px -5px -4px 0" alt=""/> 
+   View on Instagram</a>
+<a class="u-syndication" rel="syndication" style="float:right; clear:right; margin-left:1em; height:2em"
+   href="https://www.facebook.com/10103634146088903">
+   <img src="/icon/facebook.png" style="vertical-align:-30%;margin:-3px -10px -4px 0" alt=""/> 
+   View on Facebook</a>
+<a class="u-syndication" rel="syndication" style="float:right; clear:right; margin-left:1em; height:2em"
+   href="https://www.flickr.com/photos/tantek/24621899937/">
+   <span style="display:inline-block; margin-top:.1em;  font-size:1.8em;vertical-align:-5%">••</span>
+   View on Flickr</a>
+<a class="u-syndication" rel="syndication" style="float:right; clear:right; height:2em"
+   href="https://twitter.com/t/status/948789001854517248">
+   <img src="/icon/twitter.png" style="vertical-align:-30%;margin:-3px -6px -4px 0" alt=""/> 
+   View 
+      on Twitter
+</a><div style="line-height:2.6em; font-size:1em;">
+<indie-action do="like" with="http://tantek.com/2018/003/t3/first-npsf-earlygang-year">
+<a class="action favorite" target="_blank" href="https://twitter.com/intent/favorite?tweet_id=948789001854517248"><img src="https://g.twimg.com/dev/documentation/image/like-icon-16.png" style="vertical-align:-15%" alt=""/> Like</a>
+</indie-action>
+<indie-action do="repost" with="http://tantek.com/2018/003/t3/first-npsf-earlygang-year">
+<a class="action reply" target="_blank" href="https://twitter.com/intent/retweet?tweet_id=948789001854517248"><img src="https://g.twimg.com/dev/documentation/image/retweet-icon-16.png" style="vertical-align:0%;margin:0 -0.1em 0 0.5em" alt=""/> Repost</a>
+</indie-action>
+<indie-action do="reply" with="http://tantek.com/2018/003/t3/first-npsf-earlygang-year">
+<a class="action reply" target="_blank" href="https://twitter.com/intent/tweet?in_reply_to=948789001854517248"><img src="https://g.twimg.com/dev/documentation/image/reply-icon-16.png" style="vertical-align:0%;margin:0 -0.1em 0 0.5em" alt=""/> Reply</a>
+</indie-action>
+</div>
+
+</div>
+ </li>
+</body>
+</html>

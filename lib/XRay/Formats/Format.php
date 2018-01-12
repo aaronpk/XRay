@@ -34,10 +34,8 @@ abstract class Format implements iFormat {
     return [$doc, $xpath];
   }
 
-  protected static function sanitizeHTML($html) {
-    $config = HTMLPurifier_Config::createDefault();
-    $config->set('Cache.DefinitionImpl', null);
-    $config->set('HTML.AllowedElements', [
+  protected static function sanitizeHTML($html, $allowImg=true) {
+    $allowed = [
       'a',
       'abbr',
       'b',
@@ -45,7 +43,6 @@ abstract class Format implements iFormat {
       'del',
       'em',
       'i',
-      'img',
       'q',
       'strike',
       'strong',
@@ -62,7 +59,13 @@ abstract class Format implements iFormat {
       'ul',
       'li',
       'ol'
-    ]);
+    ];
+    if($allowImg)
+      $allowed[] = 'img';
+
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('Cache.DefinitionImpl', null);
+    $config->set('HTML.AllowedElements', $allowed);
     $def = $config->getHTMLDefinition(true);
     $def->addElement(
       'time',
