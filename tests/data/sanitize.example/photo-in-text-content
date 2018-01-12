@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <p class="p-content p-name">This is a photo post with an <code>img</code> tag inside the content. <img class="u-photo" src="http://target.example.com/photo.jpg"></p>
+  </body>
+</html>

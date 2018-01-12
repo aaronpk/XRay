@@ -167,6 +167,18 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
   }
 
+  public function testPhotoInTextContentNoAlt() {
+    // https://github.com/aaronpk/XRay/issues/56
+
+    $url = 'http://sanitize.example/photo-in-text-content';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    echo json_encode($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
+
     $this->assertObjectNotHasAttribute('name', $data->data);
     $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
     $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
