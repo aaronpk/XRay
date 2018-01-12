@@ -222,7 +222,6 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
-print_r($data);
 
     $this->assertObjectHasAttribute('name', $data->data);
     $this->assertEquals('Oh, how well they know me! 🥃', $data->data->name);
@@ -230,19 +229,35 @@ print_r($data);
     $this->assertEquals('https://cleverdevil.io/file/5bf2fa91c3d4c592f9978200923cb56e/thumb.jpg', $data->data->photo[0]);
   }
 
-  public function testPhotoWithDupeNameAndAlt() {
+  public function testPhotoWithDupeNameAndAlt1() {
     $url = 'http://sanitize.example/photo-with-dupe-name-alt';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
-echo json_encode($data->data, JSON_PRETTY_PRINT+JSON_UNESCAPED_SLASHES);
 
     $this->assertObjectHasAttribute('name', $data->data);
-    $this->assertEquals('Oh, how well they know me! 🥃', $data->data->name);
+    $this->assertEquals('Photo caption', $data->data->name);
     $this->assertObjectNotHasAttribute('content', $data->data);
-    $this->assertEquals('https://cleverdevil.io/file/5bf2fa91c3d4c592f9978200923cb56e/thumb.jpg', $data->data->photo[0]);
+    $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
+  }
+
+  public function testPhotoWithDupeNameAndAlt2() {
+    // https://github.com/aaronpk/XRay/issues/57
+    // This is simliar to adactio's markup
+    // https://adactio.com/notes/13301
+    $url = 'http://sanitize.example/photo-with-dupe-name-alt-2';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectHasAttribute('content', $data->data);
+    $this->assertEquals('Photo caption', $data->data->content->text);
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
   }
 
   public function testPhotosWithAlt() {

@@ -349,6 +349,7 @@ class Mf2 extends Format {
       $textContent = array_key_exists('value', $content) ? $content['value'] : null;
     }
 
+    $checkedname = $name;
     if($content) {
       // Trim ellipses from the name
       $name = preg_replace('/ ?(\.\.\.|…)$/', '', $name);
@@ -359,20 +360,29 @@ class Mf2 extends Format {
 
       // Check if the name is a prefix of the content
       if($contentCompare && $nameCompare && strpos($contentCompare, $nameCompare) === 0) {
-        $name = null;
+        $checkedname = null;
       }
     }
 
-    if($name) {
-      $data['name'] = $name;
+    if($checkedname) {
+      $data['name'] = $checkedname;
     }
 
     // If there is content, always return the plaintext content, and return HTML content if it's different
     if($content) {
       $content = self::parseHTMLValue('content', $item);
-      $data['content']['text'] = $content['text'];
-      if(isset($content['html']))
-        $data['content']['html'] = $content['html'];
+      if($content['text']) {
+        $data['content']['text'] = $content['text'];
+        if(isset($content['html']))
+          $data['content']['html'] = $content['html'];
+      } else {
+        // If the content text was blank because the img was removed and that was the only content,
+        // then put the name back as the name if it was previously set.
+        // See https://github.com/aaronpk/XRay/issues/57
+        if($name) {
+          $data['name'] = $name;
+        }
+      }
     }    
   }
 
