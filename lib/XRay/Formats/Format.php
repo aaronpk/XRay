@@ -84,8 +84,16 @@ abstract class Format implements iFormat {
     return trim($sanitized);
   }
 
+  // Return a plaintext version of the input HTML
   protected static function stripHTML($html) {
-    return trim(strip_tags($html));
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('Cache.DefinitionImpl', null);
+    $config->set('HTML.AllowedElements', ['br']);
+    $purifier = new HTMLPurifier($config);
+    $sanitized = $purifier->purify($html);
+    $sanitized = str_replace("&#xD;","\r",$sanitized);
+    $sanitized = html_entity_decode($sanitized);
+    return trim(str_replace('<br>',"\n", $sanitized));
   }
 
 

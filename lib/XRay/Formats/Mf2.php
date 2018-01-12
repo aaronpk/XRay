@@ -227,7 +227,8 @@ class Mf2 extends Format {
           $allowImg = true;
 
         $htmlContent = trim(self::sanitizeHTML($content['html'], $allowImg));
-        $textContent = trim(str_replace("&#xD;","\r",$content['value']));
+        #$textContent = trim(str_replace("&#xD;","\r",$content['value']));
+        $textContent = trim(self::stripHTML($htmlContent));
       } else {
         $textContent = trim($content['value']);
       }
@@ -339,10 +340,13 @@ class Mf2 extends Format {
     $textContent = null;
     $htmlContent = null;
 
-    $content = self::parseHTMLValue('content', $item);
-    if($content) {
+    $content = self::getHTMLValue($item, 'content');
+
+    if(is_string($content)) {
+      $textContent = $content;
+    } elseif($content) {
       $htmlContent = array_key_exists('html', $content) ? $content['html'] : null;
-      $textContent = array_key_exists('text', $content) ? $content['text'] : null;
+      $textContent = array_key_exists('value', $content) ? $content['value'] : null;
     }
 
     if($content) {
@@ -365,8 +369,9 @@ class Mf2 extends Format {
 
     // If there is content, always return the plaintext content, and return HTML content if it's different
     if($content) {
+      $content = self::parseHTMLValue('content', $item);
       $data['content']['text'] = $content['text'];
-      if(array_key_exists('html', $content))
+      if(isset($content['html']))
         $data['content']['html'] = $content['html'];
     }    
   }
@@ -757,6 +762,20 @@ class Mf2 extends Format {
         return $value;
       } elseif(self::isMicroformat($value) && array_key_exists('value', $value)) {
         return $value['value'];
+      }
+    }
+    return $fallback;
+  }
+
+  private static function getHTMLValue($mf2, $k, $fallback=null) {
+    // Return an array with html and value if the value is html, otherwise return a string
+    if(!empty($mf2['properties'][$k]) and is_array($mf2['properties'][$k])) {
+      // $mf2['properties'][$v] will always be an array since the input was from the mf2 parser
+      $value = $mf2['properties'][$k][0];
+      if(is_string($value)) {
+        return $value;
+      } elseif(isset($value['html'])) {
+        return $value;
       }
     }
     return $fallback;
