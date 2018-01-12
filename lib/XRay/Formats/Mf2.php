@@ -527,30 +527,9 @@ class Mf2 extends Format {
     self::collectArrayURLValues(['photo','video','audio','syndication'], $item, $data, $refs, $http);
 
     // If there is a description, always return the plaintext description, and return HTML description if it's different
-    $textDescription = null;
-    $htmlDescription = null;
-    if(array_key_exists('description', $item['properties'])) {
-      $description = $item['properties']['description'][0];
-      if(is_string($description)) {
-        $textDescription = $description;
-      } elseif(!is_string($description) && is_array($description) && array_key_exists('value', $description)) {
-        if(array_key_exists('html', $description)) {
-          $htmlDescription = trim(self::sanitizeHTML($description['html']));
-          $textDescription = trim(str_replace("&#xD;","\r",strip_tags($htmlDescription)));
-          $textDescription = trim(str_replace("&#xD;","\r",$description['value']));
-        } else {
-          $textDescription = trim($description['value']);
-        }
-      }
-    }
-
-    if($textDescription) {
-      $data['description'] = [
-        'text' => $textDescription
-      ];
-      if($htmlDescription && $textDescription != $htmlDescription) {
-        $data['description']['html'] = $htmlDescription;
-      }
+    $description = self::parseHTMLValue('description', $item);
+    if($description) {
+      $data['description'] = $description;
     }
 
     $response = [
