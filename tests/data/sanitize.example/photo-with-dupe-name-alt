@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <h2 class="p-name">Photo caption</h2>
+    <p class="e-content"><img class="u-photo" src="/photo.jpg" alt="Photo caption"></p>
+  </body>
+</html>
