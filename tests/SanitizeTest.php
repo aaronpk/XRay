@@ -230,6 +230,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testPhotoWithDupeNameAndAlt1() {
+    // https://github.com/aaronpk/XRay/issues/57
     $url = 'http://sanitize.example/photo-with-dupe-name-alt';
     $response = $this->parse(['url' => $url]);
 
@@ -244,7 +245,6 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testPhotoWithDupeNameAndAlt2() {
-    // https://github.com/aaronpk/XRay/issues/57
     // This is simliar to adactio's markup
     // https://adactio.com/notes/13301
     $url = 'http://sanitize.example/photo-with-dupe-name-alt-2';
