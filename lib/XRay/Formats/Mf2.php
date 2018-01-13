@@ -155,7 +155,7 @@ class Mf2 extends Format {
         return self::parseAsHReview($mf2, $item, $http, $url);
       } elseif(in_array('h-recipe', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-recipe on the page");
-        return self::parseAsHReview($mf2, $item, $http, $url);
+        return self::parseAsHRecipe($mf2, $item, $http, $url);
       } elseif(in_array('h-product', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-product on the page");
         return self::parseAsHProduct($mf2, $item, $http, $url);
