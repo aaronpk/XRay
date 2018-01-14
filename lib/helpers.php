@@ -11,7 +11,8 @@ function normalize_url($url) {
   $parts = parse_url($url);
   if(empty($parts['path']))
     $parts['path'] = '/';
-  $parts['host'] = strtolower($parts['host']);
+  if(isset($parts['host']))
+    $parts['host'] = strtolower($parts['host']);
   return build_url($parts);
 }
 

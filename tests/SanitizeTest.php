@@ -151,4 +151,149 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->author->photo);
   }
 
+  public function testPhotoInContentNoAlt() {
+    // https://github.com/aaronpk/XRay/issues/52
+
+    $url = 'http://sanitize.example/photo-in-content';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
+    $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
+    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
+  }
+
+  public function testPhotoInTextContentNoAlt() {
+    // https://github.com/aaronpk/XRay/issues/56
+
+    $url = 'http://sanitize.example/photo-in-text-content';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
+    $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
+    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
+  }
+
+  public function testPhotoInContentEmptyAltAttribute() {
+    // https://github.com/aaronpk/XRay/issues/52
+    
+    $url = 'http://sanitize.example/photo-in-content-empty-alt';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
+    $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
+    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
+  }
+
+  public function testPhotoInContentWithAlt() {
+    // https://github.com/aaronpk/XRay/issues/52
+    
+    $url = 'http://sanitize.example/photo-in-content-with-alt';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
+    $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
+    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);    
+  }
+
+  public function testPhotoInContentWithNoText() {
+    $url = 'http://sanitize.example/cleverdevil';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectHasAttribute('name', $data->data);
+    $this->assertEquals('Oh, how well they know me! 🥃', $data->data->name);
+    $this->assertObjectNotHasAttribute('content', $data->data);
+    $this->assertEquals('https://cleverdevil.io/file/5bf2fa91c3d4c592f9978200923cb56e/thumb.jpg', $data->data->photo[0]);
+  }
+
+  public function testPhotoWithDupeNameAndAlt1() {
+    // https://github.com/aaronpk/XRay/issues/57
+    $url = 'http://sanitize.example/photo-with-dupe-name-alt';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectHasAttribute('name', $data->data);
+    $this->assertEquals('Photo caption', $data->data->name);
+    $this->assertObjectNotHasAttribute('content', $data->data);
+    $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
+  }
+
+  public function testPhotoWithDupeNameAndAlt2() {
+    // This is simliar to adactio's markup
+    // https://adactio.com/notes/13301
+    $url = 'http://sanitize.example/photo-with-dupe-name-alt-2';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectHasAttribute('content', $data->data);
+    $this->assertEquals('Photo caption', $data->data->content->text);
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
+  }
+
+  public function testPhotosWithAlt() {
+    // https://github.com/microformats/microformats2-parsing/issues/16
+
+    $url = 'http://sanitize.example/photos-with-alt';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    #print_r($data->data);
+
+    $this->assertEquals('🌆 Made it to the first #NPSF #earlygang of the year, did in-betweeners abs, and 6:30 workout with a brutal burnout that was really its own workout. But wow pretty sunrise. Plus 50+ deg F? I’ll take it. #100PDPD#justshowup #darknesstodawn #wakeupthesun #fromwhereirun #NovemberProject #sunrise #latergram #nofilter', $data->data->content->text);
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('https://igx.4sqi.net/img/general/original/476_g7yruXflacsGr7PyVmECefyTBMB_R99zmPQxW7pftzA.jpg', $data->data->photo[0]);
+    $this->assertEquals('https://igx.4sqi.net/img/general/original/476_zM3UgU9JHNhom907Ac_1WCEcUhGOJZaNWGlRmev86YA.jpg', $data->data->photo[1]);
+  }
+
+  public function testEntryWithImgNoImpliedPhoto() {
+    // See https://github.com/microformats/microformats2-parsing/issues/6#issuecomment-357286985
+    // and https://github.com/aaronpk/XRay/issues/52#issuecomment-357269683
+    // and https://github.com/microformats/microformats2-parsing/issues/16
+    $url = 'http://sanitize.example/entry-with-img-no-implied-photo';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertObjectNotHasAttribute('photo', $data->data);
+    $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
+    $this->assertEquals('This is a photo post with an img tag inside the content, which does not have a u-photo class so should not be removed.', $data->data->content->text);
+    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content, which does not have a u-photo class so should not be removed. <img src="http://target.example.com/photo.jpg" alt="a photo">', $data->data->content->html);
+  }
+
 }

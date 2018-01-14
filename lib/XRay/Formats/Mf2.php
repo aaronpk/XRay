@@ -220,21 +220,40 @@ class Mf2 extends Format {
       $textContent = $content;
     } elseif(!is_string($content) && is_array($content) && array_key_exists('value', $content)) {
       if(array_key_exists('html', $content)) {
-        $htmlContent = trim(self::sanitizeHTML($content['html']));
-        #$textContent = trim(str_replace("&#xD;","\r",strip_tags($htmlContent)));
-        $textContent = trim(str_replace("&#xD;","\r",$content['value']));
+        // Only allow images in the content if there is no photo property set
+        if(isset($item['properties']['photo']))
+          $allowImg = false;
+        else
+          $allowImg = true;
+
+        $htmlContent = trim(self::sanitizeHTML($content['html'], $allowImg));
+        #$textContent = trim(str_replace("&#xD;","\r",$content['value']));
+        $textContent = trim(self::stripHTML($htmlContent));
       } else {
         $textContent = trim($content['value']);
       }
     }
 
-    $data = [
-      'text' => $textContent
-    ];
-    if($htmlContent && $textContent != $htmlContent) {
-      $data['html'] = $htmlContent;
+    if($textContent || $htmlContent) {
+      $data = [
+        'text' => $textContent
+      ];
+      // Only add HTML content if there is actual content.
+      // If the text content ends up empty, then the HTML should be too
+      // e.g. <div class="e-content"><a href=""><img src="" class="u-photo"></a></div>
+      // should not return content of <a href=""></a>
+      // TODO: still need to remove empty <a> tags when there is other text in the content
+      if($htmlContent && $textContent && $textContent != $htmlContent) {
+        $data['html'] = $htmlContent;
+      }
+
+      if(!$data['text'])
+        return null;
+
+      return $data;
+    } else {
+      return null;
     }
-    return $data;
   }
 
   // Always return arrays, and may contain plaintext content
@@ -321,12 +340,16 @@ class Mf2 extends Format {
     $textContent = null;
     $htmlContent = null;
 
-    $content = self::parseHTMLValue('content', $item);
-    if($content) {
+    $content = self::getHTMLValue($item, 'content');
+
+    if(is_string($content)) {
+      $textContent = $content;
+    } elseif($content) {
       $htmlContent = array_key_exists('html', $content) ? $content['html'] : null;
-      $textContent = array_key_exists('text', $content) ? $content['text'] : null;
+      $textContent = array_key_exists('value', $content) ? $content['value'] : null;
     }
 
+    $checkedname = $name;
     if($content) {
       // Trim ellipses from the name
       $name = preg_replace('/ ?(\.\.\.|…)$/', '', $name);
@@ -337,19 +360,29 @@ class Mf2 extends Format {
 
       // Check if the name is a prefix of the content
       if($contentCompare && $nameCompare && strpos($contentCompare, $nameCompare) === 0) {
-        $name = null;
+        $checkedname = null;
       }
     }
 
-    if($name) {
-      $data['name'] = $name;
+    if($checkedname) {
+      $data['name'] = $checkedname;
     }
 
     // If there is content, always return the plaintext content, and return HTML content if it's different
     if($content) {
-      $data['content']['text'] = $content['text'];
-      if(array_key_exists('html', $content))
-        $data['content']['html'] = $content['html'];
+      $content = self::parseHTMLValue('content', $item);
+      if($content['text']) {
+        $data['content']['text'] = $content['text'];
+        if(isset($content['html']))
+          $data['content']['html'] = $content['html'];
+      } else {
+        // If the content text was blank because the img was removed and that was the only content,
+        // then put the name back as the name if it was previously set.
+        // See https://github.com/aaronpk/XRay/issues/57
+        if($name) {
+          $data['name'] = $name;
+        }
+      }
     }    
   }
 
@@ -739,6 +772,20 @@ class Mf2 extends Format {
         return $value;
       } elseif(self::isMicroformat($value) && array_key_exists('value', $value)) {
         return $value['value'];
+      }
+    }
+    return $fallback;
+  }
+
+  private static function getHTMLValue($mf2, $k, $fallback=null) {
+    // Return an array with html and value if the value is html, otherwise return a string
+    if(!empty($mf2['properties'][$k]) and is_array($mf2['properties'][$k])) {
+      // $mf2['properties'][$v] will always be an array since the input was from the mf2 parser
+      $value = $mf2['properties'][$k][0];
+      if(is_string($value)) {
+        return $value;
+      } elseif(isset($value['html'])) {
+        return $value;
       }
     }
     return $fallback;
