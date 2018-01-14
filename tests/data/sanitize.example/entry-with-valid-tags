@@ -10,7 +10,7 @@ Connection: keep-alive
   </head>
   <body class="h-entry">
     <div class="e-content">
-      This content has only valid tags. <a href="/example">links</a>, <abbr>abbreviations</abbr>, <b>bold</b>, <code>inline code</code>, <del>delete</del>, <em>emphasis</em>, <i>italics</i>, <img src="/example.jpg" alt="images are allowed"> <q>inline quote</q>, <strike>strikethrough</strike>, <strong>strong text</strong>, and <time datetime="2016-01-01">time elements</time> are supported inline elements.
+      <p>This content has only valid tags. <a href="/example">links</a>, <abbr>abbreviations</abbr>, <b>bold</b>, <code>inline code</code>, <del>delete</del>, <em>emphasis</em>, <i>italics</i>, <img src="/example.jpg" alt="images are allowed"> <q>inline quote</q>, <strike>strikethrough</strike>, <strong>strong text</strong>, and <time datetime="2016-01-01">time elements</time> are supported inline elements.</p>
 
       <blockquote>Blockquote tags are okay</blockquote>
 
