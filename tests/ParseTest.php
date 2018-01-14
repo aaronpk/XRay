@@ -118,6 +118,18 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This page has a link to target.example.com and some formatted text but is in a p-content element so is plaintext.', $data->data->content->text);
   }
 
+  public function testArticleWithFeaturedImage() {
+    $url = 'http://source.example.com/article-with-featured-image';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertEquals('Post Title', $data->data->name);
+    $this->assertEquals('This is a blog post.', $data->data->content->text);
+    $this->assertEquals('http://source.example.com/featured.jpg', $data->data->featured);
+  }
+
   public function testContentWithPrefixedName() {
     $url = 'http://source.example.com/content-with-prefixed-name';
     $response = $this->parse(['url' => $url]);
@@ -245,6 +257,17 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('http://syndicated.example/', $data['data']['syndication'][0]);
+  }
+
+  public function testHEntryNoContent() {
+    $url = 'http://source.example.com/h-entry-no-content';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('content', $data->data);
+    $this->assertEquals('This is a Post', $data->data->name);
   }
 
   public function testHEntryIsNotFirstObject() {

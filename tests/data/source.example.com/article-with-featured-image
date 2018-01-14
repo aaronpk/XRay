@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <img src="/featured.jpg" class="u-featured" width="100%">
+    <img src="/featured2.jpg" class="u-featured" width="100%">
+    <h2 class="p-name">Post Title</h2>
+    <p class="e-content">This is a blog post.</p>
+  </body>
+</html>
