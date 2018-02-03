@@ -43,5 +43,14 @@ class XRay {
     return $result;
   }
 
+  public function process($url, $mf2json, $opts=[]) {
+    $parser = new XRay\Parser($this->http);
+    $result = $parser->parse($mf2json, $url, $opts);
+    if(!isset($opts['include_original']) || !$opts['include_original'])
+      unset($result['original']);
+    $result['url'] = $url;
+    return $result;
+  }
+
 }
 

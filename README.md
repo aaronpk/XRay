@@ -53,6 +53,13 @@ $html = '<html>....</html>';
 $parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html);
 ```
 
+```php
+$xray = new p3k\XRay();
+$jsonfeed = '{"version":"https://jsonfeed.org/version/1","title":"Manton Reece", ... ';
+// Note that the JSON document must be passed in as a string in this case
+$parsed = $xray->parse('https://manton.micro.blog/feed.json', $jsonfeed);
+```
+
 In both cases, you can add an additional parameter to configure various options of how XRay will behave. Below is a list of the options.
 
 * `timeout` - The timeout in seconds to wait for any HTTP requests
@@ -92,6 +99,39 @@ $parsed = Array
     [code] => 200
 )
 ```
+
+### Processing Microformats2 JSON
+
+If you already have a parsed Microformats2 document as an array, you can use a special function to process it into XRay's native format. Make sure you pass the entire parsed document, not just the single item.
+
+```php
+$html = '<div class="h-entry"><p class="p-content p-name">Hello World</p><img src="/photo.jpg"></p></div>';
+$mf2 = Mf2\parse($html, 'http://example.com/entry');
+
+$xray = new p3k\XRay();
+$parsed = $xray->process('http://example.com/entry', $mf2); // note the use of `process` not `parse`
+
+Array 
+(
+    [data] => Array
+        (
+            [type] => entry
+            [photo] => Array
+                (
+                    [0] => http://example.com/photo.jpg
+                )
+
+            [content] => Array
+                (
+                    [text] => Hello World
+                )
+
+        )
+
+    [url] => http://example.com/entry
+)
+```
+
 
 ### Rels
 

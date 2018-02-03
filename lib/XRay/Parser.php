@@ -42,6 +42,11 @@ class Parser {
       return Formats\Hackernews::parse($body, $url);
     }
 
+    // Check if an mf2 JSON object was passed in
+    if(is_array($body) && isset($body['items'][0]['type']) && isset($body['items'][0]['properties'])) {
+      return Formats\Mf2::parse($body, $url, $this->http, $opts);
+    }
+
     if(substr($body, 0, 5) == '<?xml') {
       return Formats\XML::parse($body, $url);
     }
@@ -50,6 +55,9 @@ class Parser {
       $feeddata = json_decode($body, true);
       if($feeddata && isset($feeddata['version']) && $feeddata['version'] == 'https://jsonfeed.org/version/1') {
         return Formats\JSONFeed::parse($feeddata, $url);
+      } elseif($feeddata && isset($feeddata['items'][0]['type']) && isset($feeddata['items'][0]['properties'])) {
+        // Check if an mf2 JSON object was passed in
+        return Formats\Mf2::parse($feeddata, $url, $this->http, $opts);
       }
     }
 
