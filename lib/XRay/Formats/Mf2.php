@@ -511,6 +511,7 @@ class Mf2 extends Format {
     $data = [
       'type' => 'product'
     ];
+    $refs = [];
 
     self::collectSingleValues(['name','identifier','price'], ['url'], $item, $url, $data);
 
@@ -538,6 +539,7 @@ class Mf2 extends Format {
     $data = [
       'type' => 'item'
     ];
+    $refs = [];
 
     self::collectSingleValues(['name'], ['url'], $item, $url, $data);
 
