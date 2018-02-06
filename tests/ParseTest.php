@@ -613,4 +613,32 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('http://example.com/photo.jpg', $data['data']['photo'][0]);
   }
 
+  public function testHApp() {
+    $url = 'http://source.example.com/h-app';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertEquals('app', $data->data->type);
+    $this->assertEquals('http://source.example.com/images/quill.png', $data->data->logo);
+    $this->assertEquals('Quill', $data->data->name);
+    $this->assertEquals($url, $data->data->url);
+    $this->assertObjectNotHasAttribute('photo', $data->data);
+  }
+
+  public function testHXApp() {
+    $url = 'http://source.example.com/h-x-app';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertEquals('app', $data->data->type);
+    $this->assertEquals('http://source.example.com/images/quill.png', $data->data->logo);
+    $this->assertEquals('Quill', $data->data->name);
+    $this->assertEquals($url, $data->data->url);
+    $this->assertObjectNotHasAttribute('photo', $data->data);
+  }
+
 }

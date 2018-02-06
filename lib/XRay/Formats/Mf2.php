@@ -55,6 +55,10 @@ class Mf2 extends Format {
         #Parse::debug("mf2:0: Recognized $url as an h-card it is the only item on the page");
         return self::parseAsHCard($item, $http, $url, $url);
       }
+      if(in_array('h-app', $item['type']) || in_array('h-x-app', $item['type'])) {
+        #Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
+        return self::parseAsHApp($mf2, $item, $http, $url);
+      }
       if(in_array('h-feed', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-feed because it is the only item on the page");
         return self::parseAsHFeed($mf2, $http, $url);
@@ -83,6 +87,8 @@ class Mf2 extends Format {
             return self::parseAsHProduct($mf2, $item, $http, $url);
           } elseif(in_array('h-item', $item['type'])) {
             return self::parseAsHItem($mf2, $item, $http, $url);
+          } elseif(in_array('h-app', $item['type']) || in_array('h-x-app', $item['type'])) {
+            return self::parseAsHApp($mf2, $item, $http, $url);
           } elseif(in_array('h-feed', $item['type'])) {
             return self::parseAsHFeed($mf2, $http, $url);
           } else {
@@ -116,6 +122,8 @@ class Mf2 extends Format {
                   return self::parseAsHProduct($mf2, $item, $http, $url);
                 } elseif(in_array('h-item', $item['type'])) {
                   return self::parseAsHItem($mf2, $item, $http, $url);
+                } elseif(in_array('h-app', $item['type']) || in_array('h-x-app', $item['type'])) {
+                  return self::parseAsHApp($mf2, $item, $http, $url);
                 }
               }
             }
@@ -162,6 +170,9 @@ class Mf2 extends Format {
       } elseif(in_array('h-item', $item['type'])) {
         #Parse::debug("mf2:6: $url is falling back to the first h-item on the page");
         return self::parseAsHItem($mf2, $item, $http, $url);
+      } elseif(in_array('h-app', $item['type']) || in_array('h-x-app', $item['type'])) {
+        #Parse::debug("mf2:6: $url is falling back to the first h-item on the page");
+        return self::parseAsHApp($mf2, $item, $http, $url);
       }
     }
 
@@ -539,6 +550,23 @@ class Mf2 extends Format {
     if(count($refs)) {
       $response['data']['refs'] = $refs;
     }
+
+    return $response;
+  }
+
+  private static function parseAsHApp($mf2, $item, $http, $url) {
+    $data = [
+      'type' => 'app'
+    ];
+
+    self::collectSingleValues(['name'], ['url','logo'], $item, $url, $data);
+
+    if(!isset($data['url']))
+      $data['url'] = $url;
+
+    $response = [
+      'data' => $data
+    ];
 
     return $response;
   }

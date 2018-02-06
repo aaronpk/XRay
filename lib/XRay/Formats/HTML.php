@@ -96,8 +96,8 @@ class HTML extends Format {
 
     if($mf2 && count($mf2['items']) > 0) {
       $data = Formats\Mf2::parse($mf2, $url, $http, $opts);
-      $result = array_merge($result, $data);
       if($data) {
+        $result = array_merge($result, $data);
         if($fragment) {
           $result['info'] = [
             'found_fragment' => $foundFragment
