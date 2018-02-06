@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "03386594e351101daf18ef93a40494a5",
+    "content-hash": "ee0b0e99a5aeee6e95f5d642f438cde2",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -315,7 +315,45 @@
             "time": "2017-05-27T15:27:47+00:00"
         },
         {
-            "name": "miniflux/picofeed",
+            "name": "p3k/http",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aaronpk/p3k-http.git",
+                "reference": "3740fe135e6d58457d7528e7c05a67b68e020a79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/3740fe135e6d58457d7528e7c05a67b68e020a79",
+                "reference": "3740fe135e6d58457d7528e7c05a67b68e020a79",
+                "shasum": ""
+            },
+            "require": {
+                "indieweb/link-rel-parser": "0.1.*",
+                "mf2/mf2": "0.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "p3k\\": "src/p3k"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Parecki",
+                    "homepage": "https://aaronparecki.com"
+                }
+            ],
+            "description": "A simple wrapper API around the PHP curl functions",
+            "homepage": "https://github.com/aaronpk/p3k-http",
+            "time": "2017-04-29T17:43:29+00:00"
+        },
+        {
+            "name": "p3k/picofeed",
             "version": "v0.1.38",
             "source": {
                 "type": "git",
@@ -365,44 +403,6 @@
             "description": "Modern library to handle RSS/Atom feeds",
             "homepage": "https://github.com/miniflux/picoFeed",
             "time": "2017-11-30T00:16:58+00:00"
-        },
-        {
-            "name": "p3k/http",
-            "version": "0.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aaronpk/p3k-http.git",
-                "reference": "3740fe135e6d58457d7528e7c05a67b68e020a79"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/3740fe135e6d58457d7528e7c05a67b68e020a79",
-                "reference": "3740fe135e6d58457d7528e7c05a67b68e020a79",
-                "shasum": ""
-            },
-            "require": {
-                "indieweb/link-rel-parser": "0.1.*",
-                "mf2/mf2": "0.3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "p3k\\": "src/p3k"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aaron Parecki",
-                    "homepage": "https://aaronparecki.com"
-                }
-            ],
-            "description": "A simple wrapper API around the PHP curl functions",
-            "homepage": "https://github.com/aaronpk/p3k-http",
-            "time": "2017-04-29T17:43:29+00:00"
         },
         {
             "name": "p3k/timezone",
