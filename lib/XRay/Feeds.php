@@ -35,11 +35,19 @@ class Feeds {
     $url = normalize_url($url);
 
     $result = $this->http->get($url);
+
+    if(isset($result['error']) && $result['error']) {
+      return [
+        'error' => $result['error'],
+        'error_description' => $result['error_description']
+      ];
+    }
+
     $body = $result['body'];
 
     $feeds = [];
 
-    // First check the content type of the response 
+    // First check the content type of the response
     $contentType = isset($result['headers']['Content-Type']) ? $result['headers']['Content-Type'] : '';
 
     if(is_array($contentType))
@@ -110,7 +118,7 @@ class Feeds {
     return [
       'url' => $result['url'],
       'code' => $result['code'],
-      'feeds' => $feeds
+      'feeds' => $feeds,
     ];
   }
 
