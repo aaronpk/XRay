@@ -314,4 +314,16 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Sometimes my job requires me to listen to 55 minutes of an hour long phone call while I go for a long walk on a sunny morning and wait for my turn to give an update. Pretty nice!', $data->items[11]->content->text);
   }
 
+  public function testAscraeus() {
+    $url = 'http://source.example.com/ascraeus';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals('feed', $data->type);
+    $this->assertEquals(20, count($data->items));
+  }
+
 }

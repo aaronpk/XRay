@@ -1,0 +1,1218 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<!-- begin header partial //-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="generator" content="Hugo 0.34" />
+
+  <title>View from Ascraeus</title>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script type="text/javascript" src="https://ascraeus.org/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="https://ascraeus.org/js/bigfoot.js"></script>
+  <script type="text/javascript">
+    $.bigfoot();
+  </script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="mask-icon" href="/ascraeus_icon.svg" color="#367588" />
+  <link rel="pgpkey" href="/pgp_key.txt" />
+  <link rel="author" href="/pages/about/" title="About the author" />
+  <meta name="theme-color" content="#f5f5f5">
+
+
+  <link rel="stylesheet" type="text/css" href="https://ascraeus.org/css/reproach.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://ascraeus.org/css/bigfoot-default.css" />
+  <link rel="stylesheet" type="text/css" href="https://ascraeus.org/css/webmention.css" />
+  <link rel="stylesheet" type="text/css" href="https://ascraeus.org/css/syntax.css" />
+  <link rel="me" href="mailto:dgold@ascraeus.org" />
+
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+  <link rel="webmention" href="https://webmention.herokuapp.com/api/webmention" />
+  <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
+  <link rel="micropub" href="https://ascraeus.org/nanopub.php" />
+  <link rel="microsub" href="https://greyarea.ascraeus.org/microsub/1" />
+
+  <link rel="alternate" type="application/atom+xml" title="Ascraeus Main Feed" href="https://ascraeus.org/index.xml" />
+  <link rel="alternate" type="application/atom+xml" title="Ascraeus Micropost Feed" href="https://ascraeus.org/micro/index.xml" />
+  <link rel="alternate" type="application/json" title="Ascraeus JSON feed" href="https://ascraeus.org/jsonfeed/index.json" />
+  <link rel="self" href="https://ascraeus.org/" />
+  <link rel="hub" href="https://switchboard.p3k.io/" />
+  <link rel="me" href="https://micro.blog/dgold" />
+
+
+
+
+    <link rel="canonical" href="https://ascraeus.org/" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:url" property="og:url" content="https://ascraeus.org/" />
+    <meta name="twitter:title" property="og:title" content="A microentry" />
+    <meta name="twitter:description" property="og:description" content="" />
+    <meta property="article:author" content="Daniel Goldsmith" />
+    <meta name="twitter:site" content="@AscraeusOrg" />
+    <meta name="twitter:creator" content="@_dgoldsmith" />
+    <meta property="og:site_name" content="View from Ascraeus" />
+    <meta name="twitter:image" property="og:image" content="https://ascraeus.org/icon440.png" />
+
+</head>
+<body class="Site">
+  <main>
+    <section>
+
+
+<!-- begin sidebar partial //-->
+
+  <aside>
+    <header>
+      <nav>
+        <div id="sitetitle">
+        <h1><a href="https://ascraeus.org/">View&nbsp;from<span class="hidden">&nbsp;&nbsp;<br /></span> <span class="ochre">Ascraeus</span></a></h1>
+        </div>
+        <ul>
+                <li><a href="https://ascraeus.org/page/about" title="About" class="metatag">
+                    <svg class="icon icon-ascraeus">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+                         </use>
+                     </svg> <span class="hidden">about</span></a>
+                </li>
+        <li><a href="https://ascraeus.org/micro" title="Micro Blog" class="metatag">
+          <svg class="icon icon-power">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-power">
+                         </use>
+                     </svg> <span class="hidden">micro</span></a>
+                </li>
+                <li><a href="https://ascraeus.org/article" title="articles" class="metatag">
+                    <svg class="icon icon-blog">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-blog">
+                         </use>
+                     </svg> <span class="hidden">posts</span></a>
+                </li>
+                <li><a href="https://ascraeus.org/review" title="reviews" class="metatag">
+                    <svg class="icon icon-star-half">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-star-half">
+                         </use>
+                     </svg> <span class="hidden">reviews</span></a>
+                </li>
+                <li><a href="https://ascraeus.org/page/tbr" title="tbr" class="metatag">
+                    <svg class="icon icon-infinite">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-infinite">
+                         </use>
+                     </svg> <span class="hidden">tbr</span></a>
+                </li>
+                <li><a href="https://ascraeus.org/page/reading" title="reading" class="metatag">
+                    <svg class="icon icon-book">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-book">
+                         </use>
+                     </svg> <span class="hidden">reading</span></a>
+                </li>
+                <li><a href="https://ascraeus.org/link" title="links" class="metatag">
+                    <svg class="icon icon-link">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-link">
+                         </use>
+                     </svg> <span class="hidden">link posts</span></a>
+                </li>
+                <li><a href="https://ascraeus.org/like" title="likes+reposts" class="metatag">
+                    <svg class="icon icon-loop">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-loop">
+                         </use>
+                     </svg> <span class="hidden">likes+reposts</span></a>
+                </li>
+                <li><a href="https://ascraeus.org/page/feeds" title="site feeds" class="metatag">
+          <svg class="icon icon-rss">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-rss">
+                         </use>
+                     </svg>
+                <span class="hidden"> feeds</a></li>
+        </ul>
+                    <form method="get" class="hidden" id="search" action="https://duckduckgo.com/">
+                        <input type="hidden" name="sites" value="ascraeus.org" />
+                        <input type="hidden" name="ka" value="h" />
+                        <input type="hidden" name="k7" value="#fafafa" />
+                        <input type="hidden" name="kj" value="#3f3f3f" />
+                        <input type="hidden" name="ky" value="#fafafa" />
+                        <input type="hidden" name="kx" value="b" />
+                        <input type="hidden" name="kt" value="Helvetica" />
+                        <input type="text" name="q" maxlength="255" placeholder="Search" />
+                        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+                    </form>
+      </nav>
+    </header>
+  </aside>
+
+
+  <content><!-- from index.html //-->
+      <article class="h-entry hentry">
+          <h3 class="p-name entry-title"><a href="https://ascraeus.org/desperately-seeking-swift-pointers/">Desperately Seeking Swift Pointers</a></h3>
+      <!-- begin metadata partial //-->
+  <div class="meta">
+    <a href="https://ascraeus.org/desperately-seeking-swift-pointers/" class="metatag u-url u-uid"><time class="dt-published" datetime="2018-02-17 23:56:33">
+    Sat, Feb 17, 2018</time></a> &bull;
+      <svg class="icon icon-weather" role="image">
+        <title>Foggy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-fog">
+        </use>
+      </svg>
+      &nbsp;7&deg;C&nbsp;&bull;&nbsp;
+
+      <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+        <svg class="icon">
+          <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+          </use>
+        </svg>
+      </a>
+      &nbsp;&bull;&nbsp;
+    ~1 min read
+  </div>
+
+
+
+
+        <div class="e-content">
+
+        <p>There’s a small personal project I want to do, nothing too complex, just a mac app that consumes a JSON data structure and represents the information as a simple table view. I’d done something similar before in iOS, and there was a surfeit of decent tutorials &amp;c available for that, so I thought it would be a similar situation. Problem is, there really isn’t anything like that amount of information easily available for Mac OS, or OS X as was.</p>
+
+<p>Anything I have been able to find presumes that the JSON data is uniform, with the same fields available in each data item, that’s not the case in the data that I need to parse. More than that, there just seems to be a dearth of “here’s how to make a data table” entry level information.</p>
+
+<p>This isn’t my area, although I have some limited coding skills, and I do understand swift on a general basis. I guess I’m wondering if anyone reading this can point me in the direction of a beginners level dataset for what (should) be a relatively non-complex task. I hope someone can give me some pointers here. Help me, Obi-wan Kenobi 🤓</p>
+
+
+        </div>
+      </article>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>I know its not the greatest movie ever but how was Christian Bale not even <em>nominated</em> for an Oscar for <strong>Empire of the Sun</strong>? Jack Nicholson was nominated for &ldquo;Ironweed&rdquo;, William Hurt for &ldquo;Broadcast News, but Bale wasn&rsquo;t? huh? How does that work?</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518815900/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-16 21:18:20">
+    16/02/18 21:18</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Light Rain</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-rain">
+        </use>
+      </svg>
+      &nbsp;4.8&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+      <small><svg class="icon icon-talk">
+          <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-talk"></use>
+        </svg> replying to a post on <a href="https://micro.blog/belle/340369" class="u-in-reply-to">micro.blog</a></small>
+        <div class="e-content p-name"><p><a href="https://micro.blog/belle">@belle</a> A handy way to do it with Basil is to buy live ones from a store, then separate out the stems into new pots. We did that a few years ago, and were inundated with the stuff.</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518781903/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-16 11:51:43">
+    16/02/18 11:51</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Drizzle</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-rain">
+        </use>
+      </svg>
+      &nbsp;8.3&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>I guess I was wrong when I wrote that LeGuin was my introduction to SF at a young age. I forgot about Terry Nation&rsquo;s wonderful &ldquo;Rebecca&rsquo;s World.&rdquo; I managed to track down a copy for my children, and they love it as much as I once did. Its messages are still relevant today.</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518723879/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-15 19:44:39">
+    15/02/18 19:44</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Drizzle</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-rain">
+        </use>
+      </svg>
+      &nbsp;4.6&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p><a href="https://www.theonion.com/no-way-to-prevent-this-says-only-nation-where-this-r-1819576527">‘No Way To Prevent This,’ Says Only Nation Where This Regularly Happens</a></p>
+
+<p>Again. Time. After time. 😢</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518651957/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-14 23:45:57">
+    14/02/18 23:45</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Partly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-partly-cloudy-night">
+        </use>
+      </svg>
+      &nbsp;5.1&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <article class="h-entry hentry">
+        <h3 class="p-name entry-title">
+          <a href=https://arstechnica.com/science/2018/02/op-ed-the-story-behind-the-satellite-that-trump-wants-dead/ class="u-bookmark-of">
+            <svg class="icon icon-link">
+                            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-link">
+                            </use>
+                        </svg> It’s difficult to describe all the ways this is stupid</a></h3>
+      <!-- begin metadata partial //-->
+  <div class="meta">
+    <a href="https://ascraeus.org/link/-it-s-difficult-to-describe-all-the-ways-this-is-stupid/" class="metatag u-url u-uid"><time class="dt-published" datetime="2018-02-13 21:04:00">Tue, 13 Feb, 2018</time></a> &bull;  <a href="/tags/stupid" class="metatag">stupid</a>&nbsp;&bull;&nbsp; <a href="/tags/hateful" class="metatag">hateful</a>&nbsp;&bull;&nbsp; <a href="/tags/evil" class="metatag">evil</a>&nbsp;&bull;&nbsp;
+        <a href="https://mastodon.social/@dgold/99520075816515007" class="metatag u-syndication" rel="syndication" title="this post was syndicated to mastodon">
+          <svg class="icon icon-masto">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-masto">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+  </div>
+
+
+
+
+        <div class="e-content">
+
+        <p>Corrupt kleptomaniac, star of Pee-Tape компромат, alleged President of the United States, Donnie Drumpf, is, by some distance, the stupidest person ever to have held that (or any other) elected position in world history. Even by his standards, however, this is the stupidest thing ever. In order to blind NASA&rsquo;s ability to observe the earth&rsquo;s Carbon Budget, he demands they defund a satellite that&rsquo;s already up there.</p>
+
+
+        </div>
+      </article>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>I wanted to put my feeds on their own page, and I wanted to write a little about what these feeds represent. I ended up writing <a href="https://ascraeus.org/page/feeds/">more than I expected</a>.</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518462481/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-12 19:08:01">
+    12/02/18 19:08</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Windy and Mostly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-wind">
+        </use>
+      </svg>
+      &nbsp;6&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+        <a href="https://mastodon.social/@dgold/99513957458544781" class="metatag u-syndication" rel="syndication" title="this post was syndicated to mastodon">
+          <svg class="icon icon-masto">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-masto">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <article class="h-entry hentry">
+          <h3 class="p-name entry-title"><a href="https://ascraeus.org/sleep-over-review/">Sleep Over</a></h3>
+      <!-- begin metadata partial //-->
+  <div class="meta">
+    <a href="https://ascraeus.org/sleep-over-review/" class="metatag u-url u-uid"><time class="dt-published" datetime="2018-02-12 11:05:13">
+    Mon, Feb 12, 2018</time></a> &bull;
+      <svg class="icon icon-weather" role="image">
+        <title>Drizzle</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-rain">
+        </use>
+      </svg>
+      &nbsp;4&deg;C&nbsp;&bull;&nbsp;
+
+      <a href="/tags/books" class="metatag p-category">books</a>&nbsp;&bull;&nbsp;
+      <a href="/tags/review" class="metatag p-category">review</a>&nbsp;&bull;&nbsp;
+      <a href="/tags/amreading" class="metatag p-category">amreading</a>&nbsp;&bull;&nbsp;
+      <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+        <svg class="icon">
+          <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+          </use>
+        </svg>
+      </a>
+      &nbsp;&bull;&nbsp;
+    ~3 min read
+  </div>
+
+
+
+
+        <div class="e-content">
+
+        <p>After finishing another giant doorstopping fantasy novel, I was looking for a palate cleanser. Something not too interruptive but still with a bit of science-fictional meaty content.</p>
+
+<p>I chanced on H. G. Bell&rsquo;s <a href="https://is.gd/BKlfle">Sleep Over</a> in some listicle or other, and thought I&rsquo;d give it a shot. The premise &ndash; humanity loses the ability to sleep &ndash; was intriguing. I&rsquo;ve writetn a short story based on people needing to not sleep, so I found myself in the bizarre situation of knowing some of the science behind an sf book before I read it!</p>
+
+<p>What I found was… fine, I guess? The science is certainly well-executed; the societal collapse which would occur if everyone were suddenly incapable of sleep would be both sudden and inevitable. Unlike the Zombie genre where some virus slowly infects more and more people, in this book everyone is immediately effected and the crash is immediate and devastating. The book is very like Albert Brook&rsquo;s <a href="http://amzn.to/2nXMpv6">World War Z</a>, being a collection of narratives from different people relating how their immediate surroundings were impacted.</p>
+
+<p>At least, that&rsquo;s what H. G. Bells was trying to do, the problem is that I don&rsquo;t think she ever manages to stick the landing. Put bluntly, the real charm<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> of World War Z is the <em>distinctiveness</em> of the individual voices in the narrative (many years later, I can still &lsquo;see&rsquo; the Russian woman, the Arab teen, the teenage girl in Alaska) but that&rsquo;s almost entirely absent from Sleep Over. Other than a stray geographic reference, there&rsquo;s nothing to suggest that these aren&rsquo;t all happening in one small town or nation. This <em>sameness</em> ruins the effect of the book, I found myself skimming pages rather than reading the same repetetive plaints.</p>
+
+<p><img src="https://books.google.ie/books/content?id=5BMkDwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=2" width="200" height="300" class="textwrap" /> I did say <em>almost</em> entirely absent. There are two sections which are quite different, and these give some insight into what I think Bells was attempting in this book and mark her as a writer who could be worth watching in the future. The first is a letter written by an man who lives in England and has been attempting to get home from Frankfurt Airport, it is as well executed as anything in Brook&rsquo;s book. The other is the very last section, which I won&rsquo;t go into detail about, but it manages to be both intimate and mysterious, a mood which is quite different from everything else in the book. I wouldn&rsquo;t be at all surprised to learn that this was the very first part of the book Bells wrote, its <em>voice</em> is so utterly different.</p>
+
+<p><a href="https://is.gd/BKlfle">Sleep Over</a> by H.G. Bells was published by Skyhorse Publishing just last month, and is available from many online and old-style vendors of books. I really want to say that I loved this book, as I thought there was so much potential here, but the reality is that it just doesn&rsquo;t hold together. Two and a half stars is all I can reasonably assign to this, but I&rsquo;ll certainly give Bells another chance in the future.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">and chilling effectiveness
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+
+        </div>
+      </article>
+    <hr />
+      <article class="h-entry hentry">
+          <h3 class="p-name entry-title"><a href="https://ascraeus.org/websub-part-ii-aperture/">WebSub Part II: Aperture</a></h3>
+      <!-- begin metadata partial //-->
+  <div class="meta">
+    <a href="https://ascraeus.org/websub-part-ii-aperture/" class="metatag u-url u-uid"><time class="dt-published" datetime="2018-02-11 18:50:36">
+    Sun, Feb 11, 2018</time></a> &bull;
+      <svg class="icon icon-weather" role="image">
+        <title>Clear</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-clear-night">
+        </use>
+      </svg>
+      &nbsp;1.9&deg;C&nbsp;&bull;&nbsp;
+
+      <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+        <svg class="icon">
+          <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+          </use>
+        </svg>
+      </a>
+      &nbsp;&bull;&nbsp;
+    ~3 min read
+  </div>
+
+
+
+
+        <div class="e-content">
+
+
+
+<p>Following on from <a href="https://ascraeus.org/websub-part-i-watchtower/">yesterday&rsquo;s Part I</a>, today I&rsquo;m talking about the process of installing Aaron Parecki&rsquo;s <a href="https://github.com/aaronpk/Aperture">Aperture Microsub Server</a>. As before, this is the result of several different attempts at installation, and leaves out a lot of the handwringing. I recommended that before starting the process, the user should have created two (sub)domains and created standalone letsencrypt certificates for both. I refer to them here as <code>watchtower.</code> and <code>aperture.example.com</code>, I may end up writing up my thoughts on this process in another article.</p>
+
+<h3 id="aperture-1">Aperture<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></h3>
+
+<p>Aperture is a <a href="https://indieweb.org/Microsub">Microsub Server</a>. The concept of Microsub is to decouple managing subscriptions and delivering content from the presentation of that content. The Microsub server handles the actual subscription to feeds, while providing a consistent API to clients for presentation in a reader interface. As such, there is no <em>content</em> on a Microsub server, just a list of feeds in channels created by the user.</p>
+
+<h4 id="system-requirements">System Requirements</h4>
+
+<ul>
+<li>Web Server (I still recommend <a href="https://nginx.org">nginx</a></li>
+<li>PHP 7.2+ with Composer</li>
+<li>Redis</li>
+<li>Beanstalkd</li>
+<li>MariaDB10.2+ / Mysql 5.7+</li>
+</ul>
+
+<h4 id="other-requirements">Other Requirements</h4>
+
+<ul>
+<li>SMTP account details</li>
+<li>Watchtower URL &amp; Token</li>
+</ul>
+
+<h4 id="installation">Installation</h4>
+
+<p>Clone the repository to a serving-location on your server. Then prepare a mysql database with a suitable user.</p>
+
+<ul>
+<li>$ mysql -u root -p</li>
+<li>mariaDB&gt; CREATE DATABASE aperture;</li>
+<li>mariaDB&gt; CREATE USER &lsquo;apertureuser&rsquo;@&lsquo;localhost&rsquo; IDENTIFIED BY &lsquo;aperturepass&rsquo;;</li>
+<li>mariaDB&gt; GRANT ALL PRIVILEGES ON aperture.* to &lsquo;apertureuser&rsquo;@&lsquo;localhost&rsquo;;</li>
+<li>mariaDB&gt; FLUSH PRIVILEGES;</li>
+<li>mariaDB&gt; exit;</li>
+</ul>
+
+<h4 id="configuration">Configuration</h4>
+
+<p>Copy the <code>.env.example</code> file to <code>.env</code> and then start filling in the blanks. All of these should be self explanatory; the Watchtower configurations are those which were set up when installing that service. The one change I made other than providing account details was to change the APP_ENV from <code>local</code> to <code>production</code>, this was per the laravel documentation. Ignore <code>APP_KEY</code> and anything to do with pusher for now.</p>
+
+<h4 id="preparation">Preparation</h4>
+
+<p>First install all the dependencies with <code>composer install</code>. Aperture is doing a lot of parsing, something I have a little <a href="https://ascraeus.org/taking-off-the-helmet/">recent experience of</a>, so it isn&rsquo;t surprising that the dependency list is fairly large.</p>
+
+<p>Once that is done, there are two artisan commands required</p>
+
+<ul>
+<li><code>$ php artisan migrate</code></li>
+<li><code>$ php artisan generate:key</code></li>
+</ul>
+
+<p>The fist one populates the tables in the aperture database, the second generates an API Key. Quickly open up <code>.env</code> and check that there is now a value given for <code>APP_KEY</code>.</p>
+
+<h4 id="create-a-user-account">Create a user account</h4>
+
+<p>Finally, just as with Watchtower, it is necessary to directly create a user account in sql. There are two items necessary: Your &lsquo;identity url&rsquo; (usually your own personal domain) and your Token Provider, which you may already know as part of the process of using micropub on your website, or for logging in to the indieweb wiki.</p>
+
+<ul>
+<li>$ mysql -u apertureuser -p</li>
+<li>mariaDB&gt; use aperture;</li>
+<li>mariaDB&gt; INSERT INTO users  (url, updated_at, token_endpoint) values (&lsquo;<a href="https://example.org'">https://example.org'</a>, &lsquo;2018-02-09 09:00:00&rsquo;, &lsquo;<a href="https://tokens.indieauth.com/token'">https://tokens.indieauth.com/token'</a>);</li>
+<li>mariaDB&gt; exit;</li>
+</ul>
+
+<p>Once that&rsquo;s all finished, visit your new site and sign in.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Aperture relies on a WebSub-style API to watch the Subscriptions for changes. This is currently provided by Aaron&rsquo;s <a href="https://github.com/aaronpk/Watchtower">Watchtower</a> which I walked through yesterday.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+
+        </div>
+      </article>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>Absolute pleasure to watch Laidlaw kicking. No bullshit, no tracking nods. He just looks where he’s going, looks at the ball and wallop. 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🏉</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518366328/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-11 16:25:28">
+    11/02/18 16:25</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Partly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-partly-cloudy-day">
+        </use>
+      </svg>
+      &nbsp;2.8&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>Quite enjoyable sitting here watching the Winter Olympics while it pours down snow outside. ☃️</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518350069/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-11 11:54:29">
+    11/02/18 11:54</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>Omgz. Just realised that Indigenous, iOS Micropub (via share sheet) and Microsub client, also does new posts and syndication and tags!</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518304659/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-10 23:17:39">
+    10/02/18 23:17</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Windy and Partly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-wind">
+        </use>
+      </svg>
+      &nbsp;4.9&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+        <a href="https://twitter.com/_dgoldsmith/status/962465635346329600" class="metatag u-syndication" rel="syndication" title="this post was syndicated to twitter">
+          <svg class="icon icon-twitter">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-twitter">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+        <a href="https://mastodon.social/@dgold/99503614432901133" class="metatag u-syndication" rel="syndication" title="this post was syndicated to mastodon">
+          <svg class="icon icon-masto">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-masto">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>Hope Not Hate and the SPLC have done a great job showing <a href="http://www.hopenothate.org.uk/2018/02/10/a-home-for-hate/">Cloudflare store illegal hate material</a> across the EU and the UK. Time for consequences is long since past.</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518293245/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-10 20:07:25">
+    10/02/18 20:07</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Drizzle and Windy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-rain">
+        </use>
+      </svg>
+      &nbsp;7.4&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <article class="h-entry hentry">
+          <h3 class="p-name entry-title"><a href="https://ascraeus.org/websub-part-i-watchtower/">WebSub Part I: Watchtower</a></h3>
+      <!-- begin metadata partial //-->
+  <div class="meta">
+    <a href="https://ascraeus.org/websub-part-i-watchtower/" class="metatag u-url u-uid"><time class="dt-published" datetime="2018-02-10 19:04:52">
+    Sat, Feb 10, 2018</time></a> &bull;
+      <svg class="icon icon-weather" role="image">
+        <title>Windy and Partly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-wind">
+        </use>
+      </svg>
+      &nbsp;9.4&deg;C&nbsp;&bull;&nbsp;
+
+      <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+        <svg class="icon">
+          <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+          </use>
+        </svg>
+      </a>
+      &nbsp;&bull;&nbsp;
+    ~3 min read
+  </div>
+
+
+
+
+        <div class="e-content">
+
+
+
+<p>Excited by the possibilities offered with the new MicroSub Draft Standard, I thought I&rsquo;d install Aaron Parecki&rsquo;s <a href="https://github.com/aaronpk/Aperture">Aperture Microsub Server</a> and see what the present status of the protocol was like. I hope to write a reader for my own use, and to do that, I need to have a reference point. The installation process was enjoyable, if a little bewildering, but, as Aaron makes explicitly clear, This is alpha level software. Do not use.</p>
+
+<p>This journal is written partly as a description of that process, and partly as a first brush at documentation. I&rsquo;m sorry, therefore, if it seems a little muddled at times. It is the result of several different attempts at installation, and leaves out a lot of the handwringing.</p>
+
+<p>I recommend that before starting the process, the user should have created two (sub)domains and created standalone letsencrypt certificates for both. I refer to them here as <code>watchtower.</code> and <code>aperture.example.com</code></p>
+
+<h3 id="watchtower">Watchtower</h3>
+
+<p>Aperture relies on a WebSub-style API to watch the Subscriptions for changes. This is currently provided by Aaron&rsquo;s <a href="https://github.com/aaronpk/Watchtower">Watchtower</a> which will need to be installed first.</p>
+
+<h4 id="system-requirements">System Requirements</h4>
+
+<ul>
+<li>Web Server (I recommend <a href="https://www.nginx.com">nginx</a><sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>))</li>
+<li>MariaDB10.2+ / Mysql 5.7+</li>
+<li>PHP 7.2+ with <a href="https://getcomposer.org">Composer</a></li>
+</ul>
+
+<h4 id="installation">Installation</h4>
+
+<p>Clone the repository to a serving-location on your server. The composer requirements are installed with the standard <code>composer install</code> command. Then prepare a mysql database with a suitable user.</p>
+
+<ul>
+<li>$ mysql -u root -p</li>
+<li>mariaDB&gt; CREATE DATABASE watchtower;</li>
+<li>mariaDB&gt; CREATE USER &lsquo;watchtoweruser&rsquo;@&lsquo;localhost&rsquo; IDENTIFIED BY &lsquo;watchtowerpass&rsquo;;</li>
+<li>mariaDB&gt; GRANT ALL PRIVILEGES ON watchtower.* to &lsquo;watchtoweruser&rsquo;@&lsquo;localhost&rsquo;;</li>
+<li>mariaDB&gt; FLUSH PRIVILEGES;</li>
+<li>mariaDB&gt; exit;</li>
+</ul>
+
+<h4 id="configuration">Configuration</h4>
+
+<p>In the repo under <code>scripts</code> is <code>schema.sql</code>. This needs to be imported into the watchtower database to initialise the tables.</p>
+
+<p><code>$ mysql --user=&quot;watchtoweruser&quot; --database=&quot;watchtower&quot; --password=&quot;watchtowerpass&quot; &lt; ./schema.sql</code></p>
+
+<p>It is also necessary to create the primary user at this time, using the address of your soon-to-be Aperture server and an api token of your own devising.</p>
+
+<ul>
+<li>$ mysql -u watchtower -p</li>
+<li>mariaDB&gt; use watchtower;</li>
+<li>mariaDB&gt; INSERT INTO users  (url, token, created_at) values (&lsquo;<a href="https://aperture.example.org'">https://aperture.example.org'</a>, &lsquo;myapitoken&rsquo;, &lsquo;2018-02-09 09:00:00&rsquo;);</li>
+<li>mariaBD&gt; exit;</li>
+</ul>
+
+<h4 id="watchtower-as-a-service">Watchtower as a Service</h4>
+
+<p>One the database is populated, Watchtower needs to be run as a persistent service, on linux boxes you can use a systemd service (from a helpful tip by Eddie Hinckle)</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>watchtower worker
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/path/to/watchtower/scripts
+<span class="nv">User</span><span class="o">=</span>www-data
+<span class="nv">ExecStart</span><span class="o">=</span>/path/to/php watchtower.php
+<span class="nv">Restart</span><span class="o">=</span>always
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre></div>
+<p>Lastly, a cronjob needs to be added to execute the file <code>scripts/cron.php</code> on a regular basis. This is the main element of watchtower&rsquo;s functionality.</p>
+
+<p><code>*/5 * * * * /usr/bin/php /path/to/watchtower/scripts/cron.php</code></p>
+
+<p>That&rsquo;s all, folks! Thing is, this was the easy part of the process. My next post will detail getting Aperture itself up and running.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">I just have more succesful outcomes with nginx than the alternatives. Your mileage may vary.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+
+        </div>
+      </article>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>Match ends ☘️56 - 19🇮🇹. Some dreadfully poor defensive work by Ireland towards the end, but hard to quibble with 8 tries. 🏉</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518278666/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-10 16:04:26">
+    10/02/18 16:04</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Mostly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-partly-cloudy-day">
+        </use>
+      </svg>
+      &nbsp;10.4&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+        <a href="https://twitter.com/_dgoldsmith/status/962356616409571328" class="metatag u-syndication" rel="syndication" title="this post was syndicated to twitter">
+          <svg class="icon icon-twitter">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-twitter">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+        <a href="https://mastodon.social/@dgold/99501910991758671" class="metatag u-syndication" rel="syndication" title="this post was syndicated to mastodon">
+          <svg class="icon icon-masto">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-masto">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>☘️ 28-0 🇮🇹 at the break. Comfortable margin, bonus point secured before the break. Onwards and upwards 🏉</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518274795/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-10 14:59:55">
+    10/02/18 14:59</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Mostly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-partly-cloudy-day">
+        </use>
+      </svg>
+      &nbsp;10.5&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>Another Six Nations weekend! Ireland against Italy to start. Great fast start from Ireland so far, long way to go. 🏉</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518272431/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-10 14:20:31">
+    10/02/18 14:20</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Mostly Cloudy</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-partly-cloudy-day">
+        </use>
+      </svg>
+      &nbsp;10.6&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name"><p>Just read <a href="https://arstechnica.com/gaming/2018/02/civilization-vi-rise-and-fall-review-a-few-turns-closer-to-a-golden-age/">ars technica</a> review of the new Civ VI expansion pack. There’s nothing there to make me re-evaluate this sorry excuse for a Civ Game, if anything, they’ve made it even more gamified and Clash-of-Clans. Sad chapter in a great game.</p>
+
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518173717/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-09 10:55:17">
+    09/02/18 10:55</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Clear</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-clear-day">
+        </use>
+      </svg>
+      &nbsp;4.5&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name">
+        <div class="tbr-entry">
+          <div class="tbr-img">
+            <a href="https://is.gd/S8ekOv" alt="amazon affiliate link">
+              <img width="80" height="120" src=https://books.google.com/books/content?id&#61;cF3dDgAAQBAJ&amp;printsec&#61;frontcover&amp;img&#61;1&amp;zoom&#61;5&amp;source&#61;gbs_api>
+            </a>
+          </div>
+          <div class="tbr-item"><div class="centre"><strong><em><p>Started Reading The Will to Battle, by Ada Palmer 📚</p>
+
+          </em></strong></div></div></div>
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518121153/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-08 20:19:13">
+    08/02/18 20:19</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Clear</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-clear-night">
+        </use>
+      </svg>
+      &nbsp;6&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+        <a href="https://twitter.com/_dgoldsmith/status/961695978649735168" class="metatag u-syndication" rel="syndication" title="this post was syndicated to twitter">
+          <svg class="icon icon-twitter">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-twitter">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+        <a href="https://mastodon.social/@dgold/99491588110015936" class="metatag u-syndication" rel="syndication" title="this post was syndicated to mastodon">
+          <svg class="icon icon-masto">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-masto">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+      <div class="indmicro">
+        <article class="h-entry hentry">
+      <!-- begin metadata partial //-->
+
+
+
+
+
+
+        <div class="e-content p-name">
+        <div class="tbr-entry">
+          <div class="tbr-img">
+            <a href="https://is.gd/BKlfle" alt="amazon affiliate link">
+              <img width="80" height="120" src=https://books.google.com/books/content?id&#61;5BMkDwAAQBAJ&amp;printsec&#61;frontcover&amp;img&#61;1&amp;zoom&#61;5&amp;source&#61;gbs_api>
+            </a>
+          </div>
+          <div class="tbr-item"><div class="centre"><strong><em><p>Started Reading Sleep Over, by H. G. Bells 📚</p>
+
+          </em></strong></div></div></div>
+        </div>
+
+        <!-- begin micrometadata partial //-->
+<div class="meta">
+    <a href="https://ascraeus.org/micro/1518045614/" class="metatag u-url u-uid p-name"><time class="dt-published" datetime="2018-02-07 23:20:14">
+    07/02/18 23:20</time></a>&nbsp;
+
+
+    &bull;&nbsp;
+      <svg class="icon icon-weather" role="image">
+        <title>Drizzle</title>
+        <use xlink:href="https://ascraeus.org/svg/weather-defs.svg#wi-rain">
+        </use>
+      </svg>
+      &nbsp;6.6&deg;C&nbsp;&bull;&nbsp;
+        <a href="https://ascraeus.org/" class="metatag u-author" title="Daniel Goldsmith">
+          <svg class="icon">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-ascraeus">
+            </use>
+          </svg>
+        </a>
+      &nbsp;&bull;&nbsp;
+        <a href="https://twitter.com/_dgoldsmith/status/961379116086972416" class="metatag u-syndication" rel="syndication" title="this post was syndicated to twitter">
+          <svg class="icon icon-twitter">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-twitter">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+        <a href="https://mastodon.social/@dgold/99486637569024122" class="metatag u-syndication" rel="syndication" title="this post was syndicated to mastodon">
+          <svg class="icon icon-masto">
+            <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-masto">
+            </use>
+          </svg>
+        </a>&nbsp;&bull;&nbsp;
+      <a href="https://brid.gy/publish/twitter"></a>
+</div>
+
+
+
+        </div>
+    <hr />
+  </content>
+<!-- begin footer partial //-->
+    </section>
+  </main>
+  <footer>
+  <div class="footernav">
+                <a href="https://micro.blog/dgold" rel="me" title="micro.blog" class="metatag">
+                    <svg class="icon icon-microblog">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-microblog">
+                         </use>
+                     </svg></a>
+        <a href="https://twitter.com/_dgoldsmith" rel="me" title="twitter" class="metatag">
+          <svg class="icon icon-twitter">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-twitter">
+                         </use>
+                     </svg></a>
+        <a href="https://google.com/+DanielGoldsmith" rel="me" title="google+" class="metatag">
+          <svg class="icon icon-google-plus">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-google-plus">
+                         </use>
+                     </svg></a>
+        <a href="https://mastodon.social/@dgold" rel="me" title="mastodon" class="metatag">
+          <svg class="icon icon-masto">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-masto">
+                         </use>
+                     </svg></a>
+        <a href="https://github.com/dg01d" rel="me" title="github" class="metatag">
+          <svg class="icon icon-github">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-github">
+                         </use>
+                     </svg></a>
+        <a href="https://instagram.com/_dgoldsmith" rel="me" title="instagram" class="metatag">
+          <svg class="icon icon-instagram">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-instagram">
+                         </use>
+                     </svg></a>
+                <a href="https://keybase.io/dgold" rel="me" title="keybase" class="metatag">
+                    <svg class="icon icon-keybase">
+                         <use xlink:href="https://ascraeus.org/svg/symbol-defs.svg#icon-keybase">
+                         </use>
+                     </svg></a>
+            </div>
+
+    <p class="feet h-card vcard">View from Ascraeus &copy; <a href=https://ascraeus.org/ class="p-name u-url url author metatag" rel="me">Daniel Goldsmith</a><img src="https://ascraeus.org/pictures/marvin.png" class="u-photo" style="display: none"> <a class="p-nickname u-email email metatag" rel="me" href="mailto:dgold@ascraeus.org">dgold</a> 2011-2018 &bull; Licenced under <a href="https://ascraeus.org/page/licence" class="metatag">CC-BY-NC-SA</a> </p>
+  </footer>
+</body>
+</html>
