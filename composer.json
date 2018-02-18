@@ -6,7 +6,7 @@
   "description": "X-Ray returns structured data from any URL",
   "require": {
     "mf2/mf2": "^0.3.2",
-    "ezyang/htmlpurifier": "4.*",
+    "ezyang/htmlpurifier": "dev-master#6d6d88512a8146939a9161bb03e95e3e97840439@dev",
     "indieweb/link-rel-parser": "0.1.*",
     "dg/twitter-php": "3.6.*",
     "p3k/timezone": "*",
@@ -38,5 +38,19 @@
       "controllers/Feeds.php",
       "controllers/Certbot.php"
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "ezyang/htmlpurifier",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/ezyang/htmlpurifier",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
+    }
+  ]
 }
