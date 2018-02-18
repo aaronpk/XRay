@@ -41,16 +41,8 @@
   },
   "repositories": [
     {
-      "type": "package",
-      "package": {
-        "name": "ezyang/htmlpurifier",
-        "version": "master",
-        "source": {
-          "url": "https://github.com/ezyang/htmlpurifier",
-          "type": "git",
-          "reference": "origin/master"
-        }
-      }
+      "type": "git",
+      "url": "https://github.com/ezyang/htmlpurifier.git"
     }
   ]
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3dc6167e982e6e21e4726ba5c5973952",
+    "content-hash": "bcdd53e30f9960f6b39b0aa2c74d5457",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -110,13 +110,42 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "master",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ezyang/htmlpurifier",
-                "reference": "origin/master"
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "6d6d88512a8146939a9161bb03e95e3e97840439"
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
             },
             "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
             "time": "2017-12-30T05:23:44+00:00"
         },
         {
