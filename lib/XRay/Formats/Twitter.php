@@ -30,7 +30,7 @@ class Twitter extends Format {
     }
 
     $twitter = new \Twitter($creds['twitter_api_key'], $creds['twitter_api_secret'], $creds['twitter_access_token'], $creds['twitter_access_token_secret']);
-    try { 
+    try {
       $tweet = $twitter->request('statuses/show/'.$tweet_id, 'GET', ['tweet_mode'=>'extended']);
     } catch(\TwitterException $e) {
       return [
@@ -119,7 +119,7 @@ class Twitter extends Format {
       }
     }
 
-    // Don't include the RT'd photo or video in the main object. 
+    // Don't include the RT'd photo or video in the main object.
     // They get included in the reposted object instead.
     if(!property_exists($tweet, 'retweeted_status')) {
       // Photos and Videos
@@ -233,8 +233,8 @@ class Twitter extends Format {
   }
 
   private static function expandTwitterObjectURLs($text, $object, $key) {
-    if(property_exists($object, 'entities') 
-      && property_exists($object->entities, $key) 
+    if(property_exists($object, 'entities')
+      && property_exists($object->entities, $key)
       && property_exists($object->entities->{$key}, 'urls')) {
       foreach($object->entities->{$key}->urls as $url) {
         $text = str_replace($url->url, $url->expanded_url, $text);
@@ -254,7 +254,7 @@ class Twitter extends Format {
     $n = 0;
     for($i = 0; $i < strlen($s); $i++) // iterate from first to last char of $s
     {
-      $c = ord($s[$i]); //  put current ASCII of char into $c  
+      $c = ord($s[$i]); //  put current ASCII of char into $c
       if ($c>=48 && $c<=57) { $c=bcsub($c,48); }
       else if ($c>=65 && $c<=72) { $c=bcsub($c,55); }
       else if ($c==73 || $c==108) { $c=1; } // typo capital I, lowercase l to 1
