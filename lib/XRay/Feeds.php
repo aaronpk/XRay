@@ -53,12 +53,13 @@ class Feeds {
     if(is_array($contentType))
       $contentType = $contentType[count($contentType)-1];
 
-    if(strpos($contentType, 'application/atom+xml') !== false) {
+    if(strpos($contentType, 'application/atom+xml') !== false || strpos(substr($body, 0, 50), '<feed ') !== false) {
       $feeds[] = [
         'url' => $result['url'],
         'type' => 'atom'
       ];
-    } elseif(strpos($contentType, 'application/rss+xml') !== false || strpos($contentType, 'text/xml') !== false) {
+    } elseif(strpos($contentType, 'application/rss+xml') !== false || strpos($contentType, 'text/xml') !== false
+             || strpos(substr($body, 0, 50), '<rss ') !== false) {
       $feeds[] = [
         'url' => $result['url'],
         'type' => 'rss'

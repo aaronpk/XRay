@@ -110,6 +110,20 @@ class FindFeedsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('atom', $feeds[0]->type);
   }
 
+  // input URL is an RSS feed with xml content type
+  public function testInputIsRSSWithXML() {
+    $url = 'http://feed.example.com/rss-xml-content-type';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $feeds = json_decode($body)->feeds;
+
+    $this->assertEquals(1, count($feeds));
+    $this->assertEquals('http://feed.example.com/rss-xml-content-type', $feeds[0]->url);
+    $this->assertEquals('rss', $feeds[0]->type);
+  }
+
   // input URL redirects to an Atom feed
   public function testInputIsRedirectToAtom() {
     $url = 'http://feed.example.com/redirect-to-atom';

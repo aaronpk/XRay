@@ -1,0 +1,483 @@
+HTTP/1.1 200 OK
+Date: Mon, 19 Feb 2018 15:53:50 GMT
+Content-Type: application/xml
+Connection: keep-alive
+Set-Cookie: __cfduid=db1e9740b46ee1a1b0183d260b034ead51519055630; expires=Tue, 19-Feb-19 15:53:50 GMT; path=/; domain=.audreywatters.com; HttpOnly
+Last-Modified: Sun, 18 Feb 2018 14:46:57 GMT
+Vary: Accept-Encoding
+Access-Control-Allow-Origin: *
+Expires: Mon, 19 Feb 2018 16:00:05 GMT
+Cache-Control: max-age=600
+X-GitHub-Request-Id: 6D8D:3BFD:1BC7717:264DAA5:5A8AF30E
+Server: cloudflare
+CF-RAY: 3efa66b9812a8d11-PDX
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Audrey Watters</title>
+    <description>Writer
+</description>
+    <link>http://audreywatters.com/</link>
+    <atom:link href="http://audreywatters.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 18 Feb 2018 14:46:49 +0000</pubDate>
+    <lastBuildDate>Sun, 18 Feb 2018 14:46:49 +0000</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+
+      <item>
+        <title>My Week in Review</title>
+        <description>&lt;h3&gt;Hack Education &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pigeon.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/02/16/weekly-news&quot;&gt;Hack Education Weekly News&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Writing Here and Elsewhere &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pen.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tinyletter.com/audreywatters/letters/hewn-no-253&quot;&gt;HEWN, No. 253&lt;/a&gt; via tinyletter.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robots.hackeducation.com/2018/02/17/week-in-robots&quot;&gt;The Week in Robots&lt;/a&gt; on robots.hackeducation.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://audreywatters.com/2018/02/16/the-regret-industry&quot;&gt;The Tech &amp;#8220;Regrets&amp;#8221; Industry&lt;/a&gt; on audreywatters.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Contrafabulists &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_owl.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/02/17/week-in-predictions&quot;&gt;The Week in Predictions&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Spencer Fellowship &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/template_lion.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Week 4 of classes&lt;/li&gt;
+&lt;li&gt;The guest author in my book writing class was Lucette Lagnado&lt;/li&gt;
+&lt;li&gt;I added new dataset to &lt;a href=&quot;http://data.hackeducation.com&quot;&gt;data.hackeducation.com&lt;/a&gt;, so I can track the Bezos Family Foundation&amp;#8217;s &amp;#8220;ed-tech network&amp;#8221;&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;ve been admitted into a data journalism workshop that&amp;#8217;ll happen next weekend&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Other Projects &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_project.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I pitched a story about a conference I&amp;#8217;m attending this spring (and the pitch was accepted)&lt;/li&gt;
+&lt;li&gt;I talked to Adam Baidawi of the NYT re: a new private school with strong Silicon Valley roots&lt;/li&gt;
+&lt;li&gt;I had a meeting with Sharon Lurye re: her Master&amp;#8217;s project at the J-School&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reading &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_bookmark.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I read &lt;em&gt;The Big Test&lt;/em&gt; and &lt;em&gt;The End of Average&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;I started reading &lt;em&gt;Surveillance Valley&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Family and Friends &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_fam.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Kin&amp;#8217;s brother and sister-in-law were here through Monday&lt;/li&gt;
+&lt;li&gt;We had lunch yesterday with Damian and Amy, who were down from Maine en route to India&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align: right; font-size:12px&quot;&gt;&lt;em&gt;Icon credits: &lt;a href=&quot;https://thenounproject.com&quot;&gt;The Noun Project&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+        <pubDate>Sun, 18 Feb 2018 09:45:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/02/18/week-in-review</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/02/18/week-in-review</guid>
+      </item>
+
+      <item>
+        <title>The Tech 'Regrets' Industry</title>
+        <description>&lt;p&gt;Silicon Valley has lost some of its shine in recent months, what with the &amp;#8220;fake news&amp;#8221; and the bots and the hacks and the hate speech. All the promises about the democratization of information and power ring a little hollow nowadays.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;d say they rang a little hollow all along. Of course that&amp;#8217;s what I&amp;#8217;d say. I&amp;#8217;ve been saying it for years now.&lt;/p&gt;
+
+&lt;p&gt;There&amp;#8217;s a new tale that&amp;#8217;s being told with increasing frequency these days, in which tech industry executives and employees come forward &amp;#8211; sometimes quite sheepishly, sometimes quite boldly &amp;#8211; and admit that they have regrets, that they&amp;#8217;re no longer &amp;#8220;believers,&amp;#8221; that they now recognize their work has been damaging to individuals and to society at large, that they were wrong. &lt;/p&gt;
+
+&lt;p&gt;These aren&amp;#8217;t apologies as much as they&amp;#8217;re confessions. These aren&amp;#8217;t confessions as much as they&amp;#8217;re declarations &amp;#8211; that despite being wrong, we should trust them now that they say they&amp;#8217;re right. &lt;/p&gt;
+
+&lt;p&gt;Rick Hess published &lt;a href=&quot;https://blogs.edweek.org/edweek/rick_hess_straight_up/2018/02/a_confession_and_a_question_on_personalized_learning.html&quot;&gt;Amplify CEO Larry Berger&amp;#8217;s confession&lt;/a&gt; this week on his blog at Education Week. &amp;#8220;Until a few years ago,&amp;#8221; Berger writes, &amp;#8220;I was a great believer in what might be called the &amp;#8216;engineering&amp;#8217; model of personalized learning, which is still what most people mean by personalized learning.&amp;#8221; But it doesn&amp;#8217;t work. In Berger&amp;#8217;s terms, we have neither the map of what students need to learn, nor the &amp;#8220;optimal learning object&amp;#8221; for each waypoint on the map, nor the assessments to gauge whether students have learned.&lt;/p&gt;
+
+&lt;p&gt;Earlier this year, former AltSchool employee Paul France penned a &lt;a href=&quot;https://larrycuban.wordpress.com/2018/01/20/why-i-left-silicon-valley-ed-tech-and-personalized-learning-paul-emerich/&quot;&gt;number&lt;/a&gt; &lt;a href=&quot;https://www.edsurge.com/news/2018-01-21-personalized-learning-is-a-problem-of-privilege&quot;&gt;of blog posts&lt;/a&gt;, in which he described having made &lt;a href=&quot;https://paulemerich.com/2018/01/15/why-i-left-silicon-valley-edtech-and-personalized-learning/&quot;&gt;similar revelations&lt;/a&gt;: Silicon Valley&amp;#8217;s vision for personalized learning, something to be achieved through customized assignments called &amp;#8220;playlists,&amp;#8221; simply wasn&amp;#8217;t effective. France felt &amp;#8220;burnt out,&amp;#8221; and despite the massive amounts of data that AltSchool collected, &amp;#8220;we didn&amp;#8217;t have the data to back up our approach,&amp;#8221; to substantiate the claims that any of this improved students&amp;#8217; learning. &lt;/p&gt;
+
+&lt;p&gt;France writes as though he&amp;#8217;s the first person to have discovered that the surveillance pedagogy of AltSchool might be a problem. &amp;#8220;When I began working in Silicon Valley, personalized learning was very new,&amp;#8221; he states matter-of-factly. &amp;#8220;No one really knew what it meant, and as a result, it led to us having unrealistic expectations for what we could really achieve in the classroom and what was actually best for kids.&amp;#8221; &amp;#8220;This just in,&amp;#8221; France writes in another article, &amp;#8220;&lt;a href=&quot;https://paulemerich.com/2018/01/29/this-just-in-technology-isnt-necessary-to-personalize-learning/&quot;&gt;Technology isn&amp;#8217;t necessary to personalize learning&lt;/a&gt;.&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&amp;#8220;This just in.&amp;#8221;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Many of these recent narratives, as France&amp;#8217;s articles perfectly exemplify, don&amp;#8217;t just posit that problems exist (and have long existed) with technologies. The confessors claim to have discovered the problems in the first place. They do not appear to have read any history. So it is easy for them to declare: &lt;em&gt;no one could have possibly known&lt;/em&gt;. And now that these enlightened few &lt;em&gt;do&lt;/em&gt; seem to know, they declare loudly they&amp;#8217;re here to inform and warn the rest of us.&lt;/p&gt;
+
+&lt;p&gt;Among the best known of these cautionary storytellers: Tristan Harris, a former Google employee and now &amp;#8220;the closest thing Silicon Valley has to a conscience,&amp;#8221; &lt;a href=&quot;https://www.theatlantic.com/magazine/archive/2016/11/the-binge-breaker/501122/&quot;&gt;as one Atlantic article described him&lt;/a&gt;. &amp;#8220;No one has done more,&amp;#8221; &lt;a href=&quot;https://www.wired.com/story/our-minds-have-been-hijacked-by-our-phones-tristan-harris-wants-to-rescue-them/&quot;&gt;Wired argued last year&lt;/a&gt;, to help explain the powerful lure of smartphone technology. What he&amp;#8217;s done, to be clear: make a lot of high profile media appearances, including a &lt;a href=&quot;https://www.ted.com/talks/tristan_harris_the_manipulative_tricks_tech_companies_use_to_capture_your_attention&quot;&gt;TED Talk&lt;/a&gt; on &amp;#8220;How a handful of tech companies control billions of minds every day&amp;#8221; &amp;#8211; that is, how the tech industry uses behavioral design to attract and manipulate our attention. Earlier this month, Harris was in the news again when he and other ex-Facebook and Google employees &lt;a href=&quot;https://www.nytimes.com/2018/02/04/technology/early-facebook-google-employees-fight-tech.html&quot;&gt;announced&lt;/a&gt; they were launching the Center for Humane Technology, a lobbying group that will promote Harris&amp;#8217;s &amp;#8220;anti- tech addiction&amp;#8221; message.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://thesocietypages.org/cyborgology/2018/02/09/the-center-for-humane-technology-doesnt-want-your-attention/&quot;&gt;Maya Ganesh has criticized how this frames both the problem and the solution of &amp;#8220;tech addiction&amp;#8221;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The Center for Humane Technology constructs the problem in terms of addiction and therefore as one of individual attention. And while they acknowledge the importance of lobbying Congress and hardware companies (Apple and Microsoft will set us free as if they don&amp;#8217;t lock us into digital ecosystems and vie for our attention?), they emphasize a focus on individual action be that of tech workers, or users. By invoking &amp;#8216;addiction&amp;#8217; as a metaphor, they see the problem as being about individual attention, and eventually, individual salvation. Naming the co-founder of the Center, Harris, as the &amp;#8216;conscience&amp;#8217; of Silicon Valley evokes a similar emphasis on individual rather than community, political, or structural dimensions to the attention economy and its dismantling, or restructuring.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And I think there&amp;#8217;s something about &lt;em&gt;all&lt;/em&gt; these confessional narratives (and their hopes, I think, of becoming redemption narratives) that is also deeply intertwined with individual rather than structural change. These stories rarely situate themselves in history, for example, and as such really cannot offer much insight into how or why or even when things might&amp;#8217;ve &amp;#8220;gone wrong.&amp;#8221; They rarely situate themselves among other thinkers or scholars (or activists or &amp;#8220;users&amp;#8221;). They are &lt;em&gt;individual&lt;/em&gt; realizations, after all.&lt;/p&gt;
+
+&lt;p&gt;So then, I have to wonder: why should we trust &lt;em&gt;these&lt;/em&gt; revelations (or revelators) to guide us moving forward? Why not trust those of us who knew it was bullshit all along and who can tell you the whole history of a bad idea?&lt;/p&gt;</description>
+        <pubDate>Fri, 16 Feb 2018 20:15:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/02/16/the-regret-industry</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/02/16/the-regret-industry</guid>
+      </item>
+
+      <item>
+        <title>My Week in Review</title>
+        <description>&lt;h3&gt;Hack Education &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pigeon.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/02/09/weekly-news&quot;&gt;Hack Education Weekly News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/02/08/what-is-ed-tech&quot;&gt;School Shooting Simulation Software (and the Problem with How People Define &amp;#8216;Ed-Tech&amp;#8217;)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Writing Here and Elsewhere &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pen.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tinyletter.com/audreywatters/letters/hewn-no-252&quot;&gt;HEWN, No. 252&lt;/a&gt; via tinyletter.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robots.hackeducation.com/2018/02/10/week-in-robots&quot;&gt;The Week in Robots&lt;/a&gt; on robots.hackeducation.com&lt;/li&gt;
+&lt;li&gt;Two short pigeon-related posts on pigeons.hackeducation.com: &lt;a href=&quot;http://pigeons.hackeducation.com/2018/02/06/superb-owl&quot;&gt;Superb Owls&lt;/a&gt; and &lt;a href=&quot;http://pigeons.hackeducation.com/2018/02/06/nigel&quot;&gt;RIP Nigel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Contrafabulists &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_owl.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/02/10/week-in-predictions&quot;&gt;The Week in Predictions&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Spencer Fellowship &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/template_lion.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Week 3 of classes&lt;/li&gt;
+&lt;li&gt;Wesley Lowery was the guest author in my book writing class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reading &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_bookmark.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I read &lt;em&gt;Exit, Voice, and Loyalty&lt;/em&gt;. I&amp;#8217;m still reading &lt;em&gt;The Big Test&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Family and Friends &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_fam.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Kin&amp;#8217;s brother and sister-in-law are visiting this weekend&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align: right; font-size:12px&quot;&gt;&lt;em&gt;Icon credits: &lt;a href=&quot;https://thenounproject.com&quot;&gt;The Noun Project&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+        <pubDate>Sun, 11 Feb 2018 08:15:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/02/11/week-in-review</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/02/11/week-in-review</guid>
+      </item>
+
+      <item>
+        <title>My Week in Review</title>
+        <description>&lt;h3&gt;Hack Education &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pigeon.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/02/02/weekly-news&quot;&gt;Hack Education Weekly News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/01/31/funding&quot;&gt;(Re-Introducing) The Ed-Tech Funding Project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Writing Here and Elsewhere &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pen.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tinyletter.com/audreywatters/letters/hewn-no-251&quot;&gt;HEWN, No. 251&lt;/a&gt; via tinyletter.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robots.hackeducation.com/2018/02/03/week-in-robots&quot;&gt;The Week in Robots&lt;/a&gt; on robots.hackeducation.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://funding.hackeducation.com/2018/01/31/january&quot;&gt;The Business of Ed-Tech: January 2018 Funding Data&lt;/a&gt; on funding.hackeducation.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://funding.hackeducation.com/2018/02/01/gates-update&quot;&gt;Update: Tracking the Gates Foundation&amp;#8217;s Education Grants&lt;/a&gt; on funding.hackeducation.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Contrafabulists &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_owl.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/02/03/week-in-predictions&quot;&gt;The Week in Predictions&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Spencer Fellowship &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/template_lion.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Week 2 of spring term&lt;/li&gt;
+&lt;li&gt;Dale Russakoff was the guest author in my book writing class&lt;/li&gt;
+&lt;li&gt;I attended a talk by Zeynep Tufekci at the J School&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Other Projects &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_project.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;End-of-the-month updates to my websites&lt;/li&gt;
+&lt;li&gt;End-of-the-month backups&lt;/li&gt;
+&lt;li&gt;End-of-the-month deletion of social media posts&lt;/li&gt;
+&lt;li&gt;End-of-the-month updates to my tracking of ed-tech funding (venture capital and Gates Foundation grants &amp;#8211; see articles above)&lt;/li&gt;
+&lt;li&gt;I had coffee with Matt Barnum&lt;/li&gt;
+&lt;li&gt;I got my hair cut&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reading &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_bookmark.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I read &lt;em&gt;From Counterculture to Cyberculture&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;m reading &lt;em&gt;The Big Test&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;I am also doing a ton of reading for my classes. Yay. Grad school again!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align: right; font-size:12px&quot;&gt;&lt;em&gt;Icon credits: &lt;a href=&quot;https://thenounproject.com&quot;&gt;The Noun Project&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+        <pubDate>Sun, 04 Feb 2018 13:30:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/02/04/week-in-review</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/02/04/week-in-review</guid>
+      </item>
+
+      <item>
+        <title>My Week in Review</title>
+        <description>&lt;h3&gt;Hack Education &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pigeon.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/01/26/weekly-news&quot;&gt;Hack Education Weekly News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/01/25/plato&quot;&gt;PLATO and the History of Education Technology (That Wasn&amp;#8217;t)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Writing Here and Elsewhere &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pen.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tinyletter.com/audreywatters/letters/hewn-no-250&quot;&gt;HEWN, No. 250&lt;/a&gt; via tinyletter.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robots.hackeducation.com/2018/01/27/week-in-robots&quot;&gt;The Week in Robots&lt;/a&gt; on robots.hackeducation.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Contrafabulists &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_owl.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/01/27/week-in-predictions&quot;&gt;The Week in Predictions&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Spencer Fellowship &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/template_lion.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Week 1 of Spring Semester. I&amp;#8217;m taking two classes: one on book writing and one on the commercialization of education&lt;/li&gt;
+&lt;li&gt;Guest author in the book writing class: David France&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Other Projects &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_project.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I had lunch at the Edwin Gould Foundation&lt;/li&gt;
+&lt;li&gt;Who sent me this?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;instagram-media&quot; data-instgrm-captioned data-instgrm-permalink=&quot;https://www.instagram.com/p/BeTEZayFoZ3/&quot; data-instgrm-version=&quot;8&quot; style=&quot; background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);&quot;&gt;&lt;div style=&quot;padding:8px;&quot;&gt; &lt;div style=&quot; background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;&quot;&gt; &lt;div style=&quot; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;&quot;&gt;&lt;/div&gt;&lt;/div&gt; &lt;p style=&quot; margin:8px 0 0 0; padding:0 4px;&quot;&gt; &lt;a href=&quot;https://www.instagram.com/p/BeTEZayFoZ3/&quot; style=&quot; color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;&quot; target=&quot;_blank&quot;&gt;Before the holiday break, I received a message that The School of Journalism had received a package for me. Honestly I figured it was hate mail since I haven’t given out that address to anyone. I went to pick it up yesterday and found this. Shipped from NZ. No name on the parcel. IDK&lt;/a&gt;&lt;/p&gt; &lt;p style=&quot; color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;&quot;&gt;A post shared by &lt;a href=&quot;https://www.instagram.com/audrey_watters/&quot; style=&quot; color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;&quot; target=&quot;_blank&quot;&gt; Audrey Watters&lt;/a&gt; (@audrey_watters) on &lt;time style=&quot; font-family:Arial,sans-serif; font-size:14px; line-height:17px;&quot; datetime=&quot;2018-01-23T16:02:04+00:00&quot;&gt;Jan 23, 2018 at 8:02am PST&lt;/time&gt;&lt;/p&gt;&lt;/div&gt;&lt;/blockquote&gt;
+
+&lt;script async defer src=&quot;//platform.instagram.com/en_US/embeds.js&quot;&gt;&lt;/script&gt;
+&lt;br /&gt;
+&lt;h3&gt;Travel &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_travel.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Philadelphia&lt;/li&gt;
+&lt;li&gt;Upcoming week: Nope&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reading &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_bookmark.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I re-read &lt;em&gt;The Prize&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Family and Friends &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_fam.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I&amp;#8217;m at Educon, which to me is all about friends and family&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align: right; font-size:12px&quot;&gt;&lt;em&gt;Icon credits: &lt;a href=&quot;https://thenounproject.com&quot;&gt;The Noun Project&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+        <pubDate>Sun, 28 Jan 2018 08:30:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/01/28/week-in-review</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/01/28/week-in-review</guid>
+      </item>
+
+      <item>
+        <title>My Week in Review</title>
+        <description>&lt;h3&gt;Hack Education &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pigeon.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/01/19/weekly-news&quot;&gt;Hack Education Weekly News&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Writing Here and Elsewhere &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pen.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tinyletter.com/audreywatters/letters/hewn-no-249&quot;&gt;HEWN, No. 249&lt;/a&gt; via tinyletter.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robots.hackeducation.com/2018/01/20/week-in-robots&quot;&gt;The Week in Robots&lt;/a&gt; on robots.hackeducation.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://teachingmachin.es/2018/01/14/book-writing&quot;&gt;Book Writing&lt;/a&gt; on teachingmachin.es&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://audreywatters.com/2018/01/16/is-tech-addictive&quot;&gt;Is Technology Addictive?&lt;/a&gt; on audreywatters.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Contrafabulists &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_owl.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Podcast, &lt;a href=&quot;http://podcast.contrafabulists.com/2018/01/14/episode-76&quot;&gt;Episode 76: This is a Test of the Emergency Broadcast System&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/01/20/week-in-predictions&quot;&gt;The Week in Predictions&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Other Projects &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_project.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I made some updates to my websites, including fixing how images are displayed when an article is shared on Facebook&lt;/li&gt;
+&lt;li&gt;I created &lt;a href=&quot;http://2018trends.hackeducation.com&quot;&gt;2018trends.hackeducation.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;m cited in &lt;a href=&quot;http://www.reimagine-education.com/wp-content/uploads/2018/01/RE_White-Paper_EdTech-Investment-Venture-Capital-2.pdf&quot;&gt;a new whitepaper on ed-tech investment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I attended Virginia Eubanks&amp;#8217;s talk at Data &amp;amp; Society (and I&amp;#8217;m looking forward to reading her new book &lt;em&gt;Automating Inequality&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;m working on a book review, to be published early next week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Travel &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_travel.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Nope&lt;/li&gt;
+&lt;li&gt;Upcoming week: Philadelphia&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reading &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_bookmark.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I read &lt;em&gt;The Friendly Orange Glow&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;I read &lt;em&gt;Binti: The Night Masquerade&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;I read &lt;em&gt;The Whale and the Reactor&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;m reading &lt;em&gt;From Counterculture to Cyberculture&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align: right; font-size:12px&quot;&gt;&lt;em&gt;Icon credits: &lt;a href=&quot;https://thenounproject.com&quot;&gt;The Noun Project&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+        <pubDate>Sun, 21 Jan 2018 08:30:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/01/21/week-in-review</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/01/21/week-in-review</guid>
+      </item>
+
+      <item>
+        <title>Is Technology Addictive?</title>
+        <description>&lt;p&gt;&lt;em&gt;I was supposed to speak to a reporter today about iPhones and addiction, but the interview fell through. I jotted down some of my thoughts in preparation for the call, and I thought I&amp;#8217;d post them here in case it&amp;#8217;s a topic I decide to return to and flesh out more in the future&amp;#8230;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I am hesitant to make any clinical diagnosis about technology and addiction &amp;#8211; I&amp;#8217;m not a medical professional. But I&amp;#8217;ll readily make some cultural observations, first and foremost, about how our notions of &amp;#8220;addiction&amp;#8221; have changed over time. &amp;#8220;Addiction&amp;#8221; is medical concept but it&amp;#8217;s also a cultural one, and it&amp;#8217;s long been one tied up in condemning addicts for some sort of moral failure. That is to say, we have labeled certain behaviors as &amp;#8220;addictive&amp;#8221; when they&amp;#8217;ve involve things society doesn&amp;#8217;t condone. Watching TV. Using opium. Reading novels. And I think some of what we hear in discussions today about technology usage &amp;#8211; particularly about usage among children and teens &amp;#8211; is that we don&amp;#8217;t like how people act with their phones. They&amp;#8217;re on them all the time. They don&amp;#8217;t make eye contact. They don&amp;#8217;t talk at the dinner table. They eat while staring at their phones. They sleep with their phones. They&amp;#8217;re constantly checking them. &lt;/p&gt;
+
+&lt;p&gt;Now, this &amp;#8220;constantly checking their phones&amp;#8221; behavior certainly looks like a compulsive behavior. Compulsive behavior, says the armchair psychologist, is a symptom of addiction. (Maybe. Maybe not.) What is important to recognize, I&amp;#8217;d argue, is that that compulsive behavior is encouraged &lt;em&gt;by design&lt;/em&gt;. &lt;/p&gt;
+
+&lt;p&gt;Apps are being engineered for &amp;#8220;engagement&amp;#8221; and built for &amp;#8220;clicks&amp;#8221; &amp;#8211; behavioral design. They are purposefully designed to demand our attention. Apps are designed to elicit certain responses and to shape and alter our behaviors. Notifications &amp;#8211; we know how these beckon at us. &amp;#8220;Nudges&amp;#8221; &amp;#8211; that&amp;#8217;s the way in which behavioral economist Richard Thaler has described this. But these notifications and nudges are less about &amp;#8220;better decision making&amp;#8221; socially as Thaler would frame it than they are about decisions and behaviors that benefit the app-maker: getting us to download an app, to register, to complete our profile (to hand over more personal data, that is), to respond to notifications, to open the app, to stay in the app, to scroll, to click, to share, to buy. These are actions that tech entrepreneurs and investors value because these are the metrics that the industry uses to judge the success of a product, of a company.&lt;/p&gt;
+
+&lt;p&gt;I think we&amp;#8217;re starting to realize &amp;#8211; or I hope we&amp;#8217;re starting to realize &amp;#8211; that those metrics might conflict with other values. Privacy, sure. But also etiquette. Autonomy. Personal agency. Free will.&lt;/p&gt;
+
+&lt;p&gt;I bring up &amp;#8220;free will&amp;#8221; here because one of the best known behaviorists, Harvard psychology professor B. F. Skinner, did not believe in it. He thought that behaviors could be shaped through what he called &amp;#8220;contingencies of reinforcement&amp;#8221; &amp;#8211; behavior could be shaped through a series of rewards (he was interested in positive reinforcement and discouraged a reliance, particularly in educational settings, in punishment, in negative reinforcement). Skinner was well known for training pigeons and rats &amp;#8211; the famous &amp;#8220;Skinner&amp;#8217;s Box.&amp;#8221; But he also built early &amp;#8220;teaching machines&amp;#8221; that aimed to apply his behaviorist theories to instruction. Learning, to Skinner, was a behavioral (not a cognitive) process.&lt;/p&gt;
+
+&lt;p&gt;His theories have fallen out of favor, but I think there are remnants of this behaviorist bent (perhaps unexamined, unattributed), particularly in those who are still designing &amp;#8220;teaching machines&amp;#8221; in Silicon Valley and elsewhere. The Persuasive Technology Lab, for example, at Stanford. &lt;/p&gt;
+
+&lt;p&gt;How do you design apps that nudge and persuade users to do certain things, that reward them when they do so? How do you encourage people to repeatedly check their phones, to feel like they always need their phones? There is a huge asymmetry here in terms of power and information, and the tech industry has spent a lot of time and energy trying to encourage and reinforce these sorts of behaviors in its users. I&amp;#8217;m not sure consumers have necessarily stopped and asked in response, why am I responding this way? What am I being trained to do or trained to feel?&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t want to suggest that this is something the consumer alone is responsible for &amp;#8211; blaming consumers, for example, for looking at their phone when it vibrates or beeps or for downloading Candy Crush and trying to get all their friends to play along. The whole modus operandi of the tech industry has been to create apps that are as engaging and compelling and viral as Candy Crush. The industry views its users as highly manipulable, their behaviors as something that can be easily shaped and nudged and controlled. Maybe it&amp;#8217;s time to rethink and regulate and restrict how that happens? &lt;/p&gt;
+
+&lt;p&gt;Indeed, I think that a concern about regulation &amp;#8211; government regulation not self-regulation &amp;#8211; is probably what prompted the Apple investors last week to suggest that iPhones might be hurting users and that Apple should address the problem. (That is, can Apple please address this internally before the government steps in?) There were several high profile stories in the last year or so, arguing that, for example, social media causes depression, that smartphones are making kids miserable, and so on. Again, those diagnoses are up for debate. But I think these stories are important to think about alongside others about the ways in which we all have found ourselves to have been manipulated &amp;#8211; by &amp;#8220;fake news&amp;#8221; most obviously. How are our minds &amp;#8211; our sense of well-being, our knowledge of the world &amp;#8211; being shaped and mis-shaped by technology? &lt;em&gt;Is &amp;#8220;addiction&amp;#8221; really the right framework for this discussion?&lt;/em&gt; What steps are we going to take to resist the nudges of the tech industry &amp;#8211; individually and socially and yes maybe even politically? (Because unlike Skinner, I happen to believe we do have free will and we can make different choices and we can refuse these particular &amp;#8220;contingencies of reinforcement.&amp;#8221;)&lt;/p&gt;</description>
+        <pubDate>Tue, 16 Jan 2018 13:50:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/01/16/is-tech-addictive</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/01/16/is-tech-addictive</guid>
+      </item>
+
+      <item>
+        <title>My Week in Review</title>
+        <description>&lt;h3&gt;Hack Education &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pigeon.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/01/12/weekly-news&quot;&gt;Hack Education Weekly News&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Writing Here and Elsewhere &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pen.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tinyletter.com/audreywatters/letters/hewn-no-248&quot;&gt;HEWN, No. 248&lt;/a&gt; via tinyletter.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robots.hackeducation.com/2018/01/13/week-in-robots&quot;&gt;The Week in Robots&lt;/a&gt; on robots.hackeducation.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://pigeons.hackeducation.com/2018/01/10/birds-and-fire&quot;&gt;Birds Have &amp;#8220;Weaponized Fire&amp;#8221;&lt;/a&gt; on pigeons.hackeducation.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Contrafabulists &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_owl.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Podcast, &lt;a href=&quot;http://podcast.contrafabulists.com/2018/01/07/episode-75&quot;&gt;Episode 75: Predictions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/01/13/week-in-predictions&quot;&gt;The Week in Predictions&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Other Projects &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_project.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I talked to Kreigh Knerr about his book project&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Travel &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_travel.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Nope&lt;/li&gt;
+&lt;li&gt;Upcoming week: Nope&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reading and Viewing &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_bookmark.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I finished reading &lt;em&gt;Bunk&lt;/em&gt;. I&amp;#8217;m reading &lt;em&gt;The Friendly Orange Glow&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;We watched &lt;em&gt;Blade Runner 2049&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align: right; font-size:12px&quot;&gt;&lt;em&gt;Icon credits: &lt;a href=&quot;https://thenounproject.com&quot;&gt;The Noun Project&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+        <pubDate>Sun, 14 Jan 2018 08:10:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/01/14/week-in-review</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/01/14/week-in-review</guid>
+      </item>
+
+      <item>
+        <title>My Week in Review</title>
+        <description>&lt;h3&gt;Hack Education &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pigeon.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/01/05/weekly-news&quot;&gt;Hack Education Weekly News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hackeducation.com/2018/01/01/update&quot;&gt;New Year&amp;#8217;s Updates&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Writing Here and Elsewhere &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_pen.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tinyletter.com/audreywatters/letters/hewn-no-247&quot;&gt;HEWN, No. 247&lt;/a&gt; via tinyletter.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://robots.hackeducation.com/2018/01/06/week-in-robots&quot;&gt;The Week in Robots&lt;/a&gt; on robots.hackeducation.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Contrafabulists &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_owl.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;Podcast, &lt;a href=&quot;http://podcast.contrafabulists.com/2017/12/31/episode-74&quot;&gt;Episode 74: The Year in Review&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://mailchi.mp/ae67f90c4a75/the-contrafabulists-no-13&quot;&gt;Contrafabulist Newsletter, Issue 13&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/01/06/week-in-predictions&quot;&gt;The Week in Predictions&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://predictions.contrafabulists.com/2018/01/01/2018-in-predictions&quot;&gt;What Tech Predicts for 2018&lt;/a&gt; on predictions.contrafabulists.com&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Other Projects &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_project.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;It was time for end-of-the-month GitHub backups&lt;/li&gt;
+&lt;li&gt;I deleted all my 2017 Facebook posts, and I deleted almost all my 2017 tweets&lt;/li&gt;
+&lt;li&gt;I updated the header image across all the Hack Education websites. I also ditched the CC licensing on all my work&lt;/li&gt;
+&lt;li&gt;I sent a letter to my Patreon supporters (and I need to send a bunch of folks stickers and &amp;#8220;Monsters of Ed-Tech&amp;#8221; books &amp;#8211; that&amp;#8217;s a To Do for the coming week)&lt;/li&gt;
+&lt;li&gt;I answered some interview questions for Edge magazine&lt;/li&gt;
+&lt;li&gt;I wrote an article on ed-tech funding for WonkHE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Reading and Viewing &lt;img src=&quot;https://s3.amazonaws.com/audreywatters/2018_icon_bookmark.png&quot; height=&quot;42&quot; width=&quot;42&quot; align=&quot;right&quot; style=&quot;margin:10px&quot;&gt;&lt;/h3&gt;
+&lt;br /&gt;
+&lt;ul&gt;
+&lt;li&gt;I read &lt;em&gt;The Last Voyageurs&lt;/em&gt;, &lt;em&gt;The Arrogant Years&lt;/em&gt;, and &lt;em&gt;The Fortunes.&lt;/em&gt; I started reading &lt;em&gt;Bunk&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Kin and I started watching &lt;em&gt;Stranger Things 2&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align: right; font-size:12px&quot;&gt;&lt;em&gt;Icon credits: &lt;a href=&quot;https://thenounproject.com&quot;&gt;The Noun Project&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+        <pubDate>Sun, 07 Jan 2018 08:45:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/01/07/week-in-review</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/01/07/week-in-review</guid>
+      </item>
+
+      <item>
+        <title>New Year's Updates</title>
+        <description>&lt;p&gt;I&amp;#8217;ve made some changes to my websites, most obviously updating the header image across all the Hack Education projects. That's &lt;a href=&quot;http://bryanmmathers.com/&quot;&gt;thanks to Bryan Mathers&lt;/a&gt;, of course. (&lt;a href=&quot;http://pigeons.hackeducation.com/&quot;&gt;Why a pigeon&lt;/a&gt;?)&lt;/p&gt;
+
+&lt;p&gt;Those who look closely will also note that I have changed the copyright information on my work. Or rather, no longer is there a Creative Commons license on Hack Education material or on my personal blog. This really doesn&amp;#8217;t change much, I promise. &lt;em&gt;It just means you have to ask my permission&lt;/em&gt; before republishing my work. If you do wish to reprint my writing, &lt;a href=&quot;mailto:mail@audreywatters.com&quot;&gt;please contact me directly&lt;/a&gt;.&lt;/p&gt;</description>
+        <pubDate>Mon, 01 Jan 2018 10:10:00 +0000</pubDate>
+        <link>http://audreywatters.com/2018/01/01/update</link>
+        <guid isPermaLink="true">http://audreywatters.com/2018/01/01/update</guid>
+      </item>
+
+  </channel>
+</rss>
