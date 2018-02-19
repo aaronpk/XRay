@@ -1,0 +1,378 @@
+{
+  "created_at": "Mon Feb 19 07:25:44 +0000 2018",
+  "id": 965487550512054273,
+  "id_str": "965487550512054273",
+  "full_text": ".@stream_pdx is a real treasure of our city. https://t.co/twMOevR80T",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    44
+  ],
+  "entities": {
+    "hashtags": [
+
+    ],
+    "symbols": [
+
+    ],
+    "user_mentions": [
+      {
+        "screen_name": "stream_pdx",
+        "name": "Stream PDX",
+        "id": 770362395579396097,
+        "id_str": "770362395579396097",
+        "indices": [
+          1,
+          12
+        ]
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://t.co/twMOevR80T",
+        "expanded_url": "https://twitter.com/pdxstepheng/status/964598574322339841",
+        "display_url": "twitter.com/pdxstepheng/st…",
+        "indices": [
+          45,
+          68
+        ]
+      }
+    ]
+  },
+  "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 3138466140,
+    "id_str": "3138466140",
+    "name": "Rowan Bradley",
+    "screen_name": "rowbradley",
+    "location": "Portland, Oregon",
+    "description": "Photography & Digital Marketing @scoutbooks",
+    "url": "https://t.co/eBvYQVeMHs",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/eBvYQVeMHs",
+            "expanded_url": "http://rowanbradley.com",
+            "display_url": "rowanbradley.com",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": [
+
+        ]
+      }
+    },
+    "protected": false,
+    "followers_count": 436,
+    "friends_count": 2001,
+    "listed_count": 33,
+    "created_at": "Sat Apr 04 05:47:27 +0000 2015",
+    "favourites_count": 27442,
+    "utc_offset": -28800,
+    "time_zone": "Pacific Time (US & Canada)",
+    "geo_enabled": true,
+    "verified": false,
+    "statuses_count": 4833,
+    "lang": "en",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "000000",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/703441818038378499/3pkWJotj_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/703441818038378499/3pkWJotj_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/3138466140/1444289891",
+    "profile_link_color": "4A913C",
+    "profile_sidebar_border_color": "000000",
+    "profile_sidebar_fill_color": "000000",
+    "profile_text_color": "000000",
+    "profile_use_background_image": false,
+    "has_extended_profile": false,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": false,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "none"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": true,
+  "quoted_status_id": 964598574322339841,
+  "quoted_status_id_str": "964598574322339841",
+  "quoted_status": {
+    "created_at": "Fri Feb 16 20:33:16 +0000 2018",
+    "id": 964598574322339841,
+    "id_str": "964598574322339841",
+    "full_text": "Hey @OregonGovBrown @tedwheeler day 16 of #BHM is for @stream_pdx. An amazing podcast trailer run by @tyeshasnow helping to democratize story telling in #PDX. Folks can get training in the production of podcasts. @siliconflorist #SupportBlackBusiness https://t.co/dvWAMrzffF",
+    "truncated": false,
+    "display_text_range": [
+      0,
+      250
+    ],
+    "entities": {
+      "hashtags": [
+        {
+          "text": "BHM",
+          "indices": [
+            42,
+            46
+          ]
+        },
+        {
+          "text": "PDX",
+          "indices": [
+            153,
+            157
+          ]
+        },
+        {
+          "text": "SupportBlackBusiness",
+          "indices": [
+            229,
+            250
+          ]
+        }
+      ],
+      "symbols": [
+
+      ],
+      "user_mentions": [
+        {
+          "screen_name": "OregonGovBrown",
+          "name": "Governor Kate Brown",
+          "id": 3023272478,
+          "id_str": "3023272478",
+          "indices": [
+            4,
+            19
+          ]
+        },
+        {
+          "screen_name": "tedwheeler",
+          "name": "Ted Wheeler",
+          "id": 18708561,
+          "id_str": "18708561",
+          "indices": [
+            20,
+            31
+          ]
+        },
+        {
+          "screen_name": "stream_pdx",
+          "name": "Stream PDX",
+          "id": 770362395579396097,
+          "id_str": "770362395579396097",
+          "indices": [
+            54,
+            65
+          ]
+        },
+        {
+          "screen_name": "tyeshasnow",
+          "name": "tyesha snow",
+          "id": 21260096,
+          "id_str": "21260096",
+          "indices": [
+            101,
+            112
+          ]
+        },
+        {
+          "screen_name": "siliconflorist",
+          "name": "Silicon Florist",
+          "id": 8072912,
+          "id_str": "8072912",
+          "indices": [
+            213,
+            228
+          ]
+        }
+      ],
+      "urls": [
+
+      ],
+      "media": [
+        {
+          "id": 964598550842826752,
+          "id_str": "964598550842826752",
+          "indices": [
+            251,
+            274
+          ],
+          "media_url": "http://pbs.twimg.com/media/DWLxRXXX4AAgn2K.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/DWLxRXXX4AAgn2K.jpg",
+          "url": "https://t.co/dvWAMrzffF",
+          "display_url": "pic.twitter.com/dvWAMrzffF",
+          "expanded_url": "https://twitter.com/PDXStephenG/status/964598574322339841/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1800,
+              "h": 530,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 1200,
+              "h": 353,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 680,
+              "h": 200,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 964598550842826752,
+          "id_str": "964598550842826752",
+          "indices": [
+            251,
+            274
+          ],
+          "media_url": "http://pbs.twimg.com/media/DWLxRXXX4AAgn2K.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/DWLxRXXX4AAgn2K.jpg",
+          "url": "https://t.co/dvWAMrzffF",
+          "display_url": "pic.twitter.com/dvWAMrzffF",
+          "expanded_url": "https://twitter.com/PDXStephenG/status/964598574322339841/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1800,
+              "h": 530,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 1200,
+              "h": 353,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 680,
+              "h": 200,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 518975229,
+      "id_str": "518975229",
+      "name": "Stephen Green",
+      "screen_name": "PDXStephenG",
+      "location": "Portland, OR",
+      "description": "Blatino, husband, dad, entrepreneur, economist, TEDx talker & recovering banker/vc. Day job, Community Director at @WeWork. #Startup advisor @backstage_cap",
+      "url": "https://t.co/DNQHGaIJWP",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/DNQHGaIJWP",
+              "expanded_url": "http://www.pitchblackpdx.com",
+              "display_url": "pitchblackpdx.com",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": [
+
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 8958,
+      "friends_count": 9790,
+      "listed_count": 404,
+      "created_at": "Thu Mar 08 23:12:01 +0000 2012",
+      "favourites_count": 12352,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": true,
+      "verified": false,
+      "statuses_count": 7506,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "000000",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/882333395287658497/KpZZzrI9_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/882333395287658497/KpZZzrI9_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/518975229/1511838336",
+      "profile_link_color": "19CF86",
+      "profile_sidebar_border_color": "000000",
+      "profile_sidebar_fill_color": "000000",
+      "profile_text_color": "000000",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false,
+      "translator_type": "none"
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 10,
+    "favorite_count": 22,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "en"
+  },
+  "retweet_count": 0,
+  "favorite_count": 1,
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "possibly_sensitive_appealable": false,
+  "lang": "en"
+}

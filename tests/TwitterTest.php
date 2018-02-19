@@ -174,4 +174,41 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Yeah that\'s me http://xkcd.com/1782/', $tweet['content']['text']);
   }
 
+  public function testTruncatedQuotedTweet() {
+    list($url, $json) = $this->loadTweet('tweet-with-truncated-quoted-tweet');
+
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('.@stream_pdx is a real treasure of our city.', $data['data']['content']['text']);
+    $this->assertEquals('https://twitter.com/PDXStephenG/status/964598574322339841', $data['data']['quotation-of']);
+    $tweet = $data['data']['refs']['https://twitter.com/PDXStephenG/status/964598574322339841'];
+    $this->assertEquals('Hey @OregonGovBrown @tedwheeler day 16 of #BHM is for @stream_pdx. An amazing podcast trailer run by @tyeshasnow helping to democratize story telling in #PDX. Folks can get training in the production of podcasts. @siliconflorist #SupportBlackBusiness', $tweet['content']['text']);
+    $this->assertEquals("Hey <a href=\"https://twitter.com/OregonGovBrown\">@OregonGovBrown</a> <a href=\"https://twitter.com/tedwheeler\">@tedwheeler</a> day 16 of #BHM is for <a href=\"https://twitter.com/stream_pdx\">@stream_pdx</a>. An amazing podcast trailer run by <a href=\"https://twitter.com/tyeshasnow\">@tyeshasnow</a> helping to democratize story telling in #PDX. Folks can get training in the production of podcasts. <a href=\"https://twitter.com/siliconflorist\">@siliconflorist</a> #SupportBlackBusiness", $tweet['content']['html']);
+  }
+
+  public function testStreamingTweetWithLink() {
+    list($url, $json) = $this->loadTweet('streaming-tweet-with-link');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals('what happens if i include a link like https://kmikeym.com', $data['data']['content']['text']);
+    $this->assertEquals('what happens if i include a link like <a href="https://kmikeym.com">https://kmikeym.com</a>', $data['data']['content']['html']);
+  }
+
+  public function testStreamingTweetWithMentions() {
+    list($url, $json) = $this->loadTweet('streaming-tweet-with-mentions');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals('Offer accepted! @aaronpk bought 1 shares from @coledrobison at $6.73 https://kmikeym.com/trades', $data['data']['content']['text']);
+    $this->assertEquals('Offer accepted! <a href="https://twitter.com/aaronpk">@aaronpk</a> bought 1 shares from <a href="https://twitter.com/coledrobison">@coledrobison</a> at $6.73 <a href="https://kmikeym.com/trades">https://kmikeym.com/trades</a>', $data['data']['content']['html']);
+  }
+
+  public function testStreamingTweetTruncated() {
+    list($url, $json) = $this->loadTweet('streaming-tweet-truncated');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals("#indieweb community. Really would like to see a Micropub client for Gratitude logging and also a Mastodon poster similar to the twitter one.\nFeel like I could (maybe) rewrite previous open code to do some of this :)", $data['data']['content']['text']);
+    $this->assertArrayNotHasKey('html', $data['data']['content']);
+  }
+
 }

@@ -70,12 +70,6 @@ class Twitter extends Format {
     );
     $refs = [];
 
-    // Only use the "display" segment of the text
-    $text = mb_substr($tweet->full_text, 
-      $tweet->display_text_range[0], 
-      $tweet->display_text_range[1]-$tweet->display_text_range[0],
-      'UTF-8');
-
     if(property_exists($tweet, 'retweeted_status')) {
       // No content for retweets
 
@@ -93,12 +87,7 @@ class Twitter extends Format {
       $refs[$repostOf] = $repostedEntry['data'];
 
     } else {
-      // Twitter escapes & as &amp; in the text
-      $text = html_entity_decode($text);
-
-      $text = self::expandTweetURLs($text, $tweet);
-
-      $entry['content'] = ['text' => $text];
+      $entry['content'] = self::expandTweetContent($tweet);
     }
 
     // Published date
@@ -209,10 +198,14 @@ class Twitter extends Format {
       $author['name'] = $profile->screen_name;
 
     if($profile->url) {
-      if($profile->entities->url->urls[0]->expanded_url)
-        $author['url'] = $profile->entities->url->urls[0]->expanded_url;
-      else
-        $author['url'] = $profile->entities->url->urls[0]->url;
+      if(property_exists($profile, 'entities')) {
+        if($profile->entities->url->urls[0]->expanded_url)
+          $author['url'] = $profile->entities->url->urls[0]->expanded_url;
+        else
+          $author['url'] = $profile->entities->url->urls[0]->url;
+      } else {
+        $author['url'] = $profile->url;
+      }
     }
     else {
       $author['url'] = 'https://twitter.com/' . $profile->screen_name;
@@ -223,13 +216,66 @@ class Twitter extends Format {
     return $author;
   }
 
-  private static function expandTweetURLs($text, $object) {
-    if(property_exists($object, 'entities') && property_exists($object->entities, 'urls')) {
-      foreach($object->entities->urls as $url) {
-        $text = str_replace($url->url, $url->expanded_url, $text);
+  private static function expandTweetContent($tweet) {
+    $entities = new \StdClass;
+
+    if(property_exists($tweet, 'truncated') && $tweet->truncated) {
+      if(property_exists($tweet, 'extended_tweet')) {
+        $text = $tweet->extended_tweet->full_text;
+
+        if(property_exists($tweet->extended_tweet, 'entities')) {
+          $entities = $tweet->extended_tweet->entities;
+        }
+      } else {
+        $text = $tweet->text;
+
+        if(property_exists($tweet, 'entities')) {
+          $entities = $tweet->entities;
+        }
+      }
+    } else {
+      // Only use the "display" segment of the text
+      if(property_exists($tweet, 'full_text')) {
+        // Only use the "display" segment of the text
+        $text = mb_substr($tweet->full_text,
+          $tweet->display_text_range[0],
+          $tweet->display_text_range[1]-$tweet->display_text_range[0],
+          'UTF-8');
+      } else {
+        $text = $tweet->text;
+      }
+
+      if(property_exists($tweet, 'entities')) {
+        $entities = $tweet->entities;
       }
     }
-    return $text;
+
+    // Twitter escapes & as &amp; in the text
+    $text = html_entity_decode($text);
+
+    $html = $text;
+
+    if(property_exists($entities, 'user_mentions')) {
+      foreach($entities->user_mentions as $user) {
+        $html = str_replace('@'.$user->screen_name, '<a href="https://twitter.com/'.$user->screen_name.'">@'.$user->screen_name.'</a>', $html);
+      }
+    }
+
+    if(property_exists($entities, 'urls')) {
+      foreach($entities->urls as $url) {
+        $text = str_replace($url->url, $url->expanded_url, $text);
+        $html = str_replace($url->url, '<a href="'.$url->expanded_url.'">'.$url->expanded_url.'</a>', $html);
+      }
+    }
+
+    $content = [
+      'text' => $text,
+    ];
+
+    if($html != $text)
+      $content['html'] = $html;
+
+    return $content;
   }
 
   private static function expandTwitterObjectURLs($text, $object, $key) {
