@@ -18,5 +18,7 @@ deploy:
   provider: gae
   default: true
   project: xray-p3k-io
-  on: master
+  on:
+    branch: master
+    php: 5.5
   keyfile: XRay-67d8fdd0bba3.json
