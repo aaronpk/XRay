@@ -169,6 +169,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('Quoted tweet with a #hashtag https://twitter.com/aaronpk/status/817414679131660288', $data['data']['content']['text']);
+    $this->assertEquals('https://twitter.com/aaronpk/status/817414679131660288', $data['data']['quotation-of']);
     $tweet = $data['data']['refs']['https://twitter.com/aaronpk/status/817414679131660288'];
     $this->assertEquals('Yeah that\'s me http://xkcd.com/1782/', $tweet['content']['text']);
   }

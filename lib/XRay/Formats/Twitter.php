@@ -175,6 +175,7 @@ class Twitter extends Format {
         }
       }
       $refs[$quoteOf] = $quotedEntry['data'];
+      $entry['quotation-of'] = $quoteOf;
     }
 
     if($author = self::_buildHCardFromTwitterProfile($tweet->user)) {
