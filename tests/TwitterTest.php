@@ -222,13 +222,26 @@ Feel like I could (maybe) rewrite previous open code to do some of this :)', $da
     $this->assertEquals('https://pbs.twimg.com/media/DWaAhZ2UQAAIEoS.jpg', $data['data']['photo'][3]);
   }
 
-  public function testStreamingTweetTruncatedWithVidoe() {
+  public function testStreamingTweetTruncatedWithVideo() {
     list($url, $json) = $this->loadTweet('streaming-tweet-truncated-with-video');
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals("hi @aaronpk Ends was a great job I was just talking to her about the house I think she is just talking to you about that stuff like that you don't have any idea of how to make to your job so you don't want me going back on your own to make it happen", $data['data']['content']['text']);
     $this->assertEquals(1, count($data['data']['video']));
     $this->assertEquals('https://video.twimg.com/ext_tw_video/965608338917548032/pu/vid/720x720/kreAfCMf-B1dLqBH.mp4', $data['data']['video'][0]);
+  }
+
+  public function testTweetWithNewlines() {
+    list($url, $json) = $this->loadTweet('tweet-with-newlines');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals(4, substr_count($data['data']['content']['text'], "\n"));
+    $this->assertEquals(4, substr_count($data['data']['content']['html'], "<br>\n"));
+    $this->assertEquals("🌈🌈 I’ve watched the sun rise at Corona Heights countless times, but never before have I seen a #rainbow at #sunrise.
+
+#CoronaHeights #SanFrancisco #SF #wakeupthesun #fromwhereirun #nofilter
+
+Woke up this morning feeling compelled to run to Corona… http://tantek.com/2018/049/t3/rainbow-at-sunrise", $data['data']['content']['text']);
   }
 
 }
