@@ -208,7 +208,27 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals("#indieweb community. Really would like to see a Micropub client for Gratitude logging and also a Mastodon poster similar to the twitter one.\nFeel like I could (maybe) rewrite previous open code to do some of this :)", $data['data']['content']['text']);
-    $this->assertArrayNotHasKey('html', $data['data']['content']);
+    $this->assertEquals('#indieweb community. Really would like to see a Micropub client for Gratitude logging and also a Mastodon poster similar to the twitter one.<br>
+Feel like I could (maybe) rewrite previous open code to do some of this :)', $data['data']['content']['html']);
+  }
+
+  public function testStreamingTweetTruncatedWithPhoto() {
+    list($url, $json) = $this->loadTweet('streaming-tweet-truncated-with-photo');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals("#MicrosoftFlow ninja-tip.\nI'm getting better at custom-connector and auth.  Thanks @skillriver \nThis is OAuth2 with MSA/Live (not AzureAD) which I need to do MVP timesheets.\nStill dislike Swagger so I don't know why I bother with this. I'm just that lazy doing this manually", $data['data']['content']['text']);
+    $this->assertEquals(4, count($data['data']['photo']));
+    $this->assertEquals('https://pbs.twimg.com/media/DWZ-5UPVAAAQOWY.jpg', $data['data']['photo'][0]);
+    $this->assertEquals('https://pbs.twimg.com/media/DWaAhZ2UQAAIEoS.jpg', $data['data']['photo'][3]);
+  }
+
+  public function testStreamingTweetTruncatedWithVidoe() {
+    list($url, $json) = $this->loadTweet('streaming-tweet-truncated-with-video');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals("hi @aaronpk Ends was a great job I was just talking to her about the house I think she is just talking to you about that stuff like that you don't have any idea of how to make to your job so you don't want me going back on your own to make it happen", $data['data']['content']['text']);
+    $this->assertEquals(1, count($data['data']['video']));
+    $this->assertEquals('https://video.twimg.com/ext_tw_video/965608338917548032/pu/vid/720x720/kreAfCMf-B1dLqBH.mp4', $data['data']['video'][0]);
   }
 
 }

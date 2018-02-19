@@ -114,27 +114,15 @@ class Twitter extends Format {
       // Photos and Videos
       if(property_exists($tweet, 'extended_entities') && property_exists($tweet->extended_entities, 'media')) {
         foreach($tweet->extended_entities->media as $media) {
-          if($media->type == 'photo') {
-            if(!array_key_exists('photo', $entry))
-              $entry['photo'] = [];
+          self::extractMedia($media, $entry);
+        }
+      }
 
-            $entry['photo'][] = $media->media_url_https;
-
-          } elseif($media->type == 'video') {
-            if(!array_key_exists('video', $entry))
-              $entry['video'] = [];
-
-            // Find the highest bitrate video that is mp4
-            $videos = $media->video_info->variants;
-            $videos = array_filter($videos, function($v) {
-              return property_exists($v, 'bitrate') && $v->content_type == 'video/mp4';
-            });
-            if(count($videos)) {
-              usort($videos, function($a,$b) {
-                return $a->bitrate < $b->bitrate;
-              });
-              $entry['video'][] = $videos[0]->url;
-            }
+      // Photos from Streaming API Tweets
+      if(property_exists($tweet, 'extended_tweet')) {
+        if(property_exists($tweet->extended_tweet, 'entities') && property_exists($tweet->extended_tweet->entities, 'media')) {
+          foreach($tweet->extended_tweet->entities->media as $media) {
+            self::extractMedia($media, $entry);
           }
         }
       }
@@ -181,6 +169,31 @@ class Twitter extends Format {
     ];
   }
 
+  private static function extractMedia($media, &$entry) {
+    if($media->type == 'photo') {
+      if(!array_key_exists('photo', $entry))
+        $entry['photo'] = [];
+
+      $entry['photo'][] = $media->media_url_https;
+
+    } elseif($media->type == 'video') {
+      if(!array_key_exists('video', $entry))
+        $entry['video'] = [];
+
+      // Find the highest bitrate video that is mp4
+      $videos = $media->video_info->variants;
+      $videos = array_filter($videos, function($v) {
+        return property_exists($v, 'bitrate') && $v->content_type == 'video/mp4';
+      });
+      if(count($videos)) {
+        usort($videos, function($a,$b) {
+          return $a->bitrate < $b->bitrate;
+        });
+        $entry['video'][] = $videos[0]->url;
+      }
+    }
+  }
+
   private static function _buildHCardFromTwitterProfile($profile) {
     if(!$profile) return false;
 
@@ -222,6 +235,11 @@ class Twitter extends Format {
     if(property_exists($tweet, 'truncated') && $tweet->truncated) {
       if(property_exists($tweet, 'extended_tweet')) {
         $text = $tweet->extended_tweet->full_text;
+
+        $text = mb_substr($text,
+          $tweet->extended_tweet->display_text_range[0],
+          $tweet->extended_tweet->display_text_range[1]-$tweet->extended_tweet->display_text_range[0],
+          'UTF-8');
 
         if(property_exists($tweet->extended_tweet, 'entities')) {
           $entities = $tweet->extended_tweet->entities;

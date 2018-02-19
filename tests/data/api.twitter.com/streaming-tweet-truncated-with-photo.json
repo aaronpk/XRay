@@ -1,0 +1,434 @@
+{
+    "created_at": "Mon Feb 19 15:03:23 +0000 2018",
+    "id": 965602723251945473,
+    "id_str": "965602723251945473",
+    "text": "#MicrosoftFlow ninja-tip.\nI'm getting better at custom-connector and auth.  Thanks @skillriver \nThis is OAuth2 with\u2026 https://t.co/pL951ynEfd",
+    "display_text_range": [
+        0,
+        140
+    ],
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "truncated": true,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+        "id": 17532000,
+        "id_str": "17532000",
+        "name": "John LIU",
+        "screen_name": "johnnliu",
+        "location": "Sydney",
+        "url": "http://johnliu.net",
+        "description": "coder \u2022 blogger \u2022 MVP Office365 & SharePoint \u2022 #MSFlow \n[work sharepointgurus..net]",
+        "translator_type": "none",
+        "protected": false,
+        "verified": false,
+        "followers_count": 1361,
+        "friends_count": 421,
+        "listed_count": 142,
+        "favourites_count": 8661,
+        "statuses_count": 13745,
+        "created_at": "Fri Nov 21 05:46:26 +0000 2008",
+        "utc_offset": 39600,
+        "time_zone": "Sydney",
+        "geo_enabled": true,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "profile_background_color": "C0DEED",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": false,
+        "profile_link_color": "1DA1F2",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/961904825716715520/NhPxyw2N_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/961904825716715520/NhPxyw2N_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/17532000/1432696432",
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": null,
+        "follow_request_sent": null,
+        "notifications": null
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "extended_tweet": {
+        "full_text": "#MicrosoftFlow ninja-tip.\nI'm getting better at custom-connector and auth.  Thanks @skillriver \nThis is OAuth2 with MSA/Live (not AzureAD) which I need to do MVP timesheets.\nStill dislike Swagger so I don't know why I bother with this. I'm just that lazy doing this manually https://t.co/dUDaqcQssO",
+        "display_text_range": [
+            0,
+            274
+        ],
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "MicrosoftFlow",
+                    "indices": [
+                        0,
+                        14
+                    ]
+                }
+            ],
+            "urls": [],
+            "user_mentions": [
+                {
+                    "screen_name": "skillriver",
+                    "name": "Jan Vidar Elven",
+                    "id": 550859390,
+                    "id_str": "550859390",
+                    "indices": [
+                        83,
+                        94
+                    ]
+                }
+            ],
+            "symbols": [],
+            "media": [
+                {
+                    "id": 965598693268193280,
+                    "id_str": "965598693268193280",
+                    "indices": [
+                        275,
+                        298
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/DWZ-5UPVAAAQOWY.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/DWZ-5UPVAAAQOWY.jpg",
+                    "url": "https://t.co/dUDaqcQssO",
+                    "display_url": "pic.twitter.com/dUDaqcQssO",
+                    "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "small": {
+                            "w": 638,
+                            "h": 680,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 754,
+                            "h": 804,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 754,
+                            "h": 804,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 965600129775411204,
+                    "id_str": "965600129775411204",
+                    "indices": [
+                        275,
+                        298
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/DWaAM7pVoAQuGhL.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/DWaAM7pVoAQuGhL.jpg",
+                    "url": "https://t.co/dUDaqcQssO",
+                    "display_url": "pic.twitter.com/dUDaqcQssO",
+                    "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 562,
+                            "h": 904,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 562,
+                            "h": 904,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 423,
+                            "h": 680,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 965600383589523456,
+                    "id_str": "965600383589523456",
+                    "indices": [
+                        275,
+                        298
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/DWaAbtLVoAA2O68.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/DWaAbtLVoAA2O68.jpg",
+                    "url": "https://t.co/dUDaqcQssO",
+                    "display_url": "pic.twitter.com/dUDaqcQssO",
+                    "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 908,
+                            "h": 1017,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "medium": {
+                            "w": 908,
+                            "h": 1017,
+                            "resize": "fit"
+                        },
+                        "small": {
+                            "w": 607,
+                            "h": 680,
+                            "resize": "fit"
+                        }
+                    }
+                },
+                {
+                    "id": 965600481480294400,
+                    "id_str": "965600481480294400",
+                    "indices": [
+                        275,
+                        298
+                    ],
+                    "media_url": "http://pbs.twimg.com/media/DWaAhZ2UQAAIEoS.jpg",
+                    "media_url_https": "https://pbs.twimg.com/media/DWaAhZ2UQAAIEoS.jpg",
+                    "url": "https://t.co/dUDaqcQssO",
+                    "display_url": "pic.twitter.com/dUDaqcQssO",
+                    "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+                    "type": "photo",
+                    "sizes": {
+                        "large": {
+                            "w": 813,
+                            "h": 1031,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 536,
+                            "h": 680,
+                            "resize": "fit"
+                        },
+                        "medium": {
+                            "w": 813,
+                            "h": 1031,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+},
+"extended_entities": {
+    "media": [
+        {
+            "id": 965598693268193280,
+            "id_str": "965598693268193280",
+            "indices": [
+                275,
+                298
+            ],
+            "media_url": "http://pbs.twimg.com/media/DWZ-5UPVAAAQOWY.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/DWZ-5UPVAAAQOWY.jpg",
+            "url": "https://t.co/dUDaqcQssO",
+            "display_url": "pic.twitter.com/dUDaqcQssO",
+            "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+            "type": "photo",
+            "sizes": {
+                "small": {
+                    "w": 638,
+                    "h": 680,
+                    "resize": "fit"
+                },
+                "thumb": {
+                    "w": 150,
+                    "h": 150,
+                    "resize": "crop"
+                },
+                "medium": {
+                    "w": 754,
+                    "h": 804,
+                    "resize": "fit"
+                },
+                "large": {
+                    "w": 754,
+                    "h": 804,
+                    "resize": "fit"
+                }
+            }
+        },
+        {
+            "id": 965600129775411204,
+            "id_str": "965600129775411204",
+            "indices": [
+                275,
+                298
+            ],
+            "media_url": "http://pbs.twimg.com/media/DWaAM7pVoAQuGhL.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/DWaAM7pVoAQuGhL.jpg",
+            "url": "https://t.co/dUDaqcQssO",
+            "display_url": "pic.twitter.com/dUDaqcQssO",
+            "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+            "type": "photo",
+            "sizes": {
+                "thumb": {
+                    "w": 150,
+                    "h": 150,
+                    "resize": "crop"
+                },
+                "medium": {
+                    "w": 562,
+                    "h": 904,
+                    "resize": "fit"
+                },
+                "large": {
+                    "w": 562,
+                    "h": 904,
+                    "resize": "fit"
+                },
+                "small": {
+                    "w": 423,
+                    "h": 680,
+                    "resize": "fit"
+                }
+            }
+        },
+        {
+            "id": 965600383589523456,
+            "id_str": "965600383589523456",
+            "indices": [
+                275,
+                298
+            ],
+            "media_url": "http://pbs.twimg.com/media/DWaAbtLVoAA2O68.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/DWaAbtLVoAA2O68.jpg",
+            "url": "https://t.co/dUDaqcQssO",
+            "display_url": "pic.twitter.com/dUDaqcQssO",
+            "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+            "type": "photo",
+            "sizes": {
+                "large": {
+                    "w": 908,
+                    "h": 1017,
+                    "resize": "fit"
+                },
+                "thumb": {
+                    "w": 150,
+                    "h": 150,
+                    "resize": "crop"
+                },
+                "medium": {
+                    "w": 908,
+                    "h": 1017,
+                    "resize": "fit"
+                },
+                "small": {
+                    "w": 607,
+                    "h": 680,
+                    "resize": "fit"
+                }
+            }
+        },
+        {
+            "id": 965600481480294400,
+            "id_str": "965600481480294400",
+            "indices": [
+                275,
+                298
+            ],
+            "media_url": "http://pbs.twimg.com/media/DWaAhZ2UQAAIEoS.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/DWaAhZ2UQAAIEoS.jpg",
+            "url": "https://t.co/dUDaqcQssO",
+            "display_url": "pic.twitter.com/dUDaqcQssO",
+            "expanded_url": "https://twitter.com/johnnliu/status/965602723251945473/photo/1",
+            "type": "photo",
+            "sizes": {
+                "large": {
+                    "w": 813,
+                    "h": 1031,
+                    "resize": "fit"
+                },
+                "thumb": {
+                    "w": 150,
+                    "h": 150,
+                    "resize": "crop"
+                },
+                "small": {
+                    "w": 536,
+                    "h": 680,
+                    "resize": "fit"
+                },
+                "medium": {
+                    "w": 813,
+                    "h": 1031,
+                    "resize": "fit"
+                }
+            }
+        }
+    ]
+}
+},
+"quote_count": 0,
+"reply_count": 0,
+"retweet_count": 0,
+"favorite_count": 0,
+"entities": {
+    "hashtags": [
+        {
+            "text": "MicrosoftFlow",
+            "indices": [
+                0,
+                14
+            ]
+        }
+    ],
+    "urls": [
+        {
+            "url": "https://t.co/pL951ynEfd",
+            "expanded_url": "https://twitter.com/i/web/status/965602723251945473",
+            "display_url": "twitter.com/i/web/status/9\u2026",
+            "indices": [
+                117,
+                140
+            ]
+        }
+    ],
+    "user_mentions": [
+        {
+            "screen_name": "skillriver",
+            "name": "Jan Vidar Elven",
+            "id": 550859390,
+            "id_str": "550859390",
+            "indices": [
+                83,
+                94
+            ]
+        }
+    ],
+    "symbols": []
+},
+"favorited": false,
+"retweeted": false,
+"possibly_sensitive": false,
+"filter_level": "low",
+"lang": "en",
+"timestamp_ms": "1519052603911"
+}
