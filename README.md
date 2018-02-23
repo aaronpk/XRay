@@ -38,22 +38,6 @@ composer require p3k/xray
 
 You can also [download a release](https://github.com/aaronpk/XRay/releases) which is a zip file with all dependencies already installed.
 
-**Note** XRay uses the HTMLPurifier library, which is in the process of updating to support newer PHP versions. Until they release an update beyond `v4.9.3`, you will need to add the following to your `composer.json` file in order to tell your project it's okay to install the dev-master version:
-
-```json
-{
-  "require": {
-    "ezyang/htmlpurifier": "dev-master#6d6d88512a8146939a9161bb03e95e3e97840439@dev"
-  },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/ezyang/htmlpurifier.git"
-    }
-  ]
-}
-```
-
 ### Parsing
 
 ```php

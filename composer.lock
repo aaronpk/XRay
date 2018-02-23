@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bcdd53e30f9960f6b39b0aa2c74d5457",
+    "content-hash": "59d3e49509e8de79d4f07f04d2259a4c",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -110,11 +110,17 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "dev-master",
+            "version": "v4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "6d6d88512a8146939a9161bb03e95e3e97840439"
+                "reference": "d85d39da4576a6934b72480be6978fb10c860021"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d85d39da4576a6934b72480be6978fb10c860021",
+                "reference": "d85d39da4576a6934b72480be6978fb10c860021",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
@@ -131,6 +137,7 @@
                     "library/HTMLPurifier.composer.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL"
             ],
@@ -146,7 +153,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2017-12-30T05:23:44+00:00"
+            "time": "2018-02-23T01:58:20+00:00"
         },
         {
             "name": "facebook/graph-sdk",
@@ -2082,9 +2089,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ezyang/htmlpurifier": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
