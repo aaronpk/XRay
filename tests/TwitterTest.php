@@ -244,4 +244,18 @@ Feel like I could (maybe) rewrite previous open code to do some of this :)', $da
 Woke up this morning feeling compelled to run to Corona… http://tantek.com/2018/049/t3/rainbow-at-sunrise", $data['data']['content']['text']);
   }
 
+  public function testStreamingTweetReply() {
+    list($url, $json) = $this->loadTweet('streaming-tweet-reply');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals('https://twitter.com/anomalily/status/967024586423386112', $data['data']['in-reply-to'][0]);
+  }
+
+  public function testTweetReply() {
+    list($url, $json) = $this->loadTweet('967046438822674432');
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals('https://twitter.com/anomalily/status/967024586423386112', $data['data']['in-reply-to'][0]);
+  }
+
 }

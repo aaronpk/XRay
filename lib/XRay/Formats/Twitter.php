@@ -108,6 +108,13 @@ class Twitter extends Format {
       }
     }
 
+    // In-Reply-To
+    if(property_exists($tweet, 'in_reply_to_status_id_str') && $tweet->in_reply_to_status_id_str) {
+      $entry['in-reply-to'] = [
+        'https://twitter.com/'.$tweet->in_reply_to_screen_name.'/status/'.$tweet->in_reply_to_status_id_str
+      ];
+    }
+
     // Don't include the RT'd photo or video in the main object.
     // They get included in the reposted object instead.
     if(!property_exists($tweet, 'retweeted_status')) {
