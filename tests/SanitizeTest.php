@@ -28,15 +28,15 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $html = $data['data']['content']['html'];
 
     $this->assertEquals('entry', $data['data']['type']);
-    $this->assertContains('This content has only valid tags.', $html); 
-    $this->assertContains('<a href="http://sanitize.example/example">links</a>,', $html, '<a> missing'); 
-    $this->assertContains('<abbr>abbreviations</abbr>,', $html, '<abbr> missing'); 
-    $this->assertContains('<b>bold</b>,', $html, '<b> missing'); 
-    $this->assertContains('<code>inline code</code>,', $html, '<code> missing'); 
-    $this->assertContains('<del>delete</del>,', $html, '<del> missing'); 
-    $this->assertContains('<em>emphasis</em>,', $html, '<em> missing'); 
-    $this->assertContains('<i>italics</i>,', $html, '<i> missing'); 
-    $this->assertContains('<img src="http://sanitize.example/example.jpg" alt="images are allowed" />', $html, '<img> missing'); 
+    $this->assertContains('This content has only valid tags.', $html);
+    $this->assertContains('<a href="http://sanitize.example/example">links</a>,', $html, '<a> missing');
+    $this->assertContains('<abbr>abbreviations</abbr>,', $html, '<abbr> missing');
+    $this->assertContains('<b>bold</b>,', $html, '<b> missing');
+    $this->assertContains('<code>inline code</code>,', $html, '<code> missing');
+    $this->assertContains('<del>delete</del>,', $html, '<del> missing');
+    $this->assertContains('<em>emphasis</em>,', $html, '<em> missing');
+    $this->assertContains('<i>italics</i>,', $html, '<i> missing');
+    $this->assertContains('<img src="http://sanitize.example/example.jpg" alt="images are allowed" />', $html, '<img> missing');
     $this->assertContains('<q>inline quote</q>,', $html, '<q> missing');
     $this->assertContains('<strike>strikethrough</strike>,', $html, '<strike> missing');
     $this->assertContains('<strong>strong text</strong>,', $html, '<strong> missing');
@@ -53,6 +53,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('<h6>Six</h6>', $html, '<h6> missing');
     $this->assertContains('<ul>', $html, '<ul> missing');
     $this->assertContains('<li>One</li>', $html, '<li> missing');
+    $this->assertContains('<p>We should allow<br />break<br />tags too</p>', $html, '<br> missing');
   }
 
   public function testRemovesUnsafeTags() {
@@ -187,7 +188,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
 
   public function testPhotoInContentEmptyAltAttribute() {
     // https://github.com/aaronpk/XRay/issues/52
-    
+
     $url = 'http://sanitize.example/photo-in-content-empty-alt';
     $response = $this->parse(['url' => $url]);
 
@@ -203,7 +204,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
 
   public function testPhotoInContentWithAlt() {
     // https://github.com/aaronpk/XRay/issues/52
-    
+
     $url = 'http://sanitize.example/photo-in-content-with-alt';
     $response = $this->parse(['url' => $url]);
 
@@ -214,7 +215,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertObjectNotHasAttribute('name', $data->data);
     $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
     $this->assertEquals('This is a photo post with an img tag inside the content.', $data->data->content->text);
-    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);    
+    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
   }
 
   public function testPhotoInContentWithNoText() {
@@ -274,7 +275,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
 
     #print_r($data->data);
 
-    $this->assertEquals('🌆 Made it to the first #NPSF #earlygang of the year, did in-betweeners abs, and 6:30 workout with a brutal burnout that was really its own workout. But wow pretty sunrise. Plus 50+ deg F? I’ll take it. #100PDPD#justshowup #darknesstodawn #wakeupthesun #fromwhereirun #NovemberProject #sunrise #latergram #nofilter', $data->data->content->text);
+    $this->assertEquals('🌆 Made it to the first #NPSF #earlygang of the year, did in-betweeners abs, and 6:30 workout with a brutal burnout that was really its own workout. But wow pretty sunrise. Plus 50+ deg F? I’ll take it. #100PDPD'."\n\n".'#justshowup #darknesstodawn #wakeupthesun #fromwhereirun #NovemberProject #sunrise #latergram #nofilter', $data->data->content->text);
     $this->assertObjectNotHasAttribute('name', $data->data);
     $this->assertEquals('https://igx.4sqi.net/img/general/original/476_g7yruXflacsGr7PyVmECefyTBMB_R99zmPQxW7pftzA.jpg', $data->data->photo[0]);
     $this->assertEquals('https://igx.4sqi.net/img/general/original/476_zM3UgU9JHNhom907Ac_1WCEcUhGOJZaNWGlRmev86YA.jpg', $data->data->photo[1]);
@@ -301,5 +302,17 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content, which does not have a u-photo class so should not be removed. <img src="http://target.example.com/photo.jpg" alt="a photo">', $data->data->content->html);
   }
   */
+
+  public function testWhitespaceWithBreakTags() {
+    $url = 'http://sanitize.example/entry-with-br-tags';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertEquals('This content has two break tags to indicate a paragraph break.<br /><br />This is how tantek\'s autolinker works.', $data->data->content->html);
+    $this->assertEquals("This content has two break tags to indicate a paragraph break.\n\nThis is how tantek's autolinker works.", $data->data->content->text);
+  }
 
 }

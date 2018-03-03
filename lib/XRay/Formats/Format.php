@@ -39,6 +39,7 @@ abstract class Format implements iFormat {
       'a',
       'abbr',
       'b',
+      'br',
       'code',
       'del',
       'em',
@@ -93,7 +94,7 @@ abstract class Format implements iFormat {
     $sanitized = $purifier->purify($html);
     $sanitized = str_replace("&#xD;","\r",$sanitized);
     $sanitized = html_entity_decode($sanitized);
-    return trim(str_replace('<br>',"\n", $sanitized));
+    return trim(str_replace(['<br>','<br />'],"\n", $sanitized));
   }
 
 

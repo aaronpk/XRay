@@ -19,6 +19,8 @@ for code examples and such</pre>
 
       <p>Paragraph tags are allowed</p>
 
+      <p>We should allow<br>break<br />tags too</p>
+
       <h1>One</h1>
       <h2>Two</h2>
       <h3>Three</h3>

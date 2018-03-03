@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 02 Mar 2018 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <div class="e-content">
+      This content has two break tags to indicate a paragraph break.<br class="auto-break"><br class="auto-break">This is how tantek's autolinker works.
+    </div>
+  </body>
+</html>
