@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "59d3e49509e8de79d4f07f04d2259a4c",
+    "content-hash": "0a104ee89f03db919f34d3a9d387380c",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -316,21 +316,21 @@
         },
         {
             "name": "p3k/http",
-            "version": "0.1.5",
+            "version": "0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aaronpk/p3k-http.git",
-                "reference": "3740fe135e6d58457d7528e7c05a67b68e020a79"
+                "reference": "1826647c4902a18dea5ec532f21509ba4d51210b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/3740fe135e6d58457d7528e7c05a67b68e020a79",
-                "reference": "3740fe135e6d58457d7528e7c05a67b68e020a79",
+                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/1826647c4902a18dea5ec532f21509ba4d51210b",
+                "reference": "1826647c4902a18dea5ec532f21509ba4d51210b",
                 "shasum": ""
             },
             "require": {
                 "indieweb/link-rel-parser": "0.1.*",
-                "mf2/mf2": "0.3.*"
+                "mf2/mf2": ">=0.3.2"
             },
             "type": "library",
             "autoload": {
@@ -350,7 +350,7 @@
             ],
             "description": "A simple wrapper API around the PHP curl functions",
             "homepage": "https://github.com/aaronpk/p3k-http",
-            "time": "2017-04-29T17:43:29+00:00"
+            "time": "2018-03-04T15:21:58+00:00"
         },
         {
             "name": "p3k/picofeed",

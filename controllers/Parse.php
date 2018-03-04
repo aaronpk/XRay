@@ -10,7 +10,7 @@ class Parse {
   public $mc;
   private $_cacheTime = 120;
   private $_pretty = false;
-  private static $_version = '1.2.2';
+  private static $_version = '1.4.20';
 
   public static function useragent() {
     return 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36 XRay/'.self::$_version.' ('.\Config::$base.')';

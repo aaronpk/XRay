@@ -10,7 +10,7 @@
     "indieweb/link-rel-parser": "0.1.*",
     "dg/twitter-php": "3.6.*",
     "p3k/timezone": "*",
-    "p3k/http": "0.1.*",
+    "p3k/http": ">=0.1.7",
     "cebe/markdown": "1.1.*",
     "p3k/picofeed": ">=0.1.38",
     "facebook/graph-sdk": "^5.5"
