@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b24013f210dafc33089cefc589f43a11",
+    "content-hash": "ebd195e5bf9ff15a29795d27641cce90",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -261,15 +261,15 @@
         },
         {
             "name": "mf2/mf2",
-            "version": "dev-master",
+            "version": "v0.4.0-alpha",
             "source": {
                 "type": "git",
-                "url": "https://github.com/indieweb/php-mf2.git",
+                "url": "https://github.com/aaronpk/php-mf2.git",
                 "reference": "5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb",
+                "url": "https://api.github.com/repos/aaronpk/php-mf2/zipball/5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb",
                 "reference": "5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb",
                 "shasum": ""
             },
@@ -294,7 +294,6 @@
                     "Mf2/Parser.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "CC0-1.0"
             ],
@@ -2090,7 +2089,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "mf2/mf2": 20
+        "mf2/mf2": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,
