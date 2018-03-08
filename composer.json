@@ -5,7 +5,7 @@
   "homepage": "https://github.com/aaronpk/XRay",
   "description": "X-Ray returns structured data from any URL",
   "require": {
-    "mf2/mf2": "^0.3.2",
+    "mf2/mf2": "dev-master#5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb",
     "ezyang/htmlpurifier": "4.10.*",
     "indieweb/link-rel-parser": "0.1.*",
     "dg/twitter-php": "3.6.*",
