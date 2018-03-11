@@ -660,4 +660,28 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertObjectNotHasAttribute('photo', $data->data);
   }
 
+  public function testDuplicateReplyURLValues() {
+    $url = 'http://source.example.com/duplicate-in-reply-to-urls';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('http://example.com/100', $data['data']['in-reply-to'][0]);
+    $this->assertEquals(1, count($data['data']['in-reply-to']));
+  }
+
+  public function testDuplicateLikeOfURLValues() {
+    $url = 'http://source.example.com/duplicate-like-of-urls';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('http://example.com/100', $data['data']['like-of'][0]);
+    $this->assertEquals(1, count($data['data']['like-of']));
+  }
+
 }

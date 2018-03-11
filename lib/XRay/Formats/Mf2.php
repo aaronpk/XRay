@@ -323,16 +323,20 @@ class Mf2 extends Format {
   }
 
   private static function collectArrayURLValues($properties, $item, &$data, &$refs, &$http) {
+    $keys = [];
+
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         foreach($item['properties'][$p] as $v) {
           if(is_string($v) && self::isURL($v)) {
             if(!array_key_exists($p, $data)) $data[$p] = [];
             $data[$p][] = $v;
+            $keys[] = $p;
           }
           elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
             if(!array_key_exists($p, $data)) $data[$p] = [];
             $data[$p][] = $u;
+            $keys[] = $p;
             // parse the object and put the result in the "refs" object
             $ref = self::parse(['items'=>[$v]], $u, $http);
             if($ref) {
@@ -340,7 +344,12 @@ class Mf2 extends Format {
             }
           }
         }
-      }      
+      }
+    }
+
+    // Remove duplicate values
+    foreach(array_unique($keys) as $key) {
+      $data[$key] = array_unique($data[$key]);
     }
   }
 
