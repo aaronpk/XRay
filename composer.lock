@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebd195e5bf9ff15a29795d27641cce90",
+    "content-hash": "60f545028d44eb8e15c499fbe7ecf4d0",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -261,16 +261,16 @@
         },
         {
             "name": "mf2/mf2",
-            "version": "v0.4.0-alpha",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/aaronpk/php-mf2.git",
-                "reference": "5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb"
+                "url": "https://github.com/indieweb/php-mf2.git",
+                "reference": "42ef6eb9777bffe654a70cbbc1dbd777a61c1445"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/php-mf2/zipball/5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb",
-                "reference": "5cbfdd4a1075b5113f2a1f4a1d6b8d7c86b93acb",
+                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/42ef6eb9777bffe654a70cbbc1dbd777a61c1445",
+                "reference": "42ef6eb9777bffe654a70cbbc1dbd777a61c1445",
                 "shasum": ""
             },
             "require": {
@@ -294,6 +294,7 @@
                     "Mf2/Parser.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "CC0-1.0"
             ],
@@ -311,7 +312,7 @@
                 "parser",
                 "semantic"
             ],
-            "time": "2018-03-08T13:43:49+00:00"
+            "time": "2018-03-13T23:33:15+00:00"
         },
         {
             "name": "p3k/http",
@@ -2088,9 +2089,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mf2/mf2": 15
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
