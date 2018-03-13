@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a104ee89f03db919f34d3a9d387380c",
+    "content-hash": "60f545028d44eb8e15c499fbe7ecf4d0",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -261,16 +261,16 @@
         },
         {
             "name": "mf2/mf2",
-            "version": "v0.3.2",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/indieweb/php-mf2.git",
-                "reference": "dc0d90d4ee30864bcf37cd3a8fc8db94f9134cc4"
+                "reference": "42ef6eb9777bffe654a70cbbc1dbd777a61c1445"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/dc0d90d4ee30864bcf37cd3a8fc8db94f9134cc4",
-                "reference": "dc0d90d4ee30864bcf37cd3a8fc8db94f9134cc4",
+                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/42ef6eb9777bffe654a70cbbc1dbd777a61c1445",
+                "reference": "42ef6eb9777bffe654a70cbbc1dbd777a61c1445",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "CC0"
+                "CC0-1.0"
             ],
             "authors": [
                 {
@@ -312,7 +312,7 @@
                 "parser",
                 "semantic"
             ],
-            "time": "2017-05-27T15:27:47+00:00"
+            "time": "2018-03-13T23:33:15+00:00"
         },
         {
             "name": "p3k/http",

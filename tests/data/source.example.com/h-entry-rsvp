@@ -10,7 +10,7 @@ Connection: keep-alive
   </head>
   <body>
     <div class="h-entry">
-      <data class="p-rsvp" value="yes">I'll be there!</data>
+      <data class="p-rsvp" value="yes"><span class="p-content">I'll be there!</span></data>
     </div>
   </body>
 </html>

@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <a href="http://example.com/100" class="u-in-reply-to">in reply to</a>
+    <div class="u-in-reply-to h-cite">
+      <a href="http://example.com/100" class="u-url">this post</a>
+    </div>
+    <p class="e-content">This page has duplicate in-reply-to values.</p>
+    <a href="/duplicate-in-reply-to-urls" class="u-url">permalink</a>
+  </body>
+</html>

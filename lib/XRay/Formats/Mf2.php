@@ -65,7 +65,7 @@ class Mf2 extends Format {
       }
     }
 
-    // Check the list of items on the page to see if one matches the URL of the page, 
+    // Check the list of items on the page to see if one matches the URL of the page,
     // and treat as a permalink for that object if so.
     foreach($mf2['items'] as $item) {
       if(array_key_exists('url', $item['properties'])) {
@@ -323,16 +323,20 @@ class Mf2 extends Format {
   }
 
   private static function collectArrayURLValues($properties, $item, &$data, &$refs, &$http) {
+    $keys = [];
+
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         foreach($item['properties'][$p] as $v) {
           if(is_string($v) && self::isURL($v)) {
             if(!array_key_exists($p, $data)) $data[$p] = [];
             $data[$p][] = $v;
+            $keys[] = $p;
           }
           elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
             if(!array_key_exists($p, $data)) $data[$p] = [];
             $data[$p][] = $u;
+            $keys[] = $p;
             // parse the object and put the result in the "refs" object
             $ref = self::parse(['items'=>[$v]], $u, $http);
             if($ref) {
@@ -340,7 +344,12 @@ class Mf2 extends Format {
             }
           }
         }
-      }      
+      }
+    }
+
+    // Remove duplicate values
+    foreach(array_unique($keys) as $key) {
+      $data[$key] = array_unique($data[$key]);
     }
   }
 
@@ -394,7 +403,7 @@ class Mf2 extends Format {
           $data['name'] = $name;
         }
       }
-    }    
+    }
   }
 
   private static function parseAsHEntry($mf2, $item, $http, $url) {
@@ -712,7 +721,7 @@ class Mf2 extends Format {
               and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['url']))
               and array_key_exists('uid', $i['properties'])
               and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['uid']))
-            ) { 
+            ) {
               return self::parseAsHCard($i, $http, $url, $authorPage)['data'];
             }
 
@@ -740,7 +749,7 @@ class Mf2 extends Format {
           }
 
         }
-        // Also check the "author" property 
+        // Also check the "author" property
         // (for finding the author of an h-feed's children when the author is the p-author property of the h-feed)
         if(isset($i['properties']['author'])) {
           foreach($i['properties']['author'] as $ic) {
@@ -766,16 +775,16 @@ class Mf2 extends Format {
   }
 
   private static function hasNumericKeys(array $arr) {
-    foreach($arr as $key=>$val) 
-      if (is_numeric($key)) 
+    foreach($arr as $key=>$val)
+      if (is_numeric($key))
         return true;
     return false;
   }
 
   private static function isMicroformat($mf) {
-    return is_array($mf) 
-      and !self::hasNumericKeys($mf) 
-      and !empty($mf['type']) 
+    return is_array($mf)
+      and !self::hasNumericKeys($mf)
+      and !empty($mf['type'])
       and isset($mf['properties']);
   }
 

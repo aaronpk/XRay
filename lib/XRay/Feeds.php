@@ -76,26 +76,28 @@ class Feeds {
       // Some other document was returned, parse the HTML and look for rel alternates and Microformats
 
       $mf2 = \mf2\Parse($body, $result['url']);
-      if(isset($mf2['alternates'])) {
-        foreach($mf2['alternates'] as $alt) {
-          if(isset($alt['type'])) {
-            if(strpos($alt['type'], 'application/json') !== false) {
-              $feeds[] = [
-                'url' => $alt['url'],
-                'type' => 'jsonfeed'
-              ];
-            }
-            if(strpos($alt['type'], 'application/atom+xml') !== false) {
-              $feeds[] = [
-                'url' => $alt['url'],
-                'type' => 'atom'
-              ];
-            }
-            if(strpos($alt['type'], 'application/rss+xml') !== false) {
-              $feeds[] = [
-                'url' => $alt['url'],
-                'type' => 'rss'
-              ];
+      if(isset($mf2['rel-urls'])) {
+        foreach($mf2['rel-urls'] as $rel=>$info) {
+          if(isset($info['rels']) && in_array('alternate', $info['rels'])) {
+            if(isset($info['type'])) {
+              if(strpos($info['type'], 'application/json') !== false) {
+                $feeds[] = [
+                  'url' => $rel,
+                  'type' => 'jsonfeed'
+                ];
+              }
+              if(strpos($info['type'], 'application/atom+xml') !== false) {
+                $feeds[] = [
+                  'url' => $rel,
+                  'type' => 'atom'
+                ];
+              }
+              if(strpos($info['type'], 'application/rss+xml') !== false) {
+                $feeds[] = [
+                  'url' => $rel,
+                  'type' => 'rss'
+                ];
+              }
             }
           }
         }

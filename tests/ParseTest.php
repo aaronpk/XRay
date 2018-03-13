@@ -215,7 +215,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
-    $this->assertEquals('entry', $data['data']['type']);    
+    $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('http://example.com/100', $data['data']['in-reply-to'][0]);
     $this->assertArrayHasKey('http://example.com/100', $data['data']['refs']);
     $this->assertEquals('Example Post', $data['data']['refs']['http://example.com/100']['name']);
@@ -289,7 +289,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
-    $this->assertEquals('I\'ll be there!', $data['data']['name']);
+    $this->assertEquals('I\'ll be there!', $data['data']['content']['text']);
     $this->assertEquals('yes', $data['data']['rsvp']);
   }
 
@@ -454,7 +454,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('review', $data['data']['type']);
-    $this->assertEquals('Not great', $data['data']['summary']);
+    $this->assertEquals('Not great', $data['data']['name']);
     $this->assertEquals('3', $data['data']['rating']);
     $this->assertEquals('5', $data['data']['best']);
     $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
@@ -658,6 +658,30 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Quill', $data->data->name);
     $this->assertEquals($url, $data->data->url);
     $this->assertObjectNotHasAttribute('photo', $data->data);
+  }
+
+  public function testDuplicateReplyURLValues() {
+    $url = 'http://source.example.com/duplicate-in-reply-to-urls';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('http://example.com/100', $data['data']['in-reply-to'][0]);
+    $this->assertEquals(1, count($data['data']['in-reply-to']));
+  }
+
+  public function testDuplicateLikeOfURLValues() {
+    $url = 'http://source.example.com/duplicate-like-of-urls';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('http://example.com/100', $data['data']['like-of'][0]);
+    $this->assertEquals(1, count($data['data']['like-of']));
   }
 
 }
