@@ -454,7 +454,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('review', $data['data']['type']);
-    $this->assertEquals('Not great', $data['data']['summary']);
+    $this->assertEquals('Not great', $data['data']['name']);
     $this->assertEquals('3', $data['data']['rating']);
     $this->assertEquals('5', $data['data']['best']);
     $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
@@ -537,7 +537,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('45.518716', $venue['latitude']);
     $this->assertEquals('Homebrew Website Club!', $data['data']['content']['text']);
     $this->assertEquals('https://aaronparecki.com/2017/06/07/12/photo.jpg', $data['data']['photo'][0]);
-    $this->assertEquals('2017-06-07T17:14:40-0700', $data['data']['published']);
+    $this->assertEquals('2017-06-07T17:14:40-07:00', $data['data']['published']);
     $this->assertArrayNotHasKey('name', $data['data']);
   }
 
@@ -554,7 +554,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('https://foursquare.com/v/57104d2e498ece022e169dca', $venue['url']);
     $this->assertEquals('Homebrew Website Club!', $data['data']['content']['text']);
     $this->assertEquals('https://aaronparecki.com/2017/06/07/12/photo.jpg', $data['data']['photo'][0]);
-    $this->assertEquals('2017-06-07T17:14:40-0700', $data['data']['published']);
+    $this->assertEquals('2017-06-07T17:14:40-07:00', $data['data']['published']);
     $this->assertArrayNotHasKey('name', $data['data']);
   }
 
