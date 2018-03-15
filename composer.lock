@@ -261,16 +261,16 @@
         },
         {
             "name": "mf2/mf2",
-            "version": "v0.4.0",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/indieweb/php-mf2.git",
-                "reference": "42ef6eb9777bffe654a70cbbc1dbd777a61c1445"
+                "reference": "e044330550a16d1a512248a5b9f663736538da44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/42ef6eb9777bffe654a70cbbc1dbd777a61c1445",
-                "reference": "42ef6eb9777bffe654a70cbbc1dbd777a61c1445",
+                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/e044330550a16d1a512248a5b9f663736538da44",
+                "reference": "e044330550a16d1a512248a5b9f663736538da44",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,7 @@
                 "parser",
                 "semantic"
             ],
-            "time": "2018-03-13T23:33:15+00:00"
+            "time": "2018-03-15T16:51:15+00:00"
         },
         {
             "name": "p3k/http",
