@@ -68,7 +68,7 @@ class Instagram extends Format {
     }
 
     $refs = [];
-    
+
     // Include the photo/video media URLs
     // (Always return arrays, even for single images)
     if(array_key_exists('edge_sidecar_to_children', $photoData)) {
@@ -197,8 +197,8 @@ class Instagram extends Format {
 
     if(!$response['error']) {
       $profile = @json_decode($response['body'], true);
-      if($profile && array_key_exists('user', $profile)) {
-        $user = $profile['user'];
+      if($profile && isset($profile['graphql']['user'])) {
+        $user = $profile['graphql']['user'];
         return $user;
       }
     }
@@ -245,18 +245,16 @@ class Instagram extends Format {
   private static function _extractVenueDataFromVenuePage($html) {
     $data = self::_extractIGData($html);
 
-    if($data && is_array($data) && array_key_exists('entry_data', $data)) {
-      if(isset($data['entry_data']['LocationsPage'])) {
-        $data = $data['entry_data']['LocationsPage'];
-        if(isset($data[0]['location'])) {
-          $location = $data[0]['location'];
+    if($data && isset($data['entry_data']['LocationsPage'])) {
+      $data = $data['entry_data']['LocationsPage'];
+      if(isset($data[0]['graphql']['location'])) {
+        $location = $data[0]['graphql']['location'];
 
-          # we don't need these and they're huge, so drop them now
-          unset($location['media']);
-          unset($location['top_posts']);
-          
-          return $location;
-        }
+        # we don't need these and they're huge, so drop them now
+        unset($location['media']);
+        unset($location['top_posts']);
+
+        return $location;
       }
     }
 
