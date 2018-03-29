@@ -684,4 +684,16 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(1, count($data['data']['like-of']));
   }
 
+  public function testHTML5Markup() {
+    $url = 'http://source.example.com/html5-tags';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('Hello World', $data['data']['name']);
+    $this->assertEquals('The content of the blog post', $data['data']['content']['text']);
+  }
+
 }
