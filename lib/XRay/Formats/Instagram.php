@@ -193,13 +193,16 @@ class Instagram extends Format {
   }
 
   private static function _getInstagramProfile($username, $http) {
-    $response = $http->get('https://www.instagram.com/'.$username.'/?__a=1');
+    $response = $http->get('https://www.instagram.com/'.$username.'/');
 
     if(!$response['error']) {
-      $profile = @json_decode($response['body'], true);
-      if($profile && isset($profile['graphql']['user'])) {
-        $user = $profile['graphql']['user'];
-        return $user;
+      $data = self::_extractIGData($response['body']);
+      if(isset($data['entry_data']['ProfilePage'][0])) {
+        $profile = $data['entry_data']['ProfilePage'][0];
+        if($profile && isset($profile['graphql']['user'])) {
+          $user = $profile['graphql']['user'];
+          return $user;
+        }
       }
     }
     return null;

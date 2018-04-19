@@ -20,7 +20,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
 
   public function testInstagramPhoto() {
     // Original URL: https://www.instagram.com/p/BO5rYVElvJq/
-    $url = 'http://www.instagram.com/photo.html';
+    $url = 'https://www.instagram.com/p/BO5rYVElvJq/';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
@@ -36,7 +36,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(['https://instagram.fsea1-1.fna.fbcdn.net/vp/214e719b6026ef54e0545f2ed70d4c83/5B56795F/t51.2885-15/e35/15803256_1832278043695907_4846092951052353536_n.jpg'], $data['data']['photo']);
     $this->assertEquals('https://aaronparecki.com/', $data['data']['author']['url']);
     $this->assertEquals('Aaron Parecki', $data['data']['author']['name']);
-    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/661acbd22070fd8aa9863b2a6cec9a0c/5B3FC98E/t51.2885-19/s320x320/14240576_268350536897085_1129715662_a.jpg', $data['data']['author']['photo']);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/0dc6166cbd4ec6782453d36cd07fec06/5B67568E/t51.2885-19/s320x320/14240576_268350536897085_1129715662_a.jpg', $data['data']['author']['photo']);
   }
 
   public function testBGDpqNoiMJ0() {
@@ -53,7 +53,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
       'type' => 'card',
       'name' => 'pk_spam',
       'url' => 'https://aaronparecki.com/',
-      'photo' => 'https://scontent-sof1-1.cdninstagram.com/vp/f17e1275a70fc32e93cbf434ddc32bcd/5B6CCC7A/t51.2885-19/11906329_960233084022564_1448528159_a.jpg'
+      'photo' => 'https://instagram.fhel2-1.fna.fbcdn.net/vp/f17e1275a70fc32e93cbf434ddc32bcd/5B6CCC7A/t51.2885-19/11906329_960233084022564_1448528159_a.jpg'
     ], $data['data']['author']);
 
     $this->assertSame([
@@ -71,14 +71,14 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
       'type' => 'card',
       'name' => 'Burnside 26',
       'url' => 'https://www.instagram.com/explore/locations/359000003/',
-      'latitude' => 45.52322,
-      'longitude' => -122.63885
+      'latitude' => 45.5228640678,
+      'longitude' => -122.6389405085
     ], $data['data']['refs']['https://www.instagram.com/explore/locations/359000003/']);
   }
 
   public function testInstagramVideo() {
     // Original URL: https://www.instagram.com/p/BO_RN8AFZSx/
-    $url = 'http://www.instagram.com/video.html';
+    $url = 'https://www.instagram.com/p/BO_RN8AFZSx/';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
@@ -89,17 +89,17 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertContains('100daysofmusic', $data['data']['category']);
     $this->assertEquals('Day 18. Maple and Spruce #100daysofmusic #100daysproject #the100dayproject https://aaronparecki.com/2017/01/07/14/day18', $data['data']['content']['text']);
     $this->assertEquals(1, count($data['data']['photo']));
-    $this->assertEquals(['https://instagram.fsea1-1.fna.fbcdn.net/vp/4a53ff9447418192586344a101de1c37/5ABFEC5F/t51.2885-15/e15/15624670_548881701986735_8264383763249627136_n.jpg'], $data['data']['photo']);
+    $this->assertEquals(['https://instagram.fsea1-1.fna.fbcdn.net/vp/32890db04701c4ab4fa7da05a6e9de93/5ADB9BDF/t51.2885-15/e15/15624670_548881701986735_8264383763249627136_n.jpg'], $data['data']['photo']);
     $this->assertEquals(1, count($data['data']['video']));
-    $this->assertEquals(['https://instagram.fsea1-1.fna.fbcdn.net/vp/c6647a32e561438cc42a8ffabc5e308c/5ABFB41E/t50.2886-16/15921147_1074837002642259_2269307616507199488_n.mp4'], $data['data']['video']);
+    $this->assertEquals(['https://instagram.fsea1-1.fna.fbcdn.net/vp/46c7118509146b978fb7bfc497eeb16f/5ADB639E/t50.2886-16/15921147_1074837002642259_2269307616507199488_n.mp4'], $data['data']['video']);
     $this->assertEquals('https://aaronparecki.com/', $data['data']['author']['url']);
     $this->assertEquals('Aaron Parecki', $data['data']['author']['name']);
-    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/661acbd22070fd8aa9863b2a6cec9a0c/5B3FC98E/t51.2885-19/s320x320/14240576_268350536897085_1129715662_a.jpg', $data['data']['author']['photo']);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/0dc6166cbd4ec6782453d36cd07fec06/5B67568E/t51.2885-19/s320x320/14240576_268350536897085_1129715662_a.jpg', $data['data']['author']['photo']);
   }
 
   public function testInstagramPhotoWithPersonTag() {
     // Original URL: https://www.instagram.com/p/BNfqVfVlmkj/
-    $url = 'http://www.instagram.com/photo_with_person_tag.html';
+    $url = 'https://www.instagram.com/p/BNfqVfVlmkj/';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
@@ -109,12 +109,12 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(2, count($data['data']['category']));
     $this->assertContains('http://www.kmikeym.com/', $data['data']['category']);
     $this->assertArrayHasKey('http://www.kmikeym.com/', $data['data']['refs']);
-    $this->assertEquals(['type'=>'card','name'=>'Mike Merrill','url'=>'http://www.kmikeym.com/','photo'=>'https://instagram.fsea1-1.fna.fbcdn.net/vp/b9d8b25c8e7003f05212c1425fc6c422/5B3F45FC/t51.2885-19/s320x320/20634957_814691788710973_2275383796935163904_a.jpg'], $data['data']['refs']['http://www.kmikeym.com/']);
+    $this->assertEquals(['type'=>'card','name'=>'Mike Merrill','url'=>'http://www.kmikeym.com/','photo'=>'https://instagram.fsea1-1.fna.fbcdn.net/vp/dea521b3000a53d2d9a6845f5b066256/5B66D2FC/t51.2885-19/s320x320/20634957_814691788710973_2275383796935163904_a.jpg'], $data['data']['refs']['http://www.kmikeym.com/']);
   }
 
   public function testInstagramPhotoWithVenue() {
     // Original URL: https://www.instagram.com/p/BN3Z5salSys/
-    $url = 'http://www.instagram.com/photo_with_venue.html';
+    $url = 'https://www.instagram.com/p/BN3Z5salSys/';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
@@ -134,7 +134,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
 
   public function testTwoPhotos() {
     // Original URL: https://www.instagram.com/p/BZWmUB_DVtp/
-    $url = 'http://www.instagram.com/two_photos.html';
+    $url = 'https://www.instagram.com/p/BZWmUB_DVtp/';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
@@ -142,15 +142,15 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals(2, count($data['data']['photo']));
-    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/01add5f543d1206a940ce388d82b345d/5B343A38/t51.2885-15/e35/21827424_134752690591737_8093088291252862976_n.jpg', $data['data']['photo'][0]);
-    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/80750e21e987cbde01a4aa0b73ee2654/5B37514D/t51.2885-15/e35/21909774_347707439021016_5237540582556958720_n.jpg', $data['data']['photo'][1]);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/406101ff9601ab78147e121b65ce3eea/5B5BC738/t51.2885-15/e35/21827424_134752690591737_8093088291252862976_n.jpg', $data['data']['photo'][0]);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/03ddc8c03c8708439dae29663b8c2305/5B5EDE4D/t51.2885-15/e35/21909774_347707439021016_5237540582556958720_n.jpg', $data['data']['photo'][1]);
     $this->assertArrayNotHasKey('video', $data['data']);
     $this->assertEquals(2, count($data['data']['category']));
   }
 
   public function testMixPhotosAndVideos() {
     // Original URL: https://www.instagram.com/p/BZWmpecjBwN/
-    $url = 'http://www.instagram.com/photos_and_video.html';
+    $url = 'https://www.instagram.com/p/BZWmpecjBwN/';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
@@ -159,8 +159,8 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals(3, count($data['data']['photo']));
     $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/b0f6cd9dc4d5c3371efe9f412a0d7f0b/5B6BC5B8/t51.2885-15/e35/21878922_686481254874005_8468823712617988096_n.jpg', $data['data']['photo'][0]);
-    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/872cf78dbd1e717e2867bd9cbb4a8a87/5ABF8D49/t51.2885-15/e15/21910026_1507234999368159_6974261907783942144_n.jpg', $data['data']['photo'][1]);
-    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/db0ed2c09dcd3a5c46279deaaca30cbf/5B410A88/t51.2885-15/e35/21878800_273567963151023_7672178549897297920_n.jpg', $data['data']['photo'][2]);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/f8939cca504f97931fd4768b77d2c152/5ADB3CC9/t51.2885-15/e15/21910026_1507234999368159_6974261907783942144_n.jpg', $data['data']['photo'][1]);
+    $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/254c313bdcac37c19da5e10be8222a88/5B689788/t51.2885-15/e35/21878800_273567963151023_7672178549897297920_n.jpg', $data['data']['photo'][2]);
     $this->assertArrayNotHasKey('video', $data['data']);
     $this->assertEquals(2, count($data['data']['category']));
   }
