@@ -15,9 +15,12 @@ class Instagram extends Format {
     return self::matches_host($url);
   }
 
-  public static function parse($http, $html, $url) {
+  public static function parse($http, $html, $url, $opts=[]) {
     if(preg_match('#instagram.com/([^/]+)/$#', $url)) {
-      return self::parseProfile($http, $html, $url);
+      if(isset($opts['expect']) && $opts['expect'] == 'feed')
+        return self::parseFeed($http, $html, $url);
+      else
+        return self::parseProfile($http, $html, $url);
     } else {
       return self::parsePhoto($http, $html, $url);
     }
@@ -35,9 +38,39 @@ class Instagram extends Format {
     ];
   }
 
-  private static function parsePhoto($http, $html, $url) {
+  private static function parseFeed($http, $html, $url) {
+    $profileData = self::_parseProfileFromHTML($html);
+    if(!$profileData)
+      return self::_unknown();
 
+    $photos = $profileData['edge_owner_to_timeline_media']['edges'];
+    $items = [];
+
+    foreach($photos as $photoData) {
+      $item = self::parsePhotoFromData($http, $photoData['node'],
+        'https://www.instagram.com/p/'.$photoData['node']['shortcode'].'/', $profileData);
+      // Note: Not all the photo info is available in the initial JSON.
+      // Things like video mp4 URLs and person tags and locations are missing.
+      // Consumers of the feed will need to fetch the photo permalink in order to get all missing information.
+      // if($photoData['is_video'])
+      //   $item['data']['video'] = true;
+      $items[] = $item['data'];
+    }
+
+    return [
+      'data' => [
+        'type' => 'feed',
+        'items' => $items,
+      ]
+    ];
+  }
+
+  private static function parsePhoto($http, $html, $url, $profile=false) {
     $photoData = self::_extractPhotoDataFromPhotoPage($html);
+    return self::parsePhotoFromData($http, $photoData, $url, $profile);
+  }
+
+  private static function parsePhotoFromData($http, $photoData, $url, $profile=false) {
 
     if(!$photoData)
       return self::_unknown();
@@ -56,10 +89,15 @@ class Instagram extends Format {
 
     $profiles = [];
 
-    // Fetch profile info for this user
-    $username = $photoData['owner']['username'];
-    $profile = self::_getInstagramProfile($username, $http);
-    if($profile) {
+    if(!$profile) {
+      // Fetch profile info for this user
+      $username = $photoData['owner']['username'];
+      $profile = self::_getInstagramProfile($username, $http);
+      if($profile) {
+        $entry['author'] = self::_buildHCardFromInstagramProfile($profile);
+        $profiles[] = $profile;
+      }
+    } else {
       $entry['author'] = self::_buildHCardFromInstagramProfile($profile);
       $profiles[] = $profile;
     }
@@ -109,29 +147,12 @@ class Instagram extends Format {
       elseif(array_key_exists('display_url', $photoData))
         $entry['photo'] = [$photoData['display_url']];
 
-      if(array_key_exists('is_video', $photoData) && $photoData['is_video']) {
+      if(isset($photoData['is_video']) && $photoData['is_video'] && isset($photoData['video_url'])) {
         $entry['video'] = [$photoData['video_url']];
       }
     }
 
     // Find person tags and fetch user profiles
-
-    // old instagram json
-    if(isset($photoData['usertags']['nodes'])) {
-      if(!isset($entry['category'])) $entry['category'] = [];
-
-      foreach($photoData['usertags']['nodes'] as $tag) {
-        $profile = self::_getInstagramProfile($tag['user']['username'], $http);
-        if($profile) {
-          $card = self::_buildHCardFromInstagramProfile($profile);
-          $entry['category'][] = $card['url'];
-          $refs[$card['url']] = $card;
-          $profiles[] = $profile;
-        }
-      }
-    }
-
-    // new instagram json as of approximately 2017-04-19
     if(isset($photoData['edge_media_to_tagged_user']['edges'])) {
       if(!isset($entry['category'])) $entry['category'] = [];
 
@@ -147,14 +168,14 @@ class Instagram extends Format {
     }
 
     // Published date
-    if(array_key_exists('taken_at_timestamp', $photoData))
+    if(isset($photoData['taken_at_timestamp']))
       $published = DateTime::createFromFormat('U', $photoData['taken_at_timestamp']);
-    elseif(array_key_exists('date', $photoData))
+    elseif(isset($photoData['date']))
       $published = DateTime::createFromFormat('U', $photoData['date']);
 
     // Include venue data
     $locations = [];
-    if($photoData['location']) {
+    if(isset($photoData['location'])) {
       $location = self::_getInstagramLocation($photoData['location']['id'], $http);
       if($location) {
         $entry['location'] = [$location['url']];

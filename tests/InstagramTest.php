@@ -200,4 +200,18 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     ], $data['data']);
   }
 
+  public function testInstagramProfileFeed() {
+    $url = 'https://www.instagram.com/pk_spam/';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('feed', $data['data']['type']);
+    $this->assertEquals(12, count($data['data']['items']));
+    $this->assertEquals('https://www.instagram.com/p/Be0lBpGDncI/', $data['data']['items'][0]['url']);
+    $this->assertEquals('https://www.instagram.com/p/BGC8l_ZCMKb/', $data['data']['items'][11]['url']);
+  }
+
 }
