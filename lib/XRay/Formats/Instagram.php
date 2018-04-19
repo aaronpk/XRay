@@ -16,6 +16,26 @@ class Instagram extends Format {
   }
 
   public static function parse($http, $html, $url) {
+    if(preg_match('#instagram.com/([^/]+)/$#', $url)) {
+      return self::parseProfile($http, $html, $url);
+    } else {
+      return self::parsePhoto($http, $html, $url);
+    }
+  }
+
+  private static function parseProfile($http, $html, $url) {
+    $profileData = self::_parseProfileFromHTML($html);
+    if(!$profileData)
+      return self::_unknown();
+
+    $card = self::_buildHCardFromInstagramProfile($profileData);
+
+    return [
+      'data' => $card
+    ];
+  }
+
+  private static function parsePhoto($http, $html, $url) {
 
     $photoData = self::_extractPhotoDataFromPhotoPage($html);
 
@@ -195,14 +215,19 @@ class Instagram extends Format {
   private static function _getInstagramProfile($username, $http) {
     $response = $http->get('https://www.instagram.com/'.$username.'/');
 
-    if(!$response['error']) {
-      $data = self::_extractIGData($response['body']);
-      if(isset($data['entry_data']['ProfilePage'][0])) {
-        $profile = $data['entry_data']['ProfilePage'][0];
-        if($profile && isset($profile['graphql']['user'])) {
-          $user = $profile['graphql']['user'];
-          return $user;
-        }
+    if(!$response['error'])
+      return self::_parseProfileFromHTML($response['body']);
+
+    return null;
+  }
+
+  private static function _parseProfileFromHTML($html) {
+    $data = self::_extractIGData($html);
+    if(isset($data['entry_data']['ProfilePage'][0])) {
+      $profile = $data['entry_data']['ProfilePage'][0];
+      if($profile && isset($profile['graphql']['user'])) {
+        $user = $profile['graphql']['user'];
+        return $user;
       }
     }
     return null;
