@@ -181,4 +181,21 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     ], $data['data']);
   }
 
+  public function testInstagramProfileWithBio() {
+    $url = 'https://www.instagram.com/pk_spam/';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertSame([
+      'type' => 'card',
+      'name' => 'pk_spam',
+      'url' => 'https://aaronparecki.com/',
+      'photo' => 'https://instagram.fhel2-1.fna.fbcdn.net/vp/f17e1275a70fc32e93cbf434ddc32bcd/5B6CCC7A/t51.2885-19/11906329_960233084022564_1448528159_a.jpg',
+      'note' => 'My website is https://aaronparecki.com.dev/ and http://aaronpk.micro.blog/about/ and https://tiny.xyz.dev/'
+    ], $data['data']);
+  }
+
 }

@@ -209,6 +209,9 @@ class Instagram extends Format {
     else
       $author['photo'] = $profile['profile_pic_url'];
 
+    if(isset($profile['biography']))
+      $author['note'] = $profile['biography'];
+
     return $author;
   }
 
