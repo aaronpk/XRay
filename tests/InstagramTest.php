@@ -53,7 +53,8 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
       'type' => 'card',
       'name' => 'pk_spam',
       'url' => 'https://aaronparecki.com/',
-      'photo' => 'https://instagram.fhel2-1.fna.fbcdn.net/vp/f17e1275a70fc32e93cbf434ddc32bcd/5B6CCC7A/t51.2885-19/11906329_960233084022564_1448528159_a.jpg'
+      'photo' => 'https://instagram.fhel2-1.fna.fbcdn.net/vp/f17e1275a70fc32e93cbf434ddc32bcd/5B6CCC7A/t51.2885-19/11906329_960233084022564_1448528159_a.jpg',
+      'note' => 'My website is https://aaronparecki.com.dev/ and http://aaronpk.micro.blog/about/ and https://tiny.xyz.dev/'
     ], $data['data']['author']);
 
     $this->assertSame([
@@ -109,7 +110,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(2, count($data['data']['category']));
     $this->assertContains('http://www.kmikeym.com/', $data['data']['category']);
     $this->assertArrayHasKey('http://www.kmikeym.com/', $data['data']['refs']);
-    $this->assertEquals(['type'=>'card','name'=>'Mike Merrill','url'=>'http://www.kmikeym.com/','photo'=>'https://instagram.fsea1-1.fna.fbcdn.net/vp/dea521b3000a53d2d9a6845f5b066256/5B66D2FC/t51.2885-19/s320x320/20634957_814691788710973_2275383796935163904_a.jpg'], $data['data']['refs']['http://www.kmikeym.com/']);
+    $this->assertEquals(['type'=>'card','name'=>'Mike Merrill','url'=>'http://www.kmikeym.com/','photo'=>'https://instagram.fsea1-1.fna.fbcdn.net/vp/dea521b3000a53d2d9a6845f5b066256/5B66D2FC/t51.2885-19/s320x320/20634957_814691788710973_2275383796935163904_a.jpg','note'=>'The world’s first Publicly Traded Person and working on things at @sandwichvideo'], $data['data']['refs']['http://www.kmikeym.com/']);
   }
 
   public function testInstagramPhotoWithVenue() {
@@ -177,7 +178,8 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
       'type' => 'card',
       'name' => 'Aaron Parecki',
       'url' => 'https://aaronparecki.com/',
-      'photo' => 'https://instagram.fsea1-1.fna.fbcdn.net/vp/0dc6166cbd4ec6782453d36cd07fec06/5B67568E/t51.2885-19/s320x320/14240576_268350536897085_1129715662_a.jpg'
+      'photo' => 'https://instagram.fsea1-1.fna.fbcdn.net/vp/0dc6166cbd4ec6782453d36cd07fec06/5B67568E/t51.2885-19/s320x320/14240576_268350536897085_1129715662_a.jpg',
+      'note' => '📡 w7apk.com 🔒 oauth.net 🎥 backpedal.tv 🎙 streampdx.com'
     ], $data['data']);
   }
 
