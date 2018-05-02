@@ -571,9 +571,19 @@ class Mf2 extends Format {
     ];
 
     self::collectSingleValues(['name'], ['url','logo'], $item, $url, $data);
+    self::collectArrayURLValues(['redirect-uri'], $item, $data, $refs, $http);
 
     if(!isset($data['url']))
       $data['url'] = $url;
+
+    if(isset($mf2['rels']['redirect_uri'])) {
+      if(!isset($data['redirect-uri'])) $data['redirect-uri'] = [];
+      $data['redirect-uri'] = array_merge($data['redirect-uri'], $mf2['rels']['redirect_uri']);
+    }
+
+    if(isset($data['redirect-uri'])) {
+      $data['redirect-uri'] = array_values(array_unique($data['redirect-uri']));
+    }
 
     $response = [
       'data' => $data

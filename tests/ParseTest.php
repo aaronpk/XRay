@@ -638,12 +638,13 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body);
-    $this->assertEquals('app', $data->data->type);
-    $this->assertEquals('http://source.example.com/images/quill.png', $data->data->logo);
-    $this->assertEquals('Quill', $data->data->name);
-    $this->assertEquals($url, $data->data->url);
-    $this->assertObjectNotHasAttribute('photo', $data->data);
+    $data = json_decode($body, true);
+    $this->assertEquals('app', $data['data']['type']);
+    $this->assertEquals('http://source.example.com/images/quill.png', $data['data']['logo']);
+    $this->assertEquals('Quill', $data['data']['name']);
+    $this->assertEquals($url, $data['data']['url']);
+    $this->assertEquals(['http://source.example.com/redirect1','http://source.example.com/redirect2'], $data['data']['redirect-uri']);
+    $this->assertArrayNotHasKey('photo', $data['data']);
   }
 
   public function testHXApp() {

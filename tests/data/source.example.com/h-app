@@ -7,8 +7,12 @@ Connection: keep-alive
 <html>
   <head>
     <title>Test</title>
+    <link rel="redirect_uri" href="/redirect1">
+    <link rel="redirect_uri" href="/redirect2">
   </head>
   <body class="h-app">
-    <img src="/images/quill.png" class="u-logo p-name" alt="Quill">
+    <img src="/images/quill.png" class="u-logo">
+    <a href="/h-app" class="u-url p-name">Quill</a>
+    <a href="/redirect1" class="u-redirect-uri"></a>
   </body>
 </html>
