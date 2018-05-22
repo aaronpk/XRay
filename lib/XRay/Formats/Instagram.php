@@ -3,7 +3,7 @@ namespace p3k\XRay\Formats;
 
 const BASE_URL = 'https://www.instagram.com/';
 const QUERY_MEDIA = BASE_URL.'graphql/query/?query_hash=42323d64886122307be10013ad2dcc44&variables=%s';
-const QUERY_MEDIA_VARS = '{"id":"%s","first":20,"after":"%s"}';
+const QUERY_MEDIA_VARS = '{"id":"%s","first":%d,"after":"%s"}';
 
 use DOMDocument, DOMXPath;
 use DateTime, DateTimeZone;
@@ -11,6 +11,8 @@ use DateTime, DateTimeZone;
 class Instagram extends Format {
 
   private static $gis;
+
+  private static $extra_photos = 20;
 
   public static function matches_host($url) {
     $host = parse_url($url, PHP_URL_HOST);
@@ -22,6 +24,9 @@ class Instagram extends Format {
   }
 
   public static function parse($http, $html, $url, $opts=[]) {
+    if(isset($opts['length'])) {
+      self::$extra_photos = intval($opts['length'])-12;
+    }
     if(preg_match('#instagram.com/([^/]+)/$#', $url)) {
       if(isset($opts['expect']) && $opts['expect'] == 'feed')
         return self::parseFeed($http, $html, $url);
@@ -50,7 +55,13 @@ class Instagram extends Format {
   }
 
   private static function _getMorePhotos($http,$html,$url,$profileData) {
-    $params = sprintf(QUERY_MEDIA_VARS, $profileData['id'], $profileData['edge_owner_to_timeline_media']['page_info']['end_cursor']);
+    $params = sprintf(
+      QUERY_MEDIA_VARS,
+      $profileData['id'],
+      self::$extra_photos,
+      $profileData['edge_owner_to_timeline_media']['page_info']['end_cursor']
+    );
+
     $url = sprintf(QUERY_MEDIA,$params);
     $headers = [];
     $headers[] = 'x-instagram-gis: ' . self::_getIntstagramGIS($params);
@@ -58,11 +69,11 @@ class Instagram extends Format {
 
     $resp = $http->get($url,$headers);
 
-    if(!$resp['error'])
+    if(!$resp['error']) {
       $data = json_decode($resp['body'],true);
       $photos = $data['data']['user']['edge_owner_to_timeline_media']['edges'];
       return $photos;
-
+    }
     return null;
   }
 
