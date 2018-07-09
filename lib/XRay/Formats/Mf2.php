@@ -229,7 +229,7 @@ class Mf2 extends Format {
     $content = $item['properties'][$property][0];
     if(is_string($content)) {
       $textContent = $content;
-    } elseif(!is_string($content) && is_array($content) && array_key_exists('value', $content)) {
+    } elseif(!is_string($content) && is_array($content) && array_key_exists('html', $content)) {
       if(array_key_exists('html', $content)) {
         // Only allow images in the content if there is no photo property set
         if(isset($item['properties']['photo']))
@@ -241,7 +241,8 @@ class Mf2 extends Format {
         #$textContent = trim(str_replace("&#xD;","\r",$content['value']));
         $textContent = trim(self::stripHTML($htmlContent));
       } else {
-        $textContent = trim($content['value']);
+        if(isset($content['value']))
+          $textContent = trim($content['value']);
       }
     }
 

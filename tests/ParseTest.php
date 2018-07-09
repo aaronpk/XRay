@@ -74,6 +74,100 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This page has a link to <a href="http://target.example.com">target.example.com</a> and some <b>formatted text</b>.', $data->data->content->html);
   }
 
+  public function testContentFromJSONOnlyPlaintext() {
+    $mf2JSON = json_encode([
+      'items' => [[
+        'type' => ['h-entry'],
+        'properties' => [
+          'content' => [
+            'plaintext'
+          ]
+        ]
+      ]]
+    ]);
+    $xray = new \p3k\XRay();
+    $parsed = $xray->process(false, $mf2JSON);
+    $item = $parsed['data'];
+    $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('plaintext', $item['content']['text']);
+    $this->assertArrayNotHasKey('html', $item['content']);
+  }
+
+  public function testHTMLContentFromJSONNoPlaintext() {
+    $mf2JSON = json_encode([
+      'items' => [[
+        'type' => ['h-entry'],
+        'properties' => [
+          'content' => [[
+            'html' => '<b>bold</b> <i>italic</i> text'
+          ]]
+        ]
+      ]]
+    ]);
+    $xray = new \p3k\XRay();
+    $parsed = $xray->process(false, $mf2JSON);
+    $item = $parsed['data'];
+    $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('bold italic text', $item['content']['text']);
+    $this->assertEquals('<b>bold</b> <i>italic</i> text', $item['content']['html']);
+  }
+
+  public function testHTMLContentFromJSONEmptyTags() {
+    $mf2JSON = json_encode([
+      'items' => [[
+        'type' => ['h-entry'],
+        'properties' => [
+          'content' => [[
+            'html' => '<b></b><i></i>'
+          ]]
+        ]
+      ]]
+    ]);
+    $xray = new \p3k\XRay();
+    $parsed = $xray->process(false, $mf2JSON);
+    $item = $parsed['data'];
+    $this->assertEquals('entry', $item['type']);
+    $this->assertArrayNotHasKey('content', $item);
+  }
+
+  public function testHTMLContentFromJSONContentMismatch() {
+    $mf2JSON = json_encode([
+      'items' => [[
+        'type' => ['h-entry'],
+        'properties' => [
+          'content' => [[
+            'value' => 'foo',
+            'html' => '<b>bar</b>'
+          ]]
+        ]
+      ]]
+    ]);
+    $xray = new \p3k\XRay();
+    $parsed = $xray->process(false, $mf2JSON);
+    $item = $parsed['data'];
+    $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('bar', $item['content']['text']);
+    $this->assertEquals('<b>bar</b>', $item['content']['html']);
+  }
+
+  public function testHTMLContentFromJSONNoHTML() {
+    $mf2JSON = json_encode([
+      'items' => [[
+        'type' => ['h-entry'],
+        'properties' => [
+          'content' => [[
+            'value' => 'foo',
+          ]]
+        ]
+      ]]
+    ]);
+    $xray = new \p3k\XRay();
+    $parsed = $xray->process(false, $mf2JSON);
+    $item = $parsed['data'];
+    $this->assertEquals('entry', $item['type']);
+    $this->assertArrayNotHasKey('content', $item);
+  }
+
   public function testFindTargetLinkIsImage() {
     $url = 'http://source.example.com/link-is-img';
     $response = $this->parse(['url' => $url, 'target' => 'http://target.example.com/photo.jpg']);
