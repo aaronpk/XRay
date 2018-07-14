@@ -70,6 +70,9 @@ class Fetcher {
     }
 
     $headers = [];
+
+    $headers[] = 'Accept: text/html, application/json, application/xml, text/xml';
+
     if(isset($opts['token']))
       $headers[] = 'Authorization: Bearer ' . $opts['token'];
 
@@ -84,16 +87,34 @@ class Fetcher {
       ];
     }
 
+    // Show an error if the content type returned is not a recognized type
+    $format = null;
+    if(isset($result['headers']['Content-Type']) && is_string($result['headers']['Content-Type'])) {
+      $type = new MediaType($result['headers']['Content-Type']);
+      $format = $type->format;
+    }
+
+    if(!$format ||
+      !in_array($format, ['html', 'json', 'xml'])) {
+        return [
+          'error' => 'invalid_content',
+          'error_description' => 'The server did not return a recognized content type',
+          'content_type' => $result['headers']['Content-Type'],
+          'url' => $result['url'],
+          'code' => $result['code']
+        ];
+    }
+
     if(trim($result['body']) == '') {
       if($result['code'] == 410) {
         // 410 Gone responses are valid and should not return an error
-        return $this->respond($response, 200, [
+        return [
           'data' => [
-            'type' => 'unknown'
+            'type' => 'deleted'
           ],
           'url' => $result['url'],
           'code' => $result['code']
-        ]);
+        ];
       }
 
       return [
