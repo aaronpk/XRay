@@ -99,6 +99,8 @@ class JSONFeed extends Format {
       $entry['category'] = $item['tags'];
     }
 
+    $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
+
     return $entry;
   }
 }

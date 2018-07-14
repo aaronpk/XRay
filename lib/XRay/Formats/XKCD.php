@@ -36,7 +36,7 @@ class XKCD extends Format {
 
     if(!$name)
       return self::_unknown();
-    
+
     $entry['name'] = $name->nodeValue;
 
     $photo = $xpath->query("//div[@id='comic']/img");
@@ -56,6 +56,8 @@ class XKCD extends Format {
     $src = \Mf2\resolveUrl($url, $img2 ?: $img1);
 
     $entry['photo'] = [$src];
+
+    $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
 
     $response = [
       'data' => $entry

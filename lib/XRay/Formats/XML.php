@@ -109,6 +109,8 @@ class XML extends Format {
         $entry[$prop] = [$item->getEnclosureUrl()];
     }
 
+    $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
+
     return $entry;
   }
 

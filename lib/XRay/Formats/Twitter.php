@@ -170,6 +170,8 @@ class Twitter extends Format {
       $entry['refs'] = $refs;
     }
 
+    $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
+
     return [
       'data' => $entry,
       'original' => $tweet,

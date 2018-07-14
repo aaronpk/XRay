@@ -28,6 +28,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('photo', $data['data']['post-type']);
     $this->assertEquals('2017-01-05T23:31:32+00:00', $data['data']['published']);
     $this->assertContains('planning', $data['data']['category']);
     $this->assertContains('2017', $data['data']['category']);
@@ -49,6 +50,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('photo', $data['data']['post-type']);
     $this->assertSame([
       'type' => 'card',
       'name' => 'pk_spam',
@@ -87,6 +89,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('video', $data['data']['post-type']);
     $this->assertContains('100daysofmusic', $data['data']['category']);
     $this->assertEquals('Day 18. Maple and Spruce #100daysofmusic #100daysproject #the100dayproject https://aaronparecki.com/2017/01/07/14/day18', $data['data']['content']['text']);
     $this->assertEquals(1, count($data['data']['photo']));
@@ -158,6 +161,7 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals('photo', $data['data']['post-type']); // we discard videos in this case right now
     $this->assertEquals(3, count($data['data']['photo']));
     $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/b0f6cd9dc4d5c3371efe9f412a0d7f0b/5B6BC5B8/t51.2885-15/e35/21878922_686481254874005_8468823712617988096_n.jpg', $data['data']['photo'][0]);
     $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/f8939cca504f97931fd4768b77d2c152/5ADB3CC9/t51.2885-15/e15/21910026_1507234999368159_6974261907783942144_n.jpg', $data['data']['photo'][1]);

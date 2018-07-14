@@ -64,6 +64,8 @@ class Facebook extends Format {
         $event['location'] = $fbObject['place']['name'];
       }
 
+      $event['post-type'] = \p3k\XRay\PostType::discover($event);
+
       return [
         'data' => $event,
         'original' => $fbObject

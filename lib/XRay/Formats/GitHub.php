@@ -147,6 +147,10 @@ class GitHub extends Format {
 
     if($parts['type'] == 'comment') {
       $entry['in-reply-to'] = ['https://github.com/'.$parts['org'].'/'.$parts['repo'].'/issues/'.$parts['issue']];
+    } elseif($parts['type'] == 'pull') {
+      $entry['in-reply-to'] = ['https://github.com/'.$parts['org'].'/'.$parts['repo']];
+    } elseif($parts['type'] == 'issue') {
+      $entry['in-reply-to'] = ['https://github.com/'.$parts['org'].'/'.$parts['repo'].'/issues'];
     }
 
     if(!empty($data['labels'])) {
@@ -156,6 +160,9 @@ class GitHub extends Format {
     }
 
     $entry['published'] = $data['created_at'];
+
+    if($entry['type'] != 'repo')
+      $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
 
     return [
       'data' => $entry,

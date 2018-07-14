@@ -445,6 +445,8 @@ class Mf2 extends Format {
     if($checkin = self::parseEmbeddedHCard('checkin', $item, $http))
       $data['checkin'] = $checkin;
 
+    $data['post-type'] = \p3k\XRay\PostType::discover($data);
+
     $response = [
       'data' => $data
     ];
@@ -479,6 +481,8 @@ class Mf2 extends Format {
     if($author = self::findAuthor($mf2, $item, $http, $url))
       $data['author'] = $author;
 
+    $data['post-type'] = \p3k\XRay\PostType::discover($data);
+
     $response = [
       'data' => $data
     ];
@@ -492,7 +496,7 @@ class Mf2 extends Format {
 
   private static function parseAsHRecipe($mf2, $item, $http, $url) {
     $data = [
-      'type' => 'recipe'
+      'type' => 'recipe',
     ];
     $refs = [];
 
@@ -509,6 +513,8 @@ class Mf2 extends Format {
 
     if($author = self::findAuthor($mf2, $item, $http, $url))
       $data['author'] = $author;
+
+    $data['post-type'] = \p3k\XRay\PostType::discover($data);
 
     $response = [
       'data' => $data
@@ -618,6 +624,8 @@ class Mf2 extends Format {
     if($description) {
       $data['description'] = $description;
     }
+
+    $data['post-type'] = \p3k\XRay\PostType::discover($data);
 
     $response = [
       'data' => $data

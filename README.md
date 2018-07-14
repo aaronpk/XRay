@@ -28,6 +28,7 @@ Finally, XRay looks for Microformats on the page and will determine the content 
 * h-item
 * h-feed
 
+
 ## Library
 
 XRay can be used as a library in your PHP project. The easiest way to install it and its dependencies is via composer.
@@ -116,6 +117,7 @@ Array
     [data] => Array
         (
             [type] => entry
+            [post-type] => photo
             [photo] => Array
                 (
                     [0] => http://example.com/photo.jpg
@@ -336,6 +338,7 @@ Possible errors are listed below:
 {
   "data":{
     "type":"entry",
+    "post-type":"photo",
     "published":"2017-03-01T19:00:33-08:00",
     "url":"https://aaronparecki.com/2017/03/01/14/hwc",
     "category":[
@@ -368,6 +371,9 @@ Possible errors are listed below:
 
 The primary object on the page is returned in the `data` property. This will indicate the type of object (e.g. `entry`), and will contain the vocabulary's properties that it was able to parse from the page.
 
+* `type` - the Microformats 2 vocabulary found for the primary object on the page, without the `h-` prefix (e.g. `entry`, `event`)
+* `post-type` - only for "posts" (e.g. not for `card`s) - the [Post Type](https://www.w3.org/TR/post-type-discovery/) of the post (e.g. (`note`, `photo`, `reply`))
+
 If a property supports multiple values, it will always be returned as an array. The following properties support multiple values:
 
 * `in-reply-to`
@@ -375,7 +381,7 @@ If a property supports multiple values, it will always be returned as an array. 
 * `repost-of`
 * `bookmark-of`
 * `syndication`
-* `photo` (of entry, not of a card)
+* `photo` (of an entry, not of a card)
 * `video`
 * `audio`
 * `category`
@@ -385,6 +391,27 @@ The content will be an object that always contains a "text" property and may con
 The author will always be set in the entry if available. The service follows the [authorship discovery](https://indieweb.org/authorship) algorithm to try to find the author information elsewhere on the page if it is not inside the entry in the source document.
 
 All URLs provided in the output are absolute URLs. If the source document contains a relative URL, it will be resolved first.
+
+#### Post Type Discovery
+
+XRay runs the [Post Type Discovery](https://www.w3.org/TR/post-type-discovery/) algorithm and also includes a `post-type` property.
+
+The following post types are returned, which are slightly expanded from what is currently documented by the Post Type Discovery spec.
+
+* `event`
+* `recipe`
+* `review`
+* `rsvp`
+* `repost`
+* `like`
+* `reply`
+* `bookmark`
+* `checkin`
+* `video`
+* `audio`
+* `photo`
+* `article`
+* `note`
 
 
 #### Other Properties

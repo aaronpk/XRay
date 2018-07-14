@@ -29,7 +29,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('article', $data->items[0]->{'post-type'});
     $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('article', $data->items[1]->{'post-type'});
     $this->assertEquals('Three', $data->items[2]->name);
     $this->assertEquals('Four', $data->items[3]->name);
   }
@@ -45,6 +47,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('article', $data->items[0]->{'post-type'});
     $this->assertEquals('Two', $data->items[1]->name);
     $this->assertEquals('Three', $data->items[2]->name);
     $this->assertEquals('Four', $data->items[3]->name);
@@ -196,6 +199,8 @@ class FeedTest extends PHPUnit_Framework_TestCase {
       $this->assertNotEmpty($data->items[$i]->content->html);
       $this->assertNotEmpty($data->items[$i]->content->text);
     }
+    $this->assertEquals('note', $data->items[0]->{'post-type'});
+    $this->assertEquals('article', $data->items[4]->{'post-type'});
 
     $this->assertEquals('<p>Lots of good feedback on <a href="http://help.micro.blog/2017/wordpress-import/">the WordPress import</a>. Made a couple improvements this morning. Overall, pretty good.</p>', $data->items[9]->content->html);
     $this->assertEquals('Lots of good feedback on the WordPress import. Made a couple improvements this morning. Overall, pretty good.', $data->items[9]->content->text);
@@ -217,6 +222,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(8, count($data->items));
     for($i=0; $i<8; $i++) {
       $this->assertEquals('entry', $data->items[$i]->type);
+      $this->assertEquals('note', $data->items[$i]->{'post-type'});
       $this->assertEquals('Tantek', $data->items[$i]->author->name);
       $this->assertEquals('http://tantek.com/', $data->items[$i]->author->url);
       $this->assertNotEmpty($data->items[$i]->url);
@@ -245,6 +251,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(10, count($data->items));
     for($i=0; $i<10; $i++) {
       $this->assertEquals('entry', $data->items[$i]->type);
+      $this->assertEquals('note', $data->items[$i]->{'post-type'});
       $this->assertEquals('Ryan Barrett', $data->items[$i]->author->name);
       $this->assertEquals('https://snarfed.org/', $data->items[$i]->author->url);
       $this->assertNotEmpty($data->items[$i]->url);
@@ -274,6 +281,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(12, count($data->items));
     for($i=0; $i<12; $i++) {
       $this->assertEquals('entry', $data->items[$i]->type);
+      $this->assertEquals('audio', $data->items[$i]->{'post-type'});
       $this->assertEquals('Aaron Parecki', $data->items[$i]->author->name);
       $this->assertEquals('https://percolator.today/', $data->items[$i]->author->url);
       $this->assertNotEmpty($data->items[$i]->url);

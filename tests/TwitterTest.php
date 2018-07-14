@@ -56,6 +56,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(null, $data['code']); // no code is expected if we pass in the body
     $this->assertEquals('https://twitter.com/pkdev/status/818913630569664512', $data['url']);
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('note', $data['data']['post-type']);
     $this->assertEquals('A tweet with a URL https://indieweb.org/ #and #some #hashtags', $data['data']['content']['text']);
     $this->assertContains('and', $data['data']['category']);
     $this->assertContains('some', $data['data']['category']);
@@ -95,6 +96,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('photo', $data['data']['post-type']);
     $this->assertEquals('Tweet with a photo and a location', $data['data']['content']['text']);
     $this->assertEquals('https://pbs.twimg.com/media/C11cfRJUoAI26h9.jpg', $data['data']['photo'][0]);
   }
@@ -105,6 +107,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('photo', $data['data']['post-type']);
     $this->assertEquals('Two photos', $data['data']['content']['text']);
     $this->assertContains('https://pbs.twimg.com/media/C11xS1wUcAAeaKF.jpg', $data['data']['photo']);
     $this->assertContains('https://pbs.twimg.com/media/C11wtndUoAE1WfE.jpg', $data['data']['photo']);
@@ -116,6 +119,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('video', $data['data']['post-type']);
     $this->assertEquals('Tweet with a video', $data['data']['content']['text']);
     $this->assertEquals('https://pbs.twimg.com/ext_tw_video_thumb/818913089248595970/pr/img/qVoEjF03Y41SKpNt.jpg', $data['data']['photo'][0]);
     $this->assertEquals('https://video.twimg.com/ext_tw_video/818913089248595970/pr/vid/1280x720/qP-sDx-Q0Hs-ckVv.mp4', $data['data']['video'][0]);
@@ -127,6 +131,8 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('reply', $data['data']['post-type']);
+    $this->assertEquals('https://twitter.com/SwiftOnSecurity/status/1018178408398966784', $data['data']['in-reply-to'][0]);
     $this->assertEquals('Look! A distraction 🐁', $data['data']['content']['text']);
     $this->assertEquals('https://video.twimg.com/tweet_video/DiFOUuYV4AAUsgL.mp4', $data['data']['video'][0]);
     $this->assertEquals('https://pbs.twimg.com/tweet_video_thumb/DiFOUuYV4AAUsgL.jpg', $data['data']['photo'][0]);
@@ -153,6 +159,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('repost', $data['data']['post-type']);
     $this->assertArrayNotHasKey('content', $data['data']);
     $repostOf = 'https://twitter.com/aaronpk/status/817414679131660288';
     $this->assertEquals($repostOf, $data['data']['repost-of']);
@@ -166,6 +173,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('repost', $data['data']['post-type']);
     $this->assertArrayNotHasKey('content', $data['data']);
     $this->assertArrayNotHasKey('photo', $data['data']);
     $repostOf = 'https://twitter.com/phlaimeaux/status/819943954724556800';
@@ -180,6 +188,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('note', $data['data']['post-type']);
     $this->assertEquals('Quoted tweet with a #hashtag https://twitter.com/aaronpk/status/817414679131660288', $data['data']['content']['text']);
     $this->assertEquals('https://twitter.com/aaronpk/status/817414679131660288', $data['data']['quotation-of']);
     $tweet = $data['data']['refs']['https://twitter.com/aaronpk/status/817414679131660288'];

@@ -89,6 +89,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $parsed = $xray->process(false, $mf2JSON);
     $item = $parsed['data'];
     $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('note', $item['post-type']);
     $this->assertEquals('plaintext', $item['content']['text']);
     $this->assertArrayNotHasKey('html', $item['content']);
   }
@@ -108,6 +109,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $parsed = $xray->process(false, $mf2JSON);
     $item = $parsed['data'];
     $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('note', $item['post-type']);
     $this->assertEquals('bold italic text', $item['content']['text']);
     $this->assertEquals('<b>bold</b> <i>italic</i> text', $item['content']['html']);
   }
@@ -127,6 +129,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $parsed = $xray->process(false, $mf2JSON);
     $item = $parsed['data'];
     $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('note', $item['post-type']);
     $this->assertArrayNotHasKey('content', $item);
   }
 
@@ -146,6 +149,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $parsed = $xray->process(false, $mf2JSON);
     $item = $parsed['data'];
     $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('note', $item['post-type']);
     $this->assertEquals('bar', $item['content']['text']);
     $this->assertEquals('<b>bar</b>', $item['content']['html']);
   }
@@ -165,6 +169,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $parsed = $xray->process(false, $mf2JSON);
     $item = $parsed['data'];
     $this->assertEquals('entry', $item['type']);
+    $this->assertEquals('note', $item['post-type']);
     $this->assertArrayNotHasKey('content', $item);
   }
 
@@ -175,6 +180,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
+    $this->assertEquals('photo', $data->data->{'post-type'});
     $this->assertObjectNotHasAttribute('name', $data->data);
     $this->assertEquals('This page has an img tag with the target URL.', $data->data->content->text);
   }
@@ -186,6 +192,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
+    $this->assertEquals('video', $data->data->{'post-type'});
     $this->assertObjectNotHasAttribute('name', $data->data);
     $this->assertEquals('This page has a video tag with the target URL.', $data->data->content->text);
   }
@@ -197,6 +204,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
+    $this->assertEquals('audio', $data->data->{'post-type'});
     $this->assertObjectNotHasAttribute('name', $data->data);
     $this->assertEquals('This page has an audio tag with the target URL.', $data->data->content->text);
   }
@@ -219,6 +227,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
+    $this->assertEquals('article', $data->data->{'post-type'});
     $this->assertEquals('Post Title', $data->data->name);
     $this->assertEquals('This is a blog post.', $data->data->content->text);
     $this->assertEquals('http://source.example.com/featured.jpg', $data->data->featured);
@@ -232,6 +241,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
     $this->assertObjectNotHasAttribute('name', $data->data);
+    $this->assertEquals('note', $data->data->{'post-type'});
     $this->assertEquals('This page has a link to target.example.com and some formatted text.', $data->data->content->text);
     $this->assertEquals('This page has a link to <a href="http://target.example.com">target.example.com</a> and some <b>formatted text</b>.', $data->data->content->html);
   }
@@ -244,6 +254,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
     $this->assertEquals('Hello World', $data->data->name);
+    $this->assertEquals('article', $data->data->{'post-type'});
     $this->assertEquals('This page has a link to target.example.com and some formatted text.', $data->data->content->text);
     $this->assertEquals('This page has a link to <a href="http://target.example.com">target.example.com</a> and some <b>formatted text</b>.', $data->data->content->html);
   }
@@ -256,6 +267,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
     $this->assertEquals('Hello World', $data->data->name);
+    $this->assertEquals('article', $data->data->{'post-type'});
     $this->assertObjectNotHasAttribute('content', $data->data);
   }
 
@@ -310,6 +322,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('reply', $data['data']['post-type']);
     $this->assertEquals('http://example.com/100', $data['data']['in-reply-to'][0]);
     $this->assertArrayHasKey('http://example.com/100', $data['data']['refs']);
     $this->assertEquals('Example Post', $data['data']['refs']['http://example.com/100']['name']);
@@ -383,6 +396,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('rsvp', $data['data']['post-type']);
     $this->assertEquals('I\'ll be there!', $data['data']['content']['text']);
     $this->assertEquals('yes', $data['data']['rsvp']);
   }
@@ -448,7 +462,9 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
     $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('event', $data['data']['post-type']);
     $this->assertEquals('Homebrew Website Club', $data['data']['name']);
     $this->assertEquals($url, $data['data']['url']);
     $this->assertEquals('2016-03-09T18:30', $data['data']['start']);
@@ -467,6 +483,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('event', $data['data']['post-type']);
     $this->assertEquals('Homebrew Website Club', $data['data']['name']);
     $this->assertEquals($url, $data['data']['url']);
     $this->assertEquals('2016-03-09T18:30', $data['data']['start']);
@@ -485,6 +502,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('event', $data['data']['post-type']);
     $this->assertEquals('Homebrew Website Club', $data['data']['name']);
     $this->assertEquals($url, $data['data']['url']);
     $this->assertEquals('2016-02-09T18:30', $data['data']['start']);
@@ -504,6 +522,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('review', $data['data']['type']);
+    $this->assertEquals('review', $data['data']['post-type']);
     $this->assertEquals('Review', $data['data']['name']);
     $this->assertEquals('Not great', $data['data']['summary']);
     $this->assertEquals('3', $data['data']['rating']);
@@ -527,6 +546,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('review', $data['data']['type']);
+    $this->assertEquals('review', $data['data']['post-type']);
     $this->assertEquals('Review', $data['data']['name']);
     $this->assertEquals('Not great', $data['data']['summary']);
     $this->assertEquals('3', $data['data']['rating']);
@@ -548,6 +568,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('review', $data['data']['type']);
+    $this->assertEquals('review', $data['data']['post-type']);
     $this->assertEquals('Not great', $data['data']['name']);
     $this->assertEquals('3', $data['data']['rating']);
     $this->assertEquals('5', $data['data']['best']);
@@ -568,6 +589,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('recipe', $data['data']['type']);
+    $this->assertEquals('recipe', $data['data']['post-type']);
     $this->assertEquals('Cookie Recipe', $data['data']['name']);
     $this->assertEquals('12 Cookies', $data['data']['yield']);
     $this->assertEquals('PT30M', $data['data']['duration']);
@@ -599,6 +621,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('note', $data['data']['post-type']);
     $this->assertEquals('Comment text', $data['data']['content']['text']);
     $this->assertEquals('http://source.example.com/fragment-id#comment-1000', $data['data']['url']);
     $this->assertTrue($data['info']['found_fragment']);
@@ -626,6 +649,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals('entry', $data['data']['type']);
     $venue = $data['data']['checkin'];
+    $this->assertEquals('checkin', $data['data']['post-type']);
     $this->assertEquals('https://foursquare.com/v/57104d2e498ece022e169dca', $venue['url']);
     $this->assertEquals('DreamHost', $venue['name']);
     $this->assertEquals('45.518716', $venue['latitude']);
@@ -644,6 +668,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('checkin', $data['data']['post-type']);
     $venue = $data['data']['checkin'];
     $this->assertEquals('https://foursquare.com/v/57104d2e498ece022e169dca', $venue['url']);
     $this->assertEquals('Homebrew Website Club!', $data['data']['content']['text']);
@@ -660,6 +685,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('photo', $data['data']['post-type']);
     $this->assertEquals('http://xkcd.com/1810/', $data['data']['url']);
     $this->assertEquals('Chat Systems', $data['data']['name']);
     $this->assertContains('http://imgs.xkcd.com/comics/chat_systems_2x.png', $data['data']['photo']);

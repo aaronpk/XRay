@@ -79,6 +79,8 @@ class Hackernews extends Format {
       $entry['in-reply-to'] = ['https://news.ycombinator.com/item?id='.$data['parent']];
     }
 
+    $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
+
     return [
       'data' => $entry,
       'original' => $json

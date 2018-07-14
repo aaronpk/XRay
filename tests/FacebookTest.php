@@ -32,6 +32,7 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('event', $data['data']['post-type']);
     $this->assertEquals('IndieWeb Summit', $data['data']['name']);
     $this->assertEquals('2017-06-24T09:00:00-0700', $data['data']['start']);
     $this->assertEquals('2017-06-25T18:00:00-0700', $data['data']['end']);
@@ -58,6 +59,7 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('event', $data['data']['post-type']);
     $this->assertEquals('Homebrew Website Club', $data['data']['name']);
     $this->assertEquals('2015-04-22T19:00:00-0400', $data['data']['start']);
     $this->assertContains('Are you building your own website? Indie reader?', $data['data']['summary']);

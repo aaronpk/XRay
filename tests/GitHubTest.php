@@ -28,6 +28,8 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('reply', $data['data']['post-type']);
+    $this->assertEquals('https://github.com/idno/Known', $data['data']['in-reply-to'][0]);
     $this->assertEquals('2017-04-10T17:44:57Z', $data['data']['published']);
     $this->assertEquals('aaronpk', $data['data']['author']['name']);
     $this->assertEquals('https://github.com/aaronpk', $data['data']['author']['url']);
@@ -46,6 +48,8 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('reply', $data['data']['post-type']);
+    $this->assertEquals('https://github.com/aaronpk/XRay/issues', $data['data']['in-reply-to'][0]);
     $this->assertEquals('2017-01-26T14:13:42Z', $data['data']['published']);
     $this->assertEquals('sebsel', $data['data']['author']['name']);
     $this->assertEquals('https://github.com/sebsel', $data['data']['author']['url']);
@@ -77,6 +81,7 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('repo', $data['data']['type']);
+    $this->assertArrayNotHasKey('post-type', $data['data']);
     $this->assertEquals('2016-02-19T16:53:20Z', $data['data']['published']);
     $this->assertEquals('aaronpk', $data['data']['author']['name']);
     $this->assertEquals('https://github.com/aaronpk', $data['data']['author']['url']);
@@ -94,6 +99,8 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('reply', $data['data']['post-type']);
+    $this->assertEquals('https://github.com/aaronpk/XRay/issues/25', $data['data']['in-reply-to'][0]);
     $this->assertEquals('2017-01-26T16:24:37Z', $data['data']['published']);
     $this->assertEquals('sebsel', $data['data']['author']['name']);
     $this->assertEquals('https://avatars3.githubusercontent.com/u/16517999?v=3', $data['data']['author']['photo']);
