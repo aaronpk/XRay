@@ -788,7 +788,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $data = json_decode($body, true);
 
     $this->assertEquals('I’m so making this into a t-shirt', $data['data']['content']['text']);
-    $this->assertEquals('https://twitter.com/gitlost/status/1015005409726357504', $data['data']['quotation-of'][0]);
+    $this->assertEquals('https://twitter.com/gitlost/status/1015005409726357504', $data['data']['quotation-of']);
     $this->assertArrayHasKey('https://twitter.com/gitlost/status/1015005409726357504', $data['data']['refs']);
     $q = $data['data']['refs']['https://twitter.com/gitlost/status/1015005409726357504'];
     $this->assertEquals("Still can't git fer shit", $q['content']['text']);
