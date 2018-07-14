@@ -117,7 +117,19 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('Tweet with a video', $data['data']['content']['text']);
+    $this->assertEquals('https://pbs.twimg.com/ext_tw_video_thumb/818913089248595970/pr/img/qVoEjF03Y41SKpNt.jpg', $data['data']['photo'][0]);
     $this->assertEquals('https://video.twimg.com/ext_tw_video/818913089248595970/pr/vid/1280x720/qP-sDx-Q0Hs-ckVv.mp4', $data['data']['video'][0]);
+  }
+
+  public function testTweetWithGif() {
+    list($url, $json) = $this->loadTweet('tweet-with-gif');
+
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Look! A distraction 🐁', $data['data']['content']['text']);
+    $this->assertEquals('https://video.twimg.com/tweet_video/DiFOUuYV4AAUsgL.mp4', $data['data']['video'][0]);
+    $this->assertEquals('https://pbs.twimg.com/tweet_video_thumb/DiFOUuYV4AAUsgL.jpg', $data['data']['photo'][0]);
   }
 
   public function testTweetWithLocation() {

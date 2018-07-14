@@ -183,9 +183,15 @@ class Twitter extends Format {
 
       $entry['photo'][] = $media->media_url_https;
 
-    } elseif($media->type == 'video') {
+    } elseif($media->type == 'video' || $media->type == 'animated_gif') {
+      if(!array_key_exists('photo', $entry))
+        $entry['photo'] = [];
+
       if(!array_key_exists('video', $entry))
         $entry['video'] = [];
+
+      // Include the thumbnail
+      $entry['photo'][] = $media->media_url_https;
 
       // Find the highest bitrate video that is mp4
       $videos = $media->video_info->variants;
