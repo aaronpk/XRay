@@ -431,7 +431,7 @@ class Mf2 extends Format {
 
     // These properties are always returned as arrays and always URLs
     // If the value is an h-* object with a URL, the URL is used and a "ref" is added as well
-    self::collectArrayURLValues(['photo','video','audio','syndication','in-reply-to','like-of','repost-of','bookmark-of'], $item, $data, $refs, $http);
+    self::collectArrayURLValues(['photo','video','audio','syndication','in-reply-to','like-of','repost-of','bookmark-of','quotation-of'], $item, $data, $refs, $http);
 
     self::determineNameAndContent($item, $data);
 

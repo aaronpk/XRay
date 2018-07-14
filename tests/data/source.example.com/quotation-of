@@ -1,0 +1,55 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<article class="h-entry">
+  <span class="p-uid">tag:twitter.com:1015014506651668480</span>
+
+  <time class="dt-published" datetime="2018-07-05T23:28:11+00:00">2018-07-05T23:28:11+00:00</time>
+
+  <span class="p-author h-card">
+    <data class="p-uid" value="tag:twitter.com:miklb"></data>
+<data class="p-numeric-id" value="6187652"></data>
+    <a class="p-name u-url" href="https://miklb.com">Michael Bishop</a>
+    <span class="p-nickname">miklb</span>
+    <img class="u-photo" src="https://pbs.twimg.com/profile_images/799821749386874880/X_vv7MnK.jpg" alt="" />
+  </span>
+
+  <a class="u-url" href="https://twitter.com/miklb/status/1015014506651668480">https://twitter.com/miklb/status/1015014506651668480</a>
+  <div class="e-content p-name">
+
+  I’m so making this into a t-shirt
+  </div>
+
+
+
+
+
+<article class="u-quotation-of h-cite">
+  <span class="p-uid">tag:twitter.com:1015005409726357504</span>
+
+  <time class="dt-published" datetime="2018-07-05T22:52:02+00:00">2018-07-05T22:52:02+00:00</time>
+
+  <span class="p-author h-card">
+    <data class="p-uid" value="tag:twitter.com:gitlost"></data>
+<data class="p-numeric-id" value="1240421984"></data>
+    <a class="p-name u-url" href="https://twitter.com/gitlost">Developers Swearing</a>
+    <span class="p-nickname">gitlost</span>
+    <img class="u-photo" src="https://pbs.twimg.com/profile_images/3336578378/a60d4b744784d4ab05ee1846234e0708.jpeg" alt="" />
+  </span>
+
+  <a class="u-url" href="https://twitter.com/gitlost/status/1015005409726357504">https://twitter.com/gitlost/status/1015005409726357504</a>
+  <div class="e-content p-name">
+
+  Still can't git fer shit
+  </div>
+
+
+
+
+
+
+
+</article>
