@@ -24,8 +24,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
@@ -42,8 +43,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
@@ -65,8 +67,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     // This test should find the h-entry rather than the h-card, because expect=feed
     $this->assertEquals('entry', $data->items[0]->type);
@@ -80,8 +83,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
@@ -96,8 +100,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
@@ -116,8 +121,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
@@ -132,8 +138,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
@@ -153,8 +160,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('feed', $data->type);
     $this->assertEquals(4, count($data->items));
     $this->assertEquals('One', $data->items[0]->name);
@@ -174,8 +182,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals('card', $data->type);
     $this->assertEquals('Author Name', $data->name);
   }
@@ -186,7 +195,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
+    $result = json_decode($body);
+    $this->assertEquals('feed+json', $result->{'source-format'});
+    $data = $result->data;
 
     $this->assertEquals(10, count($data->items));
     for($i=0; $i<8; $i++) {
@@ -217,7 +228,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
+    $result = json_decode($body);
+    $this->assertEquals('xml', $result->{'source-format'});
+    $data = $result->data;
 
     $this->assertEquals(8, count($data->items));
     for($i=0; $i<8; $i++) {
@@ -246,7 +259,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
+    $result = json_decode($body);
+    $this->assertEquals('xml', $result->{'source-format'});
+    $data = $result->data;
 
     $this->assertEquals(10, count($data->items));
     for($i=0; $i<10; $i++) {
@@ -276,7 +291,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
+    $result = json_decode($body);
+    $this->assertEquals('xml', $result->{'source-format'});
+    $data = $result->data;
 
     $this->assertEquals(12, count($data->items));
     for($i=0; $i<12; $i++) {
@@ -309,8 +326,9 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
-    $data = json_decode($body)->data;
-
+    $result = json_decode($body);
+    $this->assertEquals('xml', $result->{'source-format'});
+    $data = $result->data;
     $this->assertEquals(12, count($data->items));
 
     $this->assertEquals('Marshall Kirkpatrick', $data->items[11]->author->name);

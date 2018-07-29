@@ -27,6 +27,9 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('github', $data['source-format']);
+
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('reply', $data['data']['post-type']);
     $this->assertEquals('https://github.com/idno/Known', $data['data']['in-reply-to'][0]);
@@ -46,6 +49,9 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('github', $data['source-format']);
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('reply', $data['data']['post-type']);
@@ -68,6 +74,9 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('github', $data['source-format']);
+
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertContains('silo', $data['data']['category']);
   }
@@ -79,6 +88,9 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('github', $data['source-format']);
 
     $this->assertEquals('repo', $data['data']['type']);
     $this->assertArrayNotHasKey('post-type', $data['data']);
@@ -97,6 +109,9 @@ class GitHubTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('github', $data['source-format']);
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('reply', $data['data']['post-type']);

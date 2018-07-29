@@ -68,7 +68,8 @@ class Facebook extends Format {
 
       return [
         'data' => $event,
-        'original' => $fbObject
+        'original' => $fbObject,
+        'source-format' => 'facebook',
       ];
     }
   }

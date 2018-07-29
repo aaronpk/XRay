@@ -97,7 +97,8 @@ $parsed = Array
         )
 
     [url] => https://aaronparecki.com/
-    [code] => 200
+    [code] => 200,
+    [source-format] => mf2+html
 )
 ```
 
@@ -131,6 +132,8 @@ Array
         )
 
     [url] => http://example.com/entry
+
+    [source-format] => mf2+json
 )
 ```
 
@@ -363,7 +366,8 @@ Possible errors are listed below:
     }
   },
   "url":"https://aaronparecki.com/2017/03/01/14/hwc",
-  "code":200
+  "code":200,
+  "source-format":"mf2+html"
 }
 ```
 
@@ -420,7 +424,12 @@ Other properties are returned in the response at the same level as the `data` pr
 
 * `url` - The effective URL that the document was retrieved from. This will be the final URL after following any redirects.
 * `code` - The HTTP response code returned by the URL. Typically this will be 200, but if the URL returned an alternate HTTP code that also included an h-entry (such as a 410 deleted notice with a stub h-entry), you can use this to find out that the original URL was actually deleted.
-
+* `source-format` - Indicates the format of the source URL that was used to generate the parsed result. Possible values are:
+  * `mf2+html`
+  * `mf2+json`
+  * `feed+json`
+  * `xml`
+  * `instagram`/`facebook`/`github`/`xkcd`
 
 #### Feeds
 

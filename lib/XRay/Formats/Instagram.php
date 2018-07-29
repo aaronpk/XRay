@@ -34,7 +34,8 @@ class Instagram extends Format {
     $card = self::_buildHCardFromInstagramProfile($profileData);
 
     return [
-      'data' => $card
+      'data' => $card,
+      'source-format' => 'instagram',
     ];
   }
 
@@ -61,7 +62,8 @@ class Instagram extends Format {
       'data' => [
         'type' => 'feed',
         'items' => $items,
-      ]
+      ],
+      'source-format' => 'instagram',
     ];
   }
 
@@ -206,7 +208,8 @@ class Instagram extends Format {
         'photo' => $photoData,
         'profiles' => $profiles,
         'locations' => $locations
-      ])
+      ]),
+      'source-format' => 'instagram',
     ];
   }
 

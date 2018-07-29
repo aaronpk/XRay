@@ -16,6 +16,7 @@ class JSONFeed extends Format {
         'type' => 'unknown',
       ],
       'url' => $url,
+      'source-format' => 'feed+json',
     ];
 
     if($feed) {

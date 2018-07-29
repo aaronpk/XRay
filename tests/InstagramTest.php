@@ -27,6 +27,8 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('photo', $data['data']['post-type']);
     $this->assertEquals('2017-01-05T23:31:32+00:00', $data['data']['published']);
@@ -48,6 +50,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('photo', $data['data']['post-type']);
@@ -88,6 +93,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
+
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('video', $data['data']['post-type']);
     $this->assertContains('100daysofmusic', $data['data']['category']);
@@ -110,6 +118,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
+
     $this->assertEquals(2, count($data['data']['category']));
     $this->assertContains('http://www.kmikeym.com/', $data['data']['category']);
     $this->assertArrayHasKey('http://www.kmikeym.com/', $data['data']['refs']);
@@ -124,6 +135,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
 
     $this->assertEquals(1, count($data['data']['location']));
     $this->assertContains('https://www.instagram.com/explore/locations/109284789535230/', $data['data']['location']);
@@ -145,6 +159,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
+
     $this->assertEquals(2, count($data['data']['photo']));
     $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/406101ff9601ab78147e121b65ce3eea/5B5BC738/t51.2885-15/e35/21827424_134752690591737_8093088291252862976_n.jpg', $data['data']['photo'][0]);
     $this->assertEquals('https://instagram.fsea1-1.fna.fbcdn.net/vp/03ddc8c03c8708439dae29663b8c2305/5B5EDE4D/t51.2885-15/e35/21909774_347707439021016_5237540582556958720_n.jpg', $data['data']['photo'][1]);
@@ -160,6 +177,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
 
     $this->assertEquals('photo', $data['data']['post-type']); // we discard videos in this case right now
     $this->assertEquals(3, count($data['data']['photo']));
@@ -178,6 +198,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
+
     $this->assertSame([
       'type' => 'card',
       'name' => 'Aaron Parecki',
@@ -195,6 +218,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
+
     $this->assertSame([
       'type' => 'card',
       'name' => 'pk_spam',
@@ -211,6 +237,9 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
 
     $this->assertEquals('feed', $data['data']['type']);
     $this->assertEquals(12, count($data['data']['items']));

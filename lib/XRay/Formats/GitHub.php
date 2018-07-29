@@ -166,7 +166,8 @@ class GitHub extends Format {
 
     return [
       'data' => $entry,
-      'original' => $json
+      'original' => $json,
+      'source-format' => 'github',
     ];
   }
 

@@ -83,7 +83,8 @@ class Hackernews extends Format {
 
     return [
       'data' => $entry,
-      'original' => $json
+      'original' => $json,
+      'source-format' => 'hackernews',
     ];
   }
 

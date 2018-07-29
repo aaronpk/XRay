@@ -31,6 +31,9 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
 
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
+    $this->assertArrayHasKey('code', $data);
+    $this->assertEquals('facebook', $data['source-format']);
+
     $this->assertEquals('event', $data['data']['type']);
     $this->assertEquals('event', $data['data']['post-type']);
     $this->assertEquals('IndieWeb Summit', $data['data']['name']);
@@ -57,6 +60,9 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
     $json = $this->loadFbObject('1596554663924436');
 
     $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertArrayHasKey('code', $data);
+    $this->assertEquals('facebook', $data['source-format']);
 
     $this->assertEquals('event', $data['data']['type']);
     $this->assertEquals('event', $data['data']['post-type']);

@@ -60,7 +60,8 @@ class XKCD extends Format {
     $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
 
     $response = [
-      'data' => $entry
+      'data' => $entry,
+      'source-format' => 'xkcd',
     ];
 
     return $response;

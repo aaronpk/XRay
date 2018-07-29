@@ -44,7 +44,9 @@ class Parser {
 
     // Check if an mf2 JSON object was passed in
     if(is_array($body) && isset($body['items'][0]['type']) && isset($body['items'][0]['properties'])) {
-      return Formats\Mf2::parse($body, $url, $this->http, $opts);
+      $data = Formats\Mf2::parse($body, $url, $this->http, $opts);
+      $data['source-format'] = 'mf2+json';
+      return $data;
     }
 
     if(substr($body, 0, 5) == '<?xml') {
@@ -57,12 +59,16 @@ class Parser {
         return Formats\JSONFeed::parse($feeddata, $url);
       } elseif($feeddata && isset($feeddata['items'][0]['type']) && isset($feeddata['items'][0]['properties'])) {
         // Check if an mf2 JSON object was passed in
-        return Formats\Mf2::parse($feeddata, $url, $this->http, $opts);
+        $data = Formats\Mf2::parse($feeddata, $url, $this->http, $opts);
+        $data['source-format'] = 'mf2+json';
+        return $data;
       }
     }
 
     // No special parsers matched, parse for Microformats now
-    return Formats\HTML::parse($this->http, $body, $url, $opts);
+    $data = Formats\HTML::parse($this->http, $body, $url, $opts);
+    $data['source-format'] = 'mf2+html';
+    return $data;
   }
 
 }

@@ -26,6 +26,7 @@ class AuthorTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
 
+    $this->assertEquals('mf2+html', $data->{'source-format'});
     $this->assertEmpty($data->data->author->url);
     $this->assertEquals('Author Name', $data->data->author->name);
     $this->assertEmpty($data->data->author->photo);

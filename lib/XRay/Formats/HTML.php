@@ -105,6 +105,7 @@ class HTML extends Format {
         }
         $result['original'] = $html;
         $result['url'] = $url; // this will be the effective URL after following redirects
+        $result['source-format'] = 'mf2+html';
       }
     }
     return $result;

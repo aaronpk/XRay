@@ -448,7 +448,7 @@ class Mf2 extends Format {
     $data['post-type'] = \p3k\XRay\PostType::discover($data);
 
     $response = [
-      'data' => $data
+      'data' => $data,
     ];
 
     if(count($refs)) {

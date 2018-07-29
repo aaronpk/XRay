@@ -26,6 +26,9 @@ class HackernewsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
 
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('hackernews', $data['source-format']);
+
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('article', $data['data']['post-type']);
     $this->assertEquals('2017-06-08T19:32:12+00:00', $data['data']['published']);
@@ -49,6 +52,9 @@ What projects or companies are you working on to combat filter bubbles, walled g
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('hackernews', $data['source-format']);
 
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('reply', $data['data']['post-type']);

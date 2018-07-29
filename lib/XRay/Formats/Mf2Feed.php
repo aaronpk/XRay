@@ -67,7 +67,8 @@ trait Mf2Feed {
     }
 
     return [
-      'data' => $data
+      'data' => $data,
+      'source-format' => 'mf2+html',
     ];
   }
 

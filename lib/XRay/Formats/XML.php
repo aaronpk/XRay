@@ -18,6 +18,7 @@ class XML extends Format {
         'type' => 'unknown',
       ],
       'url' => $url,
+      'source-format' => 'xml',
     ];
 
     try {

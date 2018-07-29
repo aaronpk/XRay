@@ -175,6 +175,7 @@ class Twitter extends Format {
     return [
       'data' => $entry,
       'original' => $tweet,
+      'source-format' => 'twitter',
     ];
   }
 

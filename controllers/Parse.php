@@ -126,6 +126,8 @@ class Parse {
         $data['info'] = $parsed['info'];
       if($request->get('include_original') && isset($parsed['original']))
         $data['original'] = $parsed['original'];
+      if(isset($parsed['source-format']))
+        $data['source-format'] = $parsed['source-format'];
 
       return $this->respond($response, 200, $data);
     }

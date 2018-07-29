@@ -40,6 +40,7 @@ class XRay {
       unset($result['original']);
     $result['url'] = $url;
     $result['code'] = isset($result['code']) ? $result['code'] : $code;
+    $result['source-format'] = isset($result['source-format']) ? $result['source-format'] : null;
     return $result;
   }
 
@@ -49,6 +50,7 @@ class XRay {
     if(!isset($opts['include_original']) || !$opts['include_original'])
       unset($result['original']);
     $result['url'] = $url;
+    $result['source-format'] = isset($result['source-format']) ? $result['source-format'] : null;
     return $result;
   }
 

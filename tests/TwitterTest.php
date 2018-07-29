@@ -31,6 +31,8 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
 
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
+    $this->assertEquals('twitter', $data['source-format']);
+
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('aaronpk dev', $data['data']['author']['name']);
     $this->assertEquals('pkdev', $data['data']['author']['nickname']);
@@ -54,6 +56,8 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
     $this->assertEquals(null, $data['code']); // no code is expected if we pass in the body
+    $this->assertEquals('twitter', $data['source-format']);
+
     $this->assertEquals('https://twitter.com/pkdev/status/818913630569664512', $data['url']);
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('note', $data['data']['post-type']);
@@ -77,6 +81,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
 
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
+    $this->assertEquals('twitter', $data['source-format']);
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('Here 🎉 have an emoji', $data['data']['content']['text']);
   }
@@ -158,6 +163,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
 
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
+    $this->assertEquals('twitter', $data['source-format']);
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('repost', $data['data']['post-type']);
     $this->assertArrayNotHasKey('content', $data['data']);
@@ -212,6 +218,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     list($url, $json) = $this->loadTweet('streaming-tweet-with-link');
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
+    $this->assertEquals('twitter', $data['source-format']);
     $this->assertEquals('what happens if i include a link like https://kmikeym.com', $data['data']['content']['text']);
     $this->assertEquals('what happens if i include a link like <a href="https://kmikeym.com">https://kmikeym.com</a>', $data['data']['content']['html']);
   }
@@ -269,6 +276,7 @@ Woke up this morning feeling compelled to run to Corona… http://tantek.com/201
     list($url, $json) = $this->loadTweet('streaming-tweet-reply');
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
+    $this->assertEquals('twitter', $data['source-format']);
     $this->assertEquals('https://twitter.com/anomalily/status/967024586423386112', $data['data']['in-reply-to'][0]);
   }
 
@@ -276,6 +284,7 @@ Woke up this morning feeling compelled to run to Corona… http://tantek.com/201
     list($url, $json) = $this->loadTweet('967046438822674432');
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
+    $this->assertEquals('twitter', $data['source-format']);
     $this->assertEquals('https://twitter.com/anomalily/status/967024586423386112', $data['data']['in-reply-to'][0]);
   }
 
