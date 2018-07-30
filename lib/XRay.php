@@ -38,9 +38,9 @@ class XRay {
     $result = $parser->parse($body, $url, $opts);
     if(!isset($opts['include_original']) || !$opts['include_original'])
       unset($result['original']);
-    $result['url'] = $url;
-    $result['code'] = isset($result['code']) ? $result['code'] : $code;
-    $result['source-format'] = isset($result['source-format']) ? $result['source-format'] : null;
+    if(!isset($result['url'])) $result['url'] = $url;
+    if(!isset($result['code'])) $result['code'] = $code;
+    if(!isset($result['source-format'])) $result['source-format'] = null;
     return $result;
   }
 
@@ -49,10 +49,9 @@ class XRay {
     $result = $parser->parse($mf2json, $url, $opts);
     if(!isset($opts['include_original']) || !$opts['include_original'])
       unset($result['original']);
-    $result['url'] = $url;
-    $result['source-format'] = isset($result['source-format']) ? $result['source-format'] : null;
+    if(!isset($result['url'])) $result['url'] = $url;
+    if(!isset($result['source-format'])) $result['source-format'] = null;
     return $result;
   }
 
 }
-

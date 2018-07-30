@@ -91,9 +91,33 @@ class HTML extends Format {
       }
     }
 
-    // Now start pulling in the data from the page. Start by looking for microformats2
     $mf2 = \mf2\Parse($html, $url);
 
+    // Check for a rel=alternate link to a Microformats JSON representation, and use that instead
+    if(isset($mf2['rel-urls'])) {
+      foreach($mf2['rel-urls'] as $relurl => $reltype) {
+        if(in_array('alternate', $reltype['rels']) && $reltype['type'] == 'application/mf2+json') {
+          // Fetch and parse the MF2 JSON link instead
+          $jsonpage = $http->get($relurl, [
+            'Accept' => 'application/mf2+json,application/json'
+          ]);
+          // Skip and fall back to parsing the HTML if anything about this request fails
+          if(!$jsonpage['error'] && $jsonpage['body']) {
+            $jsondata = json_decode($jsonpage['body'],true);
+            if($jsondata) {
+              $data = Formats\Mf2::parse($jsondata, $url, $http, $opts);
+              if($data && is_array($data) && isset($data['data']['type'])) {
+                $data['url'] = $relurl;
+                $data['source-format'] = 'mf2+json';
+                return $data;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Now start pulling in the data from the page. Start by looking for microformats2
     if($mf2 && count($mf2['items']) > 0) {
       $data = Formats\Mf2::parse($mf2, $url, $http, $opts);
       if($data) {

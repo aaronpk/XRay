@@ -99,7 +99,7 @@ class Fetcher {
         return [
           'error' => 'invalid_content',
           'error_description' => 'The server did not return a recognized content type',
-          'content_type' => $result['headers']['Content-Type'],
+          'content_type' => $result['headers']['Content-Type'] ?? null,
           'url' => $result['url'],
           'code' => $result['code']
         ];

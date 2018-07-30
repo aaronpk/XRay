@@ -876,4 +876,56 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('The content of the blog post', $data['data']['content']['text']);
   }
 
+  public function testRelAlternateToMf2JSON() {
+    $url = 'http://source.example.com/rel-alternate-mf2-json';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('mf2+json', $data['source-format']);
+    $this->assertEquals('http://source.example.com/rel-alternate-mf2-json.json', $data['parsed-url']);
+    $this->assertEquals('Pretty great to see a new self-hosted IndieAuth server! Congrats @nilshauk, and great project name! https://twitter.com/nilshauk/status/1017485223716630528', $data['data']['content']['text']);
+  }
+
+  public function testRelAlternateToNotFoundURL() {
+    $url = 'http://source.example.com/rel-alternate-not-found';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('mf2+html', $data['source-format']);
+    $this->assertArrayNotHasKey('parsed-url', $data);
+    $this->assertEquals('Test content with a rel alternate link to a 404 page', $data['data']['content']['text']);
+  }
+
+  public function testRelAlternatePrioritizesJSON() {
+    $url = 'http://source.example.com/rel-alternate-priority';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('mf2+json', $data['source-format']);
+    $this->assertEquals('http://source.example.com/rel-alternate-priority.json', $data['parsed-url']);
+    $this->assertEquals('This should be the content from XRay', $data['data']['content']['text']);
+  }
+
+  public function testRelAlternateFallsBackOnInvalidJSON() {
+    $url = 'http://source.example.com/rel-alternate-fallback';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('mf2+html', $data['source-format']);
+    $this->assertArrayNotHasKey('parsed-url', $data);
+    $this->assertEquals('XRay should use this content since the JSON in the rel-alternate is invalid', $data['data']['content']['text']);
+  }
+
 }

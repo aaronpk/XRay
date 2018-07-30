@@ -16,7 +16,7 @@ class Mf2 extends Format {
   }
 
   public static function parse($mf2, $url, $http, $opts=[]) {
-    if(count($mf2['items']) == 0)
+    if(!isset($mf2['items']) || count($mf2['items']) == 0)
       return false;
 
     // If they are expecting a feed, always return a feed or an error

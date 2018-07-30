@@ -1,0 +1,580 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html
+Connection: keep-alive
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pretty great to see a new self-hosted IndieAuth server! ... &bull; Aaron Parecki</title>
+
+  <link rel="alternate" type="application/mf2+json" href="http://source.example.com/rel-alternate-mf2-json.json" />
+  <link rel="alternate" type="application/jf2+json" href="http://source.example.com/rel-alternate-mf2-json.jf2" />
+  <link rel="alternate" type="application/activity+json" href="http://source.example.com/rel-alternate-mf2-json.as2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@aaronpk" />
+  <meta name="twitter:creator" content="@aaronpk" />
+
+  <meta property="og:url"                content="https://aaronparecki.com/2018/07/12/10/indieauth" />
+  <meta property="og:type"               content="website" />
+  <meta property="og:title"              content="Pretty great to see a new self-hosted IndieAuth server! ..." />
+  <meta property="og:description"        content="Pretty great to see a new self-hosted IndieAuth server! Congrats @nilshauk, and great project name!" />
+    <meta property="og:site_name"          content="Aaron Parecki" />
+
+
+    <link rel="webmention" href="https://webmention.io/aaronpk/webmention">
+
+    <link rel="stylesheet" type="text/css" href="/semantic/2.2.6/semantic.min.css">
+    <script src="/assets/jquery-1.12.0.min.js"></script>
+    <script src="/semantic/2.2.6/semantic.min.js"></script>
+    <link rel="stylesheet" href="/assets/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/weather-icons/css/weather-icons.css">
+    <script src="/assets/featherlight-1.5.0/featherlight.min.js"></script>
+    <link rel="stylesheet" href="/assets/featherlight-1.5.0/featherlight.min.css">
+
+    <script src="/assets/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="/assets/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+
+    <link rel="stylesheet" href="/assets/admin.css">
+    <link rel="stylesheet" href="/assets/pulse.css">
+    <link rel="stylesheet" href="/assets/styles.3.css">
+    <link rel="stylesheet" href="/site/styles.1.css">
+    <link rel="stylesheet" href="/assets/carbon.css">
+    <script src="/assets/photo-albums/justified-layout.js"></script>
+    <script src="/assets/photo-albums/photo-layout.js"></script>
+    <script src="/assets/js-cookie.js"></script>
+
+    <link rel="stylesheet" href="/assets/story.css">
+    <script src="/assets/story.js"></script>
+
+    <link rel="openid.delegate" href="https://aaronparecki.com/">
+    <link rel="openid.server" href="https://openid.indieauth.com/openid">
+
+
+  </head>
+  <body>
+
+    <div class="sticky-footer-content">
+      <div class="top-bar">
+        <div class="ui container">
+          <form action="/search" method="get" class="search item">
+            <div class="ui icon input">
+              <input type="text" name="q" placeholder="Search..." value="">
+              <i class="search icon"></i>
+            </div>
+          </form>
+                      <span class="item">89&deg;F</span>
+            <span class="weather item">
+              <i class="wi wi-day-cloudy" title="Partly Cloudy in Portland"></i>
+            </span>
+                                <span class="time item"></span>
+                                <span class="battery item"></span>
+                    <div id="logged-in-menu">
+                          <span class="item action-buttons">
+      <a href="#" class="admin-edit-post"><i class="pencil icon"></i></a>
+    <a href="/settings"><i class="setting icon"></i></a>
+  <a href="/logout"><i class="sign out icon"></i></a>
+</span>
+<div class="ui modal admin-edit-post-modal">
+  <i class="close icon"></i>
+  <div class="header">Edit Post</div>
+  <div class="content">
+
+    <div class="ui top attached tabular menu">
+      <a class="item active" data-tab="details">Details</a>
+      <a class="item" data-tab="syndication">Syndication</a>
+      <a class="item" data-tab="visibility">Visibility</a>
+      <a class="item" data-tab="maintenance">Maintenance</a>
+    </div>
+    <div class="ui bottom attached tab segment active" data-tab="details">
+
+        <div class="inline fields">
+          <label>Date</label>
+          <div class="ui left icon input" style="min-width: 300px;">
+            <input type="text" class="edit-date" style="padding:0.3em 1em;">
+            <i class="calendar icon"></i>
+          </div>
+        </div>
+
+        <div class="inline fields" style="margin-top: 4px;">
+          <label>Slug</label>
+          <div class="ui left icon input" style="min-width: 300px;">
+            <input type="text" class="edit-slug" style="padding:0.3em 1em;">
+            <i class="linkify icon"></i>
+          </div>
+        </div>
+
+        <h3>Tags</h3>
+        <div class="tags" style="margin-right: 4px; margin-bottom: 4px; float: left"></div>
+        <div class="ui small left icon input new-tags">
+          <input type="text" placeholder="" style="padding:0.3em 1em;">
+          <i class="tag icon"></i>
+        </div>
+
+        <h3>Channels</h3>
+        <div class="ui form new-channels">
+          <select class="ui fluid dropdown">
+            <option value="">--</option>
+                          <option value="articles">articles</option>
+                          <option value="ate">ate</option>
+                          <option value="bookmarks">bookmarks</option>
+                          <option value="checkins">checkins</option>
+                          <option value="code">code</option>
+                          <option value="drank">drank</option>
+                          <option value="events">events</option>
+                          <option value="flights">flights</option>
+                          <option value="grid">grid</option>
+                          <option value="health">health</option>
+                          <option value="likes">likes</option>
+                          <option value="music">music</option>
+                          <option value="notes">notes</option>
+                          <option value="photos">photos</option>
+                          <option value="presentations">presentations</option>
+                          <option value="primary">primary</option>
+                          <option value="pushups">pushups</option>
+                          <option value="recipes">recipes</option>
+                          <option value="replies">replies</option>
+                          <option value="reposts">reposts</option>
+                          <option value="reviews">reviews</option>
+                          <option value="rides">rides</option>
+                          <option value="rsvps">rsvps</option>
+                          <option value="runs">runs</option>
+                          <option value="scrobbles">scrobbles</option>
+                          <option value="sleep">sleep</option>
+                          <option value="transport">transport</option>
+                          <option value="travel">travel</option>
+                          <option value="venues">venues</option>
+                          <option value="videos">videos</option>
+                          <option value="walks">walks</option>
+                          <option value="watched">watched</option>
+                          <option value="weight">weight</option>
+                      </select>
+        </div>
+        <div class="channels" style="margin-right: 4px; margin-top: 4px;"></div>
+
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="syndication">
+
+      <h3>Syndication URLs</h3>
+      <div class="syndications"></div>
+      <div class="ui left icon input new-syndication">
+        <input type="text" placeholder="" style="padding:0.3em 1em;">
+        <i class="linkify icon"></i>
+      </div>
+
+      <h3>Syndicate</h3>
+      <div class="syndicate-to"></div>
+      <div style="clear:both;"></div>
+
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="visibility">
+
+      <h3>Status</h3>
+      <div class="ui form post-status">
+        <select class="ui fluid dropdown">
+          <option value="published">Published</option>
+          <option value="draft">Draft</option>
+        </select>
+      </div>
+
+      <h3>Audience</h3>
+
+
+      <h3>Privacy</h3>
+
+
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="maintenance">
+
+      <h3>Rebuild Index</h3>
+      <p>Rebuild the database index from the copy on disk.</p>
+      <button class="ui button maintenance" data-task="rebuild_index">Rebuild Index</button>
+
+      <h3>Regenerate Map</h3>
+      <p>If this post contains geo data, this button will regenerate the map.</p>
+      <button class="ui button maintenance" data-task="generate_map">Regenerate Map</button>
+
+    </div>
+
+  </div>
+  <div class="actions">
+    <div class="error" style="float: left; color: #963131; padding-top: 0.7em;"></div>
+    <button class="ui red delete button">Delete</button>
+    <button class="ui cancel button">Cancel</button>
+    <button class="ui primary save button">Save</button>
+  </div>
+</div>
+                      </div>
+        </div>
+      </div>
+              <div class="ui container">
+        <div class="site-header">
+  <div class="align-bottom">
+
+    <div class="left">
+      <h1><a href="/">Aaron Parecki</a></h1>
+    </div>
+
+    <div class="right">
+      <ul>
+                  <li><a href="/articles">Articles</a></li>
+                  <li><a href="/notes">Notes</a></li>
+                <li><a href="/projects/">Projects</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+        <div class="post-list">
+  <ul>
+    <li class="h-entry post-entry    post " id="post-id-41472">
+      <div style="" class="content-area   has-responses ">
+                <div class="pad">
+        <div class="post-text e-content p-name content-type-plain">Pretty great to see a new self-hosted IndieAuth server! Congrats <a href="https://twitter.com/nilshauk">@nilshauk</a>, and great project name! <a href="https://twitter.com/nilshauk/status/1017485223716630528"><span class="protocol">https://</span>twitter.com/nilshauk/status/1017485223716630528</a></div>
+      </div>
+            <div class="metaline pad">
+  <i class="marker icon"></i>
+      <span class="p-location h-adr">
+          <span class="p-locality">Portland</span>,
+        <span class="p-region">Oregon</span>,
+        <span class="p-country">USA</span>
+        <span class="weather">
+      <span>&bull;</span>
+              <i class="wi wi-day-sunny" title="Clear"></i>
+                    84&deg;F
+          </span>
+              <data class="p-latitude" value="45.5354"></data>
+      <data class="p-longitude" value="-122.62099"></data>
+      </span>
+  </div>
+
+      <div class="metaline tags pad" style="float: right;">
+      #<a href="/tag/indieauth" class="p-category">indieauth</a>
+  </div>
+    <div class="metaline pad">
+      <a href="https://aaronparecki.com/2018/07/12/10/indieauth" class="u-url">
+      <time class="dt-published" datetime="2018-07-12T13:02:04-07:00">
+        Thu, Jul 12, 2018 1:02pm -07:00
+      </time>
+    </a>
+        <span class="syndications">
+              <a href="https://twitter.com/aaronpk/status/1017500609631567872" class="u-syndication syndication"><i class="twitter icon"></i></a>
+          </span>
+  </div>
+<a class="u-author" href="/"></a>
+    <div class="metaline responses-summary pad">
+      <span><i class="star empty icon"></i> <span class="p-pk-num-likes">6</span> likes</span>
+            <span><i class="comment outline icon"></i> <span class="p-pk-num-replies">3</span> replies</span>
+        </div>
+
+  <div style="clear:both;"></div>
+</div>
+  <div class="responses" id="responses">
+      <ul class="facepile">
+    <li class="group"><i class="star empty icon"></i></li>
+    <!-- TODO: add overlay with twitter/facebook/instagram icon depending on author URL -->
+          <li class="p-like h-cite">
+        <a href="https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-75276568" class="u-url">
+          <span class="p-author h-card">
+                          <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/40aa1ddaef3cf2abc9392d731dd6f150b2ec097243351c2c1a46f061c4127e2c.jpg" height="36">
+                        <a style="display:none;" class="p-name u-url" href="https://twitter.com/nilshauk">Nils Norman Hauk&aring;s</a>
+          </span>
+        </a>
+      </li>
+          <li class="p-like h-cite">
+        <a href="https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-798123" class="u-url">
+          <span class="p-author h-card">
+                          <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/fc0678c0424632fb0ce6a0d5bdd2697bf8edbb9086e819f2453aadf1eeb58d5a.jpg" height="36">
+                        <a style="display:none;" class="p-name u-url" href="https://twitter.com/kmelve">Knut Melv&aelig;r</a>
+          </span>
+        </a>
+      </li>
+          <li class="p-like h-cite">
+        <a href="https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-1202561" class="u-url">
+          <span class="p-author h-card">
+                          <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/2a0f14011833a9deca627931442e780a6e00fb3221e7c98a4b1045794d05f8dc.jpg" height="36">
+                        <a style="display:none;" class="p-name u-url" href="https://twitter.com/sull">Michael Sullivan</a>
+          </span>
+        </a>
+      </li>
+          <li class="p-like h-cite">
+        <a href="https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-16114199" class="u-url">
+          <span class="p-author h-card">
+                          <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/36de4c45d8c4c4b420607c8e490e8777ec5b658dfc57b1d9f90b54636dc8c3e7.jpg" height="36">
+                        <a style="display:none;" class="p-name u-url" href="https://twitter.com/cathieleblanc">cathieleblanc</a>
+          </span>
+        </a>
+      </li>
+          <li class="p-like h-cite">
+        <a href="https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-961661" class="u-url">
+          <span class="p-author h-card">
+                          <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/ce4f2f04b015ad5bd826584ceac5e6dbf0c8c1b9be2bdce80df7bc7a1d83bdcd.jpeg" height="36">
+                        <a style="display:none;" class="p-name u-url" href="https://twitter.com/tomwiththeweath">TomWithTheWeather</a>
+          </span>
+        </a>
+      </li>
+          <li class="p-like h-cite">
+        <a href="https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-18331731" class="u-url">
+          <span class="p-author h-card">
+                          <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/500a4883279015b8c0bf56f607034761ddc0c366c0275632662441f25af5351c.png" height="36">
+                        <a style="display:none;" class="p-name u-url" href="https://twitter.com/voxpelli">Pelle Wessman</a>
+          </span>
+        </a>
+      </li>
+      </ul>
+  <div style="clear:both;"></div>
+
+
+
+    <form class="webmention-form ui form" action="https://webmention.io/aaronpk/webmention" method="post">
+    <div class="fields">
+      <div class="twelve wide field">
+        <label>Have you written a <a href="https://indieweb.org/responses">response</a> to this? Let me know the URL:</label>
+        <input type="url" name="source" class="url">
+      </div>
+      <div class="four wide field">
+        <label>&nbsp;</label>
+        <input type="submit" class="ui submit button" value="Send Webmention">
+      </div>
+    </div>
+    <div class="status hidden">
+      <div class="ui message"></div>
+    </div>
+    <input type="hidden" name="target" value="https://aaronparecki.com/2018/07/12/10/indieauth">
+  </form>
+
+
+
+          <ul>
+      <li class="p-comment h-cite comment">
+      <div class="p-author h-card author">
+                  <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/40aa1ddaef3cf2abc9392d731dd6f150b2ec097243351c2c1a46f061c4127e2c.jpg" width="48">
+                          <a class="p-name u-url" href="http://nilsnh.no">Nils Norman Hauk&aring;s</a>
+          <a class="author_url" href="http://nilsnh.no">nilsnh.no</a>
+              </div>
+                                <!-- TODO: should this be e-summary if I've truncated it or if it came from the summary? -->
+          <div class="e-content p-name comment-content">Thank you very much. :)</div>
+                          <div class="metaline">
+        <a href="https://twitter.com/nilshauk/status/1017501170376560640" class="u-url">
+                    <time class="dt-published" datetime="2018-07-12T20:09:17+00:00">
+            Thu, Jul 12, 2018 8:09pm +00:00
+          </time>
+        </a>
+                  (<a href="https://brid-gy.appspot.com/comment/twitter/aaronpk/1017500609631567872/1017501170376560640">via brid-gy.appspot.com</a>)
+                      </div>
+    </li>
+      <li class="p-comment h-cite comment">
+      <div class="p-author h-card author">
+                  <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/40aa1ddaef3cf2abc9392d731dd6f150b2ec097243351c2c1a46f061c4127e2c.jpg" width="48">
+                          <a class="p-name u-url" href="http://nilsnh.no">Nils Norman Hauk&aring;s</a>
+          <a class="author_url" href="http://nilsnh.no">nilsnh.no</a>
+              </div>
+                                <!-- TODO: should this be e-summary if I've truncated it or if it came from the summary? -->
+          <div class="e-content p-name comment-content">Looking forward to learning more about IndieWeb and hopefully contribute some more. :) I'm like, "surely we can build cooler and more usable services than present silo offerings."</div>
+                          <div class="metaline">
+        <a href="https://twitter.com/nilshauk/status/1017512103199068160" class="u-url">
+                    <time class="dt-published" datetime="2018-07-12T20:52:44+00:00">
+            Thu, Jul 12, 2018 8:52pm +00:00
+          </time>
+        </a>
+                  (<a href="https://brid-gy.appspot.com/comment/twitter/aaronpk/1017500609631567872/1017512103199068160">via brid-gy.appspot.com</a>)
+                      </div>
+    </li>
+      <li class="p-comment h-cite comment">
+      <div class="p-author h-card author">
+                  <img class="u-photo" src="https://pkcdn.xyz/pbs.twimg.com/2a0f14011833a9deca627931442e780a6e00fb3221e7c98a4b1045794d05f8dc.jpg" width="48">
+                          <a class="p-name u-url" href="https://keybase.io/sull">Michael Sullivan</a>
+          <a class="author_url" href="https://keybase.io/sull">keybase.io/sull</a>
+              </div>
+                                <!-- TODO: should this be e-summary if I've truncated it or if it came from the summary? -->
+          <div class="e-content p-name comment-content">I was just talking about the words “cellar door” the other day. Cool project. <br /><br /><a href="https://en.m.wikipedia.org/wiki/Cellar_door" rel="nofollow">en.m.wikipedia.org/wiki/Cellar_do…</a></div>
+                          <div class="metaline">
+        <a href="https://twitter.com/sull/status/1017546958590922758" class="u-url">
+                    <time class="dt-published" datetime="2018-07-12T23:11:14+00:00">
+            Thu, Jul 12, 2018 11:11pm +00:00
+          </time>
+        </a>
+                  (<a href="https://brid-gy.appspot.com/comment/twitter/aaronpk/1017500609631567872/1017546958590922758">via brid-gy.appspot.com</a>)
+                      </div>
+    </li>
+    </ul>
+  <div style="clear:both;"></div>
+
+
+</div>
+  </li>
+  </ul>
+
+    <div class="additional-info">
+          Posted in
+              <a href="/notes" class="u-p3k-channel">/notes</a>
+                     using
+      <a href="https://quill.p3k.io/">quill.p3k.io</a>
+        <!-- TODO: show privacy/visibility here, and allow editing if logged in -->
+    <!-- TODO: allow editing tags and channels here -->
+  </div>
+
+</div>
+        </div>
+          </div>
+
+    <footer class="sticky-footer">
+              <div class="subfooter">
+          <div class="ui container h-card">
+  <div class="about">
+    <div class="image"><a href="/" class="u-url u-uid"><img src="/images/profile.jpg" class="u-photo"></a></div>
+    <div class="bio">
+      <div class="p-note">
+        <p>Hi, I'm <span class="p-name">Aaron<span style="display:none;"> Parecki</span></span>,  co-founder of
+<a class="p-org h-card" href="https://indieweb.org/">IndieWebCamp</a>.
+I maintain <a class="p-org h-card" href="https://oauth.net/">oauth.net</a>, <a href="/oauth/">write and consult about OAuth</a>, and
+am the editor of several <a href="/w3c/">W3C specfications</a>. I record <a href="https://backpedal.tv">videos for local conferences</a> and help run a <a href="https://streampdx.com">podcast studio in Portland</a>.</p>
+
+<p>I wrote <a href="https://100.aaronparecki.com/">100 songs in 100 days</a>! I've been <a href="/gps/">tracking my location</a> since 2008,
+and write down everything I <a href="/ate">eat</a> and <a href="/drank">drink</a>.
+I've <a href="/presentations">spoken</a> at conferences around the world about
+<a href="/presentations?tag=indieweb">owning your data</a>,
+<a href="/oauth/">OAuth</a>,
+<a href="/presentations?tag=quantifiedself">quantified self</a>,
+and explained <a href="https://www.youtube.com/watch?v=FGVJ0eXTRpw">why R is a vowel</a>.</p> <time class="dt-bday" datetime="--12-28"></time>      </div>
+    </div>
+    <div class="right">
+      <div class="follow">
+        <a href="/follow?path=primary" class="ui primary button">Follow</a>
+      </div>
+      <div class="orgs">
+        <ul>
+            <li class="p-org h-card">
+              <img src="/images/okta.png" alt="" class="u-photo">
+              <a href="https://developer.okta.com/" class="u-url">
+                <span class="p-name">Okta</span>
+              </a>
+              <a class="p-role" href="https://developer.okta.com/blog/2018/03/27/welcome-aaron-okta">Developer Advocate</a>
+            </li>
+            <li class="p-org h-card">
+              <img src="/images/indiewebcamp.png" alt="" class="u-photo">
+              <a href="https://indieweb.org/" class="u-url">
+                <span class="p-name">IndieWebCamp</span>
+              </a>
+              <a class="p-role" href="https://indieweb.org/founders">Founder</a>
+            </li>
+            <li class="p-org h-card">
+              <img src="/images/w3c.png" alt="" class="u-photo">
+              <a href="https://www.w3.org/" class="u-url">
+                <span class="p-name">W3C</span>
+              </a>
+              <a class="p-role" href="/w3c/">Editor</a>
+            </li>
+            <li class="p-org h-card">
+              <img src="/images/streampdx.png" alt="" class="u-photo">
+              <a href="https://streampdx.com" class="u-url">
+                <span class="p-name">Stream PDX</span>
+              </a>
+              <a class="p-role" href="https://streampdx.com/who">Co-Founder</a>
+            </li>
+            <li class="p-org h-card">
+              <img src="/images/backpedal.png" alt="" class="u-photo">
+              <a href="https://backpedal.tv" class="u-url">backpedal.tv</a>
+            </li>
+            <li><br></li>
+            <!--
+            <li><img src="/images/spotify.ico" alt=""> <a href="/sunshine-indie-pop/">Sunshine Indie Pop</a></li>
+            -->
+            <li>
+              <img src="/images/microphone.png" alt="">
+              <a class="p-callsign u-url" href="https://w7apk.com">W7APK</a>
+            </li>
+            <li>⭐️ <a href="https://aaronparecki.com/life-stack/">Life Stack</a></li>
+          </ul>
+
+<link rel="pgpkey" href="/key.txt">
+<link rel="me" href="sms:+15035678642">
+<link rel="me" href="https://micro.blog/aaronpk">      </div>
+      <div class="search">
+        <form action="/search" method="get">
+          <div class="ui fluid icon input">
+            <input type="text" name="q" placeholder="Search..." value="">
+            <i class="search icon"></i>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="channels">
+    <ul class="footer-links">
+              <li><a href="/all">All</a></li>
+              <li><a href="/articles">Articles</a></li>
+              <li><a href="/bookmarks">Bookmarks</a></li>
+              <li><a href="/notes">Notes</a></li>
+              <li><a href="/photos">Photos</a></li>
+              <li><a href="/replies">Replies</a></li>
+              <li><a href="/reviews">Reviews</a></li>
+              <li><a href="/sleep">Sleep</a></li>
+              <li><a href="/travel">Travel</a></li>
+            <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div>
+    <div class="elsewhere">
+    <ul class="footer-links">
+              <li><a href="https://twitter.com/aaronpk" rel=""><i class="twitter icon"></i></a></li>
+              <li><a href="https://twitter.com/w7apk" rel=""><i class="twitter icon"></i></a></li>
+              <li><a href="https://facebook.com/aaronpk" rel=""><i class="facebook icon"></i></a></li>
+              <li><a href="https://instagram.com/aaronpk" rel=""><i class="instagram icon"></i></a></li>
+              <li><a href="http://flickr.com/aaronpk" rel=""><i class="flickr icon"></i></a></li>
+              <li><a href="https://github.com/aaronpk" rel=""><i class="github icon"></i></a></li>
+              <li><a href="https://youtube.com/TheAaronpk" rel=""><i class="youtube play icon"></i></a></li>
+              <li><a href="https://google.com/+aaronpk" rel=""><i class="google plus icon"></i></a></li>
+              <li><a href="http://foursquare.com/aaronpk" rel=""><i class="foursquare icon"></i></a></li>
+              <li><a href="http://www.linkedin.com/in/aaronparecki" rel=""><i class="linkedin icon"></i></a></li>
+              <li><a href="http://aaronpk.eventbrite.com/" rel=""><i class="icon-eventbrite icon"></i></a></li>
+              <li><a href="http://www.slideshare.net/aaronpk" rel=""><i class="slideshare icon"></i></a></li>
+              <li><a href="https://www.beeminder.com/aaronpk" rel=""><i class="icon-beeminder icon"></i></a></li>
+              <li><a href="http://www.colourlovers.com/lover/aaronpk" rel=""><i class="icon-colourlovers icon"></i></a></li>
+              <li><a href="http://www.last.fm/user/aaron_pk" rel=""><i class="lastfm icon"></i></a></li>
+              <li><a href="https://www.w3.org/users/59996" rel=""><i class="icon-w3c icon"></i></a></li>
+              <li><a href="https://keybase.io/aaronpk/" rel=""><i class="key icon"></i></a></li>
+              <li><a href="https://cash.me/$aaronpk" rel=""><i class="icon-squarecash icon"></i></a></li>
+              <li><a href="https://venmo.com/aaronpk" rel=""><i class="icon-venmo icon"></i></a></li>
+              <li><a href="https://paypal.me/apk" rel=""><i class="paypal icon"></i></a></li>
+              <li><a href="mailto:aaron@parecki.com" rel=""><i class="mail icon"></i></a></li>
+          </ul>
+  </div>
+</div>
+        </div>
+
+      <div class="footer">
+        <a href="/login" class="hidden-login"></a>
+        <div>
+          <span>&copy; 1999-2018 by Aaron Parecki.</span>
+          <span>Powered by <a href="http://p3k.io/">p3k</a>.</span>
+          <span>This site supports <a href="https://webmention.net/">Webmention</a>.</span>
+        </div>
+        <div>
+          <span>Except where otherwise noted, text content on this site is licensed
+            under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 License</a>.</span>
+        </div>
+        <div class="badges" style="padding-top: 8px;">
+          <a href="https://indieweb.org/"><img src="/assets/badges/indieweb.png" width="80" height="15" alt="IndieWebCamp" style="image-rendering: pixelated;"></a>
+          <a href="http://microformats.org/"><img src="/assets/badges/microformats.png" width="80" height="15" alt="Microformats" style="image-rendering: pixelated;"></a>
+          <a href="https://indieweb.org/Webmention"><img src="/assets/badges/webmention.png" width="80" height="15" alt="Webmention" style="image-rendering: pixelated;"></a>
+          <img src="/assets/badges/w3c-valid-html.png" width="80" height="15" alt="W3C HTML5" style="image-rendering: pixelated;">
+          <a href="http://creativecommons.org/licenses/by/3.0/"><img src="/assets/badges/cc-commons.png" width="80" height="15" alt="Creative Commons" style="image-rendering: pixelated;"></a>
+        </div>
+              </div>
+    </footer>
+
+    <input type="hidden" id="permalink" value="https://aaronparecki.com/2018/07/12/10/indieauth">
+          <input type="hidden" id="csrf-token" value="Y0HcOvr1tvnBQM4HyRMieFgli4302ByUPMC8w24Q">
+
+    <script src="/assets/script.js"></script>
+    <script src="/assets/webmention.js"></script>
+
+    <script src="/assets/admin.js"></script>
+
+
+  </body>
+</html>

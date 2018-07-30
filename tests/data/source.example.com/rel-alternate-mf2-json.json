@@ -1,0 +1,692 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: application/mf2+json
+Connection: keep-alive
+
+{
+    "items": [
+        {
+            "type": [
+                "h-entry"
+            ],
+            "properties": {
+                "name": [
+                    "Pretty great to see a new self-hosted IndieAuth server! Congrats @nilshauk, and great project name! https://twitter.com/nilshauk/status/1017485223716630528"
+                ],
+                "category": [
+                    "indieauth"
+                ],
+                "url": [
+                    "https://aaronparecki.com/2018/07/12/10/indieauth"
+                ],
+                "syndication": [
+                    "https://twitter.com/aaronpk/status/1017500609631567872"
+                ],
+                "author": [
+                    "https://aaronparecki.com/"
+                ],
+                "published": [
+                    "2018-07-12T13:02:04-07:00"
+                ],
+                "content": [
+                    {
+                        "html": "Pretty great to see a new self-hosted IndieAuth server! Congrats <a href=\"https://twitter.com/nilshauk\">@nilshauk</a>, and great project name! <a href=\"https://twitter.com/nilshauk/status/1017485223716630528\"><span class=\"protocol\">https://</span>twitter.com/nilshauk/status/1017485223716630528</a>",
+                        "value": "Pretty great to see a new self-hosted IndieAuth server! Congrats @nilshauk, and great project name! https://twitter.com/nilshauk/status/1017485223716630528"
+                    }
+                ],
+                "location": [
+                    {
+                        "type": [
+                            "h-adr"
+                        ],
+                        "properties": {
+                            "locality": [
+                                "Portland"
+                            ],
+                            "region": [
+                                "Oregon"
+                            ],
+                            "country": [
+                                "USA"
+                            ],
+                            "latitude": [
+                                "45.5354"
+                            ],
+                            "longitude": [
+                                "-122.62099"
+                            ]
+                        },
+                        "value": "Portland, Oregon, USA \u2022 84\u00b0F"
+                    }
+                ],
+                "like": [
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "url": [
+                                "https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-75276568"
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "Nils Norman Hauk\u00e5s"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/40aa1ddaef3cf2abc9392d731dd6f150b2ec097243351c2c1a46f061c4127e2c.jpg"
+                                        ],
+                                        "url": [
+                                            "https://twitter.com/nilshauk"
+                                        ]
+                                    },
+                                    "value": "Nils Norman Hauk\u00e5s"
+                                }
+                            ]
+                        },
+                        "value": "https://pkcdn.xyz/pbs.twimg.com/40aa1ddaef3cf2abc9392d731dd6f150b2ec097243351c2c1a46f061c4127e2c.jpg Nils Norman Hauk\u00e5s"
+                    },
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "url": [
+                                "https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-798123"
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "Knut Melv\u00e6r"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/fc0678c0424632fb0ce6a0d5bdd2697bf8edbb9086e819f2453aadf1eeb58d5a.jpg"
+                                        ],
+                                        "url": [
+                                            "https://twitter.com/kmelve"
+                                        ]
+                                    },
+                                    "value": "Knut Melv\u00e6r"
+                                }
+                            ]
+                        },
+                        "value": "https://pkcdn.xyz/pbs.twimg.com/fc0678c0424632fb0ce6a0d5bdd2697bf8edbb9086e819f2453aadf1eeb58d5a.jpg Knut Melv\u00e6r"
+                    },
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "url": [
+                                "https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-1202561"
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "Michael Sullivan"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/2a0f14011833a9deca627931442e780a6e00fb3221e7c98a4b1045794d05f8dc.jpg"
+                                        ],
+                                        "url": [
+                                            "https://twitter.com/sull"
+                                        ]
+                                    },
+                                    "value": "Michael Sullivan"
+                                }
+                            ]
+                        },
+                        "value": "https://pkcdn.xyz/pbs.twimg.com/2a0f14011833a9deca627931442e780a6e00fb3221e7c98a4b1045794d05f8dc.jpg Michael Sullivan"
+                    },
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "url": [
+                                "https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-16114199"
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "cathieleblanc"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/36de4c45d8c4c4b420607c8e490e8777ec5b658dfc57b1d9f90b54636dc8c3e7.jpg"
+                                        ],
+                                        "url": [
+                                            "https://twitter.com/cathieleblanc"
+                                        ]
+                                    },
+                                    "value": "cathieleblanc"
+                                }
+                            ]
+                        },
+                        "value": "https://pkcdn.xyz/pbs.twimg.com/36de4c45d8c4c4b420607c8e490e8777ec5b658dfc57b1d9f90b54636dc8c3e7.jpg cathieleblanc"
+                    },
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "url": [
+                                "https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-961661"
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "TomWithTheWeather"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/ce4f2f04b015ad5bd826584ceac5e6dbf0c8c1b9be2bdce80df7bc7a1d83bdcd.jpeg"
+                                        ],
+                                        "url": [
+                                            "https://twitter.com/tomwiththeweath"
+                                        ]
+                                    },
+                                    "value": "TomWithTheWeather"
+                                }
+                            ]
+                        },
+                        "value": "https://pkcdn.xyz/pbs.twimg.com/ce4f2f04b015ad5bd826584ceac5e6dbf0c8c1b9be2bdce80df7bc7a1d83bdcd.jpeg TomWithTheWeather"
+                    },
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "url": [
+                                "https://twitter.com/aaronpk/status/1017500609631567872#favorited-by-18331731"
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "Pelle Wessman"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/500a4883279015b8c0bf56f607034761ddc0c366c0275632662441f25af5351c.png"
+                                        ],
+                                        "url": [
+                                            "https://twitter.com/voxpelli"
+                                        ]
+                                    },
+                                    "value": "Pelle Wessman"
+                                }
+                            ]
+                        },
+                        "value": "https://pkcdn.xyz/pbs.twimg.com/500a4883279015b8c0bf56f607034761ddc0c366c0275632662441f25af5351c.png Pelle Wessman"
+                    }
+                ],
+                "comment": [
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "name": [
+                                "Thank you very much. :)"
+                            ],
+                            "url": [
+                                "https://twitter.com/nilshauk/status/1017501170376560640"
+                            ],
+                            "published": [
+                                "2018-07-12T20:09:17+00:00"
+                            ],
+                            "content": [
+                                {
+                                    "html": "Thank you very much. :)",
+                                    "value": "Thank you very much. :)"
+                                }
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "Nils Norman Hauk\u00e5s"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/40aa1ddaef3cf2abc9392d731dd6f150b2ec097243351c2c1a46f061c4127e2c.jpg"
+                                        ],
+                                        "url": [
+                                            "http://nilsnh.no"
+                                        ]
+                                    },
+                                    "value": "Nils Norman Hauk\u00e5s"
+                                }
+                            ]
+                        },
+                        "value": "Thank you very much. :)"
+                    },
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "name": [
+                                "Looking forward to learning more about IndieWeb and hopefully contribute some more. :) I'm like, \"surely we can build cooler and more usable services than present silo offerings.\""
+                            ],
+                            "url": [
+                                "https://twitter.com/nilshauk/status/1017512103199068160"
+                            ],
+                            "published": [
+                                "2018-07-12T20:52:44+00:00"
+                            ],
+                            "content": [
+                                {
+                                    "html": "Looking forward to learning more about IndieWeb and hopefully contribute some more. :) I'm like, \"surely we can build cooler and more usable services than present silo offerings.\"",
+                                    "value": "Looking forward to learning more about IndieWeb and hopefully contribute some more. :) I'm like, \"surely we can build cooler and more usable services than present silo offerings.\""
+                                }
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "Nils Norman Hauk\u00e5s"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/40aa1ddaef3cf2abc9392d731dd6f150b2ec097243351c2c1a46f061c4127e2c.jpg"
+                                        ],
+                                        "url": [
+                                            "http://nilsnh.no"
+                                        ]
+                                    },
+                                    "value": "Nils Norman Hauk\u00e5s"
+                                }
+                            ]
+                        },
+                        "value": "Looking forward to learning more about IndieWeb and hopefully contribute some more. :) I'm like, \"surely we can build cooler and more usable services than present silo offerings.\""
+                    },
+                    {
+                        "type": [
+                            "h-cite"
+                        ],
+                        "properties": {
+                            "name": [
+                                "I was just talking about the words \u201ccellar door\u201d the other day. Cool project.\n\nen.m.wikipedia.org/wiki/Cellar_do\u2026"
+                            ],
+                            "url": [
+                                "https://twitter.com/sull/status/1017546958590922758"
+                            ],
+                            "published": [
+                                "2018-07-12T23:11:14+00:00"
+                            ],
+                            "content": [
+                                {
+                                    "html": "I was just talking about the words &#x201C;cellar door&#x201D; the other day. Cool project. <br><br><a href=\"https://en.m.wikipedia.org/wiki/Cellar_door\" rel=\"nofollow\">en.m.wikipedia.org/wiki/Cellar_do&#x2026;</a>",
+                                    "value": "I was just talking about the words \u201ccellar door\u201d the other day. Cool project.\n\nen.m.wikipedia.org/wiki/Cellar_do\u2026"
+                                }
+                            ],
+                            "author": [
+                                {
+                                    "type": [
+                                        "h-card"
+                                    ],
+                                    "properties": {
+                                        "name": [
+                                            "Michael Sullivan"
+                                        ],
+                                        "photo": [
+                                            "https://pkcdn.xyz/pbs.twimg.com/2a0f14011833a9deca627931442e780a6e00fb3221e7c98a4b1045794d05f8dc.jpg"
+                                        ],
+                                        "url": [
+                                            "https://keybase.io/sull"
+                                        ]
+                                    },
+                                    "value": "Michael Sullivan"
+                                }
+                            ]
+                        },
+                        "value": "I was just talking about the words \u201ccellar door\u201d the other day. Cool project.\n\nen.m.wikipedia.org/wiki/Cellar_do\u2026"
+                    }
+                ]
+            }
+        },
+        {
+            "type": [
+                "h-card"
+            ],
+            "properties": {
+                "note": [
+                    "Hi, I'm Aaron Parecki, co-founder of IndieWebCamp. I maintain oauth.net, write and consult about OAuth, and am the editor of several W3C specfications. I record videos for local conferences and help run a podcast studio in Portland.\nI wrote 100 songs in 100 days! I've been tracking my location since 2008, and write down everything I eat and drink. I've spoken at conferences around the world about owning your data, OAuth, quantified self, and explained why R is a vowel."
+                ],
+                "name": [
+                    "Aaron Parecki"
+                ],
+                "callsign": [
+                    "W7APK"
+                ],
+                "url": [
+                    "https://aaronparecki.com/",
+                    "https://w7apk.com"
+                ],
+                "uid": [
+                    "https://aaronparecki.com/"
+                ],
+                "photo": [
+                    "https://aaronparecki.com/images/profile.jpg"
+                ],
+                "bday": [
+                    "--12-28"
+                ],
+                "org": [
+                    {
+                        "type": [
+                            "h-card"
+                        ],
+                        "properties": {
+                            "name": [
+                                "IndieWebCamp"
+                            ],
+                            "url": [
+                                "https://indieweb.org/"
+                            ]
+                        },
+                        "value": "IndieWebCamp"
+                    },
+                    {
+                        "type": [
+                            "h-card"
+                        ],
+                        "properties": {
+                            "name": [
+                                "oauth.net"
+                            ],
+                            "url": [
+                                "https://oauth.net/"
+                            ]
+                        },
+                        "value": "oauth.net"
+                    },
+                    {
+                        "type": [
+                            "h-card"
+                        ],
+                        "properties": {
+                            "name": [
+                                "Okta"
+                            ],
+                            "role": [
+                                "Developer Advocate"
+                            ],
+                            "photo": [
+                                "https://aaronparecki.com/images/okta.png"
+                            ],
+                            "url": [
+                                "https://developer.okta.com/"
+                            ]
+                        },
+                        "value": "Okta"
+                    },
+                    {
+                        "type": [
+                            "h-card"
+                        ],
+                        "properties": {
+                            "name": [
+                                "IndieWebCamp"
+                            ],
+                            "role": [
+                                "Founder"
+                            ],
+                            "photo": [
+                                "https://aaronparecki.com/images/indiewebcamp.png"
+                            ],
+                            "url": [
+                                "https://indieweb.org/"
+                            ]
+                        },
+                        "value": "IndieWebCamp"
+                    },
+                    {
+                        "type": [
+                            "h-card"
+                        ],
+                        "properties": {
+                            "name": [
+                                "W3C"
+                            ],
+                            "role": [
+                                "Editor"
+                            ],
+                            "photo": [
+                                "https://aaronparecki.com/images/w3c.png"
+                            ],
+                            "url": [
+                                "https://www.w3.org/"
+                            ]
+                        },
+                        "value": "W3C"
+                    },
+                    {
+                        "type": [
+                            "h-card"
+                        ],
+                        "properties": {
+                            "name": [
+                                "Stream PDX"
+                            ],
+                            "role": [
+                                "Co-Founder"
+                            ],
+                            "photo": [
+                                "https://aaronparecki.com/images/streampdx.png"
+                            ],
+                            "url": [
+                                "https://streampdx.com"
+                            ]
+                        },
+                        "value": "Stream PDX"
+                    },
+                    {
+                        "type": [
+                            "h-card"
+                        ],
+                        "properties": {
+                            "photo": [
+                                "https://aaronparecki.com/images/backpedal.png"
+                            ],
+                            "url": [
+                                "https://backpedal.tv"
+                            ],
+                            "name": [
+                                "backpedal.tv"
+                            ]
+                        },
+                        "value": "backpedal.tv"
+                    }
+                ]
+            }
+        }
+    ],
+    "rels": {
+        "alternate": [
+            "https://aaronparecki.com/2018/07/12/10/indieauth.json",
+            "https://aaronparecki.com/2018/07/12/10/indieauth.jf2",
+            "https://aaronparecki.com/2018/07/12/10/indieauth.as2"
+        ],
+        "webmention": [
+            "https://webmention.io/aaronpk/webmention"
+        ],
+        "stylesheet": [
+            "https://aaronparecki.com/semantic/2.2.6/semantic.min.css",
+            "https://aaronparecki.com/assets/icomoon/style.css",
+            "https://aaronparecki.com/assets/weather-icons/css/weather-icons.css",
+            "https://aaronparecki.com/assets/featherlight-1.5.0/featherlight.min.css",
+            "https://aaronparecki.com/assets/jquery-ui-1.11.4.custom/jquery-ui.min.css",
+            "https://aaronparecki.com/assets/admin.css",
+            "https://aaronparecki.com/assets/pulse.css",
+            "https://aaronparecki.com/assets/styles.3.css",
+            "https://aaronparecki.com/site/styles.1.css",
+            "https://aaronparecki.com/assets/carbon.css",
+            "https://aaronparecki.com/assets/story.css"
+        ],
+        "openid.delegate": [
+            "https://aaronparecki.com/"
+        ],
+        "openid.server": [
+            "https://openid.indieauth.com/openid"
+        ],
+        "nofollow": [
+            "https://en.m.wikipedia.org/wiki/Cellar_door"
+        ],
+        "pgpkey": [
+            "https://aaronparecki.com/key.txt"
+        ],
+        "me": [
+            "sms:+15035678642",
+            "https://micro.blog/aaronpk"
+        ],
+        "license": [
+            "http://creativecommons.org/licenses/by/3.0/"
+        ]
+    },
+    "rel-urls": {
+        "https://aaronparecki.com/2018/07/12/10/indieauth.json": {
+            "type": "application/mf2+json",
+            "rels": [
+                "alternate"
+            ]
+        },
+        "https://aaronparecki.com/2018/07/12/10/indieauth.jf2": {
+            "type": "application/jf2+json",
+            "rels": [
+                "alternate"
+            ]
+        },
+        "https://aaronparecki.com/2018/07/12/10/indieauth.as2": {
+            "type": "application/activity+json",
+            "rels": [
+                "alternate"
+            ]
+        },
+        "https://webmention.io/aaronpk/webmention": {
+            "rels": [
+                "webmention"
+            ]
+        },
+        "https://aaronparecki.com/semantic/2.2.6/semantic.min.css": {
+            "type": "text/css",
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/icomoon/style.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/weather-icons/css/weather-icons.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/featherlight-1.5.0/featherlight.min.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/jquery-ui-1.11.4.custom/jquery-ui.min.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/admin.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/pulse.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/styles.3.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/site/styles.1.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/carbon.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/assets/story.css": {
+            "rels": [
+                "stylesheet"
+            ]
+        },
+        "https://aaronparecki.com/": {
+            "rels": [
+                "openid.delegate"
+            ]
+        },
+        "https://openid.indieauth.com/openid": {
+            "rels": [
+                "openid.server"
+            ]
+        },
+        "https://en.m.wikipedia.org/wiki/Cellar_door": {
+            "text": "en.m.wikipedia.org/wiki/Cellar_do\u2026",
+            "rels": [
+                "nofollow"
+            ]
+        },
+        "https://aaronparecki.com/key.txt": {
+            "rels": [
+                "pgpkey"
+            ]
+        },
+        "sms:+15035678642": {
+            "rels": [
+                "me"
+            ]
+        },
+        "https://micro.blog/aaronpk": {
+            "rels": [
+                "me"
+            ]
+        },
+        "http://creativecommons.org/licenses/by/3.0/": {
+            "text": "Creative Commons Attribution 3.0 License",
+            "rels": [
+                "license"
+            ]
+        }
+    }
+}

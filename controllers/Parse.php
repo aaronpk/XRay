@@ -128,6 +128,8 @@ class Parse {
         $data['original'] = $parsed['original'];
       if(isset($parsed['source-format']))
         $data['source-format'] = $parsed['source-format'];
+      if(isset($parsed['url']) && $parsed['url'] != $result['url'])
+        $data['parsed-url'] = $parsed['url'];
 
       return $this->respond($response, 200, $data);
     }

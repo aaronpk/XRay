@@ -1,0 +1,33 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: application/mf2+json
+Connection: keep-alive
+
+{
+    "items": [
+        {
+            "type": [
+                "h-entry"
+            ],
+            "properties": {
+                "content": [
+                    "This should be the content from XRay"
+                ]
+            }
+        }
+    ],
+    "rels": {
+        "alternate": [
+            "http://source.example.com/rel-alternate-priority.json"
+        ]
+    },
+    "rel-urls": {
+        "http://source.example.com/rel-alternate-priority.json": {
+            "type": "application/mf2+json",
+            "rels": [
+                "alternate"
+            ]
+        }
+    }
+}

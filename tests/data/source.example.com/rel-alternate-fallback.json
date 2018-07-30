@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: application/mf2+json
+Connection: keep-alive
+
+{
+    "type": [
+        "h-entry"
+    ],
+    "properties": {
+        "content": [
+            "XRay should not use this content since the JSON must be an entire page parsed result"
+        ]
+    }
+}
