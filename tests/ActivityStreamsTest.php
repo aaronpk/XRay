@@ -53,6 +53,25 @@ class ActivityStreamsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('https://aaronparecki.com/', $data['data']['author']['url']);
   }
 
+  public function testArticle() {
+    $url = 'http://activitystreams.example/article.json';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('activity+json', $data['source-format']);
+    $this->assertEquals('article', $data['data']['post-type']);
+    $this->assertEquals($url, $data['data']['url']);
+    $this->assertEquals('An Article', $data['data']['name']);
+    $this->assertEquals('This is the content of an ActivityStreams article', $data['data']['content']['text']);
+    $this->assertEquals('<p>This is the content of an <b>ActivityStreams</b> article</p>', $data['data']['content']['html']);
+    $this->assertEquals('aaronpk', $data['data']['author']['name']);
+    $this->assertEquals('https://aaronparecki.com/images/profile.jpg', $data['data']['author']['photo']);
+    $this->assertEquals('https://aaronparecki.com/', $data['data']['author']['url']);
+  }
+
   public function testPhoto() {
     $url = 'http://activitystreams.example/photo.json';
     $response = $this->parse(['url' => $url]);
@@ -137,6 +156,21 @@ class ActivityStreamsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['content']['text']);
     $this->assertArrayNotHasKey('html', $data['data']['content']);
     $this->assertSame(['activitystreams'], $data['data']['category']);
+  }
+
+  public function testSensitiveContent() {
+    $url = 'http://activitystreams.example/sensitive.json';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('activity+json', $data['source-format']);
+    $this->assertEquals('note', $data['data']['post-type']);
+    $this->assertEquals('sensitive topic', $data['data']['summary']);
+    $this->assertEquals('This is the text content of a sensitive ActivityStreams note', $data['data']['content']['text']);
+    $this->assertArrayNotHasKey('name', $data['data']);
   }
 
 }

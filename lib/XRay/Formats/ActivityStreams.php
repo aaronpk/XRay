@@ -32,6 +32,7 @@ class ActivityStreams extends Format {
     switch($as2['type']) {
       case 'Person':
         return self::parseAsHCard($as2, $url, $http, $opts);
+      case 'Article':
       case 'Note':
         return self::parseAsHEntry($as2, $url, $http, $opts);
     }
@@ -61,6 +62,14 @@ class ActivityStreams extends Format {
         $date = new DateTime($as2['published']);
         $data['published'] = $date->format('c');
       } catch(\Exception $e){}
+    }
+
+    if(isset($as2['name'])) {
+      $data['name'] = $as2['name'];
+    }
+
+    if(isset($as2['summary'])) {
+      $data['summary'] = $as2['summary'];
     }
 
     if(isset($as2['content'])) {
