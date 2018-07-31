@@ -1,0 +1,25 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 30 Jul 2018 03:29:14 GMT
+Content-Type: application/activity+json
+Connection: keep-alive
+
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "http://activitystreams.example/reply.json",
+    "type": "Note",
+    "published": "2018-07-12T13:02:04-07:00",
+    "attributedTo": "https://activitystreams.example/aaronpk",
+    "content": "<a href=\"http://activitystreams.example/aaronpk\">@aaronpk</a> This is a reply",
+    "inReplyTo": "http://activitystreams.example/note.json",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "tag": [
+      {
+        "type": "Mention",
+        "href": "http://activitystreams.example/aaronpk",
+        "name": "@aaronpk@activitystreams.example"
+      }
+    ]
+}

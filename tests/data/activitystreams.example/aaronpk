@@ -1,0 +1,33 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 30 Jul 2018 03:29:14 GMT
+Content-Type: application/activity+json
+Connection: keep-alive
+
+{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://w3id.org/security/v1"
+  ],
+  "id": "https://aaronparecki.com/aaronpk",
+  "type": "Person",
+  "preferredUsername": "aaronpk",
+  "url": "https://aaronparecki.com/",
+  "icon": {
+    "type": "Image",
+    "mediaType": "image/jpeg",
+    "url": "https://aaronparecki.com/images/profile.jpg"
+  },
+  "image": {
+    "type": "Image",
+    "mediaType": "image/jpeg",
+    "url": "https://aaronparecki.com/images/cover-photo.jpg"
+  },
+  "inbox": "https://aaronparecki.com/activitypub/inbox",
+  "outbox": "https://aaronparecki.com/activitypub/outbox",
+  "publicKey": {
+    "id": "https://aaronparecki.com/aaronpk#key",
+    "owner": "https://aaronparecki.com/aaronpk",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzlRsHgaSwaoB/AOLxjsU\nBDGDZJileQyg2ZmEhWBMLaqNMJH0EqnraQRHfnHz7Yp32zjYCj2NObaX7ySd3uUJ\nzoEyhmfx122WQupOPclGYBC7mbXXhiheDb3ItPn9TxCOveC8d5d2Bm6vyCq4m31x\nBH0jOImL3AscLNwhEdYIHvweXuIqaat50O6yrgJUadJBvw0hyPVFvwiak1dKA2Su\nHCxsgLpxasEoByJMNy1COG8AvR+SuSvwJXZ2DeDS98Ji9EbeaKl6F2mJGJC/Fe2q\nz0t3mVll8Zs4bdnraw6pcnmFNzOv0SziunJoKjQ5IgZDmWHQY4EgEybxa9SEOZ/s\ntQIDAQAB\n-----END PUBLIC KEY-----\n"
+  }
+}

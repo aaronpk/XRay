@@ -1,0 +1,20 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html
+Connection: keep-alive
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="alternate" type="application/activity+json" href="http://activitystreams.example/note.json" />
+    <link rel="alternate" type="application/mf2+json" href="http://source.example.com/rel-alternate-priority.json" />
+  </head>
+  <body>
+    <div class="h-entry">
+      <p class="p-content">This should not be the content from XRay</p>
+    </div>
+  </body>
+</html>

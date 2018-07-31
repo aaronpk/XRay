@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 30 Jul 2018 03:29:14 GMT
+Content-Type: application/activity+json
+Connection: keep-alive
+
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "http://activitystreams.example/note.json",
+    "type": "Note",
+    "published": "2018-07-12T13:02:04-07:00",
+    "attributedTo": "https://activitystreams.example/aaronpk",
+    "content": "This is the text content of an ActivityStreams note",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "tag": [
+        {
+            "id": "https://aaronparecki.com/tag/activitystreams",
+            "name": "#activitystreams",
+            "type": "Hashtag"
+        }
+    ]
+}

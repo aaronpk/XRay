@@ -71,7 +71,7 @@ class Fetcher {
 
     $headers = [];
 
-    $headers[] = 'Accept: text/html, application/json, application/xml, text/xml';
+    $headers[] = 'Accept: application/mf2+json, application/activity+json, text/html, application/json, application/xml, text/xml';
 
     if(isset($opts['token']))
       $headers[] = 'Authorization: Bearer ' . $opts['token'];

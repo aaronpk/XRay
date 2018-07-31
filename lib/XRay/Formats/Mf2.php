@@ -1,8 +1,6 @@
 <?php
 namespace p3k\XRay\Formats;
 
-use HTMLPurifier, HTMLPurifier_Config;
-
 class Mf2 extends Format {
 
   use Mf2Feed;

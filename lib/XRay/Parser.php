@@ -49,6 +49,13 @@ class Parser {
       return $data;
     }
 
+    // Check if an ActivityStreams JSON object was passed in
+    if(Formats\ActivityStreams::is_as2_json($body)) {
+      $data = Formats\ActivityStreams::parse($body, $url, $this->http, $opts);
+      $data['source-format'] = 'activity+json';
+      return $data;
+    }
+
     if(substr($body, 0, 5) == '<?xml') {
       return Formats\XML::parse($body, $url);
     }
@@ -57,18 +64,22 @@ class Parser {
       $parsed = json_decode($body, true);
       if($parsed && isset($parsed['version']) && $parsed['version'] == 'https://jsonfeed.org/version/1') {
         return Formats\JSONFeed::parse($parsed, $url);
-      // TODO: check for an activitystreams object too
       } elseif($parsed && isset($parsed['items'][0]['type']) && isset($parsed['items'][0]['properties'])) {
         // Check if an mf2 JSON string was passed in
         $data = Formats\Mf2::parse($parsed, $url, $this->http, $opts);
         $data['source-format'] = 'mf2+json';
+        return $data;
+      } elseif($parsed && Formats\ActivityStreams::is_as2_json($parsed)) {
+        // Check if an ActivityStreams JSON string was passed in
+        $data = Formats\ActivityStreams::parse($parsed, $url, $this->http, $opts);
+        $data['source-format'] = 'activity+json';
         return $data;
       }
     }
 
     // No special parsers matched, parse for Microformats now
     $data = Formats\HTML::parse($this->http, $body, $url, $opts);
-    if(!isset($data['source-format']))
+    if(!isset($data['source-format']) && isset($data['type']) && $data['type'] != 'unknown')
       $data['source-format'] = 'mf2+html';
     return $data;
   }

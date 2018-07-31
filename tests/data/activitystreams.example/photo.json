@@ -1,0 +1,32 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 30 Jul 2018 03:29:14 GMT
+Content-Type: application/activity+json
+Connection: keep-alive
+
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "http://activitystreams.example/photo.json",
+    "type": "Note",
+    "published": "2018-07-12T13:02:04-07:00",
+    "attributedTo": "https://activitystreams.example/aaronpk",
+    "content": "This is the text content of an ActivityStreams photo",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "tag": [
+        {
+            "type": "Hashtag",
+            "id": "https://aaronparecki.com/tag/activitystreams",
+            "name": "#activitystreams"
+        }
+    ],
+    "attachment": [
+        {
+            "type": "Image",
+            "mediaType": "image/jpeg",
+            "url": "https://aaronparecki.com/2018/06/28/26/photo.jpg",
+            "name": null
+        }
+    ]
+}

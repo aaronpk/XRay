@@ -95,26 +95,63 @@ class HTML extends Format {
 
     // Check for a rel=alternate link to a Microformats JSON representation, and use that instead
     if(isset($mf2['rel-urls'])) {
+      $alternates = [
+        'mf2' => [],
+        'as2' => [],
+      ];
+
       foreach($mf2['rel-urls'] as $relurl => $reltype) {
+
         if(in_array('alternate', $reltype['rels']) && $reltype['type'] == 'application/mf2+json') {
-          // Fetch and parse the MF2 JSON link instead
-          $jsonpage = $http->get($relurl, [
-            'Accept' => 'application/mf2+json,application/json'
-          ]);
-          // Skip and fall back to parsing the HTML if anything about this request fails
-          if(!$jsonpage['error'] && $jsonpage['body']) {
-            $jsondata = json_decode($jsonpage['body'],true);
-            if($jsondata) {
-              $data = Formats\Mf2::parse($jsondata, $url, $http, $opts);
-              if($data && is_array($data) && isset($data['data']['type'])) {
-                $data['url'] = $relurl;
-                $data['source-format'] = 'mf2+json';
-                return $data;
-              }
+          $alternates['mf2'][] = $relurl;
+        }
+
+        if(in_array('alternate', $reltype['rels']) && $reltype['type'] == 'application/activity+json') {
+          $alternates['as2'][] = $relurl;
+        }
+
+      }
+
+      if(count($alternates['mf2'])) {
+        // Fetch and parse the MF2 JSON link
+        $relurl = $alternates['mf2'][0];
+        $jsonpage = $http->get($relurl, [
+          'Accept' => 'application/mf2+json,application/json'
+        ]);
+        // Skip and fall back to parsing the HTML if anything about this request fails
+        if(!$jsonpage['error'] && $jsonpage['body']) {
+          $jsondata = json_decode($jsonpage['body'],true);
+          if($jsondata) {
+            $data = Formats\Mf2::parse($jsondata, $url, $http, $opts);
+            if($data && is_array($data) && isset($data['data']['type'])) {
+              $data['url'] = $relurl;
+              $data['source-format'] = 'mf2+json';
+              return $data;
             }
           }
         }
       }
+
+      if(count($alternates['as2'])) {
+        $relurl = $alternates['as2'][0];
+        // Fetch and parse the ActivityStreams JSON link
+        $jsonpage = $http->get($relurl, [
+          'Accept' => 'application/activity+json,application/json'
+        ]);
+        // Skip and fall back to parsing the HTML if anything about this request fails
+        if(!$jsonpage['error'] && $jsonpage['body']) {
+          $jsondata = json_decode($jsonpage['body'],true);
+          if($jsondata) {
+            $data = Formats\ActivityStreams::parse($jsondata, $url, $http, $opts);
+            if($data && is_array($data) && isset($data['data']['type'])) {
+              $data['url'] = $relurl;
+              $data['source-format'] = 'activity+json';
+              return $data;
+            }
+          }
+        }
+      }
+
     }
 
     // Now start pulling in the data from the page. Start by looking for microformats2

@@ -915,6 +915,19 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This should be the content from XRay', $data['data']['content']['text']);
   }
 
+  public function testRelAlternatePrioritizesMf2OverAS2() {
+    $url = 'http://source.example.com/rel-alternate-priority-mf2-as2';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('mf2+json', $data['source-format']);
+    $this->assertEquals('http://source.example.com/rel-alternate-priority.json', $data['parsed-url']);
+    $this->assertEquals('This should be the content from XRay', $data['data']['content']['text']);
+  }
+
   public function testRelAlternateFallsBackOnInvalidJSON() {
     $url = 'http://source.example.com/rel-alternate-fallback';
     $response = $this->parse(['url' => $url]);
