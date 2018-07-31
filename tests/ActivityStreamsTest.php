@@ -173,4 +173,41 @@ class ActivityStreamsTest extends PHPUnit_Framework_TestCase {
     $this->assertArrayNotHasKey('name', $data['data']);
   }
 
+  public function testRepost() {
+    $url = 'http://activitystreams.example/repost.json';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('activity+json', $data['source-format']);
+    $this->assertEquals('repost', $data['data']['post-type']);
+    $this->assertArrayNotHasKey('content', $data['data']);
+    $this->assertArrayNotHasKey('name', $data['data']);
+    $this->assertEquals('Gargron', $data['data']['author']['nickname']);
+    $this->assertEquals(['http://activitystreams.example/note.json'], $data['data']['repost-of']);
+    $this->assertArrayHasKey('http://activitystreams.example/note.json', $data['data']['refs']);
+    $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['refs']['http://activitystreams.example/note.json']['data']['content']['text']);
+  }
+
+  public function testLike() {
+    $url = 'http://activitystreams.example/like.json';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('activity+json', $data['source-format']);
+    $this->assertEquals('like', $data['data']['post-type']);
+    $this->assertArrayNotHasKey('content', $data['data']);
+    $this->assertArrayNotHasKey('name', $data['data']);
+    $this->assertEquals('Gargron', $data['data']['author']['nickname']);
+    $this->assertEquals(['http://activitystreams.example/note.json'], $data['data']['like-of']);
+    $this->assertArrayHasKey('http://activitystreams.example/note.json', $data['data']['refs']);
+    $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['refs']['http://activitystreams.example/note.json']['data']['content']['text']);
+  }
+
+
 }

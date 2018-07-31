@@ -1,0 +1,48 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 30 Jul 2018 03:29:14 GMT
+Content-Type: application/activity+json
+Connection: keep-alive
+
+{
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        "https://w3id.org/security/v1",
+        {
+            "manuallyApprovesFollowers": "as:manuallyApprovesFollowers",
+            "sensitive": "as:sensitive",
+            "movedTo": {
+                "@id": "as:movedTo",
+                "@type": "@id"
+            },
+            "Hashtag": "as:Hashtag",
+            "ostatus": "http://ostatus.org#",
+            "atomUri": "ostatus:atomUri",
+            "inReplyToAtomUri": "ostatus:inReplyToAtomUri",
+            "conversation": "ostatus:conversation",
+            "toot": "http://joinmastodon.org/ns#",
+            "Emoji": "toot:Emoji",
+            "focalPoint": {
+                "@container": "@list",
+                "@id": "toot:focalPoint"
+            },
+            "featured": {
+                "@id": "toot:featured",
+                "@type": "@id"
+            },
+            "schema": "http://schema.org#",
+            "PropertyValue": "schema:PropertyValue",
+            "value": "schema:value"
+        }
+    ],
+    "id": "http://activitystreams.example/Gargron#likes/9165926",
+    "type": "Like",
+    "actor": "http://activitystreams.example/Gargron",
+    "object": "http://activitystreams.example/note.json",
+    "signature": {
+        "type": "RsaSignature2017",
+        "creator": "http://activitystreams.example/Gargron#main-key",
+        "created": "2018-07-31T02:35:52Z",
+        "signatureValue": "BPNSmAPsULjeyoA67QmlYOIJiOZJcoAcczl9326O2mqd4P40yu+IL7B6J2EbWGkXoJiP/Pd+cVV/8+Anpzmo994Xc39R8STE/QRzHuLPOf0ZNB/1xf2wqPqf5H74D8sehzOexcEGIy9vfdLmSI5bpBoU1S9ljhfC/18YwaC30eKD3gsqu4qnlNw6EgOfutKYrCBwOT2+pVvbH5D8eMFMZ//RGyWJw/DMRoW7m/8yOsGOmc+lOw6ufQpDfhEKp+MET2RbAfubMbsec6puPhXGgx9Lzl9T9s9j+Ile37juhX/miN990t7mx2RmjjYSSdXw2anRd7CaSnnXnwnpaGxEiQ=="
+    }
+}

@@ -34,6 +34,8 @@ class ActivityStreams extends Format {
         return self::parseAsHCard($as2, $url, $http, $opts);
       case 'Article':
       case 'Note':
+      case 'Announce': // repost
+      case 'Like': // like
         return self::parseAsHEntry($as2, $url, $http, $opts);
     }
 
@@ -60,6 +62,12 @@ class ActivityStreams extends Format {
     if(isset($as2['published'])) {
       try {
         $date = new DateTime($as2['published']);
+        $data['published'] = $date->format('c');
+      } catch(\Exception $e){}
+    } elseif(isset($as2['signature']['created'])) {
+      // Pull date from the signature if there isn't one in the activity
+      try {
+        $date = new DateTime($as2['signature']['created']);
         $data['published'] = $date->format('c');
       } catch(\Exception $e){}
     }
@@ -129,13 +137,49 @@ class ActivityStreams extends Format {
     }
 
     // Fetch the author info, which requires an HTTP request
+    $authorURL = false;
     if(isset($as2['attributedTo']) && is_string($as2['attributedTo'])) {
-      $authorResponse = $http->get($as2['attributedTo'], ['Accept: application/activity+json,application/json']);
+      $authorURL = $as2['attributedTo'];
+    } elseif(isset($as2['actor']) && is_string($as2['actor'])) {
+      $authorURL = $as2['actor'];
+    }
+    if($authorURL) {
+      $authorResponse = $http->get($authorURL, ['Accept: application/activity+json,application/json']);
       if($authorResponse && !empty($authorResponse['body'])) {
         $authorProfile = json_decode($authorResponse['body'], true);
-        $author = self::parseAsHCard($authorProfile, $as2['attributedTo'], $http, $opts);
+        $author = self::parseAsHCard($authorProfile, $authorURL, $http, $opts);
         if($author && !empty($author['data']))
           $data['author'] = $author['data'];
+      }
+    }
+
+    // If this is a repost, fetch the reposted content
+    if($as2['type'] == 'Announce' && isset($as2['object']) &&  is_string($as2['object'])) {
+      $data['repost-of'] = [$as2['object']];
+      $reposted = $http->get($as2['object'], ['Accept: application/activity+json,application/json']);
+      if($reposted && !empty($reposted['body'])) {
+        $repostedData = json_decode($reposted['body'], true);
+        if($repostedData) {
+          $repost = self::parse($repostedData, $as2['object'], $http, $opts);
+          if($repost) {
+            $refs[$as2['object']] = $repost;
+          }
+        }
+      }
+    }
+
+    // If this is a like, fetch the liked post
+    if($as2['type'] == 'Like' && isset($as2['object']) &&  is_string($as2['object'])) {
+      $data['like-of'] = [$as2['object']];
+      $liked = $http->get($as2['object'], ['Accept: application/activity+json,application/json']);
+      if($liked && !empty($liked['body'])) {
+        $likedData = json_decode($liked['body'], true);
+        if($likedData) {
+          $like = self::parse($likedData, $as2['object'], $http, $opts);
+          if($like) {
+            $refs[$as2['object']] = $like;
+          }
+        }
       }
     }
 

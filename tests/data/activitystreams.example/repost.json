@@ -1,0 +1,51 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 30 Jul 2018 03:29:14 GMT
+Content-Type: application/activity+json
+Connection: keep-alive
+
+{
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        "https://w3id.org/security/v1",
+        {
+            "manuallyApprovesFollowers": "as:manuallyApprovesFollowers",
+            "sensitive": "as:sensitive",
+            "movedTo": {
+                "@id": "as:movedTo",
+                "@type": "@id"
+            },
+            "Hashtag": "as:Hashtag",
+            "ostatus": "http://ostatus.org#",
+            "atomUri": "ostatus:atomUri",
+            "inReplyToAtomUri": "ostatus:inReplyToAtomUri",
+            "conversation": "ostatus:conversation",
+            "toot": "http://joinmastodon.org/ns#",
+            "Emoji": "toot:Emoji",
+            "focalPoint": {
+                "@container": "@list",
+                "@id": "toot:focalPoint"
+            },
+            "featured": {
+                "@id": "toot:featured",
+                "@type": "@id"
+            },
+            "schema": "http://schema.org#",
+            "PropertyValue": "schema:PropertyValue",
+            "value": "schema:value"
+        }
+    ],
+    "id": "https://mastodon.social/users/Gargron/statuses/100470639549326850/activity",
+    "type": "Announce",
+    "actor": "http://activitystreams.example/Gargron",
+    "published": "2018-07-31T18:04:55Z",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "cc": [
+        "https://mastodon.social/users/tobypinder",
+        "https://mastodon.social/users/Gargron/followers"
+    ],
+    "object": "http://activitystreams.example/note.json",
+    "atomUri": "https://mastodon.social/users/Gargron/statuses/100470639549326850/activity"
+}
