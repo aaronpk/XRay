@@ -315,7 +315,6 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
-    $this->assertEquals('mf2+html', $data->{'source-format'});
     $this->assertEquals('unknown', $data->data->type);
   }
 
