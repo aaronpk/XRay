@@ -209,5 +209,23 @@ class ActivityStreamsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['refs']['http://activitystreams.example/note.json']['data']['content']['text']);
   }
 
+  public function testNoteWrappedInCreate() {
+    $url = 'http://activitystreams.example/create.json';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('activity+json', $data['source-format']);
+    $this->assertEquals('reply', $data['data']['post-type']);
+    $this->assertEquals('https://toot.cat/@jamey/100471682482196371', $data['data']['url']);
+    $this->assertEquals('2018-07-31T22:30:09+00:00', $data['data']['published']);
+    $this->assertEquals('@darius Huh, I just have never encountered anyone using the phrase generically like that.But you might consider writing IndieWeb.org-style bots (Atom+WebSub, and optionally WebMention if you want them to be interactive), and then using https://fed.brid.gy/ as an alternative to implementing ActivityPub yourself...', $data['data']['content']['text']);
+    $this->assertEquals('https://social.tinysubversions.com/users/darius/statuses/100471614681787834', $data['data']['in-reply-to'][0]);
+    $this->assertEquals('Jamey Sharp', $data['data']['author']['name']);
+    $this->assertEquals('https://s3-us-west-2.amazonaws.com/tootcatapril2017/accounts/avatars/000/013/259/original/c904452a8411e4f5.jpg', $data['data']['author']['photo']);
+    $this->assertEquals('https://toot.cat/@jamey', $data['data']['author']['url']);
+  }
 
 }

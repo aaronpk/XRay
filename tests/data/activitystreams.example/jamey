@@ -1,0 +1,65 @@
+HTTP/1.1 200 OK
+Date: Tue, 31 Jul 2018 22:46:57 GMT
+Content-Type: application/activity+json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: Mastodon
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Link: <https://toot.cat/.well-known/webfinger?resource=acct%3Ajamey%40toot.cat>; rel="lrdd"; type="application/xrd+xml", <https://toot.cat/users/jamey.atom>; rel="alternate"; type="application/atom+xml", <https://toot.cat/users/jamey>; rel="alternate"; type="application/activity+json"
+Vary: Accept,Accept-Encoding
+Cache-Control: max-age=180, public
+ETag: W/"e354d3ca6ebb3ebfdfbe129a17d2cfbc"
+X-Request-Id: c3e7bab2-2cf2-4f2b-a380-7c6feb991704
+X-Runtime: 0.178355
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://w3id.org/security/v1",
+    {
+      "manuallyApprovesFollowers": "as:manuallyApprovesFollowers",
+      "sensitive": "as:sensitive",
+      "movedTo": "as:movedTo",
+      "Hashtag": "as:Hashtag",
+      "ostatus": "http://ostatus.org#",
+      "atomUri": "ostatus:atomUri",
+      "inReplyToAtomUri": "ostatus:inReplyToAtomUri",
+      "conversation": "ostatus:conversation",
+      "toot": "http://joinmastodon.org/ns#",
+      "Emoji": "toot:Emoji",
+      "focalPoint": {
+        "@container": "@list",
+        "@id": "toot:focalPoint"
+      },
+      "featured": "toot:featured"
+    }
+  ],
+  "id": "https://toot.cat/users/jamey",
+  "type": "Person",
+  "following": "https://toot.cat/users/jamey/following",
+  "followers": "https://toot.cat/users/jamey/followers",
+  "inbox": "https://toot.cat/users/jamey/inbox",
+  "outbox": "https://toot.cat/users/jamey/outbox",
+  "featured": "https://toot.cat/users/jamey/collections/featured",
+  "preferredUsername": "jamey",
+  "name": "Jamey Sharp",
+  "summary": "<p>Making the computer boxes do what they&apos;re supposed to, and nothing else : <a href=\"https://jamey.thesharps.us\" rel=\"nofollow noopener\" target=\"_blank\"><span class=\"invisible\">https://</span><span class=\"\">jamey.thesharps.us</span><span class=\"invisible\"></span></a> : <a href=\"https://liberapay.com/jamey/\" rel=\"nofollow noopener\" target=\"_blank\"><span class=\"invisible\">https://</span><span class=\"\">liberapay.com/jamey/</span><span class=\"invisible\"></span></a> : 30s, he/they</p>",
+  "url": "https://toot.cat/@jamey",
+  "manuallyApprovesFollowers": false,
+  "publicKey": {
+    "id": "https://toot.cat/users/jamey#main-key",
+    "owner": "https://toot.cat/users/jamey",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\r\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm6OHTzDVR+hineYdFpUE\r\ngNJax20CjDWGl0jslR7sfcVSvc8UZ+IjooHeq8rTDA2NhVvnDevvaBpUmVqYg5bT\r\n0b6kQnyhI/RlUtLC4DpbA2pCitzBJ9S20NCVPX2YYZg6Hpbx1AY0vre2Od6N3M1p\r\nct+peO654xz4a0sRMSgqgxzyehBc1ovW4KXL927dytWu6N/b3572qI3SoTTLHTOA\r\nKrWrXMGWbKWEEV/3FqgcSUw49Kss3wh+0nko/dyxY0+SGsckxkJQvQFQRtoGO6OQ\r\nGscuox65dokqIvyBujfmSC46F69tWNOtrRGHMQ433LmWbDZW7dGVShH5bG2itMeD\r\n8wIDAQAB\r\n-----END PUBLIC KEY-----\r\n"
+  },
+  "endpoints": {
+    "sharedInbox": "https://toot.cat/inbox"
+  },
+  "icon": {
+    "type": "Image",
+    "mediaType": "image/jpeg",
+    "url": "https://s3-us-west-2.amazonaws.com/tootcatapril2017/accounts/avatars/000/013/259/original/c904452a8411e4f5.jpg"
+  }
+}

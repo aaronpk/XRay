@@ -1,0 +1,75 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 30 Jul 2018 03:29:14 GMT
+Content-Type: application/activity+json
+Connection: keep-alive
+
+{
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        "https://w3id.org/security/v1",
+        {
+            "manuallyApprovesFollowers": "as:manuallyApprovesFollowers",
+            "sensitive": "as:sensitive",
+            "movedTo": "as:movedTo",
+            "Hashtag": "as:Hashtag",
+            "ostatus": "http://ostatus.org#",
+            "atomUri": "ostatus:atomUri",
+            "inReplyToAtomUri": "ostatus:inReplyToAtomUri",
+            "conversation": "ostatus:conversation",
+            "toot": "http://joinmastodon.org/ns#",
+            "Emoji": "toot:Emoji",
+            "focalPoint": {
+                "@container": "@list",
+                "@id": "toot:focalPoint"
+            },
+            "featured": "toot:featured"
+        }
+    ],
+    "id": "https://toot.cat/users/jamey/statuses/100471682482196371/activity",
+    "type": "Create",
+    "actor": "https://toot.cat/users/jamey",
+    "published": "2018-07-31T22:30:09Z",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "cc": [
+        "https://toot.cat/users/jamey/followers",
+        "https://social.tinysubversions.com/users/darius"
+    ],
+    "object": {
+        "id": "https://toot.cat/users/jamey/statuses/100471682482196371",
+        "type": "Note",
+        "summary": null,
+        "content": "<p><span class=\"h-card\"><a href=\"https://social.tinysubversions.com/@darius\" class=\"u-url mention\">@<span>darius</span></a></span> Huh, I just have never encountered anyone using the phrase generically like that.</p><p>But you might consider writing IndieWeb.org-style bots (Atom+WebSub, and optionally WebMention if you want them to be interactive), and then using <a href=\"https://fed.brid.gy/\" rel=\"nofollow noopener\" target=\"_blank\"><span class=\"invisible\">https://</span><span class=\"\">fed.brid.gy/</span><span class=\"invisible\"></span></a> as an alternative to implementing ActivityPub yourself...</p>",
+        "inReplyTo": "https://social.tinysubversions.com/users/darius/statuses/100471614681787834",
+        "published": "2018-07-31T22:30:09Z",
+        "url": "https://toot.cat/@jamey/100471682482196371",
+        "attributedTo": "http://activitystreams.example/jamey",
+        "to": [
+            "https://www.w3.org/ns/activitystreams#Public"
+        ],
+        "cc": [
+            "https://toot.cat/users/jamey/followers",
+            "https://social.tinysubversions.com/users/darius"
+        ],
+        "sensitive": false,
+        "atomUri": "https://toot.cat/users/jamey/statuses/100471682482196371",
+        "inReplyToAtomUri": "https://social.tinysubversions.com/users/darius/statuses/100471614681787834",
+        "conversation": "tag:tinysubversions.com,2018-07-31:objectId=141754:objectType=Conversation",
+        "attachment": [],
+        "tag": [
+            {
+                "type": "Mention",
+                "href": "https://social.tinysubversions.com/users/darius",
+                "name": "@darius@tinysubversions.com"
+            }
+        ]
+    },
+    "signature": {
+        "type": "RsaSignature2017",
+        "creator": "https://toot.cat/users/jamey#main-key",
+        "created": "2018-07-31T22:30:10Z",
+        "signatureValue": "EV0Bv0kRqOQLiHYHwcy0ElgPNkOPXfQ1ygpAG028b24a3bwCmw3JQO/AyfxTyqf7MgUUVGMR8sFYQA4+MeZPCH39R3xdZ4K8Ce0GEv+GxT34jpIQkB4LQsL7X9GZFo6M20cP9m3197zU+/giPBjnOHfPJr61wHkkHklHfKVK13mmR4pqrrr6TOecXfr32n3y2+3qtrGIWBWl6DaDKK6aQTaXxu66wxbmIhIIcAvS7oQVvDMqXKuDrCfT+3wiVm+6mGENU1WtiiVEtpC9gfcXEbRWPhI35AHP+4ruuIvoZL3pOMk5fuCrnAbL3Vn0uFPrsh7JY19UbPrNRyK3je5oog=="
+    }
+}

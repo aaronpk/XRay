@@ -29,6 +29,11 @@ class ActivityStreams extends Format {
     if(!isset($as2['type']))
       return false;
 
+    if($as2['type'] == 'Create' && is_array($as2['object'])) {
+      // Extract the object and parse that instead
+      $as2 = $as2['object'];
+    }
+
     switch($as2['type']) {
       case 'Person':
         return self::parseAsHCard($as2, $url, $http, $opts);
