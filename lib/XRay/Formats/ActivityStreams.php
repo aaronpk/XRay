@@ -166,8 +166,8 @@ class ActivityStreams extends Format {
         $repostedData = json_decode($reposted['body'], true);
         if($repostedData) {
           $repost = self::parse($repostedData, $as2['object'], $http, $opts);
-          if($repost) {
-            $refs[$as2['object']] = $repost;
+          if($repost && isset($repost['data']) && $repost['data']['type'] != 'unknown') {
+            $refs[$as2['object']] = $repost['data'];
           }
         }
       }
@@ -181,8 +181,8 @@ class ActivityStreams extends Format {
         $likedData = json_decode($liked['body'], true);
         if($likedData) {
           $like = self::parse($likedData, $as2['object'], $http, $opts);
-          if($like) {
-            $refs[$as2['object']] = $like;
+          if($like && isset($like['data']['type']) && $like['data']['type'] != 'unknown') {
+            $refs[$as2['object']] = $like['data'];
           }
         }
       }

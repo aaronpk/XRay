@@ -188,7 +188,7 @@ class ActivityStreamsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Gargron', $data['data']['author']['nickname']);
     $this->assertEquals(['http://activitystreams.example/note.json'], $data['data']['repost-of']);
     $this->assertArrayHasKey('http://activitystreams.example/note.json', $data['data']['refs']);
-    $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['refs']['http://activitystreams.example/note.json']['data']['content']['text']);
+    $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['refs']['http://activitystreams.example/note.json']['content']['text']);
   }
 
   public function testLike() {
@@ -206,7 +206,7 @@ class ActivityStreamsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Gargron', $data['data']['author']['nickname']);
     $this->assertEquals(['http://activitystreams.example/note.json'], $data['data']['like-of']);
     $this->assertArrayHasKey('http://activitystreams.example/note.json', $data['data']['refs']);
-    $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['refs']['http://activitystreams.example/note.json']['data']['content']['text']);
+    $this->assertEquals('This is the text content of an ActivityStreams note', $data['data']['refs']['http://activitystreams.example/note.json']['content']['text']);
   }
 
   public function testNoteWrappedInCreate() {
