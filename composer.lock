@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c97abbbb6d2a94d0b72828c1edc41a3",
+    "content-hash": "38eef403bd3151bf73b7794372f4d8cd",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -326,16 +326,16 @@
         },
         {
             "name": "mf2/mf2",
-            "version": "v0.4.4-alpha",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/indieweb/php-mf2.git",
-                "reference": "e8da04f93d548d26287a8980eca4216639cbc61d"
+                "reference": "463351e3a3620663cfa335849ce904da39ef1314"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/e8da04f93d548d26287a8980eca4216639cbc61d",
-                "reference": "e8da04f93d548d26287a8980eca4216639cbc61d",
+                "url": "https://api.github.com/repos/indieweb/php-mf2/zipball/463351e3a3620663cfa335849ce904da39ef1314",
+                "reference": "463351e3a3620663cfa335849ce904da39ef1314",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
                 "parser",
                 "semantic"
             ],
-            "time": "2018-03-29T20:48:28+00:00"
+            "time": "2018-08-01T20:02:45+00:00"
         },
         {
             "name": "p3k/http",
@@ -2155,9 +2155,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mf2/mf2": 15
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
