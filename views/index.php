@@ -8,6 +8,7 @@
     <form class="" action="parse" method="get">
       <div class="field"><input type="url" name="url" placeholder="http://example.com"></div>
       <div class="field"><button type="submit" class="button" value="Go">Go</button></div>
+      <input type="hidden" name="pretty" value="true">
     </form>
   </div>
 
@@ -16,6 +17,7 @@
       <div class="field"><textarea name="html" rows="4" placeholder="HTML"></textarea></div>
       <div class="field"><input type="url" name="url" placeholder="http://example.com"></div>
       <div class="field"><input type="submit" class="button" value="Go"></div>
+      <input type="hidden" name="pretty" value="true">
     </form>
   </div>
 
