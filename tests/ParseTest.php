@@ -940,4 +940,15 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('XRay should use this content since the JSON in the rel-alternate is invalid', $data['data']['content']['text']);
   }
 
+  public function testMultipleContentTypeHeaders() {
+    $url = 'http://source.example.com/multiple-content-type';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('mf2+html', $data['source-format']);
+  }
+
 }

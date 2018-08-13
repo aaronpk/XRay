@@ -89,9 +89,17 @@ class Fetcher {
 
     // Show an error if the content type returned is not a recognized type
     $format = null;
-    if(isset($result['headers']['Content-Type']) && is_string($result['headers']['Content-Type'])) {
-      $type = new MediaType($result['headers']['Content-Type']);
-      $format = $type->format;
+    if(isset($result['headers']['Content-Type'])) {
+      $contentType = null;
+      if(is_array($result['headers']['Content-Type'])) {
+        $contentType = $result['headers']['Content-Type'][0];
+      } elseif(is_string($result['headers']['Content-Type'])) {
+        $contentType = $result['headers']['Content-Type'];
+      }
+      if($contentType) {
+        $type = new MediaType($contentType);
+        $format = $type->format;
+      }
     }
 
     if(!$format ||
