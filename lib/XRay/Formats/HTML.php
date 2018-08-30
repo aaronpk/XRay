@@ -102,12 +102,14 @@ class HTML extends Format {
 
       foreach($mf2['rel-urls'] as $relurl => $reltype) {
 
-        if(in_array('alternate', $reltype['rels']) && $reltype['type'] == 'application/mf2+json') {
-          $alternates['mf2'][] = $relurl;
-        }
+        if(isset($reltype['type'])) {
+          if(in_array('alternate', $reltype['rels']) && $reltype['type'] == 'application/mf2+json') {
+            $alternates['mf2'][] = $relurl;
+          }
 
-        if(in_array('alternate', $reltype['rels']) && $reltype['type'] == 'application/activity+json') {
-          $alternates['as2'][] = $relurl;
+          if(in_array('alternate', $reltype['rels']) && $reltype['type'] == 'application/activity+json') {
+            $alternates['as2'][] = $relurl;
+          }
         }
 
       }
