@@ -617,10 +617,15 @@ class Mf2 extends Format {
     // If the value is an h-* object with a URL, the URL is used and a "ref" is added as well
     self::collectArrayURLValues(['photo','video','audio','syndication'], $item, $data, $refs, $http);
 
-    // If there is a description, always return the plaintext description, and return HTML description if it's different
-    $description = self::parseHTMLValue('description', $item);
-    if($description) {
-      $data['description'] = $description;
+    // If there is a description, always return the plaintext content, and return HTML content if it's different
+    $content = self::parseHTMLValue('content', $item);
+    if($content) {
+      $data['content'] = $content;
+    } else {
+      // Fall back to looking for "description"
+      $content = self::parseHTMLValue('description', $item);
+      if($content)
+        $data['content'] = $content;
     }
 
     $data['post-type'] = \p3k\XRay\PostType::discover($data);
