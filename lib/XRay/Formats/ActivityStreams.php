@@ -114,7 +114,7 @@ class ActivityStreams extends Format {
 
       if(count($emoji) && isset($data['content']['html'])) {
         foreach($emoji as $code=>$img) {
-          $data['content']['html'] = str_replace($code, '<img src="'.$img.'" alt="'.$code.'" title="'.$code.'" height="24" class="xray-custom-emoji">', $data['content']['html']);
+          $data['content']['html'] = str_replace($code, '<img src="'.$img.'" alt="'.$code.'" title="'.$code.'" height="24" class="xray-emoji">', $data['content']['html']);
         }
       }
     }
