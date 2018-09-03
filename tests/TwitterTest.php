@@ -36,7 +36,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('entry', $data['data']['type']);
     $this->assertEquals('aaronpk dev', $data['data']['author']['name']);
     $this->assertEquals('pkdev', $data['data']['author']['nickname']);
-    $this->assertEquals('https://aaronparecki.com/', $data['data']['author']['url']);
+    $this->assertEquals('https://twitter.com/pkdev', $data['data']['author']['url']);
     $this->assertEquals('Portland, OR', $data['data']['author']['location']);
     $this->assertEquals('Dev account for testing Twitter things. Follow me here: https://twitter.com/aaronpk', $data['data']['author']['bio']);
     $this->assertEquals('https://pbs.twimg.com/profile_images/638125135904436224/qd_d94Qn_normal.jpg', $data['data']['author']['photo']);
@@ -47,7 +47,7 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
 
     $data = $this->parse(['url' => $url, 'body' => $json]);
 
-    $this->assertEquals('http://agiletortoise.com', $data['data']['author']['url']);
+    $this->assertEquals('https://twitter.com/agiletortoise', $data['data']['author']['url']);
   }
 
   public function testBasicTestStuff() {

@@ -65,7 +65,7 @@ class Twitter extends Format {
         'name' => null,
         'nickname' => null,
         'photo' => null,
-        'url' => null
+        'url' => null,
       ]
     );
     $refs = [];
@@ -226,19 +226,7 @@ class Twitter extends Format {
     else
       $author['name'] = $profile->screen_name;
 
-    if($profile->url) {
-      if(property_exists($profile, 'entities')) {
-        if($profile->entities->url->urls[0]->expanded_url)
-          $author['url'] = $profile->entities->url->urls[0]->expanded_url;
-        else
-          $author['url'] = $profile->entities->url->urls[0]->url;
-      } else {
-        $author['url'] = $profile->url;
-      }
-    }
-    else {
-      $author['url'] = 'https://twitter.com/' . $profile->screen_name;
-    }
+    $author['url'] = 'https://twitter.com/' . $profile->screen_name;
 
     $author['photo'] = $profile->profile_image_url_https;
 
