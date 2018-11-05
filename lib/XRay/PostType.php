@@ -38,6 +38,9 @@ class PostType {
     if(isset($post['photo']))
       return 'photo';
 
+    if(isset($post['follow-of']))
+      return 'follow';
+
     $content = '';
     if(isset($post['content']))
       $content = $post['content']['text'];

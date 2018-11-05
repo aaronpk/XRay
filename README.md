@@ -384,6 +384,7 @@ If a property supports multiple values, it will always be returned as an array. 
 * `like-of`
 * `repost-of`
 * `bookmark-of`
+* `follow-of`
 * `syndication`
 * `photo` (of an entry, not of a card)
 * `video`
@@ -416,6 +417,7 @@ The following post types are returned, which are slightly expanded from what is 
 * `photo`
 * `article`
 * `note`
+* `follow`
 
 
 #### Other Properties
