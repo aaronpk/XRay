@@ -414,4 +414,36 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(20, count($data->items));
   }
 
+  public function testAdactioLinks() {
+    $url = 'http://feed.example.com/adactio-links';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals('feed', $data->type);
+    // 20 h-entrys followed by one h-card, which should have been removed and used as the author instead
+    $this->assertEquals(20, count($data->items));
+    $this->assertEquals('http://feed.example.com/links/14501', $data->items[0]->url);
+    $this->assertEquals('http://feed.example.com/links/14445', $data->items[19]->url);
+    $item = $data->items[0];
+    $this->assertEquals('Jeremy Keith', $item->author->name);
+    $this->assertEquals('https://adactio.com/', $item->author->url);
+  }
+
+  public function testWaterpigsFeed() {
+    $url = 'http://feed.example.com/waterpigs';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals('feed', $data->type);
+    $this->assertEquals(21, count($data->items));
+    $item = $data->items[16];
+    $this->assertEquals('Barnaby Walters', $item->author->name);
+    $this->assertEquals('https://waterpigs.co.uk', $item->author->url);
+  }
 }

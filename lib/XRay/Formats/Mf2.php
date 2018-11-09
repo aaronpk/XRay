@@ -812,6 +812,30 @@ class Mf2 extends Format {
 
     }
 
+    // The below is not yet in the authorship algorithm.
+
+    // If the top object is an h-feed, check for an author property there
+    if(isset($mf2['items'][0]['type'][0]) && in_array('h-feed', $mf2['items'][0]['type'])) {
+      if(isset($mf2['items'][0]['properties']['author'][0])) {
+        $potentialAuthor = $mf2['items'][0]['properties']['author'][0];
+        if(is_array($potentialAuthor['type']) && in_array('h-card', $potentialAuthor['type'])) {
+          return self::parseAsHCard($potentialAuthor, $http, $url)['data'];
+        }
+      }
+    }
+
+    // If still no author is found, and this page is a feed (list of h-*),
+    // then use the first h-card in the list of items.
+    $items = array_filter($mf2['items'], function($item){
+      return !in_array('h-card', $item['type']);
+    });
+    if(count($items) > 1) {
+      $card = self::_findFirstOfType($mf2, 'h-card');
+      if($card) {
+        return self::parseAsHCard($card, $http, $url)['data'];
+      }
+    }
+
     if(!$author['name'] && !$author['photo'] && !$author['url'])
       return null;
 

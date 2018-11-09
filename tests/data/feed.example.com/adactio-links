@@ -1,0 +1,1070 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<!DOCTYPE html>
+<html lang="en-ie">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#ffffff" />
+<title>Adactio: Links</title>
+<meta name="description" content="Hyperlinks hand-picked by Jeremy Keith." />
+<meta name="author" content="Jeremy Keith" />
+<meta name="robots" content="noindex,follow" />
+<meta property="og:type" content="article" />
+<meta property="article:author" content="Jeremy Keith" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" property="og:image" content="https://adactio.com/images/photo-300.jpg" />
+<meta name="twitter:site" content="@adactio" />
+<meta name="twitter:site:id" content="11250" />
+<meta name="twitter:creator" content="@adactio" />
+<meta name="twitter:creator:id" content="11250" />
+<meta name="twitter:url" property="og:url" content="https://adactio.com/links" />
+<meta name="twitter:title" property="og:title" content="Adactio: Jeremy Keith" />
+<meta name="twitter:description" property="og:description" content="Hyperlinks hand-picked by Jeremy Keith." />
+<link rel="me" href="mailto:jeremy@adactio.com" />
+<link rel="me" href="sms:+447792069292" />
+<link rel="me" href="ni:///sha-256;y5LuBRUHdxOlutHxDS2OnyEHuyFDai-rTxWMTuauXlI?ct=application/x-x509-user-cert" />
+<link rel="webmention" href="https://adactio.com/webmention" />
+<link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+<link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
+<link rel="micropub" href="https://adactio.com/micropub" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Adactio" />
+<link rel="openid.server" href="https://indieauth.com/openid" />
+<link rel="openid.delegate" href="https://adactio.com/" />
+<link rel="microsub" href="https://aperture.p3k.io/microsub/152" />
+<link rel="alternate" type="application/rss+xml" title="Journal RSS" href="/journal/rss" />
+<link rel="alternate" type="application/rss+xml" title="Links RSS" href="/links/rss" />
+<link rel="alternate" type="application/rss+xml" title="Articles RSS" href="/articles/rss" />
+<link rel="alternate" type="application/rss+xml" title="Notes RSS" href="/notes/rss" />
+<link rel="alternate" type="application/rss+xml" title="Journal, links, articles and notes RSS" href="/rss/" />
+<link rel="alternate" type="application/json" title="Journal JSON Feed" href="/journal/feed.json" />
+<link rel="alternate" type="application/json" title="Links JSON Feed" href="/links/feed.json" />
+<link rel="alternate" type="application/json" title="Articles JSON Feed" href="/articles/feed.json" />
+<link rel="alternate" type="application/json" title="Notes JSON Feed" href="/notes/feed.json" />
+<link rel="author" href="/about/myself" title="About the author" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" type="image/png" />
+<link rel="shortcut icon" href="/icon.png" sizes="300x300" type="image/png" />
+<link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="stylesheet" href="/skins/default/global.css" />
+<link rel="stylesheet" href="/includes/css/print.css" media="print" title="print" />
+
+<!-- Ah, I see you want a peek at the source code. -->
+<!-- That's the great thing about the web: -->
+<!-- reverse engineering. -->
+<!-- If you have any questions, feel free to write to me: -->
+<!-- jeremy at adactio dot com -->
+
+</head>
+<body>
+
+<!-- Begin with the logo -->
+
+<div id="logo">
+<a href="//adactio.com" title="Home"><span>adactio</span></a>
+</div>
+
+<header role="banner">
+
+<!-- Show any nice pictures here -->
+
+<div role="presentation">
+<div class="links"></div>
+</div>
+
+<!-- Now we have the navigation -->
+
+<div role="navigation">
+
+<nav>
+<ul>
+<li><a href="/journal/" title="My thoughts and ramblings">Journal</a></li>
+<li>Links</li>
+<li><a href="/articles/" title="Longer thoughts and ramblings">Articles</a></li>
+<li><a href="/notes/" title="Brief observations">Notes</a></li>
+<li><a href="/about/" title="Background information">About</a></li>
+</ul>
+</nav>
+
+</div>
+
+</header>
+
+<!-- Here's the main content -->
+
+<main role="main">
+<header class="sectionheader">
+<h1>Links</h1>
+<span class="activity-total">7738</span>
+<svg
+class="activity-sparkline"
+version="1.1"
+viewBox="0 0 134 21"
+baseProfile="full"
+xmlns="http://www.w3.org/2000/svg"
+width="131"
+height="20"><title>sparkline</title><path fill="none" stroke="rgba(0,0,0,0.5)" d="M0,20 0,20 1,20 2,20 3,20 4,20 5,20 6,20 7,20 8,20 9,20 10,20 11,20 12,20 13,20 14,20 15,20 16,20 17,20 18,20 19,20 20,20 21,20 22,20 23,20 24,20 25,20 26,19 27,13 28,14 29,11 30,16 31,16 32,14 33,14 34,13 35,16 36,14 37,15 38,15 39,10 40,14 41,13 42,13 43,13 44,8 45,4 46,5 47,10 48,9 49,8 50,9 51,11 52,12 53,10 54,8 55,8 56,5 57,10 58,8 59,8 60,11 61,13 62,12 63,12 64,15 65,8 66,13 67,9 68,8 69,13 70,3 71,4 72,5 73,7 74,6 75,1 76,3 77,7 78,2 79,3 80,1 81,6 82,3 83,5 84,6 85,11 86,6 87,1 88,10 89,10 90,6 91,9 92,14 93,11 94,14 95,12 96,14 97,2 98,10 99,9 100,8 101,11 102,7 103,11 104,9 105,11 106,12 107,7 108,4 109,8 110,1 111,5 112,3 113,7 114,3 115,7 116,5 117,4 118,1 119,10 120,3 121,2 122,6 123,4 124,1 125,0 126,1 127,3 128,6 129,6 130,16 "/><circle fill="rgba(204,102,51,0.75)" r="2" cx="130" cy="16"/><a aria-label="play" xlink:href="javascript:playSparkline([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,7,6,9,4,4,6,6,7,4,6,5,5,10,6,7,7,7,12,16,15,10,11,12,11,9,8,10,12,12,15,10,12,12,9,7,8,8,5,12,7,11,12,7,17,16,15,13,14,19,17,13,18,17,19,14,17,15,14,9,14,19,10,10,14,11,6,9,6,8,6,18,10,11,12,9,13,9,11,9,8,13,16,12,19,15,17,13,17,13,15,16,19,10,17,18,14,16,19,20,19,17,14,14,4,0]);"><rect x="0" y="0" width="134" height="21" fill="transparent"/></a><script type="application/ecmascript"> <![CDATA[
+function playSparkline(notes) {
+    if (!window.AudioContext && !window.webkitAudioContext) {
+        return;
+    }
+    var playing = null;
+    var note = 0;
+    var output = new (window.AudioContext || window.webkitAudioContext)();
+    var instrument = output.createOscillator();
+    var amplifier = output.createGain();
+    var playNotes = function() {
+        if (note < notes.length) {
+            instrument.frequency.value = 440 + (notes[note] * 64); // hertz
+            note = note + 1;
+        } else {
+            amplifier.gain.value = 0;
+        }
+        playing = window.setTimeout(playNotes, 25);
+    };
+    instrument.type = 'sine'; // 'sine', 'square', 'sawtooth', 'triangle'
+    instrument.start();
+    instrument.connect(amplifier);
+    amplifier.gain.value = 0.7;
+    amplifier.connect(output.destination);
+    playNotes();
+}
+]]> </script>
+</svg>
+
+</header>
+<h2>Thursday, November 8th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://abookapart.com/collections/front-end-next-steps">
+A Book Apart, Front-End Next Steps
+</a>
+</h3>
+
+<p>If you buy this bundle of books, you get <a href="https://abookapart.com/products/going-offline"><cite>Going Offline</cite></a> in some very, very good company.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14501">
+<time class="dt-published" datetime="2018-11-08T19:08:33Z">
+7:08pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/abookapart">abookapart</a>
+<a rel="tag" class="p-category" href="/links/tags/bundle">bundle</a>
+<a rel="tag" class="p-category" href="/links/tags/books">books</a>
+<a rel="tag" class="p-category" href="/links/tags/goingoffline">goingoffline</a>
+<a rel="tag" class="p-category" href="/links/tags/css">css</a>
+<a rel="tag" class="p-category" href="/links/tags/grid">grid</a>
+<a rel="tag" class="p-category" href="/links/tags/layout">layout</a>
+<a rel="tag" class="p-category" href="/links/tags/resources">resources</a>
+<a rel="tag" class="p-category" href="/links/tags/publishing">publishing</a>
+<a rel="tag" class="p-category" href="/links/tags/frontend">frontend</a>
+<a rel="tag" class="p-category" href="/links/tags/development">development</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://ethanmarcotte.com/wrote/designing-laws-and-attitudes/">
+Designing, laws, and attitudes. — Ethan Marcotte
+</a>
+</h3>
+
+<p>Ethan ponders what the web might be like if the kind of legal sticks that exist for accessibility in some countries also existed for performance.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14500">
+<time class="dt-published" datetime="2018-11-08T09:24:58Z">
+9:24am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/accessibility">accessibility</a>
+<a rel="tag" class="p-category" href="/links/tags/a11y">a11y</a>
+<a rel="tag" class="p-category" href="/links/tags/performance">performance</a>
+<a rel="tag" class="p-category" href="/links/tags/speed">speed</a>
+<a rel="tag" class="p-category" href="/links/tags/laws">laws</a>
+<a rel="tag" class="p-category" href="/links/tags/legislation">legislation</a>
+<a rel="tag" class="p-category" href="/links/tags/culture">culture</a>
+<a rel="tag" class="p-category" href="/links/tags/regulation">regulation</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://robots.thoughtbot.com/concise-media-queries-with-css-grid">
+Concise Media Queries with CSS Grid
+</a>
+</h3>
+
+<p>&#8216;Sfunny, this exact use-case (styling a profile component) came up on a project recently and I figured that CSS grid would be the right tool for the job.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14499">
+<time class="dt-published" datetime="2018-11-08T08:49:05Z">
+8:49am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/css">css</a>
+<a rel="tag" class="p-category" href="/links/tags/grid">grid</a>
+<a rel="tag" class="p-category" href="/links/tags/layout">layout</a>
+<a rel="tag" class="p-category" href="/links/tags/source">source</a>
+<a rel="tag" class="p-category" href="/links/tags/order">order</a>
+<a rel="tag" class="p-category" href="/links/tags/profile">profile</a>
+<a rel="tag" class="p-category" href="/links/tags/frontend">frontend</a>
+<a rel="tag" class="p-category" href="/links/tags/development">development</a>
+<a rel="tag" class="p-category" href="/links/tags/responsive">responsive</a>
+<a rel="tag" class="p-category" href="/links/tags/design">design</a>
+<a rel="tag" class="p-category" href="/links/tags/mediaqueries">mediaqueries</a>
+<a rel="tag" class="p-category" href="/links/tags/reordering">reordering</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://robinrendle.com/notes/what-do-you-want-to-do-when-you-grow-up-kid/">
+What do you want to do when you grow up, kid? • Robin Rendle
+</a>
+</h3>
+
+<p>Publishing on the web really is quite marvellous:</p>
+
+<blockquote>
+  <p>&#8230;an endless thrill, a sort of everlasting, punk-rock feeling and I hope it will never really go away.</p>
+</blockquote>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14498">
+<time class="dt-published" datetime="2018-11-08T08:26:07Z">
+8:26am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/writing">writing</a>
+<a rel="tag" class="p-category" href="/links/tags/sharing">sharing</a>
+<a rel="tag" class="p-category" href="/links/tags/publishing">publishing</a>
+<a rel="tag" class="p-category" href="/links/tags/indieweb">indieweb</a>
+<a rel="tag" class="p-category" href="/links/tags/communication">communication</a>
+<a rel="tag" class="p-category" href="/links/tags/connection">connection</a>
+<a rel="tag" class="p-category" href="/links/tags/text">text</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="http://blog.flickr.net/2018/11/07/the-commons-the-past-is-100-part-of-our-future/">
+The Commons: The Past Is 100% Part of Our Future | Flickr Blog
+</a>
+</h3>
+
+<p>This is very, very good news. Following on from <a href="https://adactio.com/links/14475">the recent announcement</a> that a huge swathe of Flickr photos would soon be deleted, there&#8217;s now an update: any photos that are Creative Commons licensed won&#8217;t be deleted after all. Phew!</p>
+
+<p>I wonder if I can get a refund for that pro account I just bought last week to keep my Creative Commons licensed Flickr pictures online.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14497">
+<time class="dt-published" datetime="2018-11-08T08:08:49Z">
+8:08am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/flickr">flickr</a>
+<a rel="tag" class="p-category" href="/links/tags/photos">photos</a>
+<a rel="tag" class="p-category" href="/links/tags/creativecommons">creativecommons</a>
+<a rel="tag" class="p-category" href="/links/tags/deletion">deletion</a>
+<a rel="tag" class="p-category" href="/links/tags/digital">digital</a>
+<a rel="tag" class="p-category" href="/links/tags/preservation">preservation</a>
+<a rel="tag" class="p-category" href="/links/tags/linkrot">linkrot</a>
+<a rel="tag" class="p-category" href="/links/tags/archives">archives</a>
+<a rel="tag" class="p-category" href="/links/tags/archiving">archiving</a>
+<a rel="tag" class="p-category" href="/links/tags/business">business</a>
+</p>
+</footer>
+
+</article>
+<h2>Tuesday, November 6th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="http://hag.codes/social/2018/11/05/indieweb-comic.html">
+How to get on the #indieweb!
+</a>
+</h3>
+
+<p>As well as graciously hosting Indie Web Camp Berlin on the weekend at Mozilla&#8217;s offices, Yulia has also drawn this super-cute comic.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14492">
+<time class="dt-published" datetime="2018-11-06T17:45:41Z">
+5:45pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/indieweb">indieweb</a>
+<a rel="tag" class="p-category" href="/links/tags/comic">comic</a>
+<a rel="tag" class="p-category" href="/links/tags/primer">primer</a>
+<a rel="tag" class="p-category" href="/links/tags/explanation">explanation</a>
+<a rel="tag" class="p-category" href="/links/tags/drawing">drawing</a>
+<a rel="tag" class="p-category" href="/links/tags/illustration">illustration</a>
+<a rel="tag" class="p-category" href="/links/tags/webmention">webmention</a>
+<a rel="tag" class="p-category" href="/links/tags/microsub">microsub</a>
+<a rel="tag" class="p-category" href="/links/tags/relme">relme</a>
+</p>
+</footer>
+
+</article>
+<h2>Sunday, November 4th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://heydesigner.com/blog/when-your-design-system-fails/">
+When your design system fails — HeyDesigner
+</a>
+</h3>
+
+<blockquote>
+  <p>You could create components that strike the perfect balance between reuse and context sensitivity. But defining the components of your design system is just the first step. It has to make its way into the product. If it doesn’t, a design system is like a language with no extant literature or seminal texts.</p>
+</blockquote>
+
+<p>Marissa Christy outlines the reasons why your design system might struggle:</p>
+
+<blockquote>
+  <ol>
+  <li>The redesign isn’t prioritized</li>
+  <li>The tech stack is changing</li>
+  <li>Maintenance takes discipline</li>
+  </ol>
+</blockquote>
+
+<p>But she also offers advice for counteracting these forces:</p>
+
+<blockquote>
+  <ol>
+  <li>Get buy-in from the whole team</li>
+  <li>Prioritize a lightweight re-skin on older parts of the product</li>
+  <li>Treat a design system like any other product project: start small</li>
+  <li>Don’t wait for others. Lead by example.</li>
+  <li>Finally, don’t compare yourself to others on the internet</li>
+  </ol>
+</blockquote>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14476">
+<time class="dt-published" datetime="2018-11-04T14:55:32Z">
+2:55pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/design">design</a>
+<a rel="tag" class="p-category" href="/links/tags/systems">systems</a>
+<a rel="tag" class="p-category" href="/links/tags/patterns">patterns</a>
+<a rel="tag" class="p-category" href="/links/tags/libraries">libraries</a>
+<a rel="tag" class="p-category" href="/links/tags/components">components</a>
+<a rel="tag" class="p-category" href="/links/tags/collaboration">collaboration</a>
+<a rel="tag" class="p-category" href="/links/tags/process">process</a>
+<a rel="tag" class="p-category" href="/links/tags/workflow">workflow</a>
+<a rel="tag" class="p-category" href="/links/tags/frontend">frontend</a>
+<a rel="tag" class="p-category" href="/links/tags/development">development</a>
+<a rel="tag" class="p-category" href="/links/tags/maintainability">maintainability</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://blog.flickr.net/en/2018/11/01/changing-flickr-free-accounts-1000-photos/">
+Why we’re changing Flickr free accounts | Flickr Blog
+</a>
+</h3>
+
+<p>I’ve got a lot of photos on Flickr (even though I don’t use it directly much these days) and I’ve paid up for a pro account to protect those photos, but I’m very worried about this:</p>
+
+<blockquote>
+  <p>Beginning January 8, 2019, Free accounts will be limited to 1,000 photos and videos.</p>
+</blockquote>
+
+<p>That in itself is fine, but any existing non-pro accounts with more than 1000 photos will have older photos deleted until the total comes down to 1000. This means that anyone linking to those photos (or embedding them in blog posts or articles) will have broken links and images.</p>
+
+<p>Tears in the rain.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14475">
+<time class="dt-published" datetime="2018-11-04T10:34:53Z">
+10:34am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/flickr">flickr</a>
+<a rel="tag" class="p-category" href="/links/tags/photos">photos</a>
+<a rel="tag" class="p-category" href="/links/tags/deletion">deletion</a>
+<a rel="tag" class="p-category" href="/links/tags/digital">digital</a>
+<a rel="tag" class="p-category" href="/links/tags/preservation">preservation</a>
+<a rel="tag" class="p-category" href="/links/tags/linkrot">linkrot</a>
+<a rel="tag" class="p-category" href="/links/tags/archives">archives</a>
+<a rel="tag" class="p-category" href="/links/tags/archiving">archiving</a>
+<a rel="tag" class="p-category" href="/links/tags/business">business</a>
+</p>
+</footer>
+
+</article>
+<h2>Saturday, November 3rd, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.sonniesedge.co.uk/notes/1548">
+2018-11-03, 21:54 - sonniesedge.co.uk
+</a>
+</h3>
+
+<p>Day one of Indie Web Camp Berlin is done, and it was <em>great</em>! Here&#8217;s Charlie&#8217;s recap of the sessions she attended.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14474">
+<time class="dt-published" datetime="2018-11-03T23:10:53Z">
+11:10pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/indieweb">indieweb</a>
+<a rel="tag" class="p-category" href="/links/tags/iwc">iwc</a>
+<a rel="tag" class="p-category" href="/links/tags/berlin">berlin</a>
+<a rel="tag" class="p-category" href="/links/tags/indiewebcamp">indiewebcamp</a>
+<a rel="tag" class="p-category" href="/links/tags/microsub">microsub</a>
+<a rel="tag" class="p-category" href="/links/tags/microformats">microformats</a>
+<a rel="tag" class="p-category" href="/links/tags/webmentions">webmentions</a>
+</p>
+</footer>
+
+</article>
+<h2>Friday, November 2nd, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.brucelawson.co.uk/2018/screenreader-support-for-text-level-semantics/">
+Bruce Lawson&#8217;s personal site  : Screenreader support for text-level semantics
+</a>
+</h3>
+
+<p>Bruce reveals that the theory and the reality are somewhat different when it comes to the accessibility of inline elements like <code>em</code> and <code>strong</code>.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14466">
+<time class="dt-published" datetime="2018-11-02T08:48:30Z">
+8:48am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/accessibility">accessibility</a>
+<a rel="tag" class="p-category" href="/links/tags/a11y">a11y</a>
+<a rel="tag" class="p-category" href="/links/tags/semantics">semantics</a>
+<a rel="tag" class="p-category" href="/links/tags/text">text</a>
+<a rel="tag" class="p-category" href="/links/tags/emphasis">emphasis</a>
+<a rel="tag" class="p-category" href="/links/tags/strong">strong</a>
+<a rel="tag" class="p-category" href="/links/tags/bold">bold</a>
+<a rel="tag" class="p-category" href="/links/tags/italic">italic</a>
+<a rel="tag" class="p-category" href="/links/tags/screenreaders">screenreaders</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.thecut.com/2018/11/google-walkout-organizers-explain-demands.html">
+Google Walkout Organizers Explain Their Demands
+</a>
+</h3>
+
+<p>This instance of collective action from inside a tech company is important, not just for the specifics of Google, but in acting as an example to workers in other companies.</p>
+
+<p>And of all the demands, this is the one that could have the biggest effect in the US tech world:</p>
+
+<blockquote>
+  <p>An end to Forced Arbitration.</p>
+</blockquote>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14465">
+<time class="dt-published" datetime="2018-11-02T08:41:44Z">
+8:41am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/google">google</a>
+<a rel="tag" class="p-category" href="/links/tags/collective">collective</a>
+<a rel="tag" class="p-category" href="/links/tags/action">action</a>
+<a rel="tag" class="p-category" href="/links/tags/walkout">walkout</a>
+<a rel="tag" class="p-category" href="/links/tags/sexism">sexism</a>
+<a rel="tag" class="p-category" href="/links/tags/inequality">inequality</a>
+<a rel="tag" class="p-category" href="/links/tags/demands">demands</a>
+<a rel="tag" class="p-category" href="/links/tags/company">company</a>
+<a rel="tag" class="p-category" href="/links/tags/change">change</a>
+<a rel="tag" class="p-category" href="/links/tags/business">business</a>
+<a rel="tag" class="p-category" href="/links/tags/politics">politics</a>
+<a rel="tag" class="p-category" href="/links/tags/ethics">ethics</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="http://www.flagofplanetearth.com/#intro-shift">
+The International Flag of Planet Earth
+</a>
+</h3>
+
+<p>A proposed flag for the planet.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14464">
+<time class="dt-published" datetime="2018-11-02T08:40:48Z">
+8:40am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/flag">flag</a>
+<a rel="tag" class="p-category" href="/links/tags/planet">planet</a>
+<a rel="tag" class="p-category" href="/links/tags/earth">earth</a>
+<a rel="tag" class="p-category" href="/links/tags/design">design</a>
+<a rel="tag" class="p-category" href="/links/tags/proposal">proposal</a>
+<a rel="tag" class="p-category" href="/links/tags/culture">culture</a>
+<a rel="tag" class="p-category" href="/links/tags/nations">nations</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.smashingmagazine.com/2018/10/tpac-css-working-group-new/">
+The CSS Working Group At TPAC: What’s New In CSS? — Smashing Magazine
+</a>
+</h3>
+
+<p>Rachel gives us the run-down on what&#8217;s coming soon to Cascading Style Sheets near you, including an aspect-ratio unit and a <code>matches</code> selector (as originally <a href="https://github.com/w3c/csswg-drafts/issues/1170">proposed by Lea</a>).</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14463">
+<time class="dt-published" datetime="2018-11-02T08:37:03Z">
+8:37am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/css">css</a>
+<a rel="tag" class="p-category" href="/links/tags/standards">standards</a>
+<a rel="tag" class="p-category" href="/links/tags/styling">styling</a>
+<a rel="tag" class="p-category" href="/links/tags/scrollbars">scrollbars</a>
+<a rel="tag" class="p-category" href="/links/tags/selectors">selectors</a>
+<a rel="tag" class="p-category" href="/links/tags/apsectratio">apsectratio</a>
+<a rel="tag" class="p-category" href="/links/tags/matches">matches</a>
+<a rel="tag" class="p-category" href="/links/tags/tpac">tpac</a>
+<a rel="tag" class="p-category" href="/links/tags/frontend">frontend</a>
+<a rel="tag" class="p-category" href="/links/tags/development">development</a>
+</p>
+</footer>
+
+</article>
+<h2>Tuesday, October 30th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.youtube.com/watch?v=6gmP4nk0EOE">
+Web 2.0 &#8230; The Machine is Us/ing Us - YouTube
+</a>
+</h3>
+
+<p>Looking back on this classic explainer video from eleven years ago, I know exactly what&#8217;s meant by this comment:</p>
+
+<blockquote>
+  <p>its weird that when i first saw this video it made me think of the future, and now i watch it and it reminds me of the past..﻿</p>
+</blockquote>
+
+<figure><a href="https://www.youtube.com/watch?v=6gmP4nk0EOE"><img src="https://i.ytimg.com/vi/6gmP4nk0EOE/hqdefault.jpg" alt="Web 2.0 ... The Machine is Us/ing Us" /></a></figure><br /></div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14461">
+<time class="dt-published" datetime="2018-10-30T09:27:41Z">
+9:27am
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/youtube">youtube</a>
+<a rel="tag" class="p-category" href="/links/tags/video">video</a>
+<a rel="tag" class="p-category" href="/links/tags/hypertext">hypertext</a>
+<a rel="tag" class="p-category" href="/links/tags/digital">digital</a>
+<a rel="tag" class="p-category" href="/links/tags/linking">linking</a>
+<a rel="tag" class="p-category" href="/links/tags/collaboration">collaboration</a>
+<a rel="tag" class="p-category" href="/links/tags/web2.0">web2.0</a>
+<a rel="tag" class="p-category" href="/links/tags/web">web</a>
+<a rel="tag" class="p-category" href="/links/tags/history">history</a>
+</p>
+</footer>
+
+</article>
+<h2>Monday, October 29th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.stilldrinking.org/programming-sucks">
+Programming Sucks
+</a>
+</h3>
+
+<blockquote>
+  <p>There’s a theory that you can cure this by following standards, except there are more “standards” than there are things computers can actually do, and these standards are all variously improved and maligned by the personal preferences of the people coding them, so no collection of code has ever made it into the real world without doing a few dozen identical things a few dozen not even remotely similar ways. The first few weeks of any job are just figuring out how a program works even if you’re familiar with every single language, framework, and standard that’s involved, because standards are unicorns.</p>
+</blockquote>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14460">
+<time class="dt-published" datetime="2018-10-29T12:34:20Z">
+12:34pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/programming">programming</a>
+<a rel="tag" class="p-category" href="/links/tags/code">code</a>
+<a rel="tag" class="p-category" href="/links/tags/coding">coding</a>
+<a rel="tag" class="p-category" href="/links/tags/standards">standards</a>
+<a rel="tag" class="p-category" href="/links/tags/development">development</a>
+<a rel="tag" class="p-category" href="/links/tags/rant">rant</a>
+<a rel="tag" class="p-category" href="/links/tags/funny">funny</a>
+<a rel="tag" class="p-category" href="/links/tags/work">work</a>
+<a rel="tag" class="p-category" href="/links/tags/complexity">complexity</a>
+</p>
+</footer>
+
+</article>
+<h2>Sunday, October 28th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://ruk.ca/content/phil-nash-and-jeremy-keith-save-safari-video-playback-day">
+Phil Nash and Jeremy Keith Save the Safari Video Playback Day
+</a>
+</h3>
+
+<p>I love this example of paying it forward:</p>
+
+<ul>
+<li><a href="https://philna.sh/blog/2018/10/23/service-workers-beware-safaris-range-request/">Phil Nash wrote a post on his site</a> that really helped me, so</li>
+<li><a href="https://adactio.com/journal/14452">I wrote a post on my site</a>, which helped Peter, so</li>
+<li>Peter wrote this post on his site, <a href="https://adactio.com/journal/14452#comment64243">which showed up via webmention on my site</a>, and now</li>
+<li>this post will help somebody else &#8230;who I hope will write about it.</li>
+</ul>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14458">
+<time class="dt-published" datetime="2018-10-28T19:10:15Z">
+7:10pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/serviceworkers">serviceworkers</a>
+<a rel="tag" class="p-category" href="/links/tags/debugging">debugging</a>
+<a rel="tag" class="p-category" href="/links/tags/browsers">browsers</a>
+<a rel="tag" class="p-category" href="/links/tags/safari">safari</a>
+<a rel="tag" class="p-category" href="/links/tags/video">video</a>
+<a rel="tag" class="p-category" href="/links/tags/frontend">frontend</a>
+<a rel="tag" class="p-category" href="/links/tags/development">development</a>
+<a rel="tag" class="p-category" href="/links/tags/playback">playback</a>
+<a rel="tag" class="p-category" href="/links/tags/blogging">blogging</a>
+<a rel="tag" class="p-category" href="/links/tags/sharing">sharing</a>
+<a rel="tag" class="p-category" href="/links/tags/bugs">bugs</a>
+</p>
+</footer>
+
+</article>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://csswizardry.com/2018/10/three-types-of-performance-testing/">
+The Three Types of Performance Testing – CSS Wizardry
+</a>
+</h3>
+
+<p>Harry divides his web performance work into three categories:</p>
+
+<ol>
+<li>Proactive</li>
+<li>Reactive</li>
+<li>Passive</li>
+</ol>
+
+<blockquote>
+  <p>I feel like a lot of businesses are still unsure where to even start when it comes to performance monitoring, and as such, they never do. By demystifying it and breaking it down into three clear categories, each with their own distinct time, place, and purpose, it immediately takes a lot of the effort away from them: rather than worrying what their strategy should be, they now simply need to ask ‘Do we have one?’</p>
+</blockquote>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14457">
+<time class="dt-published" datetime="2018-10-28T19:07:49Z">
+7:07pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/performance">performance</a>
+<a rel="tag" class="p-category" href="/links/tags/strategies">strategies</a>
+<a rel="tag" class="p-category" href="/links/tags/proactive">proactive</a>
+<a rel="tag" class="p-category" href="/links/tags/reactive">reactive</a>
+<a rel="tag" class="p-category" href="/links/tags/passive">passive</a>
+<a rel="tag" class="p-category" href="/links/tags/speed">speed</a>
+<a rel="tag" class="p-category" href="/links/tags/bandwidth">bandwidth</a>
+<a rel="tag" class="p-category" href="/links/tags/monitoring">monitoring</a>
+<a rel="tag" class="p-category" href="/links/tags/tooling">tooling</a>
+<a rel="tag" class="p-category" href="/links/tags/frontend">frontend</a>
+<a rel="tag" class="p-category" href="/links/tags/development">development</a>
+<a rel="tag" class="p-category" href="/links/tags/testing">testing</a>
+<a rel="tag" class="p-category" href="/links/tags/tools">tools</a>
+</p>
+</footer>
+
+</article>
+<h2>Friday, October 26th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.cbronline.com/news/uk-startup-hub-brighton">
+Silicon Valley by the Sea: Is Brighton Really a UK Startup Hub?
+</a>
+</h3>
+
+<p>Terrible title; nice article. Rich speaks his brains about Clearleft and what we like about being in Brighton.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14453">
+<time class="dt-published" datetime="2018-10-26T16:54:48Z">
+4:54pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/brighton">brighton</a>
+<a rel="tag" class="p-category" href="/links/tags/clearleft">clearleft</a>
+<a rel="tag" class="p-category" href="/links/tags/scenius">scenius</a>
+<a rel="tag" class="p-category" href="/links/tags/agencies">agencies</a>
+<a rel="tag" class="p-category" href="/links/tags/startups">startups</a>
+<a rel="tag" class="p-category" href="/links/tags/work">work</a>
+<a rel="tag" class="p-category" href="/links/tags/life">life</a>
+<a rel="tag" class="p-category" href="/links/tags/culture">culture</a>
+</p>
+</footer>
+
+</article>
+<h2>Thursday, October 25th, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://www.theguardian.com/new-faces-of-tech/2018/oct/25/its-a-caring-environment-how-codebar-is-building-a-diverse-tech-community">
+‘It’s a caring environment’: how codebar is building a diverse tech community | New faces of tech | The Guardian
+</a>
+</h3>
+
+<p>A profile of Codebar Brighton, with words of wisdom from Alice and Cassie.</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14449">
+<time class="dt-published" datetime="2018-10-25T18:14:06Z">
+6:14pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/codebar">codebar</a>
+<a rel="tag" class="p-category" href="/links/tags/brighton">brighton</a>
+<a rel="tag" class="p-category" href="/links/tags/guardian">guardian</a>
+<a rel="tag" class="p-category" href="/links/tags/teaching">teaching</a>
+<a rel="tag" class="p-category" href="/links/tags/learning">learning</a>
+<a rel="tag" class="p-category" href="/links/tags/diversity">diversity</a>
+</p>
+</footer>
+
+</article>
+<h2>Tuesday, October 23rd, 2018</h2>
+<article class="xfolkentry h-entry">
+
+<div class="e-content">
+
+<h3>
+<a class="taggedlink p-name u-bookmark-of" href="https://clearleft.com/posts/ux-past-present-and-future">
+UX past, present, and future | Clearleft
+</a>
+</h3>
+
+<p>This long zoom by Andy is right up my alley—a history of UX design that begins in 1880. It&#8217;s not often that you get to read something that includes Don Norman, Doug Engelbart, Lilian Gilbreth, and Vladimir Lenin. So good!</p>
+
+</div>
+
+<footer>
+<p class="meta">
+<a rel="bookmark" class="u-url" href="/links/14445">
+<time class="dt-published" datetime="2018-10-23T20:00:03Z">
+8:00pm
+</time>
+</a>
+</p>
+<p class="meta">
+Tagged with
+<a rel="tag" class="p-category" href="/links/tags/ux">ux</a>
+<a rel="tag" class="p-category" href="/links/tags/history">history</a>
+<a rel="tag" class="p-category" href="/links/tags/design">design</a>
+<a rel="tag" class="p-category" href="/links/tags/technology">technology</a>
+<a rel="tag" class="p-category" href="/links/tags/society">society</a>
+<a rel="tag" class="p-category" href="/links/tags/culture">culture</a>
+<a rel="tag" class="p-category" href="/links/tags/users">users</a>
+<a rel="tag" class="p-category" href="/links/tags/experience">experience</a>
+<a rel="tag" class="p-category" href="/links/tags/industrial">industrial</a>
+<a rel="tag" class="p-category" href="/links/tags/revolution">revolution</a>
+<a rel="tag" class="p-category" href="/links/tags/methods">methods</a>
+<a rel="tag" class="p-category" href="/links/tags/usability">usability</a>
+<a rel="tag" class="p-category" href="/links/tags/hci">hci</a>
+<a rel="tag" class="p-category" href="/links/tags/ergonomics">ergonomics</a>
+<a rel="tag" class="p-category" href="/links/tags/taylorism">taylorism</a>
+<a rel="tag" class="p-category" href="/links/tags/clearleft">clearleft</a>
+</p>
+</footer>
+
+</article>
+<p><a rel="next" title="Next" href="?start=20">Older &raquo;</a></p>
+</main>
+
+<aside role="complementary">
+
+<h2>More information</h2>
+
+<!-- Begin the extra content -->
+
+<div class="box">
+
+<h3>About this site</h3>
+
+<address class="vcard h-card">
+<a href="https://adactio.com/" class="url u-url" rel="me">Adactio</a> is the online home of <a href="mailto:jeremy@adactio.com" class="email fn p-name u-email">Jeremy Keith</a>, a <span class="role p-role">web developer</span> and <span class="title p-job-title">author</span> living and working in <span class="adr p-adr"><span class="locality p-locality">Brighton</span>, <span class="country-name p-country-name">England</span></span>.
+</address>
+<p><a href="/contact/">Get in touch</a></p>
+</div>
+
+<div class="box">
+
+<h3>Customise</h3>
+
+<form method="get" action="/links" id="skinselection">
+<p>
+<label for="skin">Choose a theme&hellip;</label><br />
+<select name="skin" id="skin">
+<option value="default" selected="selected">default</option>
+<option value="tatemodern">tatemodern</option>
+<option value="seaside">seaside</option>
+<option value="zeldman">zeldman</option>
+<option value="adactizilla">adactizilla</option>
+<option value="sci-fi">sci-fi</option>
+<option value="renaissance">renaissance</option>
+<option value="hirnlego">hirnlego</option>
+</select>
+<input type="submit" value="Go!" id="submitskin" />
+<a href="/about/site/" title="what is this?">?</a>
+</p>
+</form>
+<p>This is the plain vanilla look.</p>
+
+</div>
+<div class="box" role="search">
+
+<h3>Search</h3>
+
+<form action="/links/search/" method="get">
+<p>
+<label for="query">Search links:</label>
+<br />
+<input type="search" name="query" id="query" value="" />
+<button type="submit">Go!</button></p>
+</form>
+
+<ul>
+<li>Peruse the <a href="/links/archive/">archive</a></li>
+<li>Browse the <a href="/links/tags/">tags</a></li>
+</ul>
+
+</div>
+<div class="box">
+
+<h3>Subscribe</h3>
+
+<p>You can subscribe to the <a href="/links/rss" rel="alternate"><abbr title="Really Simple Syndication">RSS</abbr> feed of links</a> or you can follow <a href="https://twitter.com/adactioLinks">@adactioLinks</a> on Twitter.</p>
+
+</div>
+
+</aside>
+
+
+<!-- The large print giveth and the small print taketh away -->
+
+<footer role="contentinfo">
+<p>&copy; 1998 - 2018 <a href="mailto:jeremy@adactio.com">Jeremy Keith</a>.</p>
+</footer>
+
+<script src="/includes/javascript/global.js" defer="defer"></script>
+<script>
+<!--
+// Register our service-worker
+if (navigator.serviceWorker) {
+    navigator.serviceWorker.register('/serviceworker.js', {
+        scope: '/'
+    });
+    window.addEventListener('load', function() {
+        if (navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage({'command': 'trimCaches'});
+        }
+    });
+}
+//-->
+</script>
+
+</body>
+</html>

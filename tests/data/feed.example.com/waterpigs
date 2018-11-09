@@ -1,0 +1,868 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<!doctype html>
+<html class="no-js h-feed homepage" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+    <!-- So you’re having a peek at my source code. That’s cool :) -->
+    <!-- I use some fairly experimental markup, for more details check out
+    http://waterpigs.co.uk/articles/experimental-markup -->
+    <!-- Any other questions, just get in contact. -->
+
+
+    <title class="p-name">Barnaby Walters</title>
+    <meta name="author" content="Barnaby Walters" />
+
+    <link rel="openid.delegate" href="https://waterpigs.co.uk" />
+    <link rel="openid.server" href="https://www.indieauth.com/openid" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="hub" href="https://pubsubhubbub.superfeedr.com/" />
+    <link rel="self" href="https://waterpigs.co.uk/" />
+
+        <link rel="alternate" type="application/atom+xml" href="https://waterpigs.co.uk/services/microformats-to-atom/?url=https%3A//waterpigs.co.uk/" />
+
+    <link rel="webmention http://webmention.org/" href="https://waterpigs.co.uk/mentions/webmention/?wmtoken=eyJpdiI6IlJkWWYwdFNCVFFmRkZnXC9GaHpadStnPT0iLCJ2YWx1ZSI6IjVjRkM3RjZaR0ZkTXV6ckhvR0J0MjFuNGkwZE1jZjhvaFhuTDc2Q3lJUXExUU1HV1hHNUZiMDA4OTY0YmJkRmkiLCJtYWMiOiJkZDQzMzY4MzBlODAzZjMzNTIxZWVhNDc3YjkzNDQxNTg1MTJiYWMwM2Q2YWE2ZWRjZjYxMDQ5ZDRkZTRjZmU0In0%3D" />
+    <link rel="pingback" href="http://webmention.io/webmention?forward=https%3A%2F%2Fwaterpigs.co.uk%2Fmentions%2Fwebmention%2F%3Fwmtoken%3DeyJpdiI6IlJkWWYwdFNCVFFmRkZnXC9GaHpadStnPT0iLCJ2YWx1ZSI6IjVjRkM3RjZaR0ZkTXV6ckhvR0J0MjFuNGkwZE1jZjhvaFhuTDc2Q3lJUXExUU1HV1hHNUZiMDA4OTY0YmJkRmkiLCJtYWMiOiJkZDQzMzY4MzBlODAzZjMzNTIxZWVhNDc3YjkzNDQxNTg1MTJiYWMwM2Q2YWE2ZWRjZjYxMDQ5ZDRkZTRjZmU0In0%253D" />
+
+    <link rel="shortcut icon" href="/photo-2016-06-25.jpg" />
+    <link rel="apple-touch-icon-precomposed" href="/photo-2016-06-25.jpg" />
+
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+    <link rel="token_endpoint" href="https://waterpigs.co.uk/token/" />
+    <link rel="micropub" href="https://waterpigs.co.uk/" />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/js/leaflet/leaflet.css" />
+    <!--[if lt IE 9]>
+        <script src="/js/html5.js"></script>
+    <![endif]-->
+    <script src="/js/require.js" data-main="/js/app"></script>
+  </head>
+  <body>
+    <div class="nav-placeholder">
+      <a href="#page-navigation">Menu &dArr;</a>
+    </div>
+    <header role="banner" id="page-header" class="clearfix">
+      <nav role="navigation" id="page-navigation">
+        <ul>
+          <li class="nav-item nav-top"><a href="#">Top &uArr;</a></li>
+          <li class="nav-item"><a class="header-home" href="https://waterpigs.co.uk" accesskey="h"><img src="/photo-2016-06-25.jpg" alt="" /> Barnaby Walters</a></li>
+          <li class="nav-item"><a href="/notes/" accesskey="n">Notes</a></li>
+          <li class="nav-item"><a href="/articles/" accesskey="b">Articles</a></li>
+          <li class="nav-item"><a href="/music/" accesskey="g">Music</a></li>
+          <li class="nav-item"><a href="/places/" accesskey="v">Places</a></li>
+          <li class="nav-item"><a href="/pig/" accesskey="p">ABCPig</a></li>
+        </ul>
+        <form class="nav-item search" action="http://www.google.com/search" method="get">
+          <input type="hidden" name="as_sitesearch" value="waterpigs.co.uk"/>
+          <input type="hidden" name="tbs" value="sbd:1,cdr:1,cd_min:1/1/1970"/>
+          <input type="search" name="q" placeholder="Search…" />&nbsp;<button type="submit">Search</button>
+        </form>
+      </nav>
+    </header>
+<div class="p-author h-card homepage-profile">
+  <img class="u-photo photo" src="/photo-2016-06-25.jpg" alt="" />
+  <h1 class="p-name">
+    <a class="u-url url fn" href="https://waterpigs.co.uk" rel="me">
+      <span class="p-given-name given-name">Barnaby</span>
+      <span class="p-family-name family-name">Walters</span>
+    </a>
+  </h1>
+
+  <p>Arranging atoms and pressurising air in a variety of manners.</p>
+
+  <p>✨🌟 shiny inevitable mortality distractions! 🛠 building a cultural heritage centre at <a href="http://broemsenberg.de">Wassermühle Brömsenberg</a> 💃🏻 playing old music for new dancing with <a href="http://gerhardtwalters.eu">Duo Gerhardt &amp; Walters</a> 🎼 building hurdy gurdies, playing gurdy blockflute dulcimer accordion Pd voice 🚀 building the <a href="http://indiewebcamp.com">indieweb</a> ❤️ philosophising inexpertly about how humans communicate, relate and connect ⚖ helping assess the Icelandic school system at <a href="http://skolapulsinn.is">Skólapúlsinn</a> 🍕 baking pizza, granola, bread 🌟✨</p>
+
+  <p>Pronouns: <span class="p-x-pronoun-nominative">he</span>/<span class="p-x-pronoun-oblique">him</span>/<span class="p-pronoun-posessive">his</span></p>
+
+    <aside class="mobile-collapsable">
+    <h2 class="collapsable-handle">Last Seen: Hechinger Straße, Landkreis Tübingen, <a href="https://waterpigs.co.uk/notes/4mAF1v/">2017-01-04</a></h2>
+    <div class="location-map last-seen-map" data-latitude="48.499651764604636" data-longitude="9.06445026397705" ></div>
+  </aside>
+
+  <aside>
+    <h2>Recent Articles</h2>
+    <ol class="recent-article-list">
+          <li><a href="/articles/chien/">How to Build a Chien</a></li>
+          <li><a href="/articles/a-graphical-text-based-hybrid-ui-vision/">A Graphical/Text Based Hybrid UI Vision</a></li>
+          <li><a href="/articles/vatnajokull-gurdy/">The Vatnajökull Hurdy Gurdy</a></li>
+        </ol>
+    <p><a class="older-articles-link" href="/articles/?before=2016-05-03T20%3A24%3A24%2B00%3A00">Older Articles</a></p>
+  </aside>
+
+  <aside class="elsewhere">
+    <h2>Elsewhere on the Web</h2>
+    <ul class="elsewhere-list">
+      <li><a class="u-email email email-link" rel="me" href="mailto:barnaby@waterpigs.co.uk">barnaby@waterpigs.co.uk</a></li>
+      <li><a class="u-url url indiewebcamp-link" rel="me" href="http://indiewebcamp.com/User:WaterPigs.co.uk">IndieWebCamp</a></li>
+      <li><a class="u-url url twitter-link" rel="me" href="https://twitter.com/BarnabyWalters">Twitter</a></li>
+      <li><a class="u-url url github-link" rel="me" href="https://github.com/barnabywalters">Github</a></li>
+      <li><a class="u-url url bitbucket-link" rel="me" href="https://bitbucket.org/barnabywalters">Bitbucket</a></li>
+      <li><a class="u-url url youtube-link" rel="me" href="http://www.youtube.com/user/WaterpigMaster">YouTube</a></li>
+      <li><a class="u-url url soundcloud-link" rel="me" href="http://soundcloud.com/barnabywalters">SoundCloud</a></li>
+      <li><a class="u-url url flickr-link" rel="me" href="http://www.flickr.com/photos/53044388@N05/">Flickr</a></li>
+      <li><a class="u-url url muted" rel="me" href="http://uk.linkedin.com/pub/barnaby-walters/50/49/92a">LinkedIn</a></li>
+    </ul>
+    <p><a class="u-x-payment dogecoin-link" rel="payment" href="http://dogechain.info/address/DANJA3hmW86mhDTUD7GwvzFfr2iZteET9W">Ð</a> / <a class="u-x-payment bitcoin-link" rel="payment" href="https://blockchain.info/address/1Q5otvnjs3gDNFqyeZzmKbrPR2Qo6PQ2HM">฿</a></p>
+  </aside>
+
+  <aside class="data-disclosure">
+    <h2>Data Disclosure</h2>
+    <p>This site is hosted in the UK, my email is hosted by One.com in Denmark (I use GPG, get <a class="u-key" rel="pgpkey" type="application/pgp-keys" href="/118AD524.asc">my key</a> and <a rel="pgp-fingerprint" href="https://waterpigs.co.uk/notes/4kV1w7/">fingerprint</a>).</p>
+  </aside>
+</div>
+
+<div class="stream">
+  <ol class="post-list clearfix">
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4xPPc4">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Turns out that it’s possible to use cheaply available (~2€ each) 7-pin SPI OLED displays with the magpie modular 8hp microbraids PCBs. A hardware and software modification are required, although as the ATMega is using software SPI it may be possible to work around the hardware modification with further software modifications.</p>
+
+<p>Please note that I would not recommend building the magpie modular micro braids module! Instead, try one of the newer adaptions (e.g. the one from Antumbra) which uses normal LED displays and have prettier panels. This guide is intended as reference for people who still have one of the old boards lying around and want to get it working without shelling out 20€ or more for a tiny OLED module.</p>
+
+<p>The seven pin SPI header on the cheap OLEDs I bought maps to the eight pin header of the original Adafruit OLED (and therefore the microbraids PCB) like this:</p>
+
+<pre>CS DC RS MOSI CLK Vin GND
+|    X      X      |        \
+CS RS DC CLK MOSI Vin 3.3v GND</pre>
+
+<p>I cut the relevant traces on the OLED board, scratched away some solder mask and used enamel-insulated wire to connect the traces to their new pins. Then, I installed a 7 pin female header on the braids PCB, and bridged the 3.3v and GND pins, which sounds like a terrible idea, but the board doesn’t make any use of the 3.3v pin, I’m just using it as a convenient way of connecting the OLED GND pin to the braids GND pin.</p>
+
+<p>If your OLED module has the same layout as mine, it should end up looking something like this:</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/2018-11-08-braids-oled-mod-front.jpeg" alt="" /></p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/2018-11-08-braids-oled-mod-back.jpeg" alt="" /></p>
+
+<p>The display ends up being in a slightly different place to the original, but five minutes of filing the aluminium panel fixed that. It ended up looking a little bit messy, but the panel (from pusherman, not a magpie modular original) is extremely ugly anyway so it didn’t make much difference. I quickly cut out and filed a 3mm acrylic screen, wedged it in place and secured it with some high-viscoscity superglue.</p>
+
+<p>After reflowing and flashing both the ATMega and STM, everything was working perfectly, except the display was upside-down. Looking through the Adafruit graphics library led to a simple solution: adding the following line to the <code>init</code> function on line 39 of mbraidsv3.ino:</p>
+
+<pre>display.setRotation(2); // Invert display for use with cheap Aliexpress 7-pin OLED</pre>
+
+<p>After re-flashing the ATMega, everything worked perfectly.</p>
+
+<p>It was only after I made the hardware modification that I noticed the ATMega is using a software SPI library, with the pin definitions on lines 9-13 of mbraidsv3.ino. It should therefore be possible to achieve exactly the same result by leaving the OLED module unmodified, bridging the 3.3V and GND pins on the 8 pin OLED header on the PCB, and swapping the pin definitions around so they look like this:</p>
+
+<pre>#define OLED_MOSI   10
+#define OLED_CLK   9
+#define OLED_DC    13
+#define OLED_CS    12
+#define OLED_RESET 11</pre>
+
+<p>The display rotation mod will still be necessary, unless your display module is oriented differently. If anyone attempts the software modification please let me know, I’d be curious to know if it works!</p>
+
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4xPPc4/">
+        <time class="dt-published published dt-updated updated" datetime="2018-11-08T23:37:04+03:00">
+          8<sup>th</sup> of November 2018 at 23:37        </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4xPPc4/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4xAPEv">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Useful reference for anyone trying to get a monome grid working with vanilla puredata</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-10-26-at-221227.png" alt="" /></p>
+
+<p>Perhaps when I have developed it a bit more I will contribute a new tutorial to the monome docs website, and create a [serialosc] object for easily managing devices and connections.</p>
+
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4xAPEv/">
+        <time class="dt-published published dt-updated updated" datetime="2018-10-26T23:14:55+03:00">
+          26<sup>th</sup> of October 2018 at 23:14        </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4xAPEv/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4x4EsS">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Today’s late-October tomato harvest, straight from the garden, no greenhouses involved. If it keeps getting colder, these will probably be some of the last.</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/2018-10-20-tomato-harvest.jpeg" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4x4EsS/">
+        <time class="dt-published published dt-updated updated" datetime="2018-10-20T14:52:26+03:00">
+          20<sup>th</sup> of October 2018 at 14:52        </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4x4EsS/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4wzC9N">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Augmented Hurdy Gurdy Experiments</p>
+
+<p><a class="auto-link" href="https://www.youtube.com/watch?v=hPGKeMdRU5I">https://www.youtube.com/watch?v=hPGKeMdRU5I</a> <iframe class="youtube-player auto-embed figure" width="100%" height="385" style="border:0"  src="https://www.youtube.com/embed/hPGKeMdRU5I"></iframe></p>
+
+<p>As I can’t currently commit to building a new series of gurdies due to my living situation, I’ve been keeping myself busy developing the MIDI system for my instruments, to develop new extended, augmented playing techniques.</p>
+
+<p>This video is the first demonstration of some hybrid electronic-acoustic experiments using the prototype MIDI system installed on my hurdy gurdy.</p>
+
+<p>0:22 Technique: Pitch-shifting Polyphony</p>
+
+<p>Gurdy MIDI and Audio → Apogee ONE → Macbook running a puredata patch</p>
+
+<p>Monophonic acoustic gurdy signal is pitch-shifted down in real time to play chords and harmonies. Chords and intervals on the keyboard can also be used to pitch-shift the trompette signal (0:55) or the drones. Inspired by an idea from Sébastien Tron.</p>
+
+<p>1:18 Technique: Expressive MIDI Controller</p>
+
+<p>Hurdy Gurdy MIDI → DIY Hybrid Poly Synth based off Mutable Instruments Ambika</p>
+
+<p>The keyboard and wheel sensors send MIDI note, expression and polyphonic aftertouch messages to a polyphonic synthesizer. In this case a split keyboard effect is used to play two sounds.</p>
+
+<p>1:36 Technique: Layered Acoustic and Electronic Sound</p>
+
+<p>Hurdy Gurdy Acoustic audio, Gurdy MIDI → DIY Hybrid Poly Synth based off Mutable Instruments Ambika</p>
+
+<p>1:36 The acoustic string plays a melody, the bottom half of the keyboard controls a synthesizer with a long release for subtle held chords</p>
+
+<p>2:08 Using trompette technique can send MIDI messages, used here to play synthesized percussion on an Ambika voice assigned to MIDI channel 10, whilst the keyboard plays chords.</p>
+
+<p>2:30 Acoustic trompette and melody string sound layered over subtle polyphonic synthesized chords</p>
+
+<p>Playing, Instrument and Software: Barnaby Walters <a class="auto-link" href="https://gurdy.is">https://gurdy.is</a> <a class="auto-link" href="https://waterpigs.co.uk">https://waterpigs.co.uk</a><br />
+Polyphonic Pitch-shifting idea: Sébastien Tron<br />
+Filming, editing: Adriana Borger</p>
+
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4wzC9N/">
+        <time class="dt-published published dt-updated updated" datetime="2018-10-15T12:09:22+03:00">
+          15<sup>th</sup> of October 2018 at 12:09        </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4wzC9N/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article class="h-entry hentry h-as-article feed-article">
+  <h2 class="p-name entry-title">
+    <a class="u-url" rel="bookmark" href="/articles/chien/">How to Build a Chien</a>
+  </h2>
+
+  <div class="p-summary entry-summary"></div>
+
+  <p><a href="/articles/chien/">Read more…</a></p>
+
+  <p class="article-datetime article-mention-counts">
+    <a href="/articles/chien/">
+    <time class="dt-published date published" datetime="2018-10-07T17:58:44+03:00">2018-10-07 17:58</time>
+
+    </a>
+  </p>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4wVFuk">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p><a rel="tag" href="/tags/TIL">#TIL</a> that Cebuano-speaking Wikipedians are vastly more thorough in cataloguing the world’s various “Goat Islands” than their English-speaking counterparts, although they neglect the more artistic uses of the phrase. Compare: <a class="auto-link" href="https://en.wikipedia.org/wiki/Goat_Island">https://en.wikipedia.org/wiki/Goat_Island</a> vs <a class="auto-link" href="https://ceb.wikipedia.org/wiki/Goat_Island">https://ceb.wikipedia.org/wiki/Goat_Island</a></p>
+
+<p>English-speaking wikipedians would have you believe that Canada only boasts a measly two Goat Islands, but the admirable Cebuano-speaking wikipedians reveal that the true number is sixteen times greater, coming second only to the US, which clocks in at almost one hundred.</p>
+
+<p>The map of Chilean Goat Islands is possibly my new favourite wikipedia graphic:</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-09-15-at-145327.png" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4wVFuk/">
+        <time class="dt-published published dt-updated updated" datetime="2018-09-15T15:54:45+03:00">
+          15<sup>th</sup> of September 2018 at 15:54        </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4wVFuk/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4wRNgs">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Need more knowledge of cow? “ONLY DINOSAURS” wants to help you <a href="https://onlydinosaurs.com/full-size-cow-model/">fill the void</a></p>
+
+<p><a href="https://onlydinosaurs.com/full-size-cow-model/"><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-09-11-at-213133.png" alt="" /></a></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4wRNgs/">
+        <time class="dt-published published dt-updated updated" datetime="2018-09-11T22:41:52+03:00">
+          11<sup>th</sup> of September 2018 at 22:41        </time>
+        —
+1 <img class="compact-mention-icon" src="/img/icons/like-icon.svg" alt="likes" />       </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4wRNgs/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4vkMUR">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>In what is possibly a world-first, youtube’s AI managed to recommend a channel actually relevant to my interests</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-08-02-at-202438.png" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4vkMUR/">
+        <time class="dt-published published dt-updated updated" datetime="2018-08-02T21:28:25+03:00">
+          2<sup>nd</sup> of August 2018 at 21:28        </time>
+        —
+1 <img class="compact-mention-icon" src="/img/icons/like-icon.svg" alt="likes" />       </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4vkMUR/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4vfFe4">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>I AM A. J. FRONCE</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-07-28-at-112303.png" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4vfFe4/">
+        <time class="dt-published published dt-updated updated" datetime="2018-07-28T15:39:04+03:00">
+          28<sup>th</sup> of July 2018 at 15:39       </time>
+        —
+1 <img class="compact-mention-icon" src="/img/icons/like-icon.svg" alt="likes" />       </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4vfFe4/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4v_Ps_">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>After missing the crowdfunding campaign, I was happy to finally be able to buy a copy of Tobie Miller’s excellent Bach solo hurdy gurdy CD at Chateau d’Ars last week. I couldn’t find any official album artwork on the web yet, so here is a quick scan of the cover, for anyone else who got a copy already.</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/tobie-miller-bach-solo.jpeg" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4v_Ps_/">
+        <time class="dt-published published dt-updated updated" datetime="2018-07-22T23:52:34+03:00">
+          22<sup>nd</sup> of July 2018 at 23:52       </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4v_Ps_/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4vLzG">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>It is possible, if somewhat awkward, to update the Mooer Ocean Machine firmware on a mac using Wine and a cheap USB MIDI cable.</p>
+
+<p>WARNING: if the firmware update doesn’t complete successfully, it will not permanently brick your unit (as the update can always be attempted again) but the pedal will not work until a firmware is successfully installed! Attempt at your own risk, and definitely not 10 minutes before a gig.</p>
+
+<p>First, download the update from the Mooer website. The update and update software comes in a .rar archive, so you’ll need something like <a href="https://macpaw.com/the-unarchiver">The Unarchiver</a> to unpack it.</p>
+
+<p>You’ll need the latest version of Wine for Mac from <a href="http://winehq.org/">winehq.org</a>. I successfully installed the firmware update using 3.0.2. Using version 2.0 consistently failed.</p>
+
+<p>Power on the Ocean Machine in firmware update mode and plug in your USB MIDI cable as specified by the update readme. Check in Audio MIDI Setup that it’s working and recognised. Then, launch the updater using Wine. Select the firmware update file, then click “Update”. You might get a popup window helpfully saying “MIDI Device Error!!”. Try pressing Update again, if you’re lucky it will work. If not, open Terminal and try the following solution.</p>
+
+<p>The problem with (old versions of) Windows, Wine and this updater program is that they rely on the “MIDI device mapper” utility to decide which MIDI device to use. This would be fine, but under Wine for Mac there’s no easy way of seeing a list of devices or configuring which device to use.</p>
+
+<p>It is possible to change the default MIDI device used by the MIDI mapper, by creating a text file with the following code:</p>
+
+<pre><code>REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Multimedia\MIDIMap]
+"CurrentInstrument"="#1"
+</code></pre>
+
+<p>&#35;0 is the default device, so start at #1.</p>
+
+<p>I saved mine in MMap.ini. Then, run the following command:</p>
+
+<pre><code>wine regedit MMap.ini
+</code></pre>
+
+<p>and re-open the update app. If after two presses of Update you still get “MIDI Device Error!!”, then quit the updater, change #1 to #2, run <code>wine regedit MMap.ini</code> and try again. Repeat until successful. Yes, the update process sucks.</p>    </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4vLzG/">
+        <time class="dt-published published dt-updated updated" datetime="2018-07-08T00:59:16+03:00">
+          8<sup>th</sup> of July 2018 at 00:59        </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4vLzG/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note" id="note-4v9HwE">
+  <div class="note-reply-context p-in-reply-to h-cite">
+    <a class="u-url" rel="in-reply-to" href="https://twitter.com/_aitor/status/1011887028366176256">
+    ↪
+    </a>
+
+    <time class="dt-published" datetime="2018-06-27T08:20:42+00:00"> </time>
+
+    <a class="p-author h-card" href="https://twitter.com/_aitor">
+              <img class="u-photo" src="https://pbs.twimg.com/profile_images/951077171342307328/fLVhZNYH_bigger.jpg" alt="" />
+            Aitor García Rey</a>:
+
+    <span class="p-summary p-name p-content">
+      For a long time I felt dumb (or even betrayed!) helping people both professionally &amp; personally and not getting love or recognition back.
+
+A few years ago I decide to change that. Now, I’ve *zero* expectations for anyone, I expect nothing. Literally. I just try to help. Period.   </span>
+  </div>
+
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p><a class="auto-link h-x-username" href="https://twitter.com/_aitor">@_aitor</a> I mostly reached a similar place and it’s very relaxing. I occasionally have to remind myself that I’m helping purely because I chose to. The help might be ignored or even rejected, and that’s fine. Might have an impact on whether I chose to help that particular person in the future, though…</p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4v9HwE/">
+        <time class="dt-published published dt-updated updated" datetime="2018-06-27T17:56:14+03:00">
+          27<sup>th</sup> of June 2018 at 17:56       </time>
+        —
+1 <img class="compact-mention-icon" src="/img/icons/like-icon.svg" alt="likes" />       </a>
+
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4v9HwE/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4v9Hqp">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Recently scanned some album covers I couldn’t find on the web. Here they are, to save the work for any other fans of similarly obscure music:</p>
+
+<p>Seitti, Brelo</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/brelo-seitti.jpeg" alt="" /></p>
+
+<p>Tanz', Duo Haertel Wascher</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/duo-haertel-wascher-tanz.jpeg" alt="" /></p>
+
+<p>Eetu Klemetti - Kampi-Klemetin nuottikirja</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/eetu-klemetti-kampi-klemetin-nuottikirja.jpeg" alt="" /></p>
+
+<p>Gregory Jolivet - Alt'o solo</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/gregory-jolivet-alto-solo.jpeg" alt="" /></p>
+
+<p>Marylin Tucker &amp; Paul Wilson - On The Tide</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/marylin-tucker-paul-wilson-on-the-tide.jpeg" alt="" /></p>
+
+<p>Marylin Tucker &amp; Paul Wilson and friends - Dead Maid’s Land</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/marylin-tucker-paul-wilson-and-friends-dead-maids-land.jpeg" alt="" /></p>
+
+<p>The Cornwall Songwriters - The Cry of Tin</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/the-cornwall-songwriters-the-cry-of-tin.jpeg" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4v9Hqp/">
+        <time class="dt-published published dt-updated updated" datetime="2018-06-27T17:50:49+03:00">
+          27<sup>th</sup> of June 2018 at 17:50       </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4v9Hqp/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4v61xz">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Today’s late-night puredata madness: creating a <a href="https://en.wikipedia.org/wiki/7-limit_tuning">7-limit just intonation</a> abstraction which takes standard 12TET MIDI note numbers and spits the 7-limit just version, expressed as a decimal MIDI note number:</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-06-24-at-005311.png" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4v61xz/">
+        <time class="dt-published published dt-updated updated" datetime="2018-06-24T01:57:59+03:00">
+          24<sup>th</sup> of June 2018 at 01:57       </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4v61xz/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4uzLu6">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Talking of <a href="https://puredata.info/downloads/filterview">[filterview]</a> (<a href="https://github.com/pd-projects/filterview">gh</a>), here’s the abstraction I made for it, incorporating stereo smooth filters and a nice mode switching UI made of a [hslider] hidden behind a bunch of canvases.</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-06-17-at-195041.png" alt="" /></p>
+
+<p>Each canvas has a receive ID of $0- plus the symbol for the relevant filter mode, making the message sending for changing the colours easy.</p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4uzLu6/">
+        <time class="dt-published published dt-updated updated" datetime="2018-06-17T20:54:06+03:00">
+          17<sup>th</sup> of June 2018 at 20:54       </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4uzLu6/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4uzLot">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>[biquad~] clicks and pops when changing coefficients, which is annoying when they’re coming from the [filterview] UI. The best way I found of smoothing them was to alternate between two biquad~ objects and crossfade between them over 3ms. This approach, while a little cludgy, is probably generalisable to a lot of similar Pd situations where smooth transitions are desirable.</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-06-17-at-194348.png" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4uzLot/">
+        <time class="dt-published published dt-updated updated" datetime="2018-06-17T20:48:53+03:00">
+          17<sup>th</sup> of June 2018 at 20:48       </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4uzLot/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note " id="note-4uuFKV">
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>Possibly the weirdest spam I’ve ever received</p>
+
+<p><img class="u-photo" src="https://waterpigs.co.uk/img/screen-shot-2018-06-12-at-141820.png" alt="" /></p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4uuFKV/">
+        <time class="dt-published published dt-updated updated" datetime="2018-06-12T15:19:29+03:00">
+          12<sup>th</sup> of June 2018 at 15:19       </time>
+
+      </a>
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4uuFKV/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>
+      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note" id="note-4ug2PX">
+  <div class="note-reply-context p-in-reply-to h-cite">
+    <a class="u-url" rel="in-reply-to" href="https://twitter.com/deer_ful/status/1001462963176394752">
+    ↪
+    </a>
+
+    <time class="dt-published" datetime="2018-05-29T13:59:11+00:00"> </time>
+
+    <a class="p-author h-card" href="https://twitter.com/deer_ful">
+              <img class="u-photo" src="https://pbs.twimg.com/profile_images/847057203831943168/Op636PXg_bigger.jpg" alt="" />
+            emma winston</a>:
+
+    <span class="p-summary p-name p-content">
+      For someone who complains bitterly about everything I sure am easily pleased by rain/thunderstorms    </span>
+  </div>
+
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>oh man, I go wild in thunderstorms and high winds. I have yet to find somewhere with both, Iceland had great wind but no thunder, central europe is the other way round.</p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4ug2PX/">
+        <time class="dt-published published dt-updated updated" datetime="2018-05-30T02:23:31+03:00">
+          30<sup>th</sup> of May 2018 at 02:23        </time>
+
+      </a>
+
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4ug2PX/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note" id="note-4udCmp">
+  <div class="note-reply-context p-in-reply-to h-cite">
+    <a class="u-url" rel="in-reply-to" href="https://twitter.com/isislovecruft/status/1000642655594860545">
+    ↪
+    </a>
+
+    <time class="dt-published" datetime="2018-05-27T07:39:34+00:00"> </time>
+
+    <a class="p-author h-card" href="https://twitter.com/isislovecruft">
+              <img class="u-photo" src="https://pbs.twimg.com/profile_images/967973259181359105/N_SJ5EPP_bigger.jpg" alt="" />
+            isis agora lovecruft</a>:
+
+    <span class="p-summary p-name p-content">
+      and then i decided why optimise when we do that all day at work, let’s pessimise the hell out of this transit systempic.twitter.com/jOsIyW3UDs    </span>
+  </div>
+
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p>reminds me of the parisian system</p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4udCmp/">
+        <time class="dt-published published dt-updated updated" datetime="2018-05-27T12:46:49+03:00">
+          27<sup>th</sup> of May 2018 at 12:46        </time>
+
+      </a>
+
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4udCmp/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>      </li>
+          <li>
+        <article role="article" class="h-entry h-as-note hentry note feed-note" id="note-4uULJn">
+  <div class="note-reply-context p-in-reply-to h-cite">
+    <a class="u-url" rel="in-reply-to" href="https://twitter.com/jkphl/status/997163999098744832">
+    ↪
+    </a>
+
+    <time class="dt-published" datetime="2018-05-17T17:16:38+00:00"> </time>
+
+    <a class="p-author h-card" href="https://twitter.com/jkphl">
+              <img class="u-photo" src="https://pbs.twimg.com/profile_images/836949190198579200/iz4lrP5d_bigger.jpg" alt="" />
+            Joschi Kuphal 吉</a>:
+
+    <span class="p-summary p-name p-content">
+      Walking over to @a11yberlin now after having a delicious bowl of Pho w/ @t &amp; friends. Thank you, it was a pleasure! pic.twitter.com/44lxVwJi32    </span>
+  </div>
+
+  <div class="note-body">
+
+    <div class="p-name entry-title p-summary summary e-content">
+      <p><a class="auto-link h-x-username" href="https://twitter.com/jkphl">@jkphl</a> <a class="auto-link h-x-username" href="https://twitter.com/t">@t</a> how long are you all in Berlin? I’ll be headed that way on Saturay or Sunday, would be great to meet up if you’re still around!</p>
+
+
+<a href="http://brid.gy/publish/facebook"></a>
+
+<a href="http://brid.gy/publish/twitter"></a>   </div>
+
+
+    <footer class="note-footer">
+      <a class="u-url" rel="bookmark" href="https://waterpigs.co.uk/notes/4uULJn/">
+        <time class="dt-published published dt-updated updated" datetime="2018-05-17T20:18:47+03:00">
+          17<sup>th</sup> of May 2018 at 20:18        </time>
+        —
+1 <img class="compact-mention-icon" src="/img/icons/reply-icon.svg" alt="comments" /> 2 <img class="compact-mention-icon" src="/img/icons/like-icon.svg" alt="likes" />       </a>
+
+      <menu type="toolbar" class="note-controls">
+        <li><action do="reply" with="https://waterpigs.co.uk/notes/4uULJn/"></action></li>
+      </menu>
+    </footer>
+  </div>
+</article>      </li>
+      </ol>
+
+  <nav role="navigation" class="pagination clearfix">
+        <a class="previous" rel="previous" accesskey="," href="/?before=2018-05-17T20%3A18%3A47%2B03%3A00">&larr; Older</a>
+          </nav>
+</div>
+<footer role="contentinfo" id="page-footer">
+  <div class="footer-content">
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+      <img alt="Creative Commons Attribution-ShareAlike 3.0 Unported License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a>
+
+    Typeset in <a href="http://iotic.com/averia/">Averia</a>.
+
+    Profile photos by <a rel="friend met" class="h-card" href="http://byjovephotography.com">Jovian Salak</a>.
+
+    This site is built from <a href="http://taprootproject.com">Taproot</a>.
+
+        <form class="authentication" accept-charset="utf-8" action="/login/" method="post">
+      <input type="url" name="me" placeholder="yourdomain.com" />
+      <button type="submit">Log In</button>
+    </form>
+      </div>
+</footer>
+<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+chromium.org/developers/how-tos/chrome-frame-getting-started -->
+<!--[if lt IE 7 ]>
+<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<![endif]-->
+</body>
+</html>
