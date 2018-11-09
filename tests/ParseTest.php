@@ -970,4 +970,27 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('mf2+html', $data['source-format']);
   }
 
+  public function testFollowOf() {
+    $url = 'http://source.example.com/bridgy-follow';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('https://realize.be/', $data['data']['follow-of']);
+    $this->assertEquals('follow', $data['data']['post-type']);
+  }
+
+  public function testFollowOfHCard() {
+    $url = 'http://source.example.com/follow-of-h-card';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('https://realize.be/', $data['data']['follow-of']);
+    $this->assertEquals('follow', $data['data']['post-type']);
+  }
 }

@@ -430,7 +430,7 @@ class Mf2 extends Format {
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url','featured'], $item, $url, $data);
+    self::collectSingleValues(['published','summary','rsvp','swarm-coins'], ['url','featured','follow-of'], $item, $url, $data);
 
     if(isset($data['rsvp']))
       $data['rsvp'] = strtolower($data['rsvp']);

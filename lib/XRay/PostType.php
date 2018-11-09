@@ -26,6 +26,9 @@ class PostType {
     if(isset($post['bookmark-of']))
       return 'bookmark';
 
+    if(isset($post['follow-of']))
+      return 'follow';
+
     if(isset($post['checkin']))
       return 'checkin';
 
