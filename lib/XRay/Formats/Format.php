@@ -104,5 +104,36 @@ abstract class Format implements iFormat {
     return trim(str_replace(['<br>','<br />'],"\n", $sanitized));
   }
 
+  protected static function findLinksInDocument(&$xpath, $target) {
+    $found = [];
+    self::xPathFindNodeWithAttribute($xpath, 'a', 'href', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    self::xPathFindNodeWithAttribute($xpath, 'img', 'src', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    self::xPathFindNodeWithAttribute($xpath, 'video', 'src', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    self::xPathFindNodeWithAttribute($xpath, 'audio', 'src', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    return $found;
+  }
+
+  public static function xPathFindNodeWithAttribute($xpath, $node, $attr, $callback) {
+    foreach($xpath->query('//'.$node.'[@'.$attr.']') as $el) {
+      $v = $el->getAttribute($attr);
+      $callback($v);
+    }
+  }
 
 }

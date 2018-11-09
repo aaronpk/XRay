@@ -47,26 +47,7 @@ class HTML extends Format {
 
       $found = [];
       if($target) {
-        self::xPathFindNodeWithAttribute($xpath, 'a', 'href', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
-        self::xPathFindNodeWithAttribute($xpath, 'img', 'src', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
-        self::xPathFindNodeWithAttribute($xpath, 'video', 'src', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
-        self::xPathFindNodeWithAttribute($xpath, 'audio', 'src', function($u) use($target, &$found){
-          if($u == $target) {
-            $found[$u] = null;
-          }
-        });
+        $found = self::findLinksInDocument($xpath, $target);
       }
 
       if(!$found) {
@@ -176,13 +157,6 @@ class HTML extends Format {
 
   private static function toHtmlEntities($input) {
     return mb_convert_encoding($input, 'HTML-ENTITIES', mb_detect_encoding($input));
-  }
-
-  private static function xPathFindNodeWithAttribute($xpath, $node, $attr, $callback) {
-    foreach($xpath->query('//'.$node.'[@'.$attr.']') as $el) {
-      $v = $el->getAttribute($attr);
-      $callback($v);
-    }
   }
 
   private static function xPathGetElementById($xpath, $id) {
