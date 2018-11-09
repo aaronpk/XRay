@@ -40,29 +40,29 @@ class JSONFeed extends Format {
       ]
     ];
 
-    if(isset($item['author']['name'])) {
+    // First use the feed title/icon/url as author info
+    $entry['author']['url'] = $feed['home_page_url'];
+    if(isset($feed['title']))
+      $entry['author']['name'] = $feed['title'];
+    if(isset($feed['icon']))
+      $entry['author']['photo'] = $feed['icon'];
+
+    // Override the author if the item contains author info
+    if(isset($item['author']['name']))
       $entry['author']['name'] = $item['author']['name'];
-    }
-    if(isset($item['author']['url'])) {
+    if(isset($item['author']['url']))
       $entry['author']['url'] = $item['author']['url'];
-    } elseif(isset($feed['home_page_url'])) {
-      $entry['author']['url'] = $feed['home_page_url'];
-    }
-    if(isset($item['author']['avatar'])) {
+    if(isset($item['author']['avatar']))
       $entry['author']['photo'] = $item['author']['avatar'];
-    }
 
-    if(isset($item['url'])) {
+    if(isset($item['url']))
       $entry['url'] = $item['url'];
-    }
 
-    if(isset($item['id'])) {
+    if(isset($item['id']))
       $entry['uid'] = $item['id'];
-    }
 
-    if(isset($item['title']) && trim($item['title'])) {
+    if(isset($item['title']) && trim($item['title']))
       $entry['name'] = trim($item['title']);
-    }
 
     $baseURL = isset($entry['url']) ? $entry['url'] : $feedurl;
 

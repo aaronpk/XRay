@@ -264,6 +264,25 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('feed', $data->type);
   }
 
+  public function testJSONFeedFallbackAuthor() {
+    $url = 'http://feed.example.com/jsonfeed-author';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $result = json_decode($body);
+    $this->assertEquals('feed+json', $result->{'source-format'});
+    $data = $result->data;
+
+    $this->assertEquals(11, count($data->items));
+    for($i=0; $i<8; $i++) {
+      $this->assertEquals('entry', $data->items[$i]->type);
+      $this->assertEquals('Manton Reece', $data->items[$i]->author->name);
+      $this->assertEquals('https://www.manton.org/', $data->items[$i]->author->url);
+      $this->assertEquals('https://micro.blog/manton/avatar.jpg', $data->items[$i]->author->photo);
+    }
+  }
+
   public function testJSONFeedRelativeImages() {
     $url = 'http://feed.example.com/jsonfeed';
     $response = $this->parse(['url' => $url, 'expect' => 'feed']);

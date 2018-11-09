@@ -1,0 +1,111 @@
+HTTP/1.1 200 OK
+Date: Sat, 11 Nov 2017 15:35:23 GMT
+Server: Apache
+Vary: Cookie
+ETag: "ccd12f270264ab61d4b31870eef8d73e"
+Link: <http://www.manton.org/wp-json/>; rel="https://api.w.org/"
+Last-Modified: Fri, 10 Nov 2017 16:34:21 GMT
+MS-Author-Via: DAV
+Content-Type: application/json; charset=UTF-8
+
+{
+    "version": "https://jsonfeed.org/version/1",
+    "user_comment": "This feed allows you to read the posts from this site in any feed reader that supports the JSON Feed format. To add this feed to your reader, copy the following URL -- http://www.manton.org/feed/json -- and add it your reader.",
+    "home_page_url": "https://www.manton.org/",
+    "icon": "https://micro.blog/manton/avatar.jpg",
+    "feed_url": "http://www.manton.org/feed/json",
+    "title": "Manton Reece",
+    "description": "",
+    "items": [
+        {
+            "id": "http://www.manton.org/2017/11/5993.html",
+            "url": "http://www.manton.org/2017/11/5993.html",
+            "title": "",
+            "content_html": "<p>I&#8217;ve updated Micro.blog&#8217;s Twitter cross-posting to support 280 characters. The apps still color the character counter blue until 140, and red after 280, just in case you want to stick to shorter posts.</p>\n",
+            "date_published": "2017-11-10T16:34:21+00:00",
+            "date_modified": "2017-11-10T16:34:21+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5991.html",
+            "url": "http://www.manton.org/2017/11/5991.html",
+            "title": "",
+            "content_html": "<p>The 7-day &#8220;Photo Challenge&#8221; pin is now live on Micro.blog. Thanks again to Doug Lane for <a href=\"http://micro.douglane.com/2017/11/09/microblog-photo-challenge.html\">kicking things off</a> with prompts to inspire everyone to take more photos.</p>\n",
+            "date_published": "2017-11-10T15:31:12+00:00",
+            "date_modified": "2017-11-10T15:31:12+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5989.html",
+            "url": "http://www.manton.org/2017/11/5989.html",
+            "title": "",
+            "content_html": "<p><a href=\"http://micro.douglane.com/2017/11/09/microblog-photo-challenge.html\">Love this 7-day photo challenge</a> for Micro.blog started by Doug Lane.</p>\n",
+            "date_published": "2017-11-09T17:07:06+00:00",
+            "date_modified": "2017-11-09T17:07:06+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5987.html",
+            "url": "http://www.manton.org/2017/11/5987.html",
+            "title": "",
+            "content_html": "<p>Brent Simmons is back to podcasting with <a href=\"https://theomnishow.omnigroup.com/\">a new show from The Omni Group</a>. Looks great!</p>\n",
+            "date_published": "2017-11-08T19:49:44+00:00",
+            "date_modified": "2017-11-08T19:49:44+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/one-election-day-down-one-more-to-go.html",
+            "url": "http://www.manton.org/2017/11/one-election-day-down-one-more-to-go.html",
+            "title": "One election day down, one more to go",
+            "content_html": "<p>Josh Marshall of Talking Points Memo <a href=\"http://talkingpointsmemo.com/edblog/get-real-thoughts-on-last-nights-anti-trump-wave\">on last night&#8217;s victory for Democrats</a>:</p>\n<blockquote><p>\n  When a President is locked below 40% approval and often closer to 35% approval, his party will face a brutal and unforgiving electorate. This was a fact a decade ago and it\u2019s a fact today. We\u2019ve just been stunned into an unwarranted uncertainty by the fact of Trump\u2019s victory one year ago today.\n</p></blockquote>\n<p>November 2018 feels like a long time from now, but it will get here.</p>\n",
+            "date_published": "2017-11-08T18:00:58+00:00",
+            "date_modified": "2017-11-08T18:02:12+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5983.html",
+            "url": "http://www.manton.org/2017/11/5983.html",
+            "title": "",
+            "content_html": "<p>I should&#8217;ve added an &#8220;I voted&#8221; pin to Micro.blog for posting voting sticker photos. We&#8217;ll do that for 2018.</p>\n",
+            "date_published": "2017-11-08T04:38:44+00:00",
+            "date_modified": "2017-11-08T04:38:44+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5981.html",
+            "url": "http://www.manton.org/2017/11/5981.html",
+            "title": "",
+            "content_html": "<p>Redesigned the Micro.blog splash page (when you&#8217;re not signed in). The most concise expression of the mission statement so far.</p>\n",
+            "date_published": "2017-11-07T21:58:25+00:00",
+            "date_modified": "2017-11-07T21:58:25+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5979.html",
+            "url": "http://www.manton.org/2017/11/5979.html",
+            "title": "",
+            "content_html": "<p>Coming up on a year since I wrote about how <a href=\"http://www.manton.org/2016/11/todays-social-networks-are-broken.html\">today&#8217;s social networks are broken</a>. Still what I believe.</p>\n",
+            "date_published": "2017-11-07T21:00:42+00:00",
+            "date_modified": "2017-11-07T21:00:42+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5977.html",
+            "url": "http://www.manton.org/2017/11/5977.html",
+            "title": "",
+            "content_html": "<p>Election day in the United States. There&#8217;s probably something on the ballot where you live. Doesn&#8217;t have to be big to still matter. Vote!</p>\n",
+            "date_published": "2017-11-07T16:42:00+00:00",
+            "date_modified": "2017-11-07T16:42:00+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5975.html",
+            "url": "http://www.manton.org/2017/11/5975.html",
+            "title": "",
+            "content_html": "<p><img src=\"img.jpg\"></p>\n",
+            "image": "image.jpg",
+            "banner_image": "banner_image.jpg",
+            "date_published": "2017-11-07T15:04:01+00:00",
+            "date_modified": "2017-11-07T15:04:01+00:00"
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5975.html",
+            "title": "",
+            "content_html": "<p><img src=\"img.jpg\"></p>\n",
+            "image": "image.jpg",
+            "date_published": "2017-11-07T15:04:01+00:00",
+            "date_modified": "2017-11-07T15:04:01+00:00"
+        }
+    ]
+}
