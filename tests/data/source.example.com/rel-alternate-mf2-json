@@ -256,7 +256,7 @@ Connection: keep-alive
       #<a href="/tag/indieauth" class="p-category">indieauth</a>
   </div>
     <div class="metaline pad">
-      <a href="https://aaronparecki.com/2018/07/12/10/indieauth" class="u-url">
+      <a href="http://source.example.com/rel-alternate-mf2-json" class="u-url">
       <time class="dt-published" datetime="2018-07-12T13:02:04-07:00">
         Thu, Jul 12, 2018 1:02pm -07:00
       </time>

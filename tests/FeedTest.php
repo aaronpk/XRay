@@ -61,6 +61,48 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Author Name', $data->items[3]->author->name);
   }
 
+  public function testListOfHEntrysWithHCardNoExpect() {
+    $url = 'http://feed.example.com/list-of-hentrys-with-h-card';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
+
+    $this->assertEquals('feed', $data->type);
+    $this->assertEquals(4, count($data->items));
+    $this->assertEquals('One', $data->items[0]->name);
+    $this->assertEquals('article', $data->items[0]->{'post-type'});
+    $this->assertEquals('Two', $data->items[1]->name);
+    $this->assertEquals('Three', $data->items[2]->name);
+    $this->assertEquals('Four', $data->items[3]->name);
+
+    // Check that the author h-card was matched up with each h-entry
+    $this->assertEquals('Author Name', $data->items[0]->author->name);
+    $this->assertEquals('Author Name', $data->items[1]->author->name);
+    $this->assertEquals('Author Name', $data->items[2]->author->name);
+    $this->assertEquals('Author Name', $data->items[3]->author->name);
+  }
+
+  public function testShortListOfHEntrysWithHCardNoExpect() {
+    $url = 'http://feed.example.com/short-list-of-hentrys-with-h-card';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $result = json_decode($body);
+    $this->assertEquals('mf2+html', $result->{'source-format'});
+    $data = $result->data;
+
+    // In this case, this looks like a page permalink
+    $this->assertEquals('entry', $data->type);
+    // This test should find the h-entry rather than the h-card, because the h-card does not contain the page URL
+    $this->assertEquals('http://feed.example.com/1', $data->url);
+    $this->assertEquals('Author', $data->author->name);
+  }
+
   public function testShortListOfHEntrysWithHCard() {
     $url = 'http://feed.example.com/short-list-of-hentrys-with-h-card';
     $response = $this->parse(['url' => $url, 'expect' => 'feed']);

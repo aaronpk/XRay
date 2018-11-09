@@ -18,7 +18,7 @@ Connection: keep-alive
                     "indieauth"
                 ],
                 "url": [
-                    "https://aaronparecki.com/2018/07/12/10/indieauth"
+                    "http://source.example.com/rel-alternate-mf2-json"
                 ],
                 "syndication": [
                     "https://twitter.com/aaronpk/status/1017500609631567872"

@@ -22,8 +22,26 @@ class Mf2 extends Format {
       return self::parseAsHFeed($mf2, $http, $url);
     }
 
-    // If there is only one item on the page, just use that
-    if(count($mf2['items']) == 1) {
+    // Remove h-breadcrumb since we never use it and it causes problems determining
+    // whether a page is a feed or permalink
+    $mf2['items'] = array_values(array_filter($mf2['items'], function($item){
+      return !in_array('h-breadcrumb', $item['type']);
+    }));
+
+    $items = $mf2['items'];
+
+    // If there is more than one item on the page, it may be a feed.
+    // Remove an h-card if there is one that doesn't match the page URL, then try again.
+    // (Don't modify the actual tree, but compare on the modified tree)
+    if(count($items) > 1) {
+      $tmpmf2 = array_filter($items, function($item) use($url){
+        return !(in_array('h-card', $item['type']) && isset($item['properties']['url'][0]) && $item['properties']['url'][0] != $url);
+      });
+      $items = array_values($tmpmf2);
+    }
+
+    // If there is only one item left on the page, it's a permalink, and just use that
+    if(count($items) == 1) {
       $item = $mf2['items'][0];
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-entry it is the only item on the page");
@@ -130,18 +148,18 @@ class Mf2 extends Format {
       }
     }
 
-    // If there was more than one h-entry on the page, treat the whole page as a feed
-    if(count($mf2['items']) > 1) {
-      if(count(array_filter($mf2['items'], function($item){
+    // At this point, if there are any h-entrys left on the page, it's probably a feed.
+    if(count($items) > 0) {
+      if(count(array_filter($items, function($item){
         return in_array('h-entry', $item['type']);
-      })) > 1) {
+      })) > 0) {
         #Parse::debug("mf2:2: Recognized $url as an h-feed because there are more than one object on the page");
         return self::parseAsHFeed($mf2, $http, $url);
       }
     }
 
     // If the first item is an h-feed, parse as a feed
-    $first = $mf2['items'][0];
+    $first = $items[0];
     if(in_array('h-feed', $first['type'])) {
       #Parse::debug("mf2:3: Recognized $url as an h-feed because the first item is an h-feed");
       return self::parseAsHFeed($mf2, $http, $url);
