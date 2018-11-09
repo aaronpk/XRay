@@ -23,14 +23,14 @@ class JSONFeed extends Format {
       $result['data']['type'] = 'feed';
 
       foreach($feed['items'] as $item) {
-        $result['data']['items'][] = self::_hEntryFromFeedItem($item, $feed);
+        $result['data']['items'][] = self::_hEntryFromFeedItem($item, $feed, $url);
       }
     }
 
     return $result;
   }
 
-  private static function _hEntryFromFeedItem($item, $feed) {
+  private static function _hEntryFromFeedItem($item, $feed, $feedurl) {
     $entry = [
       'type' => 'entry',
       'author' => [
@@ -64,14 +64,16 @@ class JSONFeed extends Format {
       $entry['name'] = trim($item['title']);
     }
 
+    $baseURL = isset($entry['url']) ? $entry['url'] : $feedurl;
+
     if(isset($item['content_html']) && isset($item['content_text'])) {
       $entry['content'] = [
-        'html' => self::sanitizeHTML($item['content_html']),
+        'html' => self::sanitizeHTML($item['content_html'], true, $baseURL),
         'text' => trim($item['content_text'])
       ];
     } elseif(isset($item['content_html'])) {
       $entry['content'] = [
-        'html' => self::sanitizeHTML($item['content_html']),
+        'html' => self::sanitizeHTML($item['content_html'], true, $baseURL),
         'text' => self::stripHTML($item['content_html'])
       ];
     } elseif(isset($item['content_text'])) {
@@ -93,7 +95,7 @@ class JSONFeed extends Format {
     }
 
     if(isset($item['image'])) {
-      $entry['photo'] = $item['image'];
+      $entry['photo'] = \Mf2\resolveUrl($baseURL, $item['image']);
     }
 
     if(isset($item['tags'])) {

@@ -34,7 +34,7 @@ abstract class Format implements iFormat {
     return [$doc, $xpath];
   }
 
-  protected static function sanitizeHTML($html, $allowImg=true) {
+  protected static function sanitizeHTML($html, $allowImg=true, $baseURL=false) {
     $allowed = [
       'a',
       'abbr',
@@ -68,6 +68,12 @@ abstract class Format implements iFormat {
     $config = HTMLPurifier_Config::createDefault();
     $config->set('Cache.DefinitionImpl', null);
     $config->set('HTML.AllowedElements', $allowed);
+
+    if($baseURL) {
+      $config->set('URI.MakeAbsolute', true);
+      $config->set('URI.Base', $baseURL);
+    }
+
     $def = $config->getHTMLDefinition(true);
     $def->addElement(
       'time',

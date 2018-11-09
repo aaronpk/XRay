@@ -199,7 +199,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('feed+json', $result->{'source-format'});
     $data = $result->data;
 
-    $this->assertEquals(10, count($data->items));
+    $this->assertEquals(11, count($data->items));
     for($i=0; $i<8; $i++) {
       $this->assertEquals('entry', $data->items[$i]->type);
       $this->assertEquals('manton', $data->items[$i]->author->name);
@@ -213,13 +213,33 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('note', $data->items[0]->{'post-type'});
     $this->assertEquals('article', $data->items[4]->{'post-type'});
 
-    $this->assertEquals('<p>Lots of good feedback on <a href="http://help.micro.blog/2017/wordpress-import/">the WordPress import</a>. Made a couple improvements this morning. Overall, pretty good.</p>', $data->items[9]->content->html);
-    $this->assertEquals('Lots of good feedback on the WordPress import. Made a couple improvements this morning. Overall, pretty good.', $data->items[9]->content->text);
-    $this->assertEquals('http://www.manton.org/2017/11/5975.html', $data->items[9]->url);
-    $this->assertEquals('http://www.manton.org/2017/11/5975.html', $data->items[9]->uid);
-    $this->assertEquals('2017-11-07T15:04:01+00:00', $data->items[9]->published);
+    $this->assertEquals('<p>Coming up on a year since I wrote about how <a href="http://www.manton.org/2016/11/todays-social-networks-are-broken.html">today’s social networks are broken</a>. Still what I believe.</p>', $data->items[7]->content->html);
+    $this->assertEquals('Coming up on a year since I wrote about how today’s social networks are broken. Still what I believe.', $data->items[7]->content->text);
+    $this->assertEquals('http://www.manton.org/2017/11/5979.html', $data->items[7]->url);
+    $this->assertEquals('http://www.manton.org/2017/11/5979.html', $data->items[7]->uid);
+    $this->assertEquals('2017-11-07T21:00:42+00:00', $data->items[7]->published);
 
     $this->assertEquals('feed', $data->type);
+  }
+
+  public function testJSONFeedRelativeImages() {
+    $url = 'http://feed.example.com/jsonfeed';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $result = json_decode($body);
+    $this->assertEquals('feed+json', $result->{'source-format'});
+    $data = $result->data;
+
+    // Relative image on an item that has a url
+    $this->assertEquals('http://www.manton.org/2017/11/image.jpg', $data->items[9]->photo);
+
+    // Relative image on an item that has no URL, fall back to feed URL
+    $this->assertEquals('http://feed.example.com/image.jpg', $data->items[10]->photo);
+
+    // Relative image inside the content html
+    $this->assertContains('http://www.manton.org/2017/11/img.jpg', $data->items[9]->content->html);
   }
 
   public function testAtomFeed() {

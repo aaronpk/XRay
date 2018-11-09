@@ -119,7 +119,20 @@ Content-Type: application/json; charset=UTF-8
             "id": "http://www.manton.org/2017/11/5975.html",
             "url": "http://www.manton.org/2017/11/5975.html",
             "title": "",
-            "content_html": "<p>Lots of good feedback on <a href=\"http://help.micro.blog/2017/wordpress-import/\">the WordPress import</a>. Made a couple improvements this morning. Overall, pretty good.</p>\n",
+            "content_html": "<p><img src=\"img.jpg\"></p>\n",
+            "image": "image.jpg",
+            "banner_image": "banner_image.jpg",
+            "date_published": "2017-11-07T15:04:01+00:00",
+            "date_modified": "2017-11-07T15:04:01+00:00",
+            "author": {
+                "name": "manton"
+            }
+        },
+        {
+            "id": "http://www.manton.org/2017/11/5975.html",
+            "title": "",
+            "content_html": "<p><img src=\"img.jpg\"></p>\n",
+            "image": "image.jpg",
             "date_published": "2017-11-07T15:04:01+00:00",
             "date_modified": "2017-11-07T15:04:01+00:00",
             "author": {

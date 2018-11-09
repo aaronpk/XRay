@@ -186,6 +186,28 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
   }
   */
 
+  public function testRelativePhotoInContent() {
+    $url = 'http://sanitize.example/photo-in-content-relative';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertContains('http://sanitize.example/photo1.jpg', $data->data->content->html);
+  }
+
+  public function testRelativePhotoProperty() {
+    $url = 'http://sanitize.example/photo-relative';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+
+    $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
+  }
+
   public function testPhotoInContentEmptyAltAttribute() {
     // https://github.com/aaronpk/XRay/issues/52
 
