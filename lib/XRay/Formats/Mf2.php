@@ -42,7 +42,7 @@ class Mf2 extends Format {
 
     // If there is only one item left on the page, it's a permalink, and just use that
     if(count($items) == 1) {
-      $item = $mf2['items'][0];
+      $item = $items[0];
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
         #Parse::debug("mf2:0: Recognized $url as an h-entry it is the only item on the page");
         return self::parseAsHEntry($mf2, $item, $http, $url);
