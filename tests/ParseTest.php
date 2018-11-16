@@ -436,8 +436,32 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Primary Post', $data['data']['name']);
   }
 
+  public function testHEntryWithHCardBeforeIt() {
+    $url = 'http://source.example.com/h-entry-with-h-card-before-it';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('mf2+html', $data['source-format']);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Hello World', $data['data']['content']['text']);
+  }
+
   public function testHEntryWithHCardSibling() {
     $url = 'http://source.example.com/h-entry-with-h-card-sibling';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('mf2+html', $data['source-format']);
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('Hello World', $data['data']['content']['text']);
+  }
+
+  public function testHEntryWithTwoHCardsBeforeIt() {
+    $url = 'http://source.example.com/h-entry-with-two-h-cards-before-it';
     $response = $this->parse(['url' => $url]);
 
     $body = $response->getContent();
