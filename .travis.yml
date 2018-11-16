@@ -10,9 +10,10 @@ before_script:
 - composer self-update
 - composer install --prefer-dist --no-interaction
 before_install:
+- cp config.production.php config.php
+before_deploy:
 - openssl aes-256-cbc -K $encrypted_e44c58426490_key -iv $encrypted_e44c58426490_iv
   -in XRay-67d8fdd0bba3.json.enc -out XRay-67d8fdd0bba3.json -d
-- cp config.production.php config.php
 deploy:
   skip_cleanup: true
   provider: gae
