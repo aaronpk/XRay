@@ -72,6 +72,10 @@ class Instagram extends Format {
     return self::parsePhotoFromData($http, $photoData, $url, $profile);
   }
 
+  private static function altTextIsPlaceholder($text) {
+    return $text == 'No photo description available.';
+  }
+
   private static function parsePhotoFromData($http, $photoData, $url, $profile=false) {
 
     if(!$photoData)
@@ -141,7 +145,7 @@ class Instagram extends Format {
       foreach($photoData['edge_sidecar_to_children']['edges'] as $edge) {
         $entry['photo'][] = $edge['node']['display_url'];
         // Don't need to pull person-tags from here because the main parent object already has them.
-        if(isset($edge['node']['accessibility_caption'])) {
+        if(isset($edge['node']['accessibility_caption']) && $edge['node']['accessibility_caption'] && !self::altTextIsPlaceholder($edge['node']['accessibility_caption'])) {
           $meta[$edge['node']['display_url']] = [
             'alt' => $edge['node']['accessibility_caption']
           ];
@@ -156,7 +160,7 @@ class Instagram extends Format {
       elseif(array_key_exists('display_url', $photoData))
         $entry['photo'] = [$photoData['display_url']];
 
-      if(isset($photoData['accessibility_caption']) && $photoData['accessibility_caption']) {
+      if(isset($photoData['accessibility_caption']) && $photoData['accessibility_caption'] && !self::altTextIsPlaceholder($photoData['accessibility_caption'])) {
         $meta[$entry['photo'][0]] = [
           'alt' => $photoData['accessibility_caption']
         ];

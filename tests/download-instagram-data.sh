@@ -17,6 +17,7 @@ urls=(
   'https://www.instagram.com/explore/locations/359000003/'
   'https://www.instagram.com/p/BsdjKytBZyx/'
   'https://www.instagram.com/p/BsdlOmLh_IX/'
+  'https://www.instagram.com/p/Bq8U12UAcdq/'
 )
 
 for url in ${urls[@]}; do
