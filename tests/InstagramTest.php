@@ -247,4 +247,35 @@ class InstagramTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('https://www.instagram.com/p/BGC8l_ZCMKb/', $data['data']['items'][11]['url']);
   }
 
+  public function testInstagramPhotoWithAltText() {
+    $url = 'https://www.instagram.com/p/BsdjKytBZyx/';
+
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
+
+    $this->assertEquals('Pink text on a white background that says "Photo with alt text"', $data['data']['meta']['https://instagram.fsjc1-3.fna.fbcdn.net/vp/a7e61adf3d84f07863ffdb99f0fdcc86/5CD9B7F3/t51.2885-15/e35/47692478_2276538359047529_8318084305806697090_n.jpg?_nc_ht=instagram.fsjc1-3.fna.fbcdn.net']['alt']);
+  }
+
+  public function testInstagramMultiPhotoWithAltText() {
+    $url = 'https://www.instagram.com/p/BsdlOmLh_IX/';
+
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals(200, $data['code']);
+    $this->assertEquals('instagram', $data['source-format']);
+
+    $this->assertEquals('A large pink "1" in a circle with a small green "2" behind it', $data['data']['meta']['https://instagram.fsjc1-3.fna.fbcdn.net/vp/90bf019b7396d7bc2b1ee02170902a2e/5CCC9B87/t51.2885-15/e35/47692921_321791688431421_3314633848293773579_n.jpg?_nc_ht=instagram.fsjc1-3.fna.fbcdn.net']['alt']);
+    $this->assertEquals('A large green "2" in a circle with a small pink "1" behind it', $data['data']['meta']['https://instagram.fsjc1-3.fna.fbcdn.net/vp/a6c93d8fcd5ad0e3b60f2ac0695eb34e/5CC3898E/t51.2885-15/e35/49663055_349750985612151_2949260446582336214_n.jpg?_nc_ht=instagram.fsjc1-3.fna.fbcdn.net']['alt']);
+  }
+
 }

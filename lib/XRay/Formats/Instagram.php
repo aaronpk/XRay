@@ -128,17 +128,24 @@ class Instagram extends Format {
     }
 
     $refs = [];
+    $meta = [];
 
     // Include the photo/video media URLs
     // (Always return arrays, even for single images)
     if(array_key_exists('edge_sidecar_to_children', $photoData)) {
       // Multi-post
       // For now, we will only pull photos from multi-posts, and skip videos.
+      // https://github.com/aaronpk/XRay/issues/84
 
       $entry['photo'] = [];
       foreach($photoData['edge_sidecar_to_children']['edges'] as $edge) {
         $entry['photo'][] = $edge['node']['display_url'];
         // Don't need to pull person-tags from here because the main parent object already has them.
+        if(isset($edge['node']['accessibility_caption'])) {
+          $meta[$edge['node']['display_url']] = [
+            'alt' => $edge['node']['accessibility_caption']
+          ];
+        }
       }
 
     } else {
@@ -148,6 +155,12 @@ class Instagram extends Format {
         $entry['photo'] = [$photoData['display_src']];
       elseif(array_key_exists('display_url', $photoData))
         $entry['photo'] = [$photoData['display_url']];
+
+      if(isset($photoData['accessibility_caption']) && $photoData['accessibility_caption']) {
+        $meta[$entry['photo'][0]] = [
+          'alt' => $photoData['accessibility_caption']
+        ];
+      }
 
       if(isset($photoData['is_video']) && $photoData['is_video'] && isset($photoData['video_url'])) {
         $entry['video'] = [$photoData['video_url']];
@@ -198,6 +211,10 @@ class Instagram extends Format {
 
     if(count($refs)) {
       $entry['refs'] = $refs;
+    }
+
+    if(count($meta)) {
+      $entry['meta'] = $meta;
     }
 
     $entry['post-type'] = \p3k\XRay\PostType::discover($entry);
