@@ -2,6 +2,10 @@
 
 urls=(
   'https://www.instagram.com/aaronpk/'
+  'https://www.instagram.com/indiewebcat/'
+  'https://www.instagram.com/kmikeym/'
+  'https://www.instagram.com/microformats/'
+  'https://www.instagram.com/pk_spam/'
   'https://www.instagram.com/p/BO5rYVElvJq/'
   'https://www.instagram.com/p/BGDpqNoiMJ0/'
   'https://www.instagram.com/p/BO_RN8AFZSx/'
@@ -20,5 +24,6 @@ for url in ${urls[@]}; do
   echo "$url > $fn"
   curl -i -s $url > data/www.instagram.com/$fn
   unix2dos data/www.instagram.com/$fn
+  sleep 2
 done
 
