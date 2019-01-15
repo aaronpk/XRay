@@ -41,7 +41,8 @@ class JSONFeed extends Format {
     ];
 
     // First use the feed title/icon/url as author info
-    $entry['author']['url'] = $feed['home_page_url'];
+    if(isset($feed['home_page_url']))
+      $entry['author']['url'] = $feed['home_page_url'];
     if(isset($feed['title']))
       $entry['author']['name'] = $feed['title'];
     if(isset($feed['icon']))
