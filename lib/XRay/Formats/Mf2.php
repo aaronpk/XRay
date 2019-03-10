@@ -5,6 +5,8 @@ class Mf2 extends Format {
 
   use Mf2Feed;
 
+  private static $allow_local_domain = false;
+
   public static function matches_host($url) {
     return true;
   }
@@ -14,6 +16,11 @@ class Mf2 extends Format {
   }
 
   public static function parse($mf2, $url, $http, $opts=[]) {
+
+    if (isset($opts['allow_local_domain']) && $opts['allow_local_domain']) {
+      self::$allow_local_domain = true;
+    }
+
     if(!isset($mf2['items']) || count($mf2['items']) == 0)
       return false;
 
@@ -864,7 +871,12 @@ class Mf2 extends Format {
   }
 
   private static function isURL($string) {
-    return preg_match('/^https?:\/\/.+\..+$/', $string);
+    if (self::$allow_local_domain) {
+      return preg_match('/^https?:\/\/.+$/', $string);
+    }
+    else {
+      return preg_match('/^https?:\/\/.+\..+$/', $string);
+    }
   }
 
   // Given an array of microformats properties and a key name, return the plaintext value
