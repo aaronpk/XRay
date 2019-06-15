@@ -42,7 +42,7 @@ class FindFeedsTest extends PHPUnit_Framework_TestCase {
     $feeds = json_decode($body)->feeds;
 
     $this->assertEquals(2, count($feeds));
-    // Should rank JSONFeed above Atom
+    // Should rank h-feed above Atom
     $this->assertEquals('http://feed.example.com/h-feed-with-atom-alternate', $feeds[0]->url);
     $this->assertEquals('microformats', $feeds[0]->type);
     $this->assertEquals('http://feed.example.com/atom', $feeds[1]->url);

@@ -103,6 +103,49 @@ class FetchTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(401, $data->code);
   }
 
+  public function testDeleted() {
+    $url = 'http://source.example.com/deleted-gone';
+    $response = $this->parse([
+      'url' => $url
+    ]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertEquals(410, $data->code);
+    $this->assertEquals('This post has been deleted.', $data->data->content->text);
+  }
+
+  public function testDeletedEmptyBody() {
+    $url = 'http://source.example.com/deleted-empty';
+    $response = $this->parse([
+      'url' => $url
+    ]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertEquals(410, $data->code);
+    $this->assertEquals('unknown', $data->data->type);
+  }
+
+  public function testDeletedTargetProvided() {
+    $url = 'http://source.example.com/deleted-gone';
+    $response = $this->parse([
+      'url' => $url,
+      'target' => 'http://example.com/'
+    ]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectHasAttribute('error', $data);
+    $this->assertEquals('no_link_found', $data->error);
+    $this->assertEquals(410, $data->code);
+  }
+
   public function testMetaEquivDeleted() {
     $url = 'http://source.example.com/deleted';
     $response = $this->parse([

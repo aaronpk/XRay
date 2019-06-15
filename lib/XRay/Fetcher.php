@@ -116,13 +116,7 @@ class Fetcher {
     if(trim($result['body']) == '') {
       if($result['code'] == 410) {
         // 410 Gone responses are valid and should not return an error
-        return [
-          'data' => [
-            'type' => 'deleted'
-          ],
-          'url' => $result['url'],
-          'code' => $result['code']
-        ];
+        return $result;
       }
 
       return [

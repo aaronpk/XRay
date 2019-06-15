@@ -12,13 +12,17 @@ class XML extends Format {
   public static function matches_host($url) { return true; }
   public static function matches($url) { return true; }
 
-  public static function parse($xml, $url) {
+  public static function parse($http_response) {
+    $xml = $http_response['body'];
+    $url = $http_response['url'];
+
     $result = [
       'data' => [
         'type' => 'unknown',
       ],
       'url' => $url,
       'source-format' => 'xml',
+      'code' => $http_response['code'],
     ];
 
     try {

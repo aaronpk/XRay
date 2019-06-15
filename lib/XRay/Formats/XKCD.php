@@ -15,7 +15,10 @@ class XKCD extends Format {
     return self::matches_host($url) && preg_match('/^\/\d+\/$/', ''.parse_url($url, PHP_URL_PATH));
   }
 
-  public static function parse($html, $url) {
+  public static function parse($http_response) {
+    $html = $http_response['body'];
+    $url = $http_response['url'];
+
     list($doc, $xpath) = self::_loadHTML($html);
 
     if(!$doc)

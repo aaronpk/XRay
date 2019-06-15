@@ -15,7 +15,10 @@ class Instagram extends Format {
     return self::matches_host($url);
   }
 
-  public static function parse($http, $html, $url, $opts=[]) {
+  public static function parse($http, $http_response, $opts=[]) {
+    $html = $http_response['body'];
+    $url = $http_response['url'];
+
     if(preg_match('#instagram.com/([^/]+)/$#', $url)) {
       if(isset($opts['expect']) && $opts['expect'] == 'feed')
         return self::parseFeed($http, $html, $url);

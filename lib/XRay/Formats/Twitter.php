@@ -46,7 +46,9 @@ class Twitter extends Format {
     ];
   }
 
-  public static function parse($json, $url) {
+  public static function parse($http_response) {
+    $json = is_array($http_response) ? $http_response['body'] : $http_response->body;
+    $url = is_array($http_response) ? $http_response['url'] : $http_response->url;
 
     if(is_string($json))
       $tweet = json_decode($json);
@@ -77,7 +79,7 @@ class Twitter extends Format {
       $repostOf = 'https://twitter.com/' . $reposted->user->screen_name . '/status/' . $reposted->id_str;
       $entry['repost-of'] = $repostOf;
 
-      $repostedEntry = self::parse($reposted, $repostOf);
+      $repostedEntry = self::parse(['body' => $reposted, 'url' => $repostOf]);
       if(isset($repostedEntry['data']['refs'])) {
         foreach($repostedEntry['data']['refs'] as $k=>$v) {
           $refs[$k] = $v;
@@ -152,7 +154,7 @@ class Twitter extends Format {
     // Quoted Status
     if(property_exists($tweet, 'quoted_status')) {
       $quoteOf = 'https://twitter.com/' . $tweet->quoted_status->user->screen_name . '/status/' . $tweet->quoted_status_id_str;
-      $quotedEntry = self::parse($tweet->quoted_status, $quoteOf);
+      $quotedEntry = self::parse(['body' => $tweet->quoted_status, 'url' => $quoteOf]);
       if(isset($quotedEntry['data']['refs'])) {
         foreach($quotedEntry['data']['refs'] as $k=>$v) {
           $refs[$k] = $v;

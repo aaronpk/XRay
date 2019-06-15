@@ -13,7 +13,10 @@ class Mf2 extends Format {
     return true;
   }
 
-  public static function parse($mf2, $url, $http, $opts=[]) {
+  public static function parse($http_response, $http, $opts=[]) {
+    $mf2 = $http_response['body'];
+    $url = $http_response['url'];
+
     if(!isset($mf2['items']) || count($mf2['items']) == 0)
       return false;
 
@@ -299,7 +302,11 @@ class Mf2 extends Format {
               if(!array_key_exists($p, $data)) $data[$p] = [];
               if(!in_array($u, $data[$p]))
                 $data[$p][] = $u;
-              $ref = self::parse(['items'=>[$v]], $u, $http);
+              $ref = self::parse([
+                'body' => ['items'=>[$v]],
+                'url' => $u,
+                'code' => null,
+              ], $http);
               if($ref) {
                 $refs[$u] = $ref['data'];
               }
@@ -355,7 +362,11 @@ class Mf2 extends Format {
             $data[$p][] = $u;
             $keys[] = $p;
             // parse the object and put the result in the "refs" object
-            $ref = self::parse(['items'=>[$v]], $u, $http);
+            $ref = self::parse([
+              'body' => ['items'=>[$v]],
+              'url' => $u,
+              'code' => null,
+            ], $http);
             if($ref) {
               $refs[$u] = $ref['data'];
             }

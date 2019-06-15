@@ -16,7 +16,10 @@ class Facebook extends Format {
     return self::matches_host($url);
   }
 
-  public static function parse($fbObject, $url) {
+  public static function parse($http_response) {
+    $fbObject = $http_response['body'];
+    $url = $http_response['url'];
+
     if(is_string($fbObject)) $fbObject = json_decode($fbObject, true);
 
     $parts = self::extract_url_parts($url);

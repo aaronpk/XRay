@@ -10,7 +10,10 @@ class JSONFeed extends Format {
   public static function matches_host($url) { return true; }
   public static function matches($url) { return true; }
 
-  public static function parse($feed, $url) {
+  public static function parse($http_response) {
+    $feed = $http_response['body'];
+    $url = $http_response['url'];
+
     $result = [
       'data' => [
         'type' => 'unknown',

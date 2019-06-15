@@ -75,7 +75,7 @@ class Feeds {
     } else {
       // Some other document was returned, parse the HTML and look for rel alternates and Microformats
 
-      $mf2 = \mf2\Parse($body, $result['url']);
+      $mf2 = \mf2\Parse($result['body'], $result['url']);
       if(isset($mf2['rel-urls'])) {
         foreach($mf2['rel-urls'] as $rel=>$info) {
           if(isset($info['rels']) && in_array('alternate', $info['rels'])) {
@@ -103,7 +103,7 @@ class Feeds {
         }
       }
 
-      $parsed = Formats\HTML::parse($this->http, $body, $result['url'], array_merge($opts, ['expect'=>'feed']));
+      $parsed = Formats\HTML::parse($this->http, $result, array_merge($opts, ['expect'=>'feed']));
       if($parsed && isset($parsed['data']['type']) && $parsed['data']['type'] == 'feed') {
         $feeds[] = [
           'url' => $result['url'],

@@ -106,7 +106,7 @@ class Parse {
     }
 
     $parser = new p3k\XRay\Parser($this->http);
-    $parsed = $parser->parse($result['body'], $result['url'], $opts);
+    $parsed = $parser->parse($result, $opts);
 
     // Allow the parser to override the HTTP response code, e.g. a meta-equiv tag
     if(isset($parsed['code']))

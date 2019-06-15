@@ -91,7 +91,10 @@ class GitHub extends Format {
     ];
   }
 
-  public static function parse($json, $url) {
+  public static function parse($http_response) {
+    $json = $http_response['body'];
+    $url = $http_response['url'];
+
     $data = @json_decode($json, true);
 
     if(!$data)

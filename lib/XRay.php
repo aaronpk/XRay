@@ -35,7 +35,11 @@ class XRay {
     }
     $parser = new XRay\Parser($this->http);
 
-    $result = $parser->parse($body, $url, $opts);
+    $result = $parser->parse([
+      'body' => $body,
+      'url' => $url,
+      'code' => $code,
+    ], $opts);
     if(!isset($opts['include_original']) || !$opts['include_original'])
       unset($result['original']);
     if(!isset($result['url'])) $result['url'] = $url;
@@ -46,7 +50,11 @@ class XRay {
 
   public function process($url, $mf2json, $opts=[]) {
     $parser = new XRay\Parser($this->http);
-    $result = $parser->parse($mf2json, $url, $opts);
+    $result = $parser->parse([
+      'body' => $mf2json,
+      'url' => $url,
+      'code' => null,
+    ], $opts);
     if(!isset($opts['include_original']) || !$opts['include_original'])
       unset($result['original']);
     if(!isset($result['url'])) $result['url'] = $url;

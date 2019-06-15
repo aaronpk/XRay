@@ -25,7 +25,10 @@ class ActivityStreams extends Format {
     return true;
   }
 
-  public static function parse($as2, $url, $http, $opts=[]) {
+  public static function parse($http_response, $http, $opts=[]) {
+    $as2 = $http_response['body'];
+    $url = $http_response['url'];
+
     if(!isset($as2['type']))
       return false;
 
@@ -49,6 +52,7 @@ class ActivityStreams extends Format {
         'type' => 'unknown',
       ],
       'url' => $url,
+      'code' => $http_response['code'],
     ];
     return $result;
   }
@@ -165,7 +169,8 @@ class ActivityStreams extends Format {
       if($reposted && !empty($reposted['body'])) {
         $repostedData = json_decode($reposted['body'], true);
         if($repostedData) {
-          $repost = self::parse($repostedData, $as2['object'], $http, $opts);
+          $reposted['body'] = $repostedData;
+          $repost = self::parse($reposted, $http, $opts);
           if($repost && isset($repost['data']) && $repost['data']['type'] != 'unknown') {
             $refs[$as2['object']] = $repost['data'];
           }
@@ -180,7 +185,8 @@ class ActivityStreams extends Format {
       if($liked && !empty($liked['body'])) {
         $likedData = json_decode($liked['body'], true);
         if($likedData) {
-          $like = self::parse($likedData, $as2['object'], $http, $opts);
+          $liked['body'] = $likedData;
+          $like = self::parse($liked, $http, $opts);
           if($like && isset($like['data']['type']) && $like['data']['type'] != 'unknown') {
             $refs[$as2['object']] = $like['data'];
           }

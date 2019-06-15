@@ -10,12 +10,16 @@ class HTML extends Format {
   public static function matches_host($url) { return true; }
   public static function matches($url) { return true; }
 
-  public static function parse($http, $html, $url, $opts=[]) {
+  public static function parse($http, $http_response, $opts=[]) {
+    $html = $http_response['body'];
+    $url = $http_response['url'];
+
     $result = [
       'data' => [
         'type' => 'unknown',
       ],
       'url' => $url,
+      'code' => $http_response['code'],
     ];
 
     // attempt to parse the page as HTML
@@ -55,7 +59,8 @@ class HTML extends Format {
           'error' => 'no_link_found',
           'error_description' => 'The source document does not have a link to the target URL',
           'code' => isset($result['code']) ? $result['code'] : 200,
-          'url' => $url
+          'url' => $url,
+          'debug' => $result
         ];
       }
     }
@@ -105,7 +110,8 @@ class HTML extends Format {
         if(!$jsonpage['error'] && $jsonpage['body']) {
           $jsondata = json_decode($jsonpage['body'],true);
           if($jsondata) {
-            $data = Formats\Mf2::parse($jsondata, $url, $http, $opts);
+            $jsonpage['body'] = $jsondata;
+            $data = Formats\Mf2::parse($jsonpage, $http, $opts);
             if($data && is_array($data) && isset($data['data']['type'])) {
               $data['url'] = $relurl;
               $data['source-format'] = 'mf2+json';
@@ -125,7 +131,8 @@ class HTML extends Format {
         if(!$jsonpage['error'] && $jsonpage['body']) {
           $jsondata = json_decode($jsonpage['body'],true);
           if($jsondata) {
-            $data = Formats\ActivityStreams::parse($jsondata, $url, $http, $opts);
+            $jsonpage['body'] = $jsondata;
+            $data = Formats\ActivityStreams::parse($jsonpage, $http, $opts);
             if($data && is_array($data) && isset($data['data']['type'])) {
               $data['url'] = $relurl;
               $data['source-format'] = 'activity+json';
@@ -139,7 +146,8 @@ class HTML extends Format {
 
     // Now start pulling in the data from the page. Start by looking for microformats2
     if($mf2 && count($mf2['items']) > 0) {
-      $data = Formats\Mf2::parse($mf2, $url, $http, $opts);
+      $http_response['body'] = $mf2;
+      $data = Formats\Mf2::parse($http_response, $http, $opts);
       if($data) {
         $result = array_merge($result, $data);
         if($fragment) {
