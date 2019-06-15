@@ -3,3 +3,4 @@ config.php
 vendor/
 php_errors.log
 XRay-*.json
+.gcloudignore
