@@ -138,6 +138,34 @@ class FindFeedsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('atom', $feeds[0]->type);
   }
 
+  // input URL is a temporary redirect to another page.
+  // report the original input URL
+  public function testInputIsTemporaryRedirect() {
+    $url = 'http://feed.example.com/temporary-redirect';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $feeds = json_decode($body)->feeds;
+
+    $this->assertEquals(1, count($feeds));
+    $this->assertEquals('http://feed.example.com/temporary-redirect', $feeds[0]->url);
+    $this->assertEquals('microformats', $feeds[0]->type);
+  }
+
+  public function testInputIsPermanentRedirect() {
+    $url = 'http://feed.example.com/permanent-redirect';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $feeds = json_decode($body)->feeds;
+
+    $this->assertEquals(1, count($feeds));
+    $this->assertEquals('http://feed.example.com/permanent-redirect-target', $feeds[0]->url);
+    $this->assertEquals('microformats', $feeds[0]->type);
+  }
+
   // input URL is an RSS feed
   public function testInputIsRSS() {
     $url = 'http://feed.example.com/rss';

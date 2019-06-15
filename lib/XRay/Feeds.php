@@ -103,6 +103,15 @@ class Feeds {
         }
       }
 
+      // Check if the feed URL was a temporary redirect
+      if($url != $result['url']) {
+        // p3k\http doesn't return the intermediate HTTP codes, so we have to fetch the input URL again without following redirects
+        $this->http->set_max_redirects(0);
+        $check = $this->http->get($url);
+        if($check['code'] == 302)
+          $result['url'] = $url;
+      }
+
       $parsed = Formats\HTML::parse($this->http, $result, array_merge($opts, ['expect'=>'feed']));
       if($parsed && isset($parsed['data']['type']) && $parsed['data']['type'] == 'feed') {
         $feeds[] = [
