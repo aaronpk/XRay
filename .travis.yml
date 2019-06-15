@@ -8,7 +8,7 @@ php:
 sudo: false
 before_script:
 - composer self-update
-- composer install --prefer-dist --no-interaction
+- composer install --prefer-dist --dev --no-interaction
 before_install:
 - cp config.production.php config.php
 before_deploy:
