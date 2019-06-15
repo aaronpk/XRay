@@ -14,7 +14,7 @@
     "p3k/timezone": "*",
     "p3k/http": ">=0.1.8",
     "cebe/markdown": "1.1.*",
-    "p3k/picofeed": ">=0.1.38",
+    "p3k/picofeed": ">=0.1.35",
     "facebook/graph-sdk": "^5.5",
     "masterminds/html5": "^2.3"
   },
