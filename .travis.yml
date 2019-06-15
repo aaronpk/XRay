@@ -11,6 +11,7 @@ before_script:
 - composer install --prefer-dist --dev --no-interaction
 before_install:
 - cp config.production.php config.php
+- cp composer.production.json composer.json
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_e44c58426490_key -iv $encrypted_e44c58426490_iv
   -in XRay-67d8fdd0bba3.json.enc -out XRay-67d8fdd0bba3.json -d
