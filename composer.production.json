@@ -24,14 +24,7 @@
     },
     "files": [
       "lib/helpers.php",
-      "lib/XRay.php"
-    ]
-  },
-  "require-dev": {
-    "phpunit/phpunit": "4.8.*"
-  },
-  "autoload-dev": {
-    "files": [
+      "lib/XRay.php",
       "controllers/Main.php",
       "controllers/Parse.php",
       "controllers/Token.php",
@@ -39,5 +32,8 @@
       "controllers/Feeds.php",
       "controllers/Certbot.php"
     ]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.*"
   }
 }

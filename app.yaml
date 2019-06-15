@@ -7,6 +7,6 @@ handlers:
 - url: /(favicon\.ico|robots\.txt)$
   static_files: public/\1
   upload: public/(favicon\.ico|robots\.txt)$
-- url: /.*
+- url: .*
   script: auto
 entrypoint: serve public/index.php
