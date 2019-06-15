@@ -1,5 +1,4 @@
 runtime: php72
-api_version: 1
 handlers:
 - url: /assets
   static_dir: public/assets
@@ -9,4 +8,5 @@ handlers:
   static_files: public/\1
   upload: public/(favicon\.ico|robots\.txt)$
 - url: /.*
-  script: public/index.php
+  script: auto
+  entrypoint: public/index.php
