@@ -9,3 +9,4 @@ handlers:
   upload: public/(favicon\.ico|robots\.txt)$
 - url: /.*
   script: auto
+entrypoint: public/index.php
