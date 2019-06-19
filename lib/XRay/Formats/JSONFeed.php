@@ -99,7 +99,7 @@ class JSONFeed extends Format {
     }
 
     if(isset($item['image'])) {
-      $entry['photo'] = \Mf2\resolveUrl($baseURL, $item['image']);
+      $entry['photo'] = [\Mf2\resolveUrl($baseURL, $item['image'])];
     }
 
     if(isset($item['tags'])) {

@@ -294,10 +294,10 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $data = $result->data;
 
     // Relative image on an item that has a url
-    $this->assertEquals('http://www.manton.org/2017/11/image.jpg', $data->items[9]->photo);
+    $this->assertEquals('http://www.manton.org/2017/11/image.jpg', $data->items[9]->photo[0]);
 
     // Relative image on an item that has no URL, fall back to feed URL
-    $this->assertEquals('http://feed.example.com/image.jpg', $data->items[10]->photo);
+    $this->assertEquals('http://feed.example.com/image.jpg', $data->items[10]->photo[0]);
 
     // Relative image inside the content html
     $this->assertContains('http://www.manton.org/2017/11/img.jpg', $data->items[9]->content->html);
