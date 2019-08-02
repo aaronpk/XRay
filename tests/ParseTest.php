@@ -586,6 +586,18 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Venue', $data['data']['refs']['http://source.example.com/venue']['name']);
   }
 
+  public function testEventWithFeaturedImage() {
+    $url = 'http://source.example.com/h-event-featured';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+    $this->assertEquals('mf2+html', $data['source-format']);
+    $this->assertEquals('event', $data['data']['type']);
+    $this->assertEquals('http://source.example.com/featured.jpg', $data['data']['featured']);
+  }
+
   public function testMf2ReviewOfProduct() {
     $url = 'http://source.example.com/h-review-of-product';
     $response = $this->parse(['url' => $url]);

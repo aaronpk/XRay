@@ -637,7 +637,7 @@ class Mf2 extends Format {
     $refs = [];
 
     // Single plaintext and URL values
-    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url'], $item, $url, $data);
+    self::collectSingleValues(['name','summary','published','start','end','duration'], ['url','featured'], $item, $url, $data);
 
     // These properties are always returned as arrays and may contain plaintext content
     self::collectArrayValues(['category','location','attendee'], $item, $data, $refs, $http);
