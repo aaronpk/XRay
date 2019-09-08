@@ -341,7 +341,7 @@ class Mf2 extends Format {
           }
         }
         // If we have a geo property, it overrides p-latitude and p-longitude
-        if(array_key_exists($mf2, 'geo') && in_array('h-geo', $mf2['geo']['type'])) {
+        if(array_key_exists('geo', $mf2) && in_array('h-geo', $mf2['geo']['type'])) {
           $hcard['latitude'] = $mf2['geo']['latitude'][0];
           $hcard['longitude'] = $mf2['geo']['longitude'][0];
         }
