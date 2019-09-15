@@ -341,9 +341,14 @@ class Mf2 extends Format {
           }
         }
         // If we have a geo property, it overrides p-latitude and p-longitude
-        if(array_key_exists('geo', $mf2) && in_array('h-geo', $mf2['geo']['type'])) {
-          $hcard['latitude'] = $mf2['geo']['latitude'][0];
-          $hcard['longitude'] = $mf2['geo']['longitude'][0];
+        if(array_key_exists('geo', $mf2) &&
+           self::isMicroformat($mf2['geo'][0]) &&
+           in_array('h-geo', $mf2['geo'][0]['type']) &&
+           array_key_exists($mf2['geo'][0]['properties']) &&
+           $lat=self::getPlaintext($mf2['geo'][0], 'latitude') &&
+           $lon=self::getPlaintext($mf2['geo'][0], 'longitude')) {
+          $hcard['latitude'] = $lat;
+          $hcard['longitude'] = $lon;
         }
         return $hcard;
       }
