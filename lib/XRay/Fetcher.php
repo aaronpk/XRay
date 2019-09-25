@@ -58,6 +58,11 @@ class Fetcher {
       return Formats\Hackernews::fetch($this->http, $url, $opts);
     }
 
+    // Check if this is an Instagram URL and enable passing a session cookie
+    if(Formats\Instagram::matches($url)) {
+      return Formats\Instagram::fetch($this->http, $url, $opts);
+    }
+
     // All other URLs are fetched normally
 
     // Special-case appspot.com URLs to not follow redirects.

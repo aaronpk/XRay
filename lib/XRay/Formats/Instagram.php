@@ -15,6 +15,42 @@ class Instagram extends Format {
     return self::matches_host($url);
   }
 
+  public static function fetch($http, $url, $opts=[]) {
+    if(!self::matches($url))
+      return false;
+
+    $headers = [];
+
+    if(isset($opts['instagram_session']) && $opts['instagram_session'])
+      $headers[] = 'Cookie: sessionid='.$opts['instagram_session'];
+
+    $result = $http->get($url, $headers);
+
+    // Check for errors such as getting redirected to the login page or getting rate limiited
+    /*
+    // TODO
+    if(false) {
+      return [
+        'error' => 'rate_limited',
+        'error_description' => 'Instagram has rate limited this client. Please try again later.',
+        'url' => $result['url'],
+        'code' => $result['code'],
+      ];
+    }
+
+    if(false) {
+      return [
+        'error' => 'unauthorized',
+        'error_description' => 'Instagram redirected to the login page. Either this user is private, or the client has been rate limited.',
+        'url' => $result['url'],
+        'code' => $result['code'],
+      ];
+    }
+    */
+
+    return $result;
+  }
+
   public static function parse($http, $http_response, $opts=[]) {
     $html = $http_response['body'];
     $url = $http_response['url'];

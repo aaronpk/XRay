@@ -5,7 +5,7 @@ class XRay {
   public $http;
 
   public function __construct() {
-    $this->http = new HTTP();
+    $this->http = new HTTP('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36 p3k/XRay');
   }
 
   public function rels($url, $opts=[]) {
@@ -40,6 +40,7 @@ class XRay {
       'url' => $url,
       'code' => $code,
     ], $opts);
+
     if(!isset($opts['include_original']) || !$opts['include_original'])
       unset($result['original']);
     if(!isset($result['url'])) $result['url'] = $url;
