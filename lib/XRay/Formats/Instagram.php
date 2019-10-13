@@ -135,13 +135,18 @@ class Instagram extends Format {
     $profiles = [];
 
     if(!$profile) {
-      // Fetch profile info for this user
-      $username = $photoData['owner']['username'];
-      $profile = self::_getInstagramProfile($username, $http);
-      if($profile) {
-        $entry['author'] = self::_buildHCardFromInstagramProfile($profile);
-        $profiles[] = $profile;
+      if(isset($photoData['owner'])) {
+        // Get profile info from the page
+        $entry['author'] = self::_buildHCardFromInstagramProfile($photoData['owner']);
       }
+      // 2019-10-13 disabling this fetch because profile fetches are severely rate limited now
+      // // Fetch profile info for this user
+      // $username = $photoData['owner']['username'];
+      // $profile = self::_getInstagramProfile($username, $http);
+      // if($profile) {
+      //   $entry['author'] = self::_buildHCardFromInstagramProfile($profile);
+      //   $profiles[] = $profile;
+      // }
     } else {
       $entry['author'] = self::_buildHCardFromInstagramProfile($profile);
       $profiles[] = $profile;
@@ -285,14 +290,13 @@ class Instagram extends Format {
     else
       $author['name'] = $profile['username'];
 
-    if(isset($profile['external_url']) && $profile['external_url'])
-      $author['url'] = $profile['external_url'];
-    else
-      $author['url'] = 'https://www.instagram.com/' . $profile['username'];
+    $author['nickname'] = $profile['username'];
+
+    $author['url'] = 'https://www.instagram.com/' . $profile['username'] . '/';
 
     if(isset($profile['profile_pic_url_hd']))
       $author['photo'] = $profile['profile_pic_url_hd'];
-    else
+    elseif(isset($profile['profile_pic_url']))
       $author['photo'] = $profile['profile_pic_url'];
 
     if(isset($profile['biography']))
