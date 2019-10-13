@@ -63,6 +63,12 @@ class Parser {
       return Formats\XML::parse($http_response);
     }
 
+    // Some feeds don't start with <?xml
+    $begin = trim(substr($body, 0, 40));
+    if(substr($begin, 0, 4) == '<rss') {
+      return Formats\XML::parse($http_response);
+    }
+
     if(substr($body, 0, 1) == '{') {
       $parsed = json_decode($body, true);
       if($parsed && isset($parsed['version']) && $parsed['version'] == 'https://jsonfeed.org/version/1') {

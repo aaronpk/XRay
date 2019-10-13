@@ -465,4 +465,14 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Barnaby Walters', $item->author->name);
     $this->assertEquals('https://waterpigs.co.uk', $item->author->url);
   }
+
+  public function testRSSWithNoXMLTag() {
+    $url = 'http://feed.example.com/rss-no-xml-tag';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body)->data;
+
+    $this->assertEquals('feed', $data->type);
+  }
 }
