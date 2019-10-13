@@ -657,6 +657,9 @@ class Mf2 extends Format {
         $data['content'] = $content;
     }
 
+    if($author = self::findAuthor($mf2, $item, $http, $url))
+      $data['author'] = $author;
+
     $data['post-type'] = \p3k\XRay\PostType::discover($data);
 
     $response = [

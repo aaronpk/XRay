@@ -554,6 +554,7 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body, true);
+
     $this->assertEquals('mf2+html', $data['source-format']);
     $this->assertEquals('event', $data['data']['type']);
     $this->assertEquals('event', $data['data']['post-type']);
@@ -564,6 +565,9 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertStringStartsWith("Are you building your own website? Indie reader? Personal publishing web app? Or some other digital magic-cloud proxy? If so, come on by and join a gathering of people with likeminded interests. Bring your friends that want to start a personal web site. Exchange information, swap ideas, talk shop, help work on a project...", $data['data']['content']['text']);
     $this->assertStringEndsWith("See the Homebrew Website Club Newsletter Volume 1 Issue 1 for a description of the first meeting.", $data['data']['content']['text']);
     $this->assertArrayNotHasKey('html', $data['data']['content']);
+    $this->assertEquals('card', $data['data']['author']['type']);
+    $this->assertEquals('Event Author', $data['data']['author']['name']);
+    $this->assertEquals('http://source.example.com/', $data['data']['author']['url']);
   }
 
   public function testEventWithHCardLocation() {
