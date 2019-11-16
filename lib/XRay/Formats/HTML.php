@@ -20,6 +20,7 @@ class HTML extends Format {
       ],
       'url' => $url,
       'code' => $http_response['code'],
+      'html' => $html,
     ];
 
     // attempt to parse the page as HTML
@@ -42,26 +43,6 @@ class HTML extends Format {
         if(preg_match('/^(\d+)/', $equivStatus, $match)) {
           $result['code'] = (int)$match[1];
         }
-      }
-    }
-
-    // If a target parameter was provided, make sure a link to it exists on the page
-    if(isset($opts['target'])) {
-      $target = $opts['target'];
-
-      $found = [];
-      if($target) {
-        $found = self::findLinksInDocument($xpath, $target);
-      }
-
-      if(!$found) {
-        return [
-          'error' => 'no_link_found',
-          'error_description' => 'The source document does not have a link to the target URL',
-          'code' => isset($result['code']) ? $result['code'] : 200,
-          'url' => $url,
-          'debug' => $result
-        ];
       }
     }
 
@@ -108,7 +89,7 @@ class HTML extends Format {
         ]);
         // Skip and fall back to parsing the HTML if anything about this request fails
         if(!$jsonpage['error'] && $jsonpage['body']) {
-          $jsondata = json_decode($jsonpage['body'],true);
+          $jsondata = json_decode($jsonpage['body'], true);
           if($jsondata) {
             $jsonpage['body'] = $jsondata;
             $data = Formats\Mf2::parse($jsonpage, $http, $opts);

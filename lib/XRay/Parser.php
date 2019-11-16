@@ -2,6 +2,7 @@
 namespace p3k\XRay;
 
 use p3k\XRay\Formats;
+use DOMDocument, DOMXPath;
 
 class Parser {
   private $http;
@@ -11,6 +12,42 @@ class Parser {
   }
 
   public function parse($http_response, $opts=[]) {
+    $document = $this->parse_document($http_response, $opts);
+
+    // If a target parameter was provided, make sure a link to it exists in the parsed document
+    if(!isset($document['error']) && !empty($opts['target'])) {
+
+      if(isset($document['data']['type']) && $document['data']['type'] == 'unknown') {
+        if(isset($document['html'])) {
+          // Couldn't parse the page, check for the link manually assuming HTML content
+          $found = $this->_findLinkInHTML($opts['target'], $document['html']);
+        } else {
+          // Ignore this check for any non-HTML documents since this will be uncommon anyway
+          $found = false;
+        }
+      } else {
+        $found = $this->_findLinkInTree($opts['target'], $document['data']);
+      }
+
+      if(!$found) {
+        return [
+          'error' => 'no_link_found',
+          'error_description' => 'The source document does not have a link to the target URL',
+          'code' => isset($document['code']) ? $document['code'] : 200,
+          'url' => $document['url'],
+          'debug' => $document['data']
+        ];
+      }
+    }
+
+    // If the HTML parser couldn't parse the page it returns the full HTML for checking the target above,
+    // but we don't want to return that in the out put so remove it here
+    unset($document['html']);
+
+    return $document;
+  }
+
+  public function parse_document($http_response, $opts=[]) {
     if(isset($opts['timeout']))
       $this->http->set_timeout($opts['timeout']);
     if(isset($opts['max_redirects']))
@@ -46,8 +83,15 @@ class Parser {
     $body = $http_response['body'];
 
     // Check if an mf2 JSON object was passed in
-    if(is_array($body) && isset($body['items'][0]['type']) && isset($body['items'][0]['properties'])) {
+    if(is_array($body) && isset($body['items']) && isset($body['rels']) && isset($body['rel-urls'])) {
       $data = Formats\Mf2::parse($http_response, $this->http, $opts);
+      if($data == false) {
+        $data = [
+          'data' => [
+            'type' => 'unknown',
+          ]
+        ];
+      }
       $data['source-format'] = 'mf2+json';
       return $data;
     }
@@ -94,6 +138,82 @@ class Parser {
     if(!isset($data['source-format']) && isset($data['type']) && $data['type'] != 'unknown')
       $data['source-format'] = 'mf2+html';
     return $data;
+  }
+
+  private function _findLinkInTree($link, $document) {
+    if(!$document)
+      return false;
+
+    if(is_string($document) || is_numeric($document)) {
+      return $document == $link;
+    }
+
+    if(is_array($document)) {
+      foreach($document as $key=>$value) {
+        if($key === 'html') {
+          $found = $this->_findLinkInHTML($link, $value);
+          if($found) {
+            return true;
+          }
+        } else {
+          $found = $this->_findLinkInTree($link, $value);
+          if($found) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    throw new Exception('Unexpected value in tree');
+  }
+
+  private function _findLinkInHTML($link, $html) {
+    $doc = new DOMDocument();
+    @$doc->loadHTML(self::_toHtmlEntities($html));
+
+    if(!$doc)
+      return false;
+
+    $xpath = new DOMXPath($doc);
+
+    return self::_findLinksInDOMDocument($xpath, $link);
+  }
+
+  private static function _findLinksInDOMDocument(&$xpath, $target) {
+    $found = [];
+    self::_xPathFindNodeWithAttribute($xpath, 'a', 'href', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    self::_xPathFindNodeWithAttribute($xpath, 'img', 'src', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    self::_xPathFindNodeWithAttribute($xpath, 'video', 'src', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    self::_xPathFindNodeWithAttribute($xpath, 'audio', 'src', function($u) use($target, &$found){
+      if($u == $target) {
+        $found[$u] = null;
+      }
+    });
+    return $found;
+  }
+
+  private static function _xPathFindNodeWithAttribute($xpath, $node, $attr, $callback) {
+    foreach($xpath->query('//'.$node.'[@'.$attr.']') as $el) {
+      $v = $el->getAttribute($attr);
+      $callback($v);
+    }
+  }
+
+  private static function _toHtmlEntities($input) {
+    return mb_convert_encoding($input, 'HTML-ENTITIES', mb_detect_encoding($input));
   }
 
 }

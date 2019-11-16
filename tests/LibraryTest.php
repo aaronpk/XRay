@@ -34,4 +34,34 @@ class LibraryTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('Barnaby Walters', $data['data']['name']);
   }
 
+  public function testNoHEntryMarkupMF2JSON() {
+    $url = 'http://example.com/';
+    $html = '<p><a href="http://target.example.com/">Target</a></p>';
+    $mf2 = Mf2\parse($html, $url);
+
+    $xray = new p3k\XRay();
+    $data = $xray->process($url, $mf2);
+    $this->assertEquals('unknown', $data['data']['type']);
+  }
+
+  public function testNoHEntryMarkup() {
+    $url = 'http://example.com/';
+    $html = '<p><a href="http://target.example.com/">Target</a></p>';
+
+    $xray = new p3k\XRay();
+    $data = $xray->parse($url, $html);
+    $this->assertEquals('unknown', $data['data']['type']);
+  }
+
+  public function testNoHEntryMarkupWithTarget() {
+    $url = 'http://example.com/';
+    $html = '<p><a href="http://target.example.com/">Target</a></p>';
+
+    $xray = new p3k\XRay();
+    $data = $xray->parse($url, $html, ['target' => 'http://target.example.com/']);
+    $this->assertEquals('unknown', $data['data']['type']);
+    $this->assertArrayNotHasKey('error', $data);
+    $this->assertArrayNotHasKey('html', $data);
+  }
+
 }

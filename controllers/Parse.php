@@ -120,7 +120,7 @@ class Parse {
       $data = [
         'data' => $parsed['data'],
         'url' => $result['url'],
-        'code' => $result['code']
+        'code' => $result['code'],
       ];
       if(isset($parsed['info']))
         $data['info'] = $parsed['info'];

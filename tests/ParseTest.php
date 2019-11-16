@@ -62,6 +62,19 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertObjectNotHasAttribute('error', $data);
   }
 
+  public function testTargetNotFoundInXML() {
+    $url = 'http://feed.example.com/atom';
+    $response = $this->parse(['url' => $url, 'target' => 'http://example.net']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectHasAttribute('error', $data);
+    $this->assertEquals('no_link_found', $data->error);
+    $this->assertEquals('200', $data->code);
+    $this->assertEquals($url, $data->url);
+  }
+
   public function testHTMLContent() {
     $url = 'http://source.example.com/html-content';
     $response = $this->parse(['url' => $url]);
@@ -217,6 +230,47 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This page has an audio tag with the target URL.', $data->data->content->text);
   }
 
+  public function testFindTargetLinkInFeed() {
+    $url = 'http://feed.example.com/jsonfeed';
+    $response = $this->parse(['url' => $url, 'target' => 'http://www.manton.org/2017/11/5993.html']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
+  }
+
+  public function testFindTargetLinkInHTMLInFeed() {
+    $url = 'http://feed.example.com/jsonfeed';
+    $response = $this->parse(['url' => $url, 'target' => 'http://www.manton.org/2016/11/todays-social-networks-are-broken.html']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
+  }
+
+  public function testNotFindTargetLinkInHTMLInFeed() {
+    $url = 'http://feed.example.com/jsonfeed';
+    $response = $this->parse(['url' => $url, 'target' => 'http://example.com/']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectHasAttribute('error', $data);
+    $this->assertEquals('no_link_found', $data->error);
+  }
+
+  public function testFindRelativeTargetLink() {
+    $url = 'http://source.example.com/multiple-urls';
+    $response = $this->parse(['url' => $url, 'target' => 'http://source.example.com/photo.jpg']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
+  }
+
   public function testTextContent() {
     $url = 'http://source.example.com/text-content';
     $response = $this->parse(['url' => $url]);
@@ -315,6 +369,18 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
+    $this->assertEquals('unknown', $data->data->type);
+    $this->assertObjectNotHasAttribute('html', $data);
+  }
+
+  public function testFindTargetInNoParsedResult() {
+    $url = 'http://source.example.com/no-h-entry';
+    $response = $this->parse(['url' => $url, 'target' => 'http://target.example.com']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body);
+    $this->assertObjectNotHasAttribute('error', $data);
     $this->assertEquals('unknown', $data->data->type);
   }
 
