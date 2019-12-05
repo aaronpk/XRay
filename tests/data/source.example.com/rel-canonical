@@ -1,0 +1,881 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+
+      I finally started documenting all the home automation devices and apps I use, with the main goal of everything running locally! Here's a fun list to browse through if you're looking for some holiday shopping ideas!   https://aaronparecki.com/home-automation/
+
+  </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css?71">
+  <link rel="shortcut icon" href="/images/icons/favicon_32.png" type="image/x-icon" />
+  <link rel="webmention" href="https://micro.blog/webmention" />
+  <link rel="subscribe" href="https://micro.blog/users/follow" />
+
+  <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+  <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+  <script type="text/javascript">
+    Stripe.setPublishableKey("pk_live_AJWeAXRLJ0ssktESsxNvfRLw");
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h1><span class="today">Micro.blog</span></h1>
+
+
+
+    <div id="navbar">
+
+        <a href="/">Timeline</a> <div class="nav_spacer">|</div>
+        <a href="/mentions">Mentions</a> <div class="nav_spacer">|</div>
+        <a href="/favorites">Favorites</a> <div class="nav_spacer">|</div>
+        <a href="/discover">Discover</a> <div class="nav_divider">|</div>
+        <a href="#" id="new_button" data-placement="bottom" onClick="showNewPopover();">Plans</a> <div class="nav_spacer">|</div>
+        <a href="/account">Account</a> <div class="nav_spacer">|</div>
+        <a href="http://help.micro.blog/">Help</a>
+
+          <div class="nav_divider">|</div>
+          <a href="/account/posts/23">Posts</a>
+
+        <div class="nav_spacer">|</div>
+        <a href="/posting" class="btn btn-default">New Post</a>
+
+    </div>
+
+
+
+  <div class="posts">
+
+
+    <div class="post h-entry post_selected" id="post_div_6876999">
+
+      <div class="post_avatar p-author h-card">
+        <a href="/aaronpk" class="u-url">
+          <img src="https://www.gravatar.com/avatar/11954e59b49809173d48133ec4047fce?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" class="u-photo" width="48" height="48" alt="aaronpk" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/aaronpk">aaronpk</a>
+        </div>
+        <div class="post_text e-content p-name">
+          I finally started documenting all the home automation devices and apps I use, with the main goal of everything running locally! Here's a fun list to browse through if you're looking for some holiday shopping ideas! <br><br><a href="https://aaronparecki.com/home-automation/"><span>https://</span>aaronparecki.com/home-automation/</a>
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://aaronparecki.com/2019/12/01/10/homeautomation" class="u-url" rel="canonical"><time class="dt-published" datetime="2019-12-02T00:03:45+00:00">2019-12-01  4:03 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6876999, 'aaronpk'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6876999" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6876999); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6876999" class="btn btn-default replybox_button" onClick="sendReply(6876999); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6877900">
+      <div class="post_avatar">
+        <a href="/tiffany">
+          <img src="https://micro.blog/tiffany/avatar.jpg" width="48" height="48" alt="tiffany" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/tiffany">tiffany</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> yay! Glad I&#39;m not the only one 😉 </p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/tiffany/6877900" class="u-url"><time class="dt-published" datetime="2019-12-02T01:42:52+00:00">2019-12-01  5:42 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6877900, 'tiffany'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6877900" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6877900); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6877900" class="btn btn-default replybox_button" onClick="sendReply(6877900); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6877903">
+      <div class="post_avatar">
+        <a href="/tiffany">
+          <img src="https://micro.blog/tiffany/avatar.jpg" width="48" height="48" alt="tiffany" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/tiffany">tiffany</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> I&#39;m going to read it tonight if I can stay awake. I&#39;m looking forward to seeing what you&#39;re doing with it!</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/tiffany/6877903" class="u-url"><time class="dt-published" datetime="2019-12-02T01:43:32+00:00">2019-12-01  5:43 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6877903, 'tiffany'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6877903" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6877903); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6877903" class="btn btn-default replybox_button" onClick="sendReply(6877903); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6877904">
+      <div class="post_avatar">
+        <a href="/tiffany">
+          <img src="https://micro.blog/tiffany/avatar.jpg" width="48" height="48" alt="tiffany" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/tiffany">tiffany</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> you&#39;re in an apartment as well? Sweet!</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/tiffany/6877904" class="u-url"><time class="dt-published" datetime="2019-12-02T01:44:16+00:00">2019-12-01  5:44 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6877904, 'tiffany'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6877904" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6877904); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6877904" class="btn btn-default replybox_button" onClick="sendReply(6877904); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6877911">
+      <div class="post_avatar">
+        <a href="/aaronpk">
+          <img src="https://www.gravatar.com/avatar/11954e59b49809173d48133ec4047fce?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="aaronpk" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/aaronpk">aaronpk</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <a href="https://micro.blog/tiffany">@tiffany</a> Yeah it definitely has its challenges for smart home automation!
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://aaronparecki.com/2019/12/01/16/" class="u-url"><time class="dt-published" datetime="2019-12-02T01:45:18+00:00">2019-12-01  5:45 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6877911, 'aaronpk'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6877911" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6877911); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6877911" class="btn btn-default replybox_button" onClick="sendReply(6877911); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6878143">
+      <div class="post_avatar">
+        <a href="/danj">
+          <img src="https://www.gravatar.com/avatar/0b279fd1932abe22bfa30136813fe79c?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="danj" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/danj">danj</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> ooh, gonna give this a read! I’m just getting in to home automation. 🤓</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/danj/6878143" class="u-url"><time class="dt-published" datetime="2019-12-02T02:00:39+00:00">2019-12-01  6:00 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6878143, 'danj'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6878143" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6878143); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6878143" class="btn btn-default replybox_button" onClick="sendReply(6878143); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6878216">
+      <div class="post_avatar">
+        <a href="/tiffany">
+          <img src="https://micro.blog/tiffany/avatar.jpg" width="48" height="48" alt="tiffany" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/tiffany">tiffany</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> the stuff you&#39;ve shared I&#39;d have never thought of and are on my list to buy.</p>
+
+<p>Thank you <em>so, so much</em>!</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/tiffany/6878216" class="u-url"><time class="dt-published" datetime="2019-12-02T02:24:27+00:00">2019-12-01  6:24 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6878216, 'tiffany'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6878216" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6878216); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6878216" class="btn btn-default replybox_button" onClick="sendReply(6878216); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6878217">
+      <div class="post_avatar">
+        <a href="/tiffany">
+          <img src="https://micro.blog/tiffany/avatar.jpg" width="48" height="48" alt="tiffany" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/tiffany">tiffany</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/danj">@danj</a> definitely a good read and plenty of recs too</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/tiffany/6878217" class="u-url"><time class="dt-published" datetime="2019-12-02T02:24:56+00:00">2019-12-01  6:24 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6878217, 'tiffany'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6878217" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6878217); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6878217" class="btn btn-default replybox_button" onClick="sendReply(6878217); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6878903">
+      <div class="post_avatar">
+        <a href="/aaronpk">
+          <img src="https://www.gravatar.com/avatar/11954e59b49809173d48133ec4047fce?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="aaronpk" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/aaronpk">aaronpk</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <a href="https://micro.blog/tiffany">@tiffany</a> awesome so glad to help! I look forward to hearing how it works out!
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://aaronparecki.com/2019/12/01/23/" class="u-url"><time class="dt-published" datetime="2019-12-02T02:47:50+00:00">2019-12-01  6:47 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6878903, 'aaronpk'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6878903" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6878903); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6878903" class="btn btn-default replybox_button" onClick="sendReply(6878903); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6879420">
+      <div class="post_avatar">
+        <a href="/danj">
+          <img src="https://www.gravatar.com/avatar/0b279fd1932abe22bfa30136813fe79c?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="danj" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/danj">danj</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/tiffany">@tiffany</a> Yes! I’m happy Hue makes the list, because that’s probably what I’ll start with. 🤓</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/danj/6879420" class="u-url"><time class="dt-published" datetime="2019-12-02T03:44:11+00:00">2019-12-01  7:44 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6879420, 'danj'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6879420" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6879420); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6879420" class="btn btn-default replybox_button" onClick="sendReply(6879420); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6887694">
+      <div class="post_avatar">
+        <a href="/gerwitz">
+          <img src="https://www.gravatar.com/avatar/1e1162be11b9724d9426a9dadd43f60d?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="gerwitz" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/gerwitz">gerwitz</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> thanks! I have similar priorities as you, so this has helped me make a few decisions.</p>
+
+<p>You mention UniFi Video but not what your camera setup looks like?</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/gerwitz/6887694" class="u-url"><time class="dt-published" datetime="2019-12-02T16:48:16+00:00">2019-12-02  8:48 am</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6887694, 'gerwitz'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6887694" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6887694); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6887694" class="btn btn-default replybox_button" onClick="sendReply(6887694); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6889595">
+      <div class="post_avatar">
+        <a href="/aaronpk">
+          <img src="https://www.gravatar.com/avatar/11954e59b49809173d48133ec4047fce?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="aaronpk" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/aaronpk">aaronpk</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <a href="https://micro.blog/gerwitz">@gerwitz</a> ah yeah I forgot to add cameras there! I'll add that section soon. The short version is I'm all in on UniFi video, I have a few of their cameras, and I installed their software in a VM.
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://aaronparecki.com/2019/12/02/9/" class="u-url"><time class="dt-published" datetime="2019-12-02T20:05:07+00:00">2019-12-02 12:05 pm</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6889595, 'aaronpk'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6889595" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6889595); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6889595" class="btn btn-default replybox_button" onClick="sendReply(6889595); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6903793">
+      <div class="post_avatar">
+        <a href="/gerwitz">
+          <img src="https://www.gravatar.com/avatar/1e1162be11b9724d9426a9dadd43f60d?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="gerwitz" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/gerwitz">gerwitz</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> 👍 I have a Synology NAS and UniFi network so am…conflicted.</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/gerwitz/6903793" class="u-url"><time class="dt-published" datetime="2019-12-03T12:47:12+00:00">2019-12-03  4:47 am</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6903793, 'gerwitz'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6903793" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6903793); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6903793" class="btn btn-default replybox_button" onClick="sendReply(6903793); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6906082">
+      <div class="post_avatar">
+        <a href="/aaronpk">
+          <img src="https://www.gravatar.com/avatar/11954e59b49809173d48133ec4047fce?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="aaronpk" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/aaronpk">aaronpk</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <a href="https://micro.blog/gerwitz">@gerwitz</a> conflicted? I also have a Synology NAS and UniFi network!
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://aaronparecki.com/2019/12/03/8/" class="u-url"><time class="dt-published" datetime="2019-12-03T15:21:21+00:00">2019-12-03  7:21 am</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6906082, 'aaronpk'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6906082" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6906082); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6906082" class="btn btn-default replybox_button" onClick="sendReply(6906082); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6906190">
+      <div class="post_avatar">
+        <a href="/gerwitz">
+          <img src="https://www.gravatar.com/avatar/1e1162be11b9724d9426a9dadd43f60d?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="gerwitz" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/gerwitz">gerwitz</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> between unifi’s software and synology’s, I mean. ¯_(ツ)_/¯</p>
+
+<p>The NAS is my only “server” unless you count a CloudKey and Apple TV. I think it’s time for a HASS box, though.</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/gerwitz/6906190" class="u-url"><time class="dt-published" datetime="2019-12-03T15:36:40+00:00">2019-12-03  7:36 am</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6906190, 'gerwitz'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6906190" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6906190); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6906190" class="btn btn-default replybox_button" onClick="sendReply(6906190); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6906193">
+      <div class="post_avatar">
+        <a href="/aaronpk">
+          <img src="https://www.gravatar.com/avatar/11954e59b49809173d48133ec4047fce?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="aaronpk" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/aaronpk">aaronpk</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <a href="https://micro.blog/gerwitz">@gerwitz</a> You could always run Home Assistant on the Synology NAS https://www.home-assistant.io/docs/installation/synology/
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://aaronparecki.com/2019/12/03/9/" class="u-url"><time class="dt-published" datetime="2019-12-03T15:38:16+00:00">2019-12-03  7:38 am</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6906193, 'aaronpk'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6906193" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6906193); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6906193" class="btn btn-default replybox_button" onClick="sendReply(6906193); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6906195">
+      <div class="post_avatar">
+        <a href="/gerwitz">
+          <img src="https://www.gravatar.com/avatar/1e1162be11b9724d9426a9dadd43f60d?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="gerwitz" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/gerwitz">gerwitz</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <p><a href="https://micro.blog/aaronpk">@aaronpk</a> I am! For experimenting. But the Z-wave USB stick is too fiddly.</p>
+
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://micro.blog/gerwitz/6906195" class="u-url"><time class="dt-published" datetime="2019-12-03T15:39:47+00:00">2019-12-03  7:39 am</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6906195, 'gerwitz'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6906195" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6906195); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6906195" class="btn btn-default replybox_button" onClick="sendReply(6906195); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="post" id="post_div_6906200">
+      <div class="post_avatar">
+        <a href="/aaronpk">
+          <img src="https://www.gravatar.com/avatar/11954e59b49809173d48133ec4047fce?s=96&d=https%3A%2F%2Fmicro.blog%2Fimages%2Fblank_avatar.png" width="48" height="48" alt="aaronpk" />
+        </a>
+      </div>
+
+      <div class="post_content">
+        <div class="post_username">
+          <a href="/aaronpk">aaronpk</a>
+        </div>
+        <div class="post_text e-content p-name">
+          <a href="https://micro.blog/gerwitz">@gerwitz</a> yeah, the weak link for this seems to be USB hardware. Thankfully I haven't had any trouble since switching to the Intel NUC
+        </div>
+        <div class="post_options">
+
+            <div class="post_time"><a href="https://aaronparecki.com/2019/12/03/10/" class="u-url"><time class="dt-published" datetime="2019-12-03T15:42:39+00:00">2019-12-03  7:42 am</time></a></div>
+
+
+            <div class="post_divider">|</div>
+            <div class="post_reply"><a href="#" onClick="promptReply(6906200, 'aaronpk'); return false;">Reply</a></div>
+
+        </div>
+
+        <div class="post_replybox" id="reply_div_6906200" style="display: none;">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea class="form-control post_textarea" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" style="text-align: right;">
+                <button type="submit" class="btn btn-default replybox_button" onClick="cancelReply(6906200); return false;">Cancel</button>
+                <button type="submit" id="reply_button_6906200" class="btn btn-default replybox_button" onClick="sendReply(6906200); return false;">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>
+
+<div id="new_popover" style="display: none;">
+
+    <p class="popover_section_title"><a href="/new/site">Upgrade Microblog</a> — $5/month</p>
+
+    <p class="popover_section_body">Your microblog at aaronpk.micro.blog will be upgraded to a paid plan. Includes cross-posting, pages, themes, and publishing from the web, iOS, and Mac.</p>
+
+
+
+  <p class="popover_section_title"><a href="/account/invite">🎁 Give Micro.blog</a></p>
+
+  <p class="popover_section_body">Invite someone to Micro.blog or pay for their first year of blog hosting.</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/markdown/markdown.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.min.js"></script>
+<script src="/js/microblog.js?60"></script>
+
+</body>
+</html>

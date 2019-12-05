@@ -60,6 +60,11 @@ class HTML extends Format {
 
     $mf2 = \mf2\Parse($html, $url);
 
+    $canonical = false;
+
+    if(isset($mf2['rels']['canonical'][0]))
+      $canonical = $mf2['rels']['canonical'][0];
+
     // Check for a rel=alternate link to a Microformats JSON representation, and use that instead
     if(isset($mf2['rel-urls'])) {
       $alternates = [
@@ -141,6 +146,13 @@ class HTML extends Format {
         $result['source-format'] = 'mf2+html';
       }
     }
+
+    if($canonical) {
+      $result['data']['rels'] = [
+        'canonical' => $canonical,
+      ];
+    }
+
     return $result;
   }
 

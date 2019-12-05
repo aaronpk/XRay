@@ -1099,4 +1099,16 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('https://realize.be/', $data['data']['follow-of']);
     $this->assertEquals('follow', $data['data']['post-type']);
   }
+
+  public function testRelCanonical() {
+    $url = 'http://source.example.com/rel-canonical';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('https://aaronparecki.com/2019/12/01/10/homeautomation', $data['data']['url']);
+    $this->assertEquals('https://aaronparecki.com/2019/12/01/10/homeautomation', $data['data']['rels']['canonical']);
+  }
 }
