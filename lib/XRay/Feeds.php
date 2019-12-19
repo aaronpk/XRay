@@ -72,6 +72,19 @@ class Feeds {
           'type' => 'jsonfeed'
         ];
       }
+    } elseif((strpos($contentType, 'application/mf2+json') !== false || strpos($contentType, 'application/microformats2+json') !== false ) && substr($body, 0, 1) == '{') {
+      $feeddata = json_decode($body, true);
+      if($feeddata && isset($feeddata['items']) && !empty($feeddata['items'])) {
+        // assume that the first element in the array is the feed object
+        $item0 = $feeddata['items'][0];
+
+        if (isset($item0['type']) && $item0['type'][0] == 'h-feed') {
+          $feeds[] = [
+            'url' => $result['url'],
+            'type' => 'microformats'
+          ];
+        }
+      }
     } else {
       // Some other document was returned, parse the HTML and look for rel alternates and Microformats
 
