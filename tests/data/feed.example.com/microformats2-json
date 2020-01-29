@@ -1,0 +1,70 @@
+HTTP/1.1 200 OK
+content-type: application/microformats2+json;charset=UTF-8
+date: Thu, 19 Dec 2019 18:57:30 GMT
+server: Caddy
+
+{
+    "items": [
+        {
+            "children": [
+                {
+                    "type": [
+                        "h-event"
+                    ],
+                    "properties": {
+                        "name": [
+                            "Tech Nottingham January 2020 - Ethics In Advertising And High Performance Teams"
+                        ],
+                        "description": [
+                            "<p>Full event description: <a href=\"https://www.technottingham.com/events/tech-nottingham-january-2020\" class=\"linkified\">https://www.technottingham.com/events/tech-nottingham-january-2020</a></p> <p>-------------------------------------------</p> <p>For our first event of 2020 we have a mix of fascinating topics - Krishan Bhasin is talking about ethics in online advertising and Tom Geraghty is sharing his ideas on psychological safety in high performance teams.</p> <p>Plus we've got free food and drinks provided at the event thanks to our generous sponsors Capital One, Cordius and Experian.</p> <p>Everyone is welcome and there are no tickets required. Just turn up - it's free!</p> <p>-------------------------------------------</p> <p>~~Walk There Together~~</p> <p>We know it can be intimidating walking into a tech event, so the Tech Nottingham team will be meeting any nervous or first-time attendees outside the Theatre Royal at 18:00 before the event so you can all head down there together.</p> <p>-------------------------------------------</p> <p>~~Missile Destroyers, Supercomputers, And Chernobyl: Psychological Safety And High Performance Teams~~<br/>by Tom Geraghty</p> <p>Safety isn't just necessary in order to prevent disasters, it's also crucial to building and maintaining high performance teams and organisations.</p> <p>Building high performing software requires high performing teams, in which team members need to feel able to express their creativity, talents and skills without self-censoring, self-silencing, or fear of failure. In this talk, Tom introduces the latest research in high performance technology teams, and provides actionable concepts to help you build and elevate your team.</p> <p>~About Tom~<br/>A \"veteran technology team builder\" according to Computing Magazine, Tom is an expert in transforming team performance. Over his 15 years as a technology leader, he has come to believe that culture trumps strategy, and happiness precedes success.</p> <p>Tom is currently the Head of Technology at MoreNiche in Nottingham, and CTO of Ydentity, an identity protection startup.</p> <p>Tom shares his expertise in leadership and DevOps through speaking at events, appearing on podcasts, and contributing to various books. In fact, Tom is now writing his own book about the evolution of DevOps and is learning that writing a whole book is much, much harder than he expected.</p> <p>Outside of work, Tom is a yoga teacher and mountain biker.</p> <p>-------------------------------------------</p> <p>~~Online Advertising: Illegal? Unethical? Both?~~<br/>by Krishan Bhasin</p> <p>Would you be okay with someone following you around every place you visited in town, noting what you looked at, how long you spent looking at anything, who you spoke to, and what you ate?</p> <p>Is it okay to consume content for free while blocking the main (or only) monetisation strategies of the creators?</p> <p>The ad-supported internet has changed a lot since the times of the Million Dollar Homepage, with online advertising worth over $85bn a year in the United States alone, and now carries serious security &amp; privacy concerns with it. The UK regulator has given almost all players in the market a six month deadline to comply with the law after it found that vast amounts of personal data were widely used across industry without any consent.</p> <p>In this talk Krishan will discuss the technology, economics and ethics of online adverts, and the various blockers that people use to avoid them.</p> <p>~About Krishan~<br/>Krishan graduated in 2014 with a Degree in Mechanical Engineering, after which he realised that he didn't really want to work in that field. After a period of soul searching, internships &amp; travelling he started on a software engineering graduate scheme in 2015.</p> <p>He has since worked in a variety of software &amp; data science roles, currently focusing on building better data science tooling to speed up the model building lifecycle.</p> <p>Outside of work Krishan still likes backpacking, as well as slowly becoming a serious coffee snob.</p> <p>-------------------------------------------</p> <p>Full event details: <a href=\"https://www.technottingham.com/events/tech-nottingham-january-2020\" class=\"linkified\">https://www.technottingham.com/events/tech-nottingham-january-2020</a></p> "
+                        ],
+                        "start": [
+                            "2020-01-13T18:30:00Z"
+                        ],
+                        "end": [
+                            "2020-01-13T21:00:00Z"
+                        ],
+                        "url": [
+                            "https://www.meetup.com/Tech-Nottingham/events/267300253/"
+                        ],
+                        "location": [
+                            {
+                                "type": [
+                                    "h-adr"
+                                ],
+                                "properties": {
+                                    "locality": [
+                                        "Nottingham"
+                                    ],
+                                    "street-address": [
+                                        "Antenna, Beck Street"
+                                    ],
+                                    "country-name": [
+                                        "United Kingdom"
+                                    ]
+                                }
+                            }
+                        ],
+                        "published": [
+                            "2019-12-19T18:14:47Z"
+                        ],
+                        "updated": [
+                            "2019-12-19T18:15:13Z"
+                        ]
+                    }
+                }
+            ],
+            "type": [
+                "h-feed"
+            ],
+            "properties": {
+                "name": [
+                    "Tech Nottingham"
+                ],
+                "url": [
+                    "https://www.meetup.com/Tech-Nottingham/events"
+                ]
+            }
+        }
+    ]
+}

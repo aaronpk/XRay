@@ -194,5 +194,29 @@ class FindFeedsTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('jsonfeed', $feeds[0]->type);
   }
 
+  public function testInputIsMicroformats2JSON() {
+    $url = 'http://feed.example.com/microformats2-json';
+    $response = $this->parse(['url' => $url]);
 
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $feeds = json_decode($body)->feeds;
+
+    $this->assertEquals(1, count($feeds));
+    $this->assertEquals('http://feed.example.com/microformats2-json', $feeds[0]->url);
+    $this->assertEquals('microformats', $feeds[0]->type);
+  }
+
+  public function testInputIsMF2JSON() {
+    $url = 'http://feed.example.com/mf2-json';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $feeds = json_decode($body)->feeds;
+
+    $this->assertEquals(1, count($feeds));
+    $this->assertEquals('http://feed.example.com/mf2-json', $feeds[0]->url);
+    $this->assertEquals('microformats', $feeds[0]->type);
+  }
 }
