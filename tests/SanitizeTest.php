@@ -240,7 +240,7 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content.', $data->data->content->html);
   }
 
-  public function testPhotoInContentWithNoText() {
+  public function testPhotoInContentWithNameAndNoText() {
     $url = 'http://sanitize.example/cleverdevil';
     $response = $this->parse(['url' => $url]);
 
@@ -285,6 +285,67 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('http://sanitize.example/photo.jpg', $data->data->photo[0]);
   }
 
+  public function testPhotoInContentWithNoText() {
+    $url = 'http://sanitize.example/photo-in-content-with-alt-no-text';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('<p><img src="http://sanitize.example/photo.jpg" alt="test" /></p>', $data['data']['content']['html']);
+    $this->assertEquals('', $data['data']['content']['text']);
+  }
+
+  public function testPhotoInContentWithPNoAlt() {
+    $url = 'http://sanitize.example/photo-in-content-with-p-no-alt';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('<p><img src="http://sanitize.example/photo.jpg" alt="photo.jpg" /></p>', $data['data']['content']['html']);
+    $this->assertEquals('', $data['data']['content']['text']);
+  }
+
+  public function testPhotoInContentNoPWithURLPhoto() {
+    $url = 'http://sanitize.example/photo-in-content-no-p-with-url-photo';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('<img src="http://sanitize.example/photo.jpg" alt="test" />', $data['data']['content']['html']);
+    $this->assertEquals('', $data['data']['content']['text']);
+  }
+
+  public function testPhotoInContentNoPWithAlt() {
+    // This h-entry has no u-url so has an implied u-photo. we don't actually care what happens with it because
+    // this should never happen in the wild
+    $url = 'http://sanitize.example/photo-in-content-no-p-with-alt';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+  }
+
+  /*
+  // TODO: add support for embedded video and audio tags in html content
+  public function testContentIsOnlyVideo() {
+    $url = 'http://sanitize.example/content-is-only-video';
+    $response = $this->parse(['url' => $url]);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    print_r($data);
+  }
+  */
+
   public function testPhotosWithAlt() {
     // https://github.com/microformats/microformats2-parsing/issues/16
 
@@ -295,17 +356,15 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(200, $response->getStatusCode());
     $data = json_decode($body);
 
-    #print_r($data->data);
-
     $this->assertEquals('🌆 Made it to the first #NPSF #earlygang of the year, did in-betweeners abs, and 6:30 workout with a brutal burnout that was really its own workout. But wow pretty sunrise. Plus 50+ deg F? I’ll take it. #100PDPD'."\n\n".'#justshowup #darknesstodawn #wakeupthesun #fromwhereirun #NovemberProject #sunrise #latergram #nofilter', $data->data->content->text);
     $this->assertObjectNotHasAttribute('name', $data->data);
     $this->assertEquals('https://igx.4sqi.net/img/general/original/476_g7yruXflacsGr7PyVmECefyTBMB_R99zmPQxW7pftzA.jpg', $data->data->photo[0]);
     $this->assertEquals('https://igx.4sqi.net/img/general/original/476_zM3UgU9JHNhom907Ac_1WCEcUhGOJZaNWGlRmev86YA.jpg', $data->data->photo[1]);
   }
 
-  /*
-  // Commented out until #55 is resolved
+  // Ignoring this issue for now. This should not happen in the wild.
   // https://github.com/aaronpk/XRay/issues/55
+  // Skipping the implied photo check because in the wild, h-entrys should not exist withou a u-url, which stops implied parsing.
   public function testEntryWithImgNoImpliedPhoto() {
     // See https://github.com/microformats/microformats2-parsing/issues/6#issuecomment-357286985
     // and https://github.com/aaronpk/XRay/issues/52#issuecomment-357269683
@@ -319,11 +378,9 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
 
     $this->assertObjectNotHasAttribute('photo', $data->data);
     $this->assertObjectNotHasAttribute('name', $data->data);
-    $this->assertEquals('http://target.example.com/photo.jpg', $data->data->photo[0]);
     $this->assertEquals('This is a photo post with an img tag inside the content, which does not have a u-photo class so should not be removed.', $data->data->content->text);
-    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content, which does not have a u-photo class so should not be removed. <img src="http://target.example.com/photo.jpg" alt="a photo">', $data->data->content->html);
+    $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content, which does not have a u-photo class so should not be removed. <img src="http://target.example.com/photo.jpg" alt="a photo" />', $data->data->content->html);
   }
-  */
 
   public function testWhitespaceWithBreakTags() {
     $url = 'http://sanitize.example/entry-with-br-tags';

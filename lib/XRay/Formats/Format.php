@@ -75,6 +75,8 @@ abstract class Format implements iFormat {
     }
 
     $def = $config->getHTMLDefinition(true);
+
+    // add HTML <time> element
     $def->addElement(
       'time',
       'Inline',
@@ -84,6 +86,37 @@ abstract class Format implements iFormat {
         'datetime' => 'Text'
       ]
     );
+
+    /*
+    // This isn't working right now, not sure why
+    // http://developers.whatwg.org/the-video-element.html#the-video-element
+    $def->addElement(
+      'video',
+      'Block',
+      'Optional: (source, Flow) | (Flow, source) | Flow',
+      'Common',
+      [
+        'src' => 'URI',
+        'type' => 'Text',
+        'width' => 'Length',
+        'height' => 'Length',
+        'poster' => 'URI',
+        'preload' => 'Enum#auto,metadata,none',
+        'controls' => 'Bool',
+      ]
+    );
+    $def->addElement(
+      'source',
+      'Block',
+      'Flow',
+      'Common',
+      [
+        'src' => 'URI',
+        'type' => 'Text',
+      ]
+    );
+    */
+
     // Override the allowed classes to only support Microformats2 classes
     $def->manager->attrTypes->set('Class', new HTMLPurifier_AttrDef_HTML_Microformats2());
     $purifier = new HTMLPurifier($config);

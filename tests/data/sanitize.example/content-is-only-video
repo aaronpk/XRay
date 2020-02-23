@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<div class="h-entry">
+  <div class="e-content">
+    <video src="/video.mp4"></video>
+  </div>
+</div>

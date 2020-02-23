@@ -278,7 +278,15 @@ class Mf2 extends Format {
         $data['html'] = $htmlContent;
       }
 
-      if(!$data['text'])
+      // Also add HTML content if it contains images, video or audio
+      // TODO: allow video and audio tags in content, then uncomment this
+      if(strpos($htmlContent, '<img') !== false
+        /* || strpos($htmlContent, '<video') !== false */
+        /* || strpos($htmlContent, '<audio') !== false */) {
+        $data['html'] = $htmlContent;
+      }
+
+      if(!$data['text'] && !isset($data['html']))
         return null;
 
       return $data;
@@ -419,7 +427,7 @@ class Mf2 extends Format {
     // If there is content, always return the plaintext content, and return HTML content if it's different
     if($content) {
       $content = self::parseHTMLValue('content', $item);
-      if($content['text']) {
+      if($content['text'] || $content['html']) {
         $data['content']['text'] = $content['text'];
         if(isset($content['html']))
           $data['content']['html'] = $content['html'];

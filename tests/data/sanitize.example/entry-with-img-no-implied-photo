@@ -10,5 +10,6 @@ Connection: keep-alive
   </head>
   <body class="h-entry">
     <p class="e-content p-name">This is a photo post with an <code>img</code> tag inside the content, which does not have a u-photo class so should not be removed. <img src="http://target.example.com/photo.jpg" alt="a photo"></p>
+    <a href="/permalink" class="u-url">permalink</a>
   </body>
 </html>
