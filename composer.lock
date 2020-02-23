@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "60604185413cecbcffb5e6cd9525c6fc",
+    "content-hash": "8230eed3af012d294aec18a13a5202e7",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -384,16 +384,16 @@
         },
         {
             "name": "p3k/http",
-            "version": "0.1.8",
+            "version": "0.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aaronpk/p3k-http.git",
-                "reference": "a43977636d7a930080009eddda06994037c88fd7"
+                "reference": "24d28287e0c5606aa45b23c6e3c17628d89468f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/a43977636d7a930080009eddda06994037c88fd7",
-                "reference": "a43977636d7a930080009eddda06994037c88fd7",
+                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/24d28287e0c5606aa45b23c6e3c17628d89468f7",
+                "reference": "24d28287e0c5606aa45b23c6e3c17628d89468f7",
                 "shasum": ""
             },
             "require": {
@@ -418,7 +418,7 @@
             ],
             "description": "A simple wrapper API around the PHP curl functions",
             "homepage": "https://github.com/aaronpk/p3k-http",
-            "time": "2019-06-15T20:49:26+00:00"
+            "time": "2020-02-19T03:00:09+00:00"
         },
         {
             "name": "p3k/picofeed",
@@ -551,6 +551,7 @@
                 "xml",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-xml",
             "time": "2019-01-22T19:42:14+00:00"
         }
     ],
