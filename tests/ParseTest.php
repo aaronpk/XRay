@@ -878,6 +878,30 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('http://one.example.com/test', $data['data']['url']);
   }
 
+  public function testInputIsJSON() {
+    $url = 'http://example.com/entry';
+
+    $mf2json = ['items' => [
+      [
+        'type' => ['h-entry'],
+        'properties' => [
+          'content' => [['html' => 'Hello World']]
+        ]
+      ]
+    ]];
+
+    $response = $this->parse([
+      'body' => $mf2json,
+      'url' => $url,
+    ]);
+
+    $body = $response->getContent();
+    $data = json_decode($body, true);
+
+    $this->assertEquals('mf2+json', $data['source-format']);
+    $this->assertEquals('Hello World', $data['data']['content']['text']);
+  }
+
   public function testInputIsParsedMf2() {
     $html = '<div class="h-entry"><p class="p-content p-name">Hello World</p><img src="/photo.jpg"></p></div>';
     $mf2 = Mf2\parse($html, 'http://example.com/entry');

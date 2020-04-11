@@ -83,7 +83,7 @@ class Parser {
     $body = $http_response['body'];
 
     // Check if an mf2 JSON object was passed in
-    if(is_array($body) && isset($body['items']) && isset($body['rels']) && isset($body['rel-urls'])) {
+    if(is_array($body) && isset($body['items'])) {
       $data = Formats\Mf2::parse($http_response, $this->http, $opts);
       if($data == false) {
         $data = [
@@ -103,17 +103,19 @@ class Parser {
       return $data;
     }
 
-    if(substr($body, 0, 5) == '<?xml') {
+    if(is_string($body) && substr($body, 0, 5) == '<?xml') {
       return Formats\XML::parse($http_response);
     }
 
-    // Some feeds don't start with <?xml
-    $begin = trim(substr($body, 0, 40));
-    if(substr($begin, 0, 4) == '<rss') {
-      return Formats\XML::parse($http_response);
+    if(is_string($body)) {
+      // Some feeds don't start with <?xml
+      $begin = trim(substr($body, 0, 40));
+      if(substr($begin, 0, 4) == '<rss') {
+        return Formats\XML::parse($http_response);
+      }
     }
 
-    if(substr($body, 0, 1) == '{') {
+    if(is_string($body) && substr($body, 0, 1) == '{') {
       $parsed = json_decode($body, true);
       if($parsed && isset($parsed['version']) && $parsed['version'] == 'https://jsonfeed.org/version/1') {
         $http_response['body'] = $parsed;
