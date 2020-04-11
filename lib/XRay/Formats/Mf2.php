@@ -427,7 +427,7 @@ class Mf2 extends Format {
     // If there is content, always return the plaintext content, and return HTML content if it's different
     if($content) {
       $content = self::parseHTMLValue('content', $item);
-      if($content['text'] || $content['html']) {
+      if($content && ($content['text'] || $content['html'])) {
         $data['content']['text'] = $content['text'];
         if(isset($content['html']))
           $data['content']['html'] = $content['html'];
