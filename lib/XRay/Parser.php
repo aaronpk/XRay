@@ -25,14 +25,16 @@ class Parser {
           // Ignore this check for any non-HTML documents since this will be uncommon anyway
           $found = false;
         }
+        $error_description = 'The source document does not have a link to the target URL';
       } else {
         $found = $this->_findLinkInTree($opts['target'], $document['data']);
+        $error_description = 'The Microformats at the source URL do not contain a link to the target URL. Check the source URL in a Microformats parser such as php.microformats.io';
       }
 
       if(!$found) {
         return [
           'error' => 'no_link_found',
-          'error_description' => 'The source document does not have a link to the target URL',
+          'error_description' => $error_description,
           'code' => isset($document['code']) ? $document['code'] : 200,
           'url' => $document['url'],
           'debug' => $document['data']
@@ -41,7 +43,7 @@ class Parser {
     }
 
     // If the HTML parser couldn't parse the page it returns the full HTML for checking the target above,
-    // but we don't want to return that in the out put so remove it here
+    // but we don't want to return that in the output so remove it here
     unset($document['html']);
 
     return $document;
