@@ -1135,4 +1135,73 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('https://aaronparecki.com/2019/12/01/10/homeautomation', $data['data']['url']);
     $this->assertEquals('https://aaronparecki.com/2019/12/01/10/homeautomation', $data['data']['rels']['canonical']);
   }
+
+  public function testTargetLinkOutsideHEntry() {
+    $url = 'http://source.example.com/target-test-link-outside-h-entry';
+    $response = $this->parse(['url' => $url, 'target' => 'https://target.example.com/']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('no_link_found', $data['error']);
+  }
+
+  public function testTargetLinkWithBadMf1() {
+    $url = 'http://source.example.com/target-test-only-bad-mf1';
+    $response = $this->parse(['url' => $url, 'target' => 'https://target.example.com/']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('unknown', $data['data']['type']);
+  }
+
+  public function testTargetLinkWithValidMf1() {
+    $url = 'http://source.example.com/target-test-only-good-mf1';
+    $response = $this->parse(['url' => $url, 'target' => 'https://target.example.com/']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+    $this->assertEquals('<a href="https://target.example.com/">target</a>', $data['data']['content']['html']);
+  }
+
+  public function testTargetLinkOutsideValidMf1() {
+    $url = 'http://source.example.com/target-test-link-outside-valid-mf1';
+    $response = $this->parse(['url' => $url, 'target' => 'https://target.example.com/']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    // Since the link was found in the HTML, but not in the parsed tree, it shouldn't return the parsed document
+    $this->assertEquals('unknown', $data['data']['type']);
+  }
+
+  public function testDisableMf1Parsing() {
+    $url = 'http://source.example.com/target-test-only-good-mf1';
+    $response = $this->parse(['url' => $url, 'include-mf1' => 'false']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('unknown', $data['data']['type']);
+  }
+
+  public function testEnableMf1Parsing() {
+    $url = 'http://source.example.com/target-test-only-good-mf1';
+    $response = $this->parse(['url' => $url, 'include-mf1' => 'true']);
+
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $data = json_decode($body, true);
+
+    $this->assertEquals('entry', $data['data']['type']);
+  }
+
 }

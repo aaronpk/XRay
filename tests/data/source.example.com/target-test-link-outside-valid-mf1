@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <div class="hentry">
+      <p class="entry-content">hello world</p>
+    </div>
+    <nav><a href="https://target.example.com/">target</a></nav>
+  </body>
+</html>

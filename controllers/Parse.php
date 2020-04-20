@@ -67,6 +67,10 @@ class Parse {
       $this->_pretty = true;
     }
 
+    if($request->get('include-mf1')) {
+      $opts['include-mf1'] = $request->get('include-mf1') == 'false' ? false : true;
+    }
+
     $url = $request->get('url');
     $html = $request->get('html') ?: $request->get('body');
 

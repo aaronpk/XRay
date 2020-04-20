@@ -58,7 +58,11 @@ class HTML extends Format {
       }
     }
 
-    $mf2 = \mf2\Parse($html, $url);
+    $includeMF1 = true;
+    if(isset($opts['include-mf1']) && $opts['include-mf1'] == false)
+      $includeMF1 = false;
+
+    $mf2 = \Mf2\parse($html, $url, $includeMF1);
 
     $canonical = false;
 

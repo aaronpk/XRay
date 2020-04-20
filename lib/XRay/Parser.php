@@ -29,6 +29,25 @@ class Parser {
       } else {
         $found = $this->_findLinkInTree($opts['target'], $document['data']);
         $error_description = 'The Microformats at the source URL do not contain a link to the target URL. Check the source URL in a Microformats parser such as php.microformats.io';
+
+        if(!$found && isset($document['html'])) {
+          // If no link was found in the parsed mf2 tree, check for a link in the HTML
+          $found = $this->_findLinkInHTML($opts['target'], $document['html']);
+          // If there is a link, and if the HTML document has no mf2, then downgrade to a regular mention
+          if($found) {
+            $mf2Data = Formats\HTML::parse($this->http, $http_response, ['include-mf1'=>false]);
+            if(isset($mf2Data['data']['type']) && $mf2Data['data']['type'] == 'unknown') {
+              // Since the link was found in the HTML, but not in the parsed tree, it shouldn't return the parsed document
+              $document['data'] = [
+                'type' => 'unknown'
+              ];
+            } else {
+              // Otherwise, the document did have mf2, but the link wasn't in it (checked earlier), so set found=false
+              $found = false;
+            }
+          }
+        }
+
       }
 
       if(!$found) {
