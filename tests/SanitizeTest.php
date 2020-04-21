@@ -127,7 +127,6 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $body = $response->getContent();
     $data = json_decode($body, true);
     $html = $data['data']['content']['html'];
-    file_put_contents('html', $html);
     $this->assertContains('youtube.com', $html);
     $this->assertNotContains('https://attack-domain.com', $html);
     $this->assertNotContains('<iframe width="580" height="345"', $html);
