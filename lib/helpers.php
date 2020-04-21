@@ -58,3 +58,12 @@ function phpmf2_version() {
   }
   return $version;
 }
+
+function allow_iframe_video($value = NULL) {
+  static $allow_iframe_video = false;
+
+  if (isset($value))
+    $allow_iframe_video = $value;
+
+  return $allow_iframe_video;
+}
