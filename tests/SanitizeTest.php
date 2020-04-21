@@ -115,6 +115,23 @@ class SanitizeTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('This content has some <i>HTML escaped</i> entities such as &amp; ampersand, " quote, escaped &lt;code&gt; HTML tags, an ümlaut, an @at sign.', $data['data']['content']['html']);
   }
 
+  public function testAllowIframeVideo()  {
+    $url = 'http://sanitize.example/entry-with-iframe-video';
+    $response = $this->parse(['url' => $url]);
+    $body = $response->getContent();
+    $data = json_decode($body, true);
+    $html = $data['data']['content']['html'];
+    $this->assertNotContains('<iframe', $html);
+
+    $response = $this->parse(['url' => $url, 'allow-iframe-video' => 'true']);
+    $body = $response->getContent();
+    $data = json_decode($body, true);
+    $html = $data['data']['content']['html'];
+    $this->assertContains('youtube.com', $html);
+    $this->assertNotContains('https://attack-domain.com', $html);
+    $this->assertNotContains('<iframe width="580" height="345"', $html);
+  }
+
   public function testSanitizeJavascriptURLs() {
     $url = 'http://sanitize.example/h-entry-with-javascript-urls';
     $response = $this->parse(['url' => $url]);

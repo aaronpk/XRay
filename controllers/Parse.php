@@ -71,6 +71,10 @@ class Parse {
       $opts['include-mf1'] = $request->get('include-mf1') == 'false' ? false : true;
     }
 
+    if($request->get('allow-iframe-video')) {
+      $opts['allowIframeVideo'] = $request->get('allow-iframe-video') == 'true';
+    }
+
     $url = $request->get('url');
     $html = $request->get('html') ?: $request->get('body');
 

@@ -67,6 +67,16 @@ abstract class Format implements iFormat {
 
     $config = HTMLPurifier_Config::createDefault();
     $config->set('Cache.DefinitionImpl', null);
+
+    if (\p3k\XRay\allow_iframe_video()) {
+      $allowed[] = 'iframe';
+      $config->set('HTML.SafeIframe', true);
+      $config->set('URI.SafeIframeRegexp', '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%');
+      $config->set('AutoFormat.RemoveEmpty', true);
+      // Removes iframe in case it has no src. This strips the non-allowed domains.
+      $config->set('AutoFormat.RemoveEmpty.Predicate', array('iframe' => array(0 => 'src')));
+    }
+
     $config->set('HTML.AllowedElements', $allowed);
 
     if($baseURL) {
