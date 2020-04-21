@@ -12,6 +12,8 @@ class Parser {
   }
 
   public function parse($http_response, $opts=[]) {
+    $allowIframeVideo = isset($opts['allowIframeVideo']) ? $opts['allowIframeVideo'] : false;
+    allow_iframe_video($allowIframeVideo);
     $document = $this->parse_document($http_response, $opts);
 
     // If a target parameter was provided, make sure a link to it exists in the parsed document
