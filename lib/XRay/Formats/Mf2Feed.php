@@ -41,25 +41,25 @@ trait Mf2Feed {
     foreach($feed['children'] as $item) {
       $parsed = false;
       if(in_array('h-entry', $item['type']) || in_array('h-cite', $item['type'])) {
-        $parsed = self::parseAsHEntry($mf2, $item, false, $url);
+        $parsed = self::parseAsHEntry($mf2, $item, $http, $url);
       }
       elseif(in_array('h-event', $item['type'])) {
-        $parsed = self::parseAsHEvent($mf2, $item, false, $url);
+        $parsed = self::parseAsHEvent($mf2, $item, $http, $url);
       }
       elseif(in_array('h-review', $item['type'])) {
-        $parsed = self::parseAsHReview($mf2, $item, false, $url);
+        $parsed = self::parseAsHReview($mf2, $item, $http, $url);
       }
       elseif(in_array('h-recipe', $item['type'])) {
-        $parsed = self::parseAsHRecipe($mf2, $item, false, $url);
+        $parsed = self::parseAsHRecipe($mf2, $item, $http, $url);
       }
       elseif(in_array('h-product', $item['type'])) {
-        $parsed = self::parseAsHProduct($mf2, $item, false, $url);
+        $parsed = self::parseAsHProduct($mf2, $item, $http, $url);
       }
       elseif(in_array('h-item', $item['type'])) {
-        $parsed = self::parseAsHItem($mf2, $item, false, $url);
+        $parsed = self::parseAsHItem($mf2, $item, $http, $url);
       }
       elseif(in_array('h-card', $item['type'])) {
-        $parsed = self::parseAsHCard($item, false, $url);
+        $parsed = self::parseAsHCard($item, $http, $url);
       }
       if($parsed) {
         $data['items'][] = $parsed['data'];

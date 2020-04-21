@@ -736,6 +736,12 @@ class Mf2 extends Format {
       'photo' => null
     ];
 
+    // Start by setting the URL of the author to the author URL if one is present in the item.
+    // It will be upgraded to a full h-card if additional data can be found.
+    if(isset($item['properties']['author'][0]) && self::isURL($item['properties']['author'][0])) {
+      $author['url'] = $item['properties']['author'][0];
+    }
+
     // Author Discovery
     // http://indiewebcamp.com/authorship
 
@@ -779,9 +785,11 @@ class Mf2 extends Format {
       $authorPageContents = self::getURL($authorPage, $http);
 
       if($authorPageContents) {
-        foreach($authorPageContents['items'] as $i) {
-          if(self::isHCard($i)) {
+        $allHCards = self::findAllMicroformatsByType($authorPageContents, 'h-card');
+        $numHCards = count($allHCards);
 
+        foreach($allHCards as $i) {
+          if(self::isHCard($i)) {
             // 7.2 "if author-page has 1+ h-card with url == uid == author-page's URL, then use first such h-card, exit."
             if(array_key_exists('url', $i['properties'])
               and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($i['properties']['url']))
@@ -820,7 +828,6 @@ class Mf2 extends Format {
         if(isset($i['properties']['author'])) {
           foreach($i['properties']['author'] as $ic) {
             if(self::isHCard($ic)) {
-
               if(array_key_exists('url', $ic['properties'])
                 and in_array(\p3k\XRay\normalize_url($authorPage), \p3k\XRay\normalize_urls($ic['properties']['url']))
               ) {
@@ -840,7 +847,7 @@ class Mf2 extends Format {
     if(isset($mf2['items'][0]['type'][0]) && in_array('h-feed', $mf2['items'][0]['type'])) {
       if(isset($mf2['items'][0]['properties']['author'][0])) {
         $potentialAuthor = $mf2['items'][0]['properties']['author'][0];
-        if(is_array($potentialAuthor['type']) && in_array('h-card', $potentialAuthor['type'])) {
+        if(self::isHCard($potentialAuthor)) {
           return self::parseAsHCard($potentialAuthor, $http, $url)['data'];
         }
       }
@@ -886,7 +893,7 @@ class Mf2 extends Format {
   }
 
   private static function isURL($string) {
-    return preg_match('/^https?:\/\/.+\..+$/', $string);
+    return is_string($string) && preg_match('/^https?:\/\/.+\..+$/', $string);
   }
 
   // Given an array of microformats properties and a key name, return the plaintext value
@@ -941,5 +948,33 @@ class Mf2 extends Format {
       return null;
     }
     return \mf2\Parse($result['body'], $url);
+  }
+
+  public static function findAllMicroformatsByType($mf2, $type='h-card') {
+    $objects = [];
+
+    foreach($mf2['items'] as $item) {
+      if(in_array($type, $item['type'])) {
+        $objects[] = $item;
+      } else {
+        if(isset($item['properties']) && is_array($item['properties'])) {
+          foreach($item['properties'] as $property=>$values) {
+            foreach($values as $value) {
+              if(is_array($value) && isset($value['type']) && is_array($value['type'])) {
+                if(in_array($type, $value['type'])) {
+                  $objects[] = $value;
+                }
+              }
+            }
+          }
+        }
+        if(isset($item['children']) && is_array($item['children'])) {
+          $items = $item['children'];
+          $objects = array_merge($objects, self::findAllMicroformatsByType(['items'=>$items], $type));
+        }
+      }
+    }
+
+    return $objects;
   }
 }

@@ -475,4 +475,32 @@ class FeedTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals('feed', $data->type);
   }
+
+  public function testAuthorFeedOnHomePage() {
+    $url = 'http://feed.example.com/h-feed-author-is-feed';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $parsed = json_decode($body, true);
+    $data = $parsed['data'];
+
+    $this->assertEquals('feed', $data['type']);
+    $this->assertEquals('http://author.example.com/h-feed-author', $data['items'][0]['author']['url']);
+    $this->assertEquals('Author', $data['items'][0]['author']['name']);
+    $this->assertEquals('http://author.example.com/h-feed-author', $data['items'][1]['author']['url']);
+    $this->assertEquals('Author', $data['items'][1]['author']['name']);
+  }
+
+  public function testAuthorFeedOnHomePageInvalid() {
+    $url = 'http://feed.example.com/h-feed-author-is-bad-feed';
+    $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+    $body = $response->getContent();
+    $this->assertEquals(200, $response->getStatusCode());
+    $parsed = json_decode($body, true);
+    $data = $parsed['data'];
+
+    $this->assertEquals('feed', $data['type']);
+    $this->assertEquals('http://author.example.com/h-feed-author-bad', $data['items'][0]['author']['url']);
+    $this->assertEquals('http://author.example.com/h-feed-author-bad', $data['items'][1]['author']['url']);
+  }
 }
