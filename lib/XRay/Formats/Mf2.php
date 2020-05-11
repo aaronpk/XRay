@@ -342,7 +342,7 @@ class Mf2 extends Format {
         $hcard = [
           'type' => 'card',
         ];
-        $properties = ['name','latitude','longitude','locality','region','country','url'];
+        $properties = ['name','latitude','longitude','street-address','locality','region','country-name','url'];
         foreach($properties as $p) {
           if($v=self::getPlaintext($mf2, $p)) {
             $hcard[$p] = $v;
@@ -648,7 +648,10 @@ class Mf2 extends Format {
     self::collectSingleValues(['name','summary','published','start','end','duration'], ['url','featured'], $item, $url, $data);
 
     // These properties are always returned as arrays and may contain plaintext content
-    self::collectArrayValues(['category','location','attendee'], $item, $data, $refs, $http);
+    self::collectArrayValues(['category','attendee'], $item, $data, $refs, $http);
+
+    if($location = self::parseEmbeddedHCard('location', $item, $http))
+      $data['location'] = $location;
 
     // These properties are always returned as arrays and always URLs
     // If the value is an h-* object with a URL, the URL is used and a "ref" is added as well

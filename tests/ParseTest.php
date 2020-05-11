@@ -650,10 +650,15 @@ class ParseTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($url, $data['data']['url']);
     $this->assertEquals('2016-02-09T18:30', $data['data']['start']);
     $this->assertEquals('2016-02-09T19:30', $data['data']['end']);
-    $this->assertArrayHasKey('http://source.example.com/venue', $data['data']['refs']);
-    $this->assertEquals('card', $data['data']['refs']['http://source.example.com/venue']['type']);
-    $this->assertEquals('http://source.example.com/venue', $data['data']['refs']['http://source.example.com/venue']['url']);
-    $this->assertEquals('Venue', $data['data']['refs']['http://source.example.com/venue']['name']);
+    $this->assertEquals('card', $data['data']['location']['type']);
+    $this->assertEquals('http://source.example.com/venue', $data['data']['location']['url']);
+    $this->assertEquals('Venue', $data['data']['location']['name']);
+    $this->assertEquals('45.5', $data['data']['location']['latitude']);
+    $this->assertEquals('-122.6', $data['data']['location']['longitude']);
+    $this->assertEquals('1234 Main St', $data['data']['location']['street-address']);
+    $this->assertEquals('Portland', $data['data']['location']['locality']);
+    $this->assertEquals('Oregon', $data['data']['location']['region']);
+    $this->assertEquals('USA', $data['data']['location']['country-name']);
   }
 
   public function testEventWithFeaturedImage() {

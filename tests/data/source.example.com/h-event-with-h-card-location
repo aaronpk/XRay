@@ -15,6 +15,14 @@ Connection: keep-alive
 
     <time class="dt-start" datetime="2016-02-09T18:30">Feb 9, 6:30pm</time> - <time class="dt-end" datetime="2016-02-09T19:30">7:30pm</time>
 
-    <a href="/venue" class="p-location h-card">Venue</a>
+    <a href="/venue" class="p-location h-card">
+      <span class="p-name">Venue</span>
+      <span class="p-latitude">45.5</span>
+      <span class="p-longitude">-122.6</span>
+      <span class="p-street-address">1234 Main St</span>
+      <span class="p-locality">Portland</span>
+      <span class="p-region">Oregon</span>
+      <span class="p-country-name">USA</span>
+    </a>
   </body>
 </html>
