@@ -59,7 +59,7 @@ class PostType {
 
     // If this processed "name" property value is NOT a prefix of the
     // processed "content" property, then it is an article post.
-    if(strpos($content, $name) === false) {
+    if(strpos($content, $name) !== 0) {
       return 'article';
     }
 
