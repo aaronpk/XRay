@@ -347,7 +347,7 @@ class FeedTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(10, count($data->items));
     for($i=0; $i<10; $i++) {
       $this->assertEquals('entry', $data->items[$i]->type);
-      $this->assertEquals('note', $data->items[$i]->{'post-type'});
+      $this->assertEquals(($i == 4 ? 'article' : 'note'), $data->items[$i]->{'post-type'});
       $this->assertEquals('Ryan Barrett', $data->items[$i]->author->name);
       $this->assertEquals('https://snarfed.org/', $data->items[$i]->author->url);
       $this->assertNotEmpty($data->items[$i]->url);
