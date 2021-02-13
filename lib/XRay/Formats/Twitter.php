@@ -277,7 +277,8 @@ class Twitter extends Format {
     // Twitter escapes & as &amp; in the text
     $text = html_entity_decode($text);
 
-    $html = str_replace("\n", "<br>\n", $text);
+    $html = htmlspecialchars($text);
+    $html = str_replace("\n", "<br>\n", $html);
 
     if(property_exists($entities, 'user_mentions')) {
       foreach($entities->user_mentions as $user) {

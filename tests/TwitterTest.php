@@ -214,6 +214,15 @@ class TwitterTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals("Hey <a href=\"https://twitter.com/OregonGovBrown\">@OregonGovBrown</a> <a href=\"https://twitter.com/tedwheeler\">@tedwheeler</a> day 16 of #BHM is for <a href=\"https://twitter.com/stream_pdx\">@stream_pdx</a>. An amazing podcast trailer run by <a href=\"https://twitter.com/tyeshasnow\">@tyeshasnow</a> helping to democratize story telling in #PDX. Folks can get training in the production of podcasts. <a href=\"https://twitter.com/siliconflorist\">@siliconflorist</a> #SupportBlackBusiness", $tweet['content']['html']);
   }
 
+  public function testTweetWithHTML() {
+    list($url, $json) = $this->loadTweet('tweet-with-html');
+
+    $data = $this->parse(['url' => $url, 'body' => $json]);
+
+    $this->assertContains('<script>', $data['data']['content']['text']);
+    $this->assertContains('&lt;script&gt;', $data['data']['content']['html']);
+  }
+
   public function testStreamingTweetWithLink() {
     list($url, $json) = $this->loadTweet('streaming-tweet-with-link');
     $data = $this->parse(['url' => $url, 'body' => $json]);
