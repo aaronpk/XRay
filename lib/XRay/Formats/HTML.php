@@ -25,6 +25,9 @@ class HTML extends Format {
 
     // attempt to parse the page as HTML
     $doc = new DOMDocument();
+    if (empty($html)) {
+        $html=' '; // ugly hack to make DOMDocument happy
+    };
     @$doc->loadHTML(self::toHtmlEntities($html));
 
     if(!$doc) {
