@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e861fcf3e3f352fc91a011ff1bae693",
+    "content-hash": "1b2e5d5447b1df7329bbcaf10c44d29f",
     "packages": [
         {
             "name": "cebe/markdown",
-            "version": "1.1.2",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/markdown.git",
-                "reference": "25b28bae8a6f185b5030673af77b32e1163d5c6e"
+                "reference": "9bac5e971dd391e2802dca5400bbeacbaea9eb86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/markdown/zipball/25b28bae8a6f185b5030673af77b32e1163d5c6e",
-                "reference": "25b28bae8a6f185b5030673af77b32e1163d5c6e",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/9bac5e971dd391e2802dca5400bbeacbaea9eb86",
+                "reference": "9bac5e971dd391e2802dca5400bbeacbaea9eb86",
                 "shasum": ""
             },
             "require": {
@@ -35,7 +35,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -68,25 +68,25 @@
                 "issues": "https://github.com/cebe/markdown/issues",
                 "source": "https://github.com/cebe/markdown"
             },
-            "time": "2017-07-16T21:13:23+00:00"
+            "time": "2018-03-26T11:24:36+00:00"
         },
         {
             "name": "dg/twitter-php",
-            "version": "v3.6",
+            "version": "v3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/twitter-php.git",
-                "reference": "dd872ad12121ff919b358989e61f7f08ba6cc7a8"
+                "reference": "d9370c9759138200a77ca86abcb0c5ddfe857c68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/twitter-php/zipball/dd872ad12121ff919b358989e61f7f08ba6cc7a8",
-                "reference": "dd872ad12121ff919b358989e61f7f08ba6cc7a8",
+                "url": "https://api.github.com/repos/dg/twitter-php/zipball/d9370c9759138200a77ca86abcb0c5ddfe857c68",
+                "reference": "d9370c9759138200a77ca86abcb0c5ddfe857c68",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": ">=5.2.0"
+                "php": ">=5.4.0"
             },
             "type": "library",
             "autoload": {
@@ -111,10 +111,9 @@
                 "twitter"
             ],
             "support": {
-                "issues": "https://github.com/dg/twitter-php/issues",
-                "source": "https://github.com/dg/twitter-php/tree/v3.6"
+                "source": "https://github.com/dg/twitter-php/tree/v3.8"
             },
-            "time": "2016-08-15T16:46:22+00:00"
+            "time": "2019-02-08T16:20:01+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",

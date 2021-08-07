@@ -7,12 +7,12 @@
   "require": {
     "mf2/mf2": "^0.4",
     "ezyang/htmlpurifier": "^4.10",
-    "indieweb/link-rel-parser": "0.1.*",
-    "dg/twitter-php": "3.6.*",
-    "p3k/timezone": "~0.1.0",
-    "p3k/http": "~0.1.11",
-    "cebe/markdown": "1.1.*",
-    "p3k/picofeed": "~0.1.40",
+    "indieweb/link-rel-parser": "^0.1.0",
+    "dg/twitter-php": "^3.0.0",
+    "p3k/timezone": "^0.1.0",
+    "p3k/http": "^0.1.0",
+    "cebe/markdown": "^1.1.0",
+    "p3k/picofeed": "^0.1.0",
     "masterminds/html5": "^2.3"
   },
   "autoload": {
@@ -27,7 +27,7 @@
   "require-dev": {
     "league/plates": "3.*",
     "league/route": "1.*",
-    "phpunit/phpunit": "^9.0.0"
+    "phpunit/phpunit": "^8.0.0|^9.0.0"
   },
   "autoload-dev": {
     "files": [
