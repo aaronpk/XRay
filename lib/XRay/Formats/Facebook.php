@@ -79,46 +79,12 @@ class Facebook extends Format {
 
   public static function fetch($url, $creds) {
 
-    $parts = self::extract_url_parts($url);
-
-    if(!$parts or $parts['api_uri'] == false) {
-      return [
-        'error' => 'unsupported_url',
-        'error_description' => 'This Facebook URL is not supported',
-        'error_code' => 400,
-      ];
-    }
-
-    $fb = new \Facebook\Facebook(array(
-      'app_id' => $creds['facebook_app_id'],
-      'app_secret' => $creds['facebook_app_secret'],
-      'default_graph_version' => 'v2.9',
-    ));
-
-    $fbApp = new \Facebook\FacebookApp($creds['facebook_app_id'], $creds['facebook_app_secret']);
-    $token = $fbApp->getAccessToken();
-
-    $request = new \Facebook\FacebookRequest($fbApp, $token, 'GET', $parts['api_uri']);
-
-    try {
-      $response = $fb->getClient()->sendRequest($request);
-    } catch(\Facebook\Exceptions\FacebookResponseException $e) {
-      return [
-        'error' => 'facebook_graph_error',
-        'error_description' => 'Graph returned an error: ' . $e->getMessage(),
-        'error_code' => 400,
-      ];
-    } catch(\Facebook\Exceptions\FacebookSDKException $e) {
-      return [
-        'error' => 'facebook_sdk_error',
-        'error_description' => 'Facebook SDK returned an error: ' . $e->getMessage(),
-        'error_code' => 400,
-      ];
-    }
+    //Disabled Function for now
+    //TODO: Search all references to this class and remove it.
 
     return [
       'code' => 200,
-      'body' => $response->getDecodedBody(),
+      'body' => '',
       'url' => $url
     ];
   }

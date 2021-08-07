@@ -13,7 +13,7 @@ XRay will parse content in the following formats. First the URL is checked again
 * GitHub
 * XKCD
 * Hackernews
-* Facebook (public events)
+* ~~Facebook (public events)~~ <REMOVED>
 
 If the contents of the URL is XML or JSON, then XRay will parse the Atom, RSS or JSONFeed formats.
 
@@ -245,7 +245,7 @@ url=https://aaronparecki.com/2016/01/16/11/
 &body=<html>....</html>
 ```
 
-or for Twitter/GitHub/Facebook where you might have JSON,
+or for Twitter/GitHub where you might have JSON,
 
 ```
 POST /parse
@@ -282,9 +282,9 @@ url=https://aaronparecki.com/2016/01/16/11/
 
 ### API Authentication
 
-XRay uses the Twitter, Github and Facebook APIs to fetch posts, and those API require authentication. In order to keep XRay stateless, it is required that you pass in the credentials to the parse call.
+XRay uses the Twitter and Github APIs to fetch posts, and those API require authentication. In order to keep XRay stateless, it is required that you pass in the credentials to the parse call.
 
-You should only send the credentials when the URL you are trying to parse is a Twitter URL, a GitHub URL or a Facebook URL, so you'll want to check for whether the hostname is `twitter.com`, `github.com`, etc. before you include credentials in this call.
+You should only send the credentials when the URL you are trying to parse is a Twitter URL or a GitHub URL, so you'll want to check for whether the hostname is `twitter.com`, `github.com`, etc. before you include credentials in this call.
 
 
 #### Twitter Authentication
@@ -302,16 +302,6 @@ XRay uses the Twitter API to fetch Twitter URLs. You can register an application
 XRay uses the GitHub API to fetch GitHub URLs, which provides higher rate limits when used with authentication. You can pass a GitHub access token along with the request and XRay will use it when making requests to the API.
 
 * `github_access_token` - A GitHub access token
-
-
-#### Facebook Authentication
-
-XRay uses the Facebook API to fetch Facebook URLs. You can create a Facebook App on Facebooks developer website.
-
-* facebook_app_id - Your application's App ID
-* facebook_app_secret - Your application's App Secret
-
-At this moment, XRay is able to get it's own access token from those credentials.
 
 
 ### Error Response
@@ -431,7 +421,7 @@ Other properties are returned in the response at the same level as the `data` pr
   * `mf2+json`
   * `feed+json`
   * `xml`
-  * `instagram`/`facebook`/`github`/`xkcd`
+  * `instagram`/`github`/`xkcd`
 
 #### Feeds
 
