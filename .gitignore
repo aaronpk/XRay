@@ -4,3 +4,5 @@ vendor/
 php_errors.log
 XRay-*.json
 .gcloudignore
+.phpunit.result.cache
+.vscode
