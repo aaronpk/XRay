@@ -8,7 +8,6 @@ XRay parses structured content from a URL.
 
 XRay will parse content in the following formats. First the URL is checked against known services:
 
-* Instagram
 * Twitter
 * GitHub
 * XKCD
@@ -420,7 +419,7 @@ Other properties are returned in the response at the same level as the `data` pr
   * `mf2+json`
   * `feed+json`
   * `xml`
-  * `instagram`/`github`/`xkcd`
+  * `github`/`xkcd`
 
 #### Feeds
 

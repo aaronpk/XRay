@@ -79,10 +79,6 @@ class Parser {
     // Check if the URL matches a special parser
     $url = $http_response['url'];
 
-    if(Formats\Instagram::matches($url)) {
-      return Formats\Instagram::parse($this->http, $http_response, $opts);
-    }
-
     if(Formats\GitHub::matches($url)) {
       return Formats\GitHub::parse($http_response);
     }
