@@ -1311,4 +1311,14 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('entry', $data['data']['type']);
     }
 
+    public function testMissingContent() {
+        $url = 'http://source.example.com/bookmark-missing-content';
+        $response = $this->parse(['url' => $url]);
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body, true);
+
+        $this->assertArrayNotHasKey('content', $data['data']);
+    }
+
 }

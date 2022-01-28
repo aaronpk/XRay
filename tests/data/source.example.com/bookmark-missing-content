@@ -1,0 +1,73 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<!doctype html>
+<html lang="en"><head>
+<title> A Brief History & Ethos of the Digital Garden </title>
+<link rel="stylesheet" type="text/css" href="/static/normalize.css">
+<link rel="stylesheet" type="text/css" href="/static/lavasand.css" title="default_css">
+<script type="text/javascript">
+    //https://css-tricks.com/snippets/javascript/get-url-variables/
+    function getQueryVariable(variable) {
+           var query = window.location.search.substring(1);
+           var vars = query.split("&");
+           for (var i=0;i<vars.length;i++) {
+                   var pair = vars[i].split("=");
+                   if(pair[0] == variable){return pair[1];}
+           }
+           return(false);
+    }
+    //https://designshack.net/articles/css-style-switcher
+    function setActiveStyleSheet(title) {
+      var i, a, main;
+      for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+        if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) {
+          if(a.getAttribute("title") == title) a.removeAttribute("disabled"); else a.setAttribute("disabled","true");
+        }
+  }
+}
+    var cssfile =  getQueryVariable("style")
+    if (cssfile && /^\w+$/.test(cssfile)) {
+        //setActiveStyleSheet("dummy")
+        //https://stackoverflow.com/questions/512070/add-a-link-stylesheet-dynamically-in-the-head
+        sheet = document.createElement("link");
+        sheet.type = "text/css";
+        sheet.rel = "stylesheet";
+        sheet.href = "/temp/css/"+cssfile+".css";
+//  sheet.title = "theme"
+  sheet.onload = function() {
+    setActiveStyleSheet("theme");
+    console.log("acitvated theme")
+  };
+        document.getElementsByTagName("head")[0].appendChild(sheet);
+    }
+
+
+</script>
+
+<link rel="webmention" href="/webmention">
+
+</head>
+<body>
+<div><header>
+    <h1 class="p-name"><a href="/">svenknebel.de</a></h1>
+<div class="header_nav"><a href="/" >index</a><a href="https://www.github.com/sknebel" >GitHub</a><a href="https://twitter.com/HeNeArXn" >Twitter</a></div>
+</header>
+<div id="contentwrapper">
+
+    <main>
+<article class="h-entry" ><div class="relHeaderBlock">
+<div class="relHeader">bookmark of <a href="https://maggieappleton.com/garden-history" class="u-bookmark-of">https://maggieappleton.com/garden-history</a></div></div>
+    <h1 class="p-name"><a href="/posts/2021/5/4/">A Brief History & Ethos of the Digital Garden</a></h1>
+<div class="e-content content-text"><a href="https://news.indieweb.org/en" class="u-syndication"></a>
+</div>
+<div class="subline"> posted <a class="u-url u-uid" href="/posts/2021/5/4/"> <time class="dt-published" datetime="2021-05-28 19:13:16.691297+00:00">2021-05-28 19:13:16.691297+00:00</time></a><a class="u-author" href="/" tabindex="-1"></a>, tagged <a class="p-category hashtag" href="/category/bookmark">bookmark</a>, <a class="p-category hashtag" href="/category/nomain">nomain</a></div>
+</article>    </main>
+
+</div>
+</div>
+</body>
+</html>
