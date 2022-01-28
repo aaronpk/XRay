@@ -299,6 +299,57 @@ class FeedTest extends PHPUnit\Framework\TestCase
         }
     }
 
+    public function testJSONFeed1Point1()
+    {
+        $url = 'http://feed.example.com/jsonfeed-1.1';
+        $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $result = json_decode($body);
+        $this->assertEquals('feed+json', $result->{'source-format'});
+        $data = $result->data;
+
+        $this->assertEquals(48, count($data->items));
+        for($i=0; $i<8; $i++) {
+            $this->assertEquals('entry', $data->items[$i]->type);
+            $this->assertEquals('John Gruber', $data->items[$i]->author->name);
+            $this->assertEquals('https://twitter.com/gruber', $data->items[$i]->author->url);
+            $this->assertNotEmpty($data->items[$i]->url);
+            $this->assertNotEmpty($data->items[$i]->uid);
+            $this->assertNotEmpty($data->items[$i]->published);
+            $this->assertNotEmpty($data->items[$i]->content->html);
+            $this->assertNotEmpty($data->items[$i]->content->text);
+        }
+        $this->assertEquals('article', $data->items[0]->{'post-type'});
+        $this->assertEquals('article', $data->items[4]->{'post-type'});
+
+        $this->assertEquals('The Talk Show: “Blofeld-69-420”', $data->items[7]->name);
+        $this->assertEquals('https://daringfireball.net/linked/2022/01/26/the-talk-show-335', $data->items[7]->url);
+        $this->assertEquals('https://daringfireball.net/linked/2022/01/26/the-talk-show-335', $data->items[7]->uid);
+        $this->assertEquals('2022-01-27T01:58:12Z', $data->items[7]->published);
+
+        $this->assertEquals('feed', $data->type);
+    }
+
+    public function testJSONFeedTopLevelAuthor()
+    {
+        $url = 'http://feed.example.com/jsonfeed-top-level-author';
+        $response = $this->parse(['url' => $url, 'expect' => 'feed']);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $result = json_decode($body, true);
+
+        $this->assertEquals('feed+json', $result['source-format']);
+        $data = $result['data'];
+
+        $item = $data['items'][0];
+
+        $this->assertEquals('Author Name', $item['author']['name']);
+        $this->assertEquals('https://author.example.com', $item['author']['url']);
+    }
+
     public function testJSONFeedRelativeImages()
     {
         $url = 'http://feed.example.com/jsonfeed';

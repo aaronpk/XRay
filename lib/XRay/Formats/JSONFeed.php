@@ -51,13 +51,48 @@ class JSONFeed extends Format {
     if(isset($feed['icon']))
       $entry['author']['photo'] = $feed['icon'];
 
+    // If the feed has an author, use that instead
+    if(isset($feed['author'])) {
+      if(isset($feed['author']['url']))
+        $entry['author']['url'] = $feed['author']['url'];
+      if(isset($feed['author']['name']))
+        $entry['author']['name'] = $feed['author']['name'];
+      if(isset($feed['author']['avatar']))
+        $entry['author']['photo'] = $feed['author']['avatar'];
+    }
+
     // Override the author if the item contains author info
-    if(isset($item['author']['name']))
-      $entry['author']['name'] = $item['author']['name'];
-    if(isset($item['author']['url']))
-      $entry['author']['url'] = $item['author']['url'];
-    if(isset($item['author']['avatar']))
-      $entry['author']['photo'] = $item['author']['avatar'];
+    if(isset($item['author'])) {
+      if(isset($item['author']['name']))
+        $entry['author']['name'] = $item['author']['name'];
+      if(isset($item['author']['url']))
+        $entry['author']['url'] = $item['author']['url'];
+      if(isset($item['author']['avatar']))
+        $entry['author']['photo'] = $item['author']['avatar'];
+    }
+
+    // JSONFeed 1.1 uses "authors" instead
+    if(isset($feed['authors'][0])) {
+      // We only support 1 author
+      $author = $feed['authors'][0];
+      if(isset($author['url']))
+        $entry['author']['url'] = $author['url'];
+      if(isset($author['name']))
+        $entry['author']['name'] = $author['name'];
+      if(isset($author['avatar']))
+        $entry['author']['photo'] = $author['avatar'];
+    }
+
+    if(isset($item['authors'][0])) {
+      $author = $item['authors'][0];
+      if(isset($author['url']))
+        $entry['author']['url'] = $author['url'];
+      if(isset($author['name']))
+        $entry['author']['name'] = $author['name'];
+      if(isset($author['avatar']))
+        $entry['author']['photo'] = $author['avatar'];
+    }
+
 
     if(isset($item['url']))
       $entry['url'] = $item['url'];

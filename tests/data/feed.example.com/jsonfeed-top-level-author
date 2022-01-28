@@ -1,0 +1,26 @@
+HTTP/1.1 200 OK
+Date: Sat, 11 Nov 2017 15:35:23 GMT
+Content-Type: application/json; charset=UTF-8
+
+{
+    "version": "https://jsonfeed.org/version/1",
+    "user_comment": "This feed allows you to read the posts from this site in any feed reader that supports the JSON Feed format. To add this feed to your reader, copy the following URL -- http://www.manton.org/feed/json -- and add it your reader.",
+    "home_page_url": "http://www.manton.org",
+    "feed_url": "http://www.manton.org/feed/json",
+    "title": "Manton Reece",
+    "author": {
+        "name": "Author Name",
+        "url": "https://author.example.com"
+    },
+    "description": "",
+    "items": [
+        {
+            "id": "http://www.manton.org/2017/11/5993.html",
+            "url": "http://www.manton.org/2017/11/5993.html",
+            "title": "",
+            "content_html": "<p>I&#8217;ve updated Micro.blog&#8217;s Twitter cross-posting to support 280 characters. The apps still color the character counter blue until 140, and red after 280, just in case you want to stick to shorter posts.</p>\n",
+            "date_published": "2017-11-10T16:34:21+00:00",
+            "date_modified": "2017-11-10T16:34:21+00:00"
+        }
+    ]
+}

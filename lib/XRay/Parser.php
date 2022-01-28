@@ -140,7 +140,7 @@ class Parser {
 
     if(is_string($body) && substr($body, 0, 1) == '{') {
       $parsed = json_decode($body, true);
-      if($parsed && isset($parsed['version']) && $parsed['version'] == 'https://jsonfeed.org/version/1') {
+      if($parsed && isset($parsed['version']) && in_array($parsed['version'], ['https://jsonfeed.org/version/1','https://jsonfeed.org/version/1.1'])) {
         $http_response['body'] = $parsed;
         return Formats\JSONFeed::parse($http_response);
       } elseif($parsed && isset($parsed['items'][0]['type']) && isset($parsed['items'][0]['properties'])) {
