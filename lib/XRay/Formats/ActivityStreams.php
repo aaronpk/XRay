@@ -132,6 +132,9 @@ class ActivityStreams extends Format {
       $photos = [];
       $videos = [];
       foreach($as2['attachment'] as $attachment) {
+        if(!isset($attachment['mediaType'])) {
+          continue;
+        }
         if(strpos($attachment['mediaType'], 'image/') !== false) {
           $photos[] = $attachment['url'];
         }
