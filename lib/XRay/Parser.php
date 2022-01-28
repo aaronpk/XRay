@@ -91,10 +91,6 @@ class Parser {
       return Formats\Twitter::parse($http_response);
     }
 
-    if(Formats\Facebook::matches($url)) {
-      return Formats\Facebook::parse($http_response);
-    }
-
     if(Formats\XKCD::matches($url)) {
       return Formats\XKCD::parse($http_response);
     }

@@ -13,7 +13,6 @@ XRay will parse content in the following formats. First the URL is checked again
 * GitHub
 * XKCD
 * Hackernews
-* ~~Facebook (public events)~~ <REMOVED>
 
 If the contents of the URL is XML or JSON, then XRay will parse the Atom, RSS or JSONFeed formats.
 

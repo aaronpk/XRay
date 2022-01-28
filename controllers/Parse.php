@@ -95,7 +95,6 @@ class Parse {
 
       $fields = [
         'twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret',
-        'facebook_app_id', 'facebook_app_secret',
         'github_access_token',
         'token'
       ];

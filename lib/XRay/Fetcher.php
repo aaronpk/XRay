@@ -43,11 +43,6 @@ class Fetcher {
       return $this->_fetch_tweet($url, $opts);
     }
 
-    // Check if this is a Facebook URL and use the API
-    if(Formats\Facebook::matches_host($url)) {
-      return $this->_fetch_facebook($url, $opts);
-    }
-
     // Transform the HTML GitHub URL into an GitHub API request and fetch the API response
     if(Formats\GitHub::matches_host($url)) {
       return $this->_fetch_github($url, $opts);
@@ -179,26 +174,6 @@ class Fetcher {
     }
 
     return Formats\Twitter::fetch($url, $creds);
-  }
-
-  private function _fetch_facebook($url, $opts) {
-    $fields = ['facebook_app_id','facebook_app_secret'];
-    $creds = [];
-    foreach($fields as $f) {
-      if(isset($opts[$f]))
-        $creds[$f] = $opts[$f];
-    }
-
-    if(count($creds) < 2) {
-      return [
-        'error_code' => 400,
-        'error' => 'missing_parameters',
-        'error_description' => 'Both Facebook credentials must be included in the request'
-      ];
-    }
-
-    // TODO: Question, should I do this like Twitter or like Github?
-    return Formats\Facebook::fetch($url, $creds);
   }
 
   private function _fetch_github($url, $opts) {
