@@ -408,11 +408,11 @@ class Mf2 extends Format {
     $checkedname = $name;
     if($content) {
       // Trim ellipses from the name
-      $name = preg_replace('/ ?(\.\.\.|…)$/', '', $name);
+      $name = preg_replace('/ ?(\.\.\.|…)$/', '', $name ?: '');
 
       // Remove all whitespace when checking equality
-      $nameCompare = preg_replace('/\s/','',trim($name));
-      $contentCompare = preg_replace('/\s/','',trim($textContent));
+      $nameCompare = preg_replace('/\s/','',trim($name) ?: '');
+      $contentCompare = preg_replace('/\s/','',trim($textContent) ?: '');
 
       // Check if the name is a prefix of the content
       if($contentCompare && $nameCompare && strpos($contentCompare, $nameCompare) === 0) {

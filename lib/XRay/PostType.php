@@ -54,8 +54,8 @@ class PostType {
     $name = trim($post['name']);
 
     // Collapse all sequences of internal whitespace to a single space (0x20) character each
-    $name = preg_replace('/\s+/', ' ', $name);
-    $content = preg_replace('/\s+/', ' ', $content);
+    $name = preg_replace('/\s+/', ' ', $name ?: '');
+    $content = preg_replace('/\s+/', ' ', $content ?: '');
 
     // If this processed "name" property value is NOT a prefix of the
     // processed "content" property, then it is an article post.
