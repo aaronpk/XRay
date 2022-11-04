@@ -356,7 +356,6 @@ class Mf2 extends Format {
 
   private static function collectArrayURLValues($properties, $item, &$data, &$refs, &$http) {
     $keys = [];
-
     foreach($properties as $p) {
       if(array_key_exists($p, $item['properties'])) {
         foreach($item['properties'][$p] as $v) {
@@ -364,6 +363,15 @@ class Mf2 extends Format {
             if(!array_key_exists($p, $data)) $data[$p] = [];
             $data[$p][] = $v;
             $keys[] = $p;
+          }
+          elseif(self::isImgAlt($v)) {
+            // For the moment, disregard the alt value and output a string for compatibility with current consuming code.
+            $imgURL = $v['value'];
+            if (is_string($imgURL) and self::isURL($imgURL)) {
+              if(!array_key_exists($p, $data)) $data[$p] = [];
+              $data[$p][] = $imgURL;
+              $keys[] = $p;
+            }
           }
           elseif(self::isMicroformat($v) && ($u=self::getPlaintext($v, 'url')) && self::isURL($u)) {
             if(!array_key_exists($p, $data)) $data[$p] = [];
@@ -881,6 +889,13 @@ class Mf2 extends Format {
     return false;
   }
 
+  private static function isImgAlt($mf) {
+    return is_array($mf)
+      and !self::hasNumericKeys($mf)
+      and array_key_exists('value', $mf)
+      and array_key_exists('alt', $mf);
+  }
+
   private static function isMicroformat($mf) {
     return is_array($mf)
       and !self::hasNumericKeys($mf)
@@ -909,6 +924,12 @@ class Mf2 extends Format {
       $value = $mf2['properties'][$k][0];
       if(is_string($value)) {
         return $value;
+      }
+      elseif(self::isImgAlt($value)) {
+        // For back-compatibility, assume that the consuming code wants the URL value.
+        if (is_string($value['value'])) {
+          return $value['value'];
+        }
       } elseif(self::isMicroformat($value) && array_key_exists('value', $value)) {
         return $value['value'];
       }
