@@ -71,4 +71,40 @@ class LibraryTest extends PHPUnit\Framework\TestCase
         $this->assertArrayNotHasKey('html', $data);
     }
 
+    public function testHandlesHCardWithoutURLProperty()
+    {
+        $url = 'http://example.com/';
+        $html = '<p class="h-card">The Mythical URLless Person</p>';
+        $xray = new p3k\XRay();
+        $data = $xray->parse($url, $html);
+        $this->assertEquals('card', $data['data']['type']);
+    }
+
+    public function testDefaultOptionsAreUsed()
+    {
+        $url = 'http://example.com/';
+        $html = '<p class="h-card">A Person</p>';
+
+        $defaultOptionsXRay = new p3k\XRay(['include_original' => true]);
+        $normalXRay = new p3k\XRay();
+
+        // Make sure that the options we’re testing with actually result in different values first.
+        $this->assertNotEquals(
+            $defaultOptionsXRay->parse($url, $html),
+            $normalXRay->parse($url, $html)
+        );
+        
+        // Make sure that the options are applied in the same way as they would have been if passed to parse()
+        $this->assertEquals(
+            $defaultOptionsXRay->parse($url, $html),
+            $normalXRay->parse($url, $html, ['include_original' => true])
+        );
+
+        // Make sure that the options can be overridden (this doesn’t test on a property-by-property basis but should be good enough.)
+        $this->assertEquals(
+            $defaultOptionsXRay->parse($url, $html, ['include_original' => false]),
+            $normalXRay->parse($url, $html)
+        );
+    }
+
 }

@@ -69,11 +69,16 @@ In both cases, you can add an additional parameter to configure various options 
 
 Additional parameters are supported when making requests that use the Twitter or GitHub API. See the Authentication section below for details.
 
+The XRay constructor can optionally be passed an array of default options, which will be applied in
+addition to (and can be overridden by) the options passed to individual `parse()` calls.
+
 ```php
-$xray = new p3k\XRay();
+$xray = new p3k\XRay([
+  'timeout' => 30 // Time-out all requests which take longer than 30s
+]);
 
 $parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', [
-  'timeout' => 30
+  'timeout' => 40 // Override the default 30s timeout for this specific request
 ]);
 
 $parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html, [

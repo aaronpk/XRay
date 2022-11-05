@@ -705,18 +705,22 @@ class Mf2 extends Format {
       if($p == 'url' && $authorURL) {
         // If there is a matching author URL, use that one
         $found = false;
-        foreach($item['properties']['url'] as $url) {
-          if(self::isURL($url)) {
-            $url = \p3k\XRay\normalize_url($url);
-            if($url == \p3k\XRay\normalize_url($authorURL)) {
-              $data['url'] = $url;
-              $found = true;
+        if (array_key_exists('url', $item['properties']) and is_array($item['properties']['url'])) {
+          foreach($item['properties']['url'] as $url) {
+            if(self::isURL($url)) {
+              $url = \p3k\XRay\normalize_url($url);
+              if($url == \p3k\XRay\normalize_url($authorURL)) {
+                $data['url'] = $url;
+                $found = true;
+              }
             }
           }
+
+          if(!$found && self::isURL($item['properties']['url'][0])) {
+            $data['url'] = $item['properties']['url'][0];
+          }
         }
-        if(!$found && self::isURL($item['properties']['url'][0])) {
-          $data['url'] = $item['properties']['url'][0];
-        }
+        
       } else if(($v = self::getPlaintext($item, $p)) !== null) {
         // Make sure the URL property is actually a URL
         if($p == 'url' || $p == 'photo') {
