@@ -78,6 +78,8 @@ class LibraryTest extends PHPUnit\Framework\TestCase
         $xray = new p3k\XRay();
         $data = $xray->parse($url, $html);
         $this->assertEquals('card', $data['data']['type']);
+        // On pages where the h-card is the main data but lacks a URL property, it will be filled with the page URL.
+        $this->assertEquals($url, $data['data']['url']);
     }
 
     public function testDefaultOptionsAreUsed()
