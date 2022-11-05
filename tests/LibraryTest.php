@@ -108,5 +108,4 @@ class LibraryTest extends PHPUnit\Framework\TestCase
             $normalXRay->parse($url, $html)
         );
     }
-
 }

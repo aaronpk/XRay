@@ -30,7 +30,12 @@ class XRay {
   public function parse($url, $opts_or_body=false, $opts_for_body=[]) {
     if(!$opts_or_body || is_array($opts_or_body)) {
       $fetch = new XRay\Fetcher($this->http);
-      $response = $fetch->fetch($url, $opts_or_body);
+      if (is_array($opts_or_body)) {
+        $fetch_opts = array_merge($this->defaultOptions, $opts_or_body);
+      } else {
+        $fetch_opts = $this->defaultOptions;
+      }
+      $response = $fetch->fetch($url, $fetch_opts);
       if(!empty($response['error']))
         return $response;
       $body = $response['body'];
