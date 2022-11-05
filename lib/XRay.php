@@ -4,17 +4,26 @@ namespace p3k;
 class XRay {
   public $http;
 
-  public function __construct() {
+  private $defaultOptions = [];
+
+  public function __construct($options=[]) {
     $this->http = new HTTP('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36 p3k/XRay');
+    if (is_array($options)) {
+      $this->defaultOptions = $options;
+    }
   }
 
   public function rels($url, $opts=[]) {
     $rels = new XRay\Rels($this->http);
+    // Merge provided options with default options, allowing provided options to override defaults.
+    $opts = array_merge($this->defaultOptions, $opts);
     return $rels->parse($url, $opts);
   }
 
   public function feeds($url, $opts=[]) {
     $feeds = new XRay\Feeds($this->http);
+    // Merge provided options with default options, allowing provided options to override defaults.
+    $opts = array_merge($this->defaultOptions, $opts);
     return $feeds->find($url, $opts);
   }
 
@@ -35,6 +44,9 @@ class XRay {
     }
     $parser = new XRay\Parser($this->http);
 
+    // Merge provided options with default options, allowing provided options to override defaults.
+    $opts = array_merge($this->defaultOptions, $opts);
+
     $result = $parser->parse([
       'body' => $body,
       'url' => $url,
@@ -51,6 +63,8 @@ class XRay {
 
   public function process($url, $mf2json, $opts=[]) {
     $parser = new XRay\Parser($this->http);
+    // Merge provided options with default options, allowing provided options to override defaults.
+    $opts = array_merge($this->defaultOptions, $opts);
     $result = $parser->parse([
       'body' => $mf2json,
       'url' => $url,
