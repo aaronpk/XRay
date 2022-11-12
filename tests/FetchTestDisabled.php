@@ -32,7 +32,6 @@ class FetchTest extends PHPUnit\Framework\TestCase
     {
         $url = 'https://nghttp2.org/httpbin/ip';
         $response = $this->http->get($url);
-        $this->assertEquals('', $response['error']);    
+        $this->assertEquals('', $response['error']);
     }
-
 }
