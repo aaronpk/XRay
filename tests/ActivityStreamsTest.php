@@ -143,7 +143,7 @@ class ActivityStreamsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals("https://mastodon.social/@Gargron/100465999501820229", $data['data']['url']);
         $this->assertEquals('2018-07-30T22:24:54+00:00', $data['data']['published']);
         $this->assertEquals(':yikes:', $data['data']['content']['text']);
-        $this->assertEquals('<p><img src="https://files.mastodon.social/custom_emojis/images/000/031/275/original/yikes.png" alt=":yikes:" title=":yikes:" height="24" class="xray-emoji"></p>', $data['data']['content']['html']);
+        $this->assertEquals('<p><img src="https://files.mastodon.social/custom_emojis/images/000/031/275/original/yikes.png" alt=":yikes:" title=":yikes:" width="24" class="xray-emoji"></p>', $data['data']['content']['html']);
         $this->assertEquals('Eugen', $data['data']['author']['name']);
         $this->assertEquals('Gargron', $data['data']['author']['nickname']);
         $this->assertEquals('https://files.mastodon.social/accounts/avatars/000/000/001/original/eb9e00274b135808.png', $data['data']['author']['photo']);
