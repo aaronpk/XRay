@@ -66,6 +66,7 @@ In both cases, you can add an additional parameter to configure various options 
 * `include_original` - Will also return the full document fetched
 * `target` - Specify a target URL, and XRay will first check if that URL is on the page, and only if it is, will continue to parse the page. This is useful when you're using XRay to verify an incoming webmention.
 * `expect=feed` - If you know the thing you are parsing is a feed, include this parameter which will avoid running the autodetection rules and will provide better results for some feeds.
+* `accept` - (options: `html`, `json`, `activitypub`, `xml`) - Without this parameter, XRay sends a default `Accept` header to prioritize getting the most likely best result from a page. If you are parsing a page for a specific purpose and expect to find only one type of content (e.g. webmentions will probably only be from HTML pages), you can include this parameter to adjust the `Accept` header XRay sends.
 
 Additional parameters are supported when making requests that use the Twitter or GitHub API. See the Authentication section below for details.
 

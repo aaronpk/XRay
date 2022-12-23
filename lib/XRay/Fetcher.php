@@ -66,7 +66,19 @@ class Fetcher {
 
     $headers = [];
 
-    $headers[] = 'Accept: application/mf2+json, application/activity+json, text/html, application/json, application/xml, text/xml';
+    $accept = 'application/mf2+json, application/activity+json, text/html, application/json, application/xml, text/xml';
+    if(isset($opts['accept'])) {
+      if($opts['accept'] == 'html')
+        $accept = 'text/html';
+      if($opts['accept'] == 'json')
+        $accept = 'application/mf2+json, application/activity+json, application/json';
+      if($opts['accept'] == 'activitypub')
+        $accept = 'application/activity+json';
+      if($opts['accept'] == 'xml')
+        $accept = 'application/xml, text/xml';
+    }
+
+    $headers[] = 'Accept: '.$accept;
 
     if(isset($opts['token']))
       $headers[] = 'Authorization: Bearer ' . $opts['token'];

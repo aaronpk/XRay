@@ -96,7 +96,8 @@ class Parse {
       $fields = [
         'twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret',
         'github_access_token',
-        'token'
+        'token',
+        'accept',
       ];
       foreach($fields as $f) {
         if($v=$request->get($f))
