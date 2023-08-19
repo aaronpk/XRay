@@ -61,8 +61,12 @@ class Hackernews extends Format {
         'photo' => null,
         'url' => 'https://news.ycombinator.com/user?id='.$data['by']
       ],
-      'published' => $date->format('c')
+      'published' => $date->format('c'),
     );
+
+    if(isset($data['url'])) {
+      $entry['bookmark-of'] = [$data['url']];
+    }
 
     if(isset($data['title'])) {
       $entry['name'] = $data['title'];

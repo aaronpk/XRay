@@ -21,6 +21,22 @@ class HackernewsTest extends PHPUnit\Framework\TestCase
         return $this->client->parse($request, $response);
     }
 
+    public function testBookmark()
+    {
+        $url = 'https://news.ycombinator.com/item?id=27402392';
+        $response = $this->parse(['url' => $url]);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body, true);
+
+        $this->assertEquals(200, $data['code']);
+        $this->assertEquals('hackernews', $data['source-format']);
+
+        $this->assertEquals(['https://kevincox.ca/2021/06/04/http-range-caching/'], $data['data']['bookmark-of']);
+        $this->assertEquals('The Impossibility of Perfectly Caching HTTP Range Requests', $data['data']['name']);
+    }
+
     public function testSubmission()
     {
         $url = 'https://news.ycombinator.com/item?id=14516538';
