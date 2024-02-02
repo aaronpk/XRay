@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 02 Mar 2018 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <div class="e-content">
+      <p>This is a multiline post separated by paragraph tags with no space between them.</p><p>This is how Mastodon formats HTML.</p>
+    </div>
+  </body>
+</html>

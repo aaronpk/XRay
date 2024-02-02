@@ -315,6 +315,18 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('This page has a link to target.example.com and some formatted text but is in a p-content element so is plaintext.', $data->data->content->text);
     }
 
+    public function testNewlinesInTextContent() {
+        $url = 'http://source.example.com/text-content-with-p-tags';
+        $response = $this->parse(['url' => $url]);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body);
+        $this->assertEquals('mf2+html', $data->{'source-format'});
+        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertEquals("Hello\nWorld", $data->data->content->text);
+    }
+
     public function testArticleWithFeaturedImage()
     {
         $url = 'http://source.example.com/article-with-featured-image';

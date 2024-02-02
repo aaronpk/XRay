@@ -141,10 +141,18 @@ abstract class Format implements iFormat {
     $config->set('Cache.DefinitionImpl', null);
     $config->set('HTML.AllowedElements', ['br']);
     $purifier = new HTMLPurifier($config);
+
+    // Insert two br tags between smashed together paragraph tags.
+    // The paragraph tags will be removed by the HTMLPurifier, leaving just the br's, which
+    // will then be replaced by newlines.
+    $html = trim(str_replace('</p><p>', "</p><br><br><p>", $html));
+
     $sanitized = $purifier->purify($html);
     $sanitized = str_replace("&#xD;","\r",$sanitized);
     $sanitized = html_entity_decode($sanitized);
-    return trim(str_replace(['<br>','<br />'],"\n", $sanitized));
+    $sanitized = trim(str_replace(['<br>','<br />'],"\n", $sanitized));
+
+    return $sanitized;
   }
 
 }

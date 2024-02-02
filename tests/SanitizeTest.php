@@ -424,7 +424,7 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('This is a photo post with an <code>img</code> tag inside the content, which does not have a u-photo class so should not be removed. <img src="http://target.example.com/photo.jpg" alt="a photo" />', $data->data->content->html);
     }
 
-    public function testWhitespaceWithBreakTags()
+    public function testEntryWithBreakTags()
     {
         $url = 'http://sanitize.example/entry-with-br-tags';
         $response = $this->parse(['url' => $url]);
@@ -436,5 +436,19 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('This content has two break tags to indicate a paragraph break.<br /><br />This is how tantek\'s autolinker works.', $data->data->content->html);
         $this->assertEquals("This content has two break tags to indicate a paragraph break.\n\nThis is how tantek's autolinker works.", $data->data->content->text);
     }
+
+    public function testEntryWithParagraphTags()
+    {
+        $url = 'http://sanitize.example/entry-with-p-tags';
+        $response = $this->parse(['url' => $url]);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body);
+
+        $this->assertEquals('<p>This is a multiline post separated by paragraph tags with no space between them.</p><p>This is how Mastodon formats HTML.</p>', $data->data->content->html);
+        $this->assertEquals("This is a multiline post separated by paragraph tags with no space between them.\n\nThis is how Mastodon formats HTML.", $data->data->content->text);
+    }
+
 
 }
