@@ -6,9 +6,11 @@ use DOMDocument, DOMXPath;
 
 class Parser {
   private $http;
+  private $fetcher;
 
-  public function __construct($http) {
+  public function __construct($http, $fetcher=false) {
     $this->http = $http;
+    $this->fetcher = $fetcher;
   }
 
   public function parse($http_response, $opts=[]) {
@@ -109,6 +111,9 @@ class Parser {
 
     // Check if an ActivityStreams JSON object was passed in
     if(Formats\ActivityStreams::is_as2_json($body)) {
+      if($this->fetcher) {
+        $opts['fetcher'] = $this->fetcher;
+      }
       $data = Formats\ActivityStreams::parse($http_response, $this->http, $opts);
       $data['source-format'] = 'activity+json';
       return $data;
@@ -138,6 +143,9 @@ class Parser {
         $data['source-format'] = 'mf2+json';
         return $data;
       } elseif($parsed && Formats\ActivityStreams::is_as2_json($parsed)) {
+        if($this->fetcher) {
+          $opts['fetcher'] = $this->fetcher;
+        }
         // Check if an ActivityStreams JSON string was passed in
         $http_response['body'] = $parsed;
         $data = Formats\ActivityStreams::parse($http_response, $this->http, $opts);

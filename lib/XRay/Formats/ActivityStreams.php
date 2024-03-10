@@ -5,6 +5,8 @@ use DateTime;
 use \p3k\XRay\PostType;
 
 class ActivityStreams extends Format {
+  
+  private static $fetcher;
 
   public static function is_as2_json($document) {
     if(is_array($document) && isset($document['@context'])) {
@@ -28,6 +30,8 @@ class ActivityStreams extends Format {
   public static function parse($http_response, $http, $opts=[]) {
     $as2 = $http_response['body'];
     $url = $http_response['url'];
+    
+    self::$fetcher = $opts['fetcher'] ?? null;
 
     if(!isset($as2['type']))
       return false;
@@ -156,7 +160,11 @@ class ActivityStreams extends Format {
       $authorURL = $as2['actor'];
     }
     if($authorURL) {
-      $authorResponse = $http->get($authorURL, ['Accept: application/activity+json,application/json']);
+      if(self::$fetcher)
+        $authorResponse = self::$fetcher->signed_get($authorURL, ['Accept' => 'application/activity+json,application/json']);
+      else 
+        $authorResponse = $http->get($authorURL, ['Accept: application/activity+json,application/json']);
+        
       if($authorResponse && !empty($authorResponse['body'])) {
         $authorProfile = json_decode($authorResponse['body'], true);
         $author = self::parseAsHCard($authorProfile, $authorURL, $http, $opts);
@@ -168,7 +176,12 @@ class ActivityStreams extends Format {
     // If this is a repost, fetch the reposted content
     if($as2['type'] == 'Announce' && isset($as2['object']) &&  is_string($as2['object'])) {
       $data['repost-of'] = [$as2['object']];
-      $reposted = $http->get($as2['object'], ['Accept: application/activity+json,application/json']);
+
+      if(self::$fetcher)
+        $reposted = self::$fetcher->signed_get($as2['object'], ['Accept: application/activity+json,application/json']);
+      else
+        $reposted = $http->get($as2['object'], ['Accept: application/activity+json,application/json']);
+
       if($reposted && !empty($reposted['body'])) {
         $repostedData = json_decode($reposted['body'], true);
         if($repostedData) {
@@ -184,7 +197,12 @@ class ActivityStreams extends Format {
     // If this is a like, fetch the liked post
     if($as2['type'] == 'Like' && isset($as2['object']) &&  is_string($as2['object'])) {
       $data['like-of'] = [$as2['object']];
-      $liked = $http->get($as2['object'], ['Accept: application/activity+json,application/json']);
+
+      if(self::$fetcher)
+        $liked = self::$fetcher->signed_get($as2['object'], ['Accept: application/activity+json,application/json']);
+      else
+        $liked = $http->get($as2['object'], ['Accept: application/activity+json,application/json']);
+
       if($liked && !empty($liked['body'])) {
         $likedData = json_decode($liked['body'], true);
         if($likedData) {

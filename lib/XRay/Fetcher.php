@@ -6,11 +6,16 @@ use DateTime;
 
 class Fetcher {
   private $http;
+  private $httpsig;
   
   use HTTPSig;
 
   public function __construct($http) {
     $this->http = $http;
+  }
+  
+  public function httpsig($key) {
+    $this->httpsig = $key;
   }
 
   public function fetch($url, $opts=[]) {
@@ -66,7 +71,7 @@ class Fetcher {
 
     $headers = [];
     
-    if(isset($opts['httpsig'])) {
+    if($this->httpsig) {
       // If we're making a signed GET, include the default headers that mastodon requires as part of the signature
       $date = new DateTime('UTC');
       $date = $date->format('D, d M Y H:i:s \G\M\T');
@@ -92,8 +97,7 @@ class Fetcher {
       $headers['Authorization'] = 'Bearer ' . $opts['token'];
     
     if(isset($opts['httpsig'])) {
-      echo "Signing HTTP Request\n";
-      $this->_httpSign($headers, $opts['httpsig']);
+      $this->_httpSign($headers, $this->httpsig);
     }
 
     $result = $this->http->get($url, $this->_headersToCurlArray($headers));
@@ -175,6 +179,14 @@ class Fetcher {
       'body' => $result['body'],
       'code' => $result['code'],
     ];
+  }
+  
+  public function signed_get($url, $headers) {
+    $date = new DateTime('UTC');
+    $date = $date->format('D, d M Y H:i:s \G\M\T');
+    $headers = array_merge($headers, $this->_headersToSign($url, $date));
+    $this->_httpSign($headers, $this->httpsig);
+    return $this->http->get($url, $this->_headersToCurlArray($headers));
   }
 
   private function _fetch_github($url, $opts) {

@@ -30,10 +30,13 @@ class XRay {
   public function parse($url, $opts_or_body=false, $opts_for_body=[]) {
     if(!$opts_or_body || is_array($opts_or_body)) {
       $fetch = new XRay\Fetcher($this->http);
-      if (is_array($opts_or_body)) {
+      if(is_array($opts_or_body)) {
         $fetch_opts = array_merge($this->defaultOptions, $opts_or_body);
       } else {
         $fetch_opts = $this->defaultOptions;
+      }
+      if(is_array($fetch_opts) && isset($fetch_opts['httpsig'])) {
+        $fetch->httpsig($fetch_opts['httpsig']);
       }
       $response = $fetch->fetch($url, $fetch_opts);
       if(!empty($response['error']))
@@ -47,7 +50,7 @@ class XRay {
       $opts = $opts_for_body;
       $code = null;
     }
-    $parser = new XRay\Parser($this->http);
+    $parser = new XRay\Parser($this->http, $fetch);
 
     // Merge provided options with default options, allowing provided options to override defaults.
     $opts = array_merge($this->defaultOptions, $opts);
