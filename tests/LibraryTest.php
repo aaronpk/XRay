@@ -109,29 +109,4 @@ class LibraryTest extends PHPUnit\Framework\TestCase
         );
     }
 
-    public function testDefaultOptionsAreUsedForFetching()
-    {
-        // LibraryTest::testDefaultOptionsAreUsed can only test that default options are merged and passed 
-        // to the relevant format handler. To test that they’re additionally passed to the fetcher currently
-        // requires a network request to the twitter API for an auth error.
-        // A potential future improvement for this would be to make a new mock HTTP client object which 
-        // accepts a callback, which gets passed the request it would send. We can then check that the
-        // request has the parameters we want without having to actually hit the network.
-        $url = 'https://twitter.com/BarnabyWalters/status/990659593561952256';
-
-        // Confirm the expected behaviour.
-        $xray = new p3k\XRay();
-        $result = $xray->parse($url);
-        $this->assertEquals('missing_parameters', $result['error']);
-
-        $xray = new p3k\XRay([
-            'twitter_api_key' => 'extremely real API credentials',
-            'twitter_api_secret' => 'extremely real API credentials',
-            'twitter_access_token' => 'extremely real API credentials',
-            'twitter_access_token_secret' => 'extremely real API credentials'
-        ]);
-        $result = $xray->parse($url);
-        $this->assertEquals('twitter_error', $result['error']);
-    }
-
 }

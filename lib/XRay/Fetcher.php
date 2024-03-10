@@ -38,11 +38,6 @@ class Fetcher {
     $url = normalize_url($url);
     $host = parse_url($url, PHP_URL_HOST);
 
-    // Check if this is a Twitter URL and use the API
-    if(Formats\Twitter::matches_host($url)) {
-      return $this->_fetch_tweet($url, $opts);
-    }
-
     // Transform the HTML GitHub URL into an GitHub API request and fetch the API response
     if(Formats\GitHub::matches_host($url)) {
       return $this->_fetch_github($url, $opts);
@@ -162,25 +157,6 @@ class Fetcher {
       'body' => $result['body'],
       'code' => $result['code'],
     ];
-  }
-
-  private function _fetch_tweet($url, $opts) {
-    $fields = ['twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret'];
-    $creds = [];
-    foreach($fields as $f) {
-      if(isset($opts[$f]))
-        $creds[$f] = $opts[$f];
-    }
-
-    if(count($creds) < 4) {
-      return [
-        'error_code' => 400,
-        'error' => 'missing_parameters',
-        'error_description' => 'All 4 Twitter credentials must be included in the request'
-      ];
-    }
-
-    return Formats\Twitter::fetch($url, $creds);
   }
 
   private function _fetch_github($url, $opts) {

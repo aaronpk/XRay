@@ -8,7 +8,6 @@ XRay parses structured content from a URL.
 
 XRay will parse content in the following formats. First the URL is checked against known services:
 
-* Twitter
 * GitHub
 * XKCD
 * Hackernews
@@ -68,7 +67,7 @@ In both cases, you can add an additional parameter to configure various options 
 * `expect=feed` - If you know the thing you are parsing is a feed, include this parameter which will avoid running the autodetection rules and will provide better results for some feeds.
 * `accept` - (options: `html`, `json`, `activitypub`, `xml`) - Without this parameter, XRay sends a default `Accept` header to prioritize getting the most likely best result from a page. If you are parsing a page for a specific purpose and expect to find only one type of content (e.g. webmentions will probably only be from HTML pages), you can include this parameter to adjust the `Accept` header XRay sends.
 
-Additional parameters are supported when making requests that use the Twitter or GitHub API. See the Authentication section below for details.
+Additional parameters are supported when making requests that use the GitHub API. See the Authentication section below for details.
 
 The XRay constructor can optionally be passed an array of default options, which will be applied in
 addition to (and can be overridden by) the options passed to individual `parse()` calls.
@@ -249,7 +248,7 @@ url=https://aaronparecki.com/2016/01/16/11/
 &body=<html>....</html>
 ```
 
-or for Twitter/GitHub where you might have JSON,
+or for GitHub where you might have JSON,
 
 ```
 POST /parse
@@ -286,19 +285,9 @@ url=https://aaronparecki.com/2016/01/16/11/
 
 ### API Authentication
 
-XRay uses the Twitter and Github APIs to fetch posts, and those API require authentication. In order to keep XRay stateless, it is required that you pass in the credentials to the parse call.
+XRay uses the Github APIs to fetch posts, and those API require authentication. In order to keep XRay stateless, it is required that you pass in the credentials to the parse call.
 
-You should only send the credentials when the URL you are trying to parse is a Twitter URL or a GitHub URL, so you'll want to check for whether the hostname is `twitter.com`, `github.com`, etc. before you include credentials in this call.
-
-
-#### Twitter Authentication
-
-XRay uses the Twitter API to fetch Twitter URLs. You can register an application on the Twitter developer website, and generate an access token for your account without writing any code, and then use those credentials when making an API request to XRay.
-
-* `twitter_api_key` - Your application's API key
-* `twitter_api_secret` - Your application's API secret
-* `twitter_access_token` - Your Twitter access token
-* `twitter_access_token_secret` - Your Twitter secret access token
+You should only send the credentials when the URL you are trying to parse is a GitHub URL, so you'll want to check for whether the hostname is `github.com`, etc. before you include credentials in this call.
 
 
 #### GitHub Authentication

@@ -83,10 +83,6 @@ class Parser {
       return Formats\GitHub::parse($http_response);
     }
 
-    if(Formats\Twitter::matches($url)) {
-      return Formats\Twitter::parse($http_response);
-    }
-
     if(Formats\XKCD::matches($url)) {
       return Formats\XKCD::parse($http_response);
     }
