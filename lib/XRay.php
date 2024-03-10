@@ -81,5 +81,9 @@ class XRay {
     if(!isset($result['source-format'])) $result['source-format'] = null;
     return $result;
   }
+  
+  public function httpsig($opts) {
+    $this->defaultOptions = array_merge($this->defaultOptions, ['httpsig' => $opts]);
+  }
 
 }

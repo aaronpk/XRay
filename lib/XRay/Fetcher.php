@@ -1,8 +1,13 @@
 <?php
 namespace p3k\XRay;
 
+use DateTime;
+
+
 class Fetcher {
   private $http;
+  
+  use HTTPSig;
 
   public function __construct($http) {
     $this->http = $http;
@@ -60,6 +65,13 @@ class Fetcher {
     }
 
     $headers = [];
+    
+    if(isset($opts['httpsig'])) {
+      // If we're making a signed GET, include the default headers that mastodon requires as part of the signature
+      $date = new DateTime('UTC');
+      $date = $date->format('D, d M Y H:i:s \G\M\T');
+      $headers = $this->_headersToSign($url, $date);
+    }
 
     $accept = 'application/mf2+json, application/activity+json, text/html, application/json, application/xml, text/xml';
     if(isset($opts['accept'])) {
@@ -73,12 +85,18 @@ class Fetcher {
         $accept = 'application/xml, text/xml';
     }
 
-    $headers[] = 'Accept: '.$accept;
+    // Override with the accept header here
+    $headers['Accept'] = $accept;
 
     if(isset($opts['token']))
-      $headers[] = 'Authorization: Bearer ' . $opts['token'];
+      $headers['Authorization'] = 'Bearer ' . $opts['token'];
+    
+    if(isset($opts['httpsig'])) {
+      echo "Signing HTTP Request\n";
+      $this->_httpSign($headers, $opts['httpsig']);
+    }
 
-    $result = $this->http->get($url, $headers);
+    $result = $this->http->get($url, $this->_headersToCurlArray($headers));
 
     if($result['error']) {
       return [
