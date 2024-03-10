@@ -49,6 +49,7 @@ class XRay {
       $body = $opts_or_body;
       $opts = $opts_for_body;
       $code = null;
+      $fetch = null;
     }
     $parser = new XRay\Parser($this->http, $fetch);
 
