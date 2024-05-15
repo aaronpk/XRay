@@ -29,6 +29,7 @@ $router->addRoute('GET', '/feeds', 'Feeds::find');
 $router->addRoute('POST', '/feeds', 'Feeds::find');
 
 $router->addRoute('GET', '/rels', 'Rels::fetch');
+$router->addRoute('POST', '/rels', 'Rels::fetch');
 
 $router->addRoute('GET', '/cert', 'Certbot::index');
 $router->addRoute('GET', '/cert/auth', 'Certbot::start_auth');
