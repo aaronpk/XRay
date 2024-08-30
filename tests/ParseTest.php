@@ -1167,7 +1167,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
 
         $this->assertEquals('mf2+json', $data['source-format']);
         $this->assertEquals('http://source.example.com/rel-alternate-priority.json', $data['parsed-url']);
-        $this->assertEquals('This should be the content from XRay', $data['data']['content']['text']);
+        $this->assertEquals('This is the content in the MF2 JSON file', $data['data']['content']['text']);
     }
 
     public function testRelAlternatePrioritizesMf2OverAS2()
@@ -1181,7 +1181,21 @@ class ParseTest extends PHPUnit\Framework\TestCase
 
         $this->assertEquals('mf2+json', $data['source-format']);
         $this->assertEquals('http://source.example.com/rel-alternate-priority.json', $data['parsed-url']);
-        $this->assertEquals('This should be the content from XRay', $data['data']['content']['text']);
+        $this->assertEquals('This is the content in the MF2 JSON file', $data['data']['content']['text']);
+    }
+
+    public function testRelAlternateIgnoreAS2AlternateOption()
+    {
+        $url = 'http://source.example.com/rel-alternate-as2';
+        $response = $this->parse(['url' => $url, 'ignore-as2' => true]);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body, true);
+
+        $this->assertEquals('mf2+html', $data['source-format']);
+        $this->assertArrayNotHasKey('parsed-url', $data);
+        $this->assertEquals('This is the content in the HTML instead of the AS2 JSON', $data['data']['content']['text']);
     }
 
     public function testRelAlternateFallsBackOnInvalidJSON()

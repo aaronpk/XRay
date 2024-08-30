@@ -13,7 +13,7 @@ Connection: keep-alive
   </head>
   <body>
     <div class="h-entry">
-      <p class="p-content">This should not be the content from XRay</p>
+      <p class="p-content">This is the content in the HTML instead of the AS2 JSON</p>
     </div>
   </body>
 </html>

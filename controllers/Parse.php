@@ -75,6 +75,10 @@ class Parse {
       $opts['allowIframeVideo'] = $request->get('allow-iframe-video') == 'true';
     }
 
+    if($request->get('ignore-as2')) {
+      $opts['ignore-as2'] = $request->get('ignore-as2') == 'true';
+    }
+
     $url = $request->get('url');
     $html = $request->get('html') ?: $request->get('body');
 

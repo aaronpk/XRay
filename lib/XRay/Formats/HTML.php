@@ -114,12 +114,17 @@ class HTML extends Format {
         }
       }
 
-      if(count($alternates['as2'])) {
+      $ignoreAS2 = false;
+      if(isset($opts['ignore-as2']) && $opts['ignore-as2'] == true)
+        $ignoreAS2 = true;
+
+      if(!$ignoreAS2 && count($alternates['as2'])) {
         $relurl = $alternates['as2'][0];
         // Fetch and parse the ActivityStreams JSON link
         $jsonpage = $http->get($relurl, [
           'Accept' => 'application/activity+json,application/json'
         ]);
+
         // Skip and fall back to parsing the HTML if anything about this request fails
         if(!$jsonpage['error'] && $jsonpage['body']) {
           $jsondata = json_decode($jsonpage['body'],true);

@@ -12,7 +12,7 @@ Connection: keep-alive
             ],
             "properties": {
                 "content": [
-                    "This should be the content from XRay"
+                    "This is the content in the MF2 JSON file"
                 ]
             }
         }
