@@ -8,7 +8,6 @@
     "mf2/mf2": "^0.4||^0.5",
     "ezyang/htmlpurifier": "^4.10",
     "indieweb/link-rel-parser": "^0.1.0",
-    "dg/twitter-php": "^3.0.0",
     "p3k/timezone": "^0.1.0",
     "p3k/http": "^0.1.0",
     "cebe/markdown": "^1.1.0",

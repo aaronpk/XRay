@@ -98,7 +98,6 @@ class Parse {
       $fetcher = new p3k\XRay\Fetcher($this->http);
 
       $fields = [
-        'twitter_api_key','twitter_api_secret','twitter_access_token','twitter_access_token_secret',
         'github_access_token',
         'token',
         'accept',

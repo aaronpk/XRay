@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b65752cb999f79a63d1688f1bc2c7af",
+    "content-hash": "a5c4ee3f81d0a6720e964ea4a1e54d55",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -69,51 +69,6 @@
                 "source": "https://github.com/cebe/markdown"
             },
             "time": "2018-03-26T11:24:36+00:00"
-        },
-        {
-            "name": "dg/twitter-php",
-            "version": "v3.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dg/twitter-php.git",
-                "reference": "d9370c9759138200a77ca86abcb0c5ddfe857c68"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dg/twitter-php/zipball/d9370c9759138200a77ca86abcb0c5ddfe857c68",
-                "reference": "d9370c9759138200a77ca86abcb0c5ddfe857c68",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                }
-            ],
-            "description": "Small and easy Twitter library for PHP",
-            "homepage": "https://github.com/dg/twitter-php",
-            "keywords": [
-                "oauth",
-                "twitter"
-            ],
-            "support": {
-                "source": "https://github.com/dg/twitter-php/tree/v3.8"
-            },
-            "time": "2019-02-08T16:20:01+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
