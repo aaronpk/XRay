@@ -168,8 +168,13 @@ class HTML extends Format {
     return $result;
   }
 
-  private static function toHtmlEntities($input) {
-    return mb_convert_encoding($input, 'HTML-ENTITIES', mb_detect_encoding($input));
+  // Convert all non-ASCII characters to numeric HTML entities so that DOMDocument::loadHTML
+  // interprets the document correctly regardless of its declared charset.
+  // (The mbstring "HTML-ENTITIES" encoding is deprecated as of PHP 8.2.)
+  public static function toHtmlEntities($input) {
+    $encoding = mb_detect_encoding($input, mb_detect_order(), true) ?: 'UTF-8';
+    $utf8 = mb_convert_encoding($input, 'UTF-8', $encoding);
+    return mb_encode_numericentity($utf8, [0x80, 0x10FFFF, 0, 0x1FFFFF], 'UTF-8');
   }
 
   private static function xPathGetElementById($xpath, $id) {

@@ -13,11 +13,11 @@ class MediaType {
   // "application/ld+json" => type: application, subtype: "ld+json", format: json
   public function __construct($string) {
     if(strstr($string, ';')) {
-      list($type, $parameters) = explode(';', $string, 2);
+      list($type, $parameters) = explode(';', $string, 2) + [null, null];
 
       $parameters = explode(';', $parameters);
       foreach($parameters as $p) {
-        list($k, $v) = explode('=', trim($p));
+        list($k, $v) = explode('=', trim($p), 2) + [null, null];
         if($k == 'charset')
           $this->charset = $v;
       }
@@ -25,7 +25,7 @@ class MediaType {
       $type = $string;
     }
 
-    list($type, $subtype) = explode('/', $type);
+    list($type, $subtype) = explode('/', $type, 2) + [null, null];
 
     $this->type = $type;
     $this->subtype = $subtype;

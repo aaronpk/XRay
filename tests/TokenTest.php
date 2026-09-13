@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 class TokenTest extends PHPUnit\Framework\TestCase
 {
 
-    private $http;
+    private $client;
 
     public function setUp(): void
     {
@@ -27,7 +27,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(400, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('invalid_request', $data->error);
     }
 
@@ -39,7 +39,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(400, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('invalid_url', $data->error);
     }
 
@@ -50,7 +50,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(400, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('invalid_request', $data->error);
     }
 
@@ -62,7 +62,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('no_token_endpoint', $data->error);
     }
 
@@ -75,7 +75,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('no_token_endpoint', $data->error);
     }
 
@@ -88,7 +88,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('no_token_endpoint', $data->error);
     }
 
@@ -101,7 +101,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
         $this->assertEquals('1234', $data->access_token);
     }
 
@@ -114,7 +114,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
         $this->assertEquals('1234', $data->access_token);
     }
 
@@ -127,7 +127,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
         $this->assertEquals('1234', $data->access_token);
     }
 
@@ -140,7 +140,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('this-string-passed-through-from-token-endpoint', $data->error);
     }
 
@@ -153,7 +153,7 @@ class TokenTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
 
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('timeout', $data->error);
     }
 

@@ -186,7 +186,7 @@ class Parser {
       return false;
     }
 
-    throw new Exception('Unexpected value in tree');
+    throw new \Exception('Unexpected value in tree');
   }
 
   private function _findLinkInHTML($link, $html) {
@@ -234,7 +234,7 @@ class Parser {
   }
 
   private static function _toHtmlEntities($input) {
-    return mb_convert_encoding($input, 'HTML-ENTITIES', mb_detect_encoding($input));
+    return Formats\HTML::toHtmlEntities($input);
   }
 
 }

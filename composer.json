@@ -5,13 +5,13 @@
   "homepage": "https://github.com/aaronpk/XRay",
   "description": "X-Ray returns structured data from any URL",
   "require": {
+    "php": "^8.0",
     "mf2/mf2": "^0.4||^0.5",
-    "ezyang/htmlpurifier": "^4.10",
+    "ezyang/htmlpurifier": "^4.17",
     "indieweb/link-rel-parser": "^0.1.0",
-    "p3k/timezone": "^0.1.0",
-    "p3k/http": "^0.1.0",
+    "p3k/http": "^0.1.13",
     "cebe/markdown": "^1.1.0",
-    "p3k/picofeed": "^0.1.0",
+    "p3k/picofeed": "dev-main as 0.1.41",
     "masterminds/html5": "^2.3"
   },
   "autoload": {
@@ -24,9 +24,9 @@
     ]
   },
   "require-dev": {
-    "league/plates": "^3.0",
-    "league/route": "^1.0",
-    "phpunit/phpunit": "^8.0.0|^9.0.0"
+    "league/plates": "^3.5",
+    "symfony/http-foundation": "^5.4 || ^6.0 || ^7.0",
+    "phpunit/phpunit": "^9.6"
   },
   "autoload-dev": {
     "files": [
@@ -37,6 +37,11 @@
       "controllers/Feeds.php",
       "controllers/Certbot.php"
     ]
+  },
+  "config": {
+    "platform": {
+      "php": "8.0.2"
+    }
   },
   "scripts": {
     "test": "vendor/bin/phpunit"

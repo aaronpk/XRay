@@ -93,7 +93,7 @@ class Certbot {
       return $response;
     }
 
-    $token = $request->get('token');
+    $token = $request->get('token') ?? '';
     $challenge = $request->get('challenge');
 
     if(preg_match('/acme-challenge\/(.+)/', $token, $match)) {

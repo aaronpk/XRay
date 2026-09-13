@@ -17,48 +17,69 @@ if(file_exists(dirname(__FILE__).'/../config.php')) {
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-$router = new League\Route\RouteCollection;
+
 $templates = new League\Plates\Engine(dirname(__FILE__).'/../views');
 
-$router->addRoute('GET', '/', 'Main::index');
-$router->addRoute('GET', '/parse', 'Parse::parse');
-$router->addRoute('POST', '/parse', 'Parse::parse');
-$router->addRoute('POST', '/token', 'Token::token');
+$routes = [
+  ['GET',  '/', 'Main::index'],
+  ['GET',  '/parse', 'Parse::parse'],
+  ['POST', '/parse', 'Parse::parse'],
+  ['POST', '/token', 'Token::token'],
 
-$router->addRoute('GET', '/feeds', 'Feeds::find');
-$router->addRoute('POST', '/feeds', 'Feeds::find');
+  ['GET',  '/feeds', 'Feeds::find'],
+  ['POST', '/feeds', 'Feeds::find'],
 
-$router->addRoute('GET', '/rels', 'Rels::fetch');
-$router->addRoute('POST', '/rels', 'Rels::fetch');
+  ['GET',  '/rels', 'Rels::fetch'],
+  ['POST', '/rels', 'Rels::fetch'],
 
-$router->addRoute('GET', '/cert', 'Certbot::index');
-$router->addRoute('GET', '/cert/auth', 'Certbot::start_auth');
-$router->addRoute('GET', '/cert/logout', 'Certbot::logout');
-$router->addRoute('GET', '/cert/redirect', 'Certbot::redirect');
-$router->addRoute('POST', '/cert/save-challenge', 'Certbot::save_challenge');
-$router->addRoute('GET', '/.well-known/acme-challenge/{token}', 'Certbot::challenge');
+  ['GET',  '/cert', 'Certbot::index'],
+  ['GET',  '/cert/auth', 'Certbot::start_auth'],
+  ['GET',  '/cert/logout', 'Certbot::logout'],
+  ['GET',  '/cert/redirect', 'Certbot::redirect'],
+  ['POST', '/cert/save-challenge', 'Certbot::save_challenge'],
+  ['GET',  '/.well-known/acme-challenge/{token}', 'Certbot::challenge'],
+];
 
-$dispatcher = $router->getDispatcher();
 $request = Request::createFromGlobals();
+$response = new Response;
 
-try {
-  $response = $dispatcher->dispatch($request->getMethod(), $request->getPathInfo());
-  $response->send();
-} catch(League\Route\Http\Exception\NotFoundException $e) {
-  $response = new Response;
-  $response->setStatusCode(404);
-  $response->setContent("Not Found\n");
-  $response->send();
-} catch(League\Route\Http\Exception\MethodNotAllowedException $e) {
-  $response = new Response;
+$method = $request->getMethod();
+$path = $request->getPathInfo();
+
+$handler = null;
+$args = [];
+$pathMatched = false;
+
+foreach($routes as list($routeMethod, $pattern, $routeHandler)) {
+  // Convert {name} placeholders into named regex groups
+  $regex = '#^'.preg_replace('/\{([a-zA-Z_]+)\}/', '(?P<$1>[^/]+)', $pattern).'$#';
+  if(!preg_match($regex, $path, $match))
+    continue;
+  $pathMatched = true;
+  if($routeMethod != $method)
+    continue;
+  $handler = $routeHandler;
+  $args = array_filter($match, 'is_string', ARRAY_FILTER_USE_KEY);
+  break;
+}
+
+if($handler) {
+  list($class, $fn) = explode('::', $handler);
+  $controller = new $class();
+  $response = $controller->$fn($request, $response, $args);
+} elseif($pathMatched) {
   $response->setStatusCode(405);
   $response->setContent("Method not allowed\n");
-  $response->send();
+} else {
+  $response->setStatusCode(404);
+  $response->setContent("Not Found\n");
 }
+
+$response->send();
 
 function shutdown() {
   $error = error_get_last();
-  if($error['type'] === E_ERROR) {
+  if($error && $error['type'] === E_ERROR) {
     header('HTTP/1.1 500 Server Error');
     header('X-PHP-Error-Type: '.$error['type']);
     header('X-PHP-Error-Message: '.$error['message']);

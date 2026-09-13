@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FeedTest extends PHPUnit\Framework\TestCase
 {
 
-    private $http;
+    private $client;
 
     public function setUp(): void
     {
@@ -492,7 +492,7 @@ class FeedTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('https://www.instagram.com/p/BcFjw9SHYql/', $data->items[11]->url);
         $this->assertEquals('2017-11-29T17:04:00+00:00', $data->items[11]->published);
         // Should remove the "name" since it's a prefix of the content
-        $this->assertObjectNotHasAttribute('name', $data->items[11]);
+        $this->assertObjectNotHasProperty('name', $data->items[11]);
         $this->assertEquals('Sometimes my job requires me to listen to 55 minutes of an hour long phone call while I go for a long walk on a sunny morning and wait for my turn to give an update. Pretty nice!', $data->items[11]->content->text);
     }
 

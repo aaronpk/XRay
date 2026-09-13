@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 class GitHubTest extends PHPUnit\Framework\TestCase
 {
 
-    private $http;
+    private $client;
 
     public function setUp(): void
     {

@@ -1,4 +1,7 @@
-<phpunit bootstrap="tests/bootstrap.php">
+<phpunit bootstrap="tests/bootstrap.php"
+         convertDeprecationsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true">
 	<testsuites>
 		<testsuite name="Tests">
 			<directory>tests/</directory>

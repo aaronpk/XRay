@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ParseTest extends PHPUnit\Framework\TestCase
 {
 
-    private $http;
+    private $client;
 
     public function setUp(): void
     {
@@ -28,7 +28,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(400, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('missing_url', $data->error);
     }
 
@@ -40,7 +40,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(400, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('invalid_url', $data->error);
     }
 
@@ -52,7 +52,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('no_link_found', $data->error);
         $this->assertEquals('200', $data->code);
         $this->assertEquals($url, $data->url);
@@ -66,7 +66,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
     }
 
     public function testTargetNotFoundInXML()
@@ -77,7 +77,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('no_link_found', $data->error);
         $this->assertEquals('200', $data->code);
         $this->assertEquals($url, $data->url);
@@ -91,7 +91,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertObjectNotHasProperty('name', $data->data);
         $this->assertEquals('This page has a link to target.example.com and some formatted text.', $data->data->content->text);
         $this->assertEquals('This page has a link to <a href="http://target.example.com">target.example.com</a> and some <b>formatted text</b>.', $data->data->content->html);
     }
@@ -225,7 +225,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $data = json_decode($body);
         $this->assertEquals('mf2+html', $data->{'source-format'});
         $this->assertEquals('photo', $data->data->{'post-type'});
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertObjectNotHasProperty('name', $data->data);
         $this->assertEquals('This page has an img tag with the target URL.', $data->data->content->text);
     }
 
@@ -239,7 +239,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $data = json_decode($body);
         $this->assertEquals('mf2+html', $data->{'source-format'});
         $this->assertEquals('video', $data->data->{'post-type'});
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertObjectNotHasProperty('name', $data->data);
         $this->assertEquals('This page has a video tag with the target URL.', $data->data->content->text);
     }
 
@@ -253,7 +253,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $data = json_decode($body);
         $this->assertEquals('mf2+html', $data->{'source-format'});
         $this->assertEquals('audio', $data->data->{'post-type'});
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertObjectNotHasProperty('name', $data->data);
         $this->assertEquals('This page has an audio tag with the target URL.', $data->data->content->text);
     }
 
@@ -265,7 +265,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
     }
 
     public function testFindTargetLinkInHTMLInFeed()
@@ -276,7 +276,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
     }
 
     public function testNotFindTargetLinkInHTMLInFeed()
@@ -287,7 +287,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectHasAttribute('error', $data);
+        $this->assertObjectHasProperty('error', $data);
         $this->assertEquals('no_link_found', $data->error);
     }
 
@@ -299,7 +299,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
     }
 
     public function testTextContent()
@@ -311,7 +311,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
         $this->assertEquals('mf2+html', $data->{'source-format'});
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertObjectNotHasProperty('name', $data->data);
         $this->assertEquals('This page has a link to target.example.com and some formatted text but is in a p-content element so is plaintext.', $data->data->content->text);
     }
 
@@ -323,7 +323,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
         $this->assertEquals('mf2+html', $data->{'source-format'});
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertObjectNotHasProperty('name', $data->data);
         $this->assertEquals("Hello\nWorld", $data->data->content->text);
     }
 
@@ -351,7 +351,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
         $this->assertEquals('mf2+html', $data->{'source-format'});
-        $this->assertObjectNotHasAttribute('name', $data->data);
+        $this->assertObjectNotHasProperty('name', $data->data);
         $this->assertEquals('note', $data->data->{'post-type'});
         $this->assertEquals('This page has a link to target.example.com and some formatted text.', $data->data->content->text);
         $this->assertEquals('This page has a link to <a href="http://target.example.com">target.example.com</a> and some <b>formatted text</b>.', $data->data->content->html);
@@ -383,7 +383,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('mf2+html', $data->{'source-format'});
         $this->assertEquals('Hello World', $data->data->name);
         $this->assertEquals('article', $data->data->{'post-type'});
-        $this->assertObjectNotHasAttribute('content', $data->data);
+        $this->assertObjectNotHasProperty('content', $data->data);
     }
 
     public function testEntryWithDuplicateCategories()
@@ -421,7 +421,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
         $this->assertEquals('unknown', $data->data->type);
-        $this->assertObjectNotHasAttribute('html', $data);
+        $this->assertObjectNotHasProperty('html', $data);
     }
 
     public function testFindTargetInNoParsedResult()
@@ -432,7 +432,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $body = $response->getContent();
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
-        $this->assertObjectNotHasAttribute('error', $data);
+        $this->assertObjectNotHasProperty('error', $data);
         $this->assertEquals('unknown', $data->data->type);
     }
 
@@ -518,7 +518,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($body);
         $this->assertEquals('mf2+html', $data->{'source-format'});
-        $this->assertObjectNotHasAttribute('content', $data->data);
+        $this->assertObjectNotHasProperty('content', $data->data);
         $this->assertEquals('This is a Post', $data->data->name);
     }
 
@@ -1069,7 +1069,7 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('http://source.example.com/images/quill.png', $data->data->logo);
         $this->assertEquals('Quill', $data->data->name);
         $this->assertEquals($url, $data->data->url);
-        $this->assertObjectNotHasAttribute('photo', $data->data);
+        $this->assertObjectNotHasProperty('photo', $data->data);
     }
 
     public function testDuplicateReplyURLValues()

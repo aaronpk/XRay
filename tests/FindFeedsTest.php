@@ -5,13 +5,12 @@ use Symfony\Component\HttpFoundation\Response;
 class FindFeedsTest extends PHPUnit\Framework\TestCase
 {
 
-    private $http;
+    private $client;
 
     public function setUp(): void
     {
         $this->client = new Feeds();
         $this->client->http = new p3k\HTTP\Test(dirname(__FILE__).'/data/');
-        $this->client->mc = null;
     }
 
     private function parse($params)

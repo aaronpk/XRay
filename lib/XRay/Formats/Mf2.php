@@ -162,8 +162,8 @@ class Mf2 extends Format {
     }
 
     // If the first item is an h-feed, parse as a feed
-    $first = $items[0];
-    if(in_array('h-feed', $first['type'])) {
+    $first = $items[0] ?? null;
+    if($first && in_array('h-feed', $first['type'])) {
       #Parse::debug("mf2:3: Recognized $url as an h-feed because the first item is an h-feed");
       return self::parseAsHFeed($mf2, $http, $url);
     }
@@ -419,8 +419,8 @@ class Mf2 extends Format {
       $name = preg_replace('/ ?(\.\.\.|…)$/', '', $name ?: '');
 
       // Remove all whitespace when checking equality
-      $nameCompare = preg_replace('/\s/','',trim($name) ?: '');
-      $contentCompare = preg_replace('/\s/','',trim($textContent) ?: '');
+      $nameCompare = preg_replace('/\s/','',trim($name ?? '') ?: '');
+      $contentCompare = preg_replace('/\s/','',trim($textContent ?? '') ?: '');
 
       // Check if the name is a prefix of the content
       if($contentCompare && $nameCompare && strpos($contentCompare, $nameCompare) === 0) {

@@ -40,7 +40,7 @@ function build_url($parsed_url) {
 }
 
 function should_follow_redirects($url) {
-  $host = parse_url($url, PHP_URL_HOST);
+  $host = parse_url($url, PHP_URL_HOST) ?: '';
   if(preg_match('/blogspot\.com|youtube\.com/', $host)) {
     return false;
   } else {

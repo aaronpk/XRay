@@ -137,7 +137,7 @@ class Feeds {
     // Sort feeds by priority
     $rank = ['microformats'=>0,'jsonfeed'=>1,'atom'=>2,'rss'=>3];
     usort($feeds, function($a, $b) use($rank) {
-      return $rank[$a['type']] > $rank[$b['type']];
+      return $rank[$a['type']] <=> $rank[$b['type']];
     });
 
     return [

@@ -28,6 +28,8 @@ Finally, XRay looks for Microformats on the page and will determine the content 
 
 ## Library
 
+XRay requires PHP 8.0 or newer.
+
 XRay can be used as a library in your PHP project. The easiest way to install it and its dependencies is via composer.
 
 ```
