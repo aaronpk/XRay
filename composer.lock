@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccc157cdfa92d966db66d23d8c0161b1",
+    "content-hash": "3ec9c1578f233027f313e3e237b4b4d6",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -414,7 +414,7 @@
         },
         {
             "name": "p3k/picofeed",
-            "version": "dev-main",
+            "version": "v0.1.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aaronpk/picofeed.git",
@@ -446,7 +446,6 @@
             "suggest": {
                 "ext-curl": "PicoFeed will use cURL if present"
             },
-            "default-branch": true,
             "bin": [
                 "picofeed"
             ],
@@ -469,7 +468,7 @@
             "homepage": "https://github.com/aaronpk/picoFeed",
             "support": {
                 "issues": "https://github.com/aaronpk/picofeed/issues",
-                "source": "https://github.com/aaronpk/picofeed/tree/main"
+                "source": "https://github.com/aaronpk/picofeed/tree/v0.1.41"
             },
             "time": "2023-10-30T15:53:21+00:00"
         }
@@ -2636,18 +2635,9 @@
             "time": "2025-11-17T20:03:58+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "p3k/picofeed",
-            "version": "dev-main",
-            "alias": "0.1.41",
-            "alias_normalized": "0.1.41.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "p3k/picofeed": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
