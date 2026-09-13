@@ -144,7 +144,7 @@ class GitHub extends Format {
 
       $entry['content'] = [
         'text' => $data['body'],
-        'html' => $parser->parse($data['body'])
+        'html' => self::sanitizeHTML($parser->parse($data['body']))
       ];
     }
 

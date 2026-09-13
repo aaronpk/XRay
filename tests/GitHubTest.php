@@ -87,6 +87,28 @@ class GitHubTest extends PHPUnit\Framework\TestCase
         $this->assertContains('silo', $data['data']['category']);
     }
 
+    public function testGitHubIssueSanitizesHTML()
+    {
+        $url = 'https://github.com/aaronpk/XRay/issues/99';
+        $response = $this->parse(['url' => $url]);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body, true);
+
+        $this->assertEquals(200, $data['code']);
+        $this->assertEquals('github', $data['source-format']);
+
+        $html = $data['data']['content']['html'];
+        $this->assertStringContainsString('<strong>bold</strong>', $html);
+        $this->assertStringContainsString('<a href="https://example.com/">safe link</a>', $html);
+        $this->assertStringNotContainsString('<script', $html);
+        $this->assertStringNotContainsString('alert(', $html);
+        $this->assertStringNotContainsString('javascript:', $html);
+        $this->assertStringNotContainsString('onerror', $html);
+        $this->assertStringNotContainsString('onclick', $html);
+    }
+
     public function testGitHubRepo()
     {
         $url = 'https://github.com/aaronpk/XRay';
@@ -129,7 +151,7 @@ class GitHubTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('https://avatars3.githubusercontent.com/u/16517999?v=3', $data['data']['author']['photo']);
         $this->assertEquals('https://github.com/sebsel', $data['data']['author']['url']);
         $this->assertStringContainsString('<p>Well it\'s just that php-comments does more than XRay does currently. But that\'s no good reason.</p>', $data['data']['content']['html']);
-        $this->assertStringContainsString('<code class="language-php">', $data['data']['content']['html']);
+        $this->assertStringContainsString('<pre><code>', $data['data']['content']['html']);
         $this->assertStringContainsString('```php', $data['data']['content']['text']);
         $this->assertNotContains('name', $data['data']);
         $this->assertContains('https://github.com/aaronpk/XRay/issues/25', $data['data']['in-reply-to']);
