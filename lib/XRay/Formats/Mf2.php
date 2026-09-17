@@ -517,7 +517,12 @@ class Mf2 extends Format {
 
     self::collectArrayValues(['category'], $item, $data, $refs, $http);
 
-    self::collectArrayURLValues(['item'], $item, $data, $refs, $http);
+    // A review is often also a reply to, or a like of, the thing it reviews,
+    // and those properties are how a receiver knows what the post is doing
+    // (issue aaronpk/webmention.io#176). Collecting only "item" dropped them,
+    // which also meant a review whose only link to a target was u-like-of
+    // looked like it linked nowhere.
+    self::collectArrayURLValues(['item','photo','video','audio','syndication','in-reply-to','like-of','repost-of','bookmark-of'], $item, $data, $refs, $http);
 
     self::determineNameAndContent($item, $data);
 

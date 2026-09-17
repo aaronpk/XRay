@@ -770,6 +770,34 @@ class ParseTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('http://product.example.com/', $data['data']['refs']['http://product.example.com/']['url']);
     }
 
+    /**
+     * A review can also be a reply to, or a like of, the thing it reviews
+     * (issue aaronpk/webmention.io#176). h-review collected only "item", so
+     * those properties vanished: a reply-review arrived as a plain mention,
+     * and a review whose only link to the target was u-like-of was rejected
+     * outright because the target never appeared in the parsed tree.
+     */
+    public function testMf2ReviewWithInReplyTo()
+    {
+        $url = 'http://source.example.com/h-review-in-reply-to';
+        $response = $this->parse(['url' => $url, 'target' => 'http://target.example.com/product']);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body, true);
+
+        $this->assertArrayNotHasKey('error', $data, 'the target must be found in a review');
+        $this->assertEquals('review', $data['data']['type']);
+        $this->assertContains('http://target.example.com/product', $data['data']['in-reply-to'], 'in-reply-to missing from a review');
+        $this->assertContains('http://target.example.com/product', $data['data']['like-of'], 'like-of missing from a review');
+        $this->assertContains('http://target.example.com/product', $data['data']['item']);
+
+        // Post type discovery names the h-* type for a review before it looks
+        // at in-reply-to, so this stays "review".
+        $this->assertEquals('review', $data['data']['post-type']);
+        $this->assertEquals('This is the full text of the review', $data['data']['content']['text']);
+    }
+
     public function testMf2ReviewOfHCard()
     {
         $url = 'http://source.example.com/h-review-of-h-card';
