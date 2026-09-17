@@ -1,0 +1,25 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Wed, 09 Dec 2015 03:29:14 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body class="h-entry">
+    <div class="e-content">
+      <p>A <a href="http://example.com/nofollow" rel="nofollow">nofollow link</a>, a
+         <a href="http://example.com/two" rel="nofollow ugc">link with two values</a>, and a
+         <a href="http://example.com/safety" rel="noopener noreferrer">link opened safely</a>.</p>
+      <p>These describe the page, not the link:
+         <a href="http://example.com/author" rel="author">author</a>,
+         <a href="http://example.com/me" rel="me">me</a>,
+         <a href="http://example.com/license" rel="license">license</a>,
+         <a href="http://example.com/canonical" rel="canonical">canonical</a>,
+         <a href="http://example.com/tag" rel="tag">tag</a>.</p>
+      <p><a href="javascript:alert('xss')" rel="nofollow">an unsafe link</a></p>
+    </div>
+  </body>
+</html>

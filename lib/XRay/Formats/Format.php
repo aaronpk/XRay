@@ -79,6 +79,22 @@ abstract class Format implements iFormat {
 
     $config->set('HTML.AllowedElements', $allowed);
 
+    // A rel value describes a link in the context of the page carrying it,
+    // and parsed content gets republished on somebody else's page, so only
+    // values describing the link itself may survive. Page-wide descriptors
+    // would make claims for whoever republishes this: rel=author and rel=me
+    // reassign authorship and identity, rel=license licenses the wrong page,
+    // rel=canonical and rel=alternate redirect search engines, rel=tag and
+    // rel=bookmark classify the wrong post. Without this setting
+    // HTMLPurifier drops every rel, including nofollow, which turns a
+    // deliberately unfollowed link into a followed one. Do not widen this.
+    $config->set('Attr.AllowedRel', [
+      'nofollow',   // keep the author's instruction to crawlers
+      'noopener',   // browsing-context safety, about this link only
+      'ugc',        // qualifies the link itself, not the page
+      'sponsored',  // dropping it would make a paid link look organic
+    ]);
+
     if($baseURL) {
       $config->set('URI.MakeAbsolute', true);
       $config->set('URI.Base', $baseURL);

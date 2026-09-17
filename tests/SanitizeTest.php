@@ -21,6 +21,43 @@ class SanitizeTest extends PHPUnit\Framework\TestCase
         return $this->client->parse($request, $response);
     }
 
+    public function testKeepsLinkLevelRelValues()
+    {
+        $url = 'http://sanitize.example/entry-with-rel-links';
+        $response = $this->parse(['url' => $url]);
+
+        $body = $response->getContent();
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = json_decode($body, true);
+        $html = $data['data']['content']['html'];
+
+        // A rel that describes the link survives, because it still applies
+        // wherever this content is republished.
+        $this->assertStringContainsString('<a href="http://example.com/nofollow" rel="nofollow">nofollow link</a>', $html, 'rel=nofollow missing');
+        $this->assertStringContainsString('<a href="http://example.com/two" rel="nofollow ugc">link with two values</a>', $html, 'rel=nofollow ugc missing');
+        $this->assertStringContainsString('<a href="http://example.com/safety" rel="noopener">link opened safely</a>', $html, 'rel=noopener missing');
+    }
+
+    public function testDropsPageWideRelValues()
+    {
+        $url = 'http://sanitize.example/entry-with-rel-links';
+        $response = $this->parse(['url' => $url]);
+
+        $data = json_decode($response->getContent(), true);
+        $html = $data['data']['content']['html'];
+
+        // These describe the page carrying the link, so keeping them would
+        // make claims for whoever republishes this content.
+        foreach (['author', 'me', 'license', 'canonical', 'tag'] as $rel) {
+            $this->assertStringContainsString('<a href="http://example.com/'.$rel.'">'.$rel.'</a>', $html, 'rel='.$rel.' should have been dropped');
+            $this->assertStringNotContainsString('rel="'.$rel.'"', $html, 'rel='.$rel.' should have been dropped');
+        }
+
+        // An unsafe href still goes, whatever its rel says.
+        $this->assertStringContainsString('<a rel="nofollow">an unsafe link</a>', $html, 'javascript: href should have been removed');
+        $this->assertStringNotContainsString('javascript:', $html);
+    }
+
     public function testAllowsWhitelistedTags()
     {
         $url = 'http://sanitize.example/entry-with-valid-tags';
