@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9259078fc8b91706816d76fd728a4570",
+    "content-hash": "f1a110be20804565ef066b933fb249f8",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -372,24 +372,25 @@
         },
         {
             "name": "p3k/http",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aaronpk/p3k-http.git",
-                "reference": "ce2df573ba30effa219fb6e98b5adee202f4bf7b"
+                "reference": "98b1aa07c9d5021b020f5021595e3a18d60ca4ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/ce2df573ba30effa219fb6e98b5adee202f4bf7b",
-                "reference": "ce2df573ba30effa219fb6e98b5adee202f4bf7b",
+                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/98b1aa07c9d5021b020f5021595e3a18d60ca4ea",
+                "reference": "98b1aa07c9d5021b020f5021595e3a18d60ca4ea",
                 "shasum": ""
             },
             "require": {
                 "indieweb/link-rel-parser": "0.1.*",
-                "mf2/mf2": ">=0.3.2"
+                "mf2/mf2": ">=0.3.2",
+                "php": ">=7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^10 || ^11"
+                "phpunit/phpunit": "^9.6 || ^10 || ^11"
             },
             "type": "library",
             "autoload": {
@@ -411,9 +412,9 @@
             "homepage": "https://github.com/aaronpk/p3k-http",
             "support": {
                 "issues": "https://github.com/aaronpk/p3k-http/issues",
-                "source": "https://github.com/aaronpk/p3k-http/tree/0.2.0"
+                "source": "https://github.com/aaronpk/p3k-http/tree/0.2.1"
             },
-            "time": "2026-10-02T21:24:04+00:00"
+            "time": "2026-10-02T22:03:41+00:00"
         },
         {
             "name": "p3k/picofeed",

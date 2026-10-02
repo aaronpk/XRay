@@ -9,7 +9,7 @@
     "mf2/mf2": "^0.4||^0.5",
     "ezyang/htmlpurifier": "^4.17",
     "indieweb/link-rel-parser": "^0.1.0",
-    "p3k/http": "^0.2",
+    "p3k/http": "^0.2.1",
     "cebe/markdown": "^1.1.0",
     "p3k/picofeed": "0.1.41",
     "masterminds/html5": "^2.3"
