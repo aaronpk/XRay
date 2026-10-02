@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ec9c1578f233027f313e3e237b4b4d6",
+    "content-hash": "9259078fc8b91706816d76fd728a4570",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -372,21 +372,24 @@
         },
         {
             "name": "p3k/http",
-            "version": "0.1.13",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aaronpk/p3k-http.git",
-                "reference": "ae4988ba19f4bc57ca3fe1f6dcd2087478fea53a"
+                "reference": "ce2df573ba30effa219fb6e98b5adee202f4bf7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/ae4988ba19f4bc57ca3fe1f6dcd2087478fea53a",
-                "reference": "ae4988ba19f4bc57ca3fe1f6dcd2087478fea53a",
+                "url": "https://api.github.com/repos/aaronpk/p3k-http/zipball/ce2df573ba30effa219fb6e98b5adee202f4bf7b",
+                "reference": "ce2df573ba30effa219fb6e98b5adee202f4bf7b",
                 "shasum": ""
             },
             "require": {
                 "indieweb/link-rel-parser": "0.1.*",
                 "mf2/mf2": ">=0.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10 || ^11"
             },
             "type": "library",
             "autoload": {
@@ -408,9 +411,9 @@
             "homepage": "https://github.com/aaronpk/p3k-http",
             "support": {
                 "issues": "https://github.com/aaronpk/p3k-http/issues",
-                "source": "https://github.com/aaronpk/p3k-http/tree/0.1.13"
+                "source": "https://github.com/aaronpk/p3k-http/tree/0.2.0"
             },
-            "time": "2024-10-20T19:46:46+00:00"
+            "time": "2026-10-02T21:24:04+00:00"
         },
         {
             "name": "p3k/picofeed",
