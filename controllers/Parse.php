@@ -18,6 +18,7 @@ class Parse {
 
   public function __construct() {
     $this->http = new p3k\HTTP(self::useragent());
+    $this->http->set_safe_mode(true, property_exists('Config', 'allow_private') ? (array)Config::$allow_private : []);
     if(Config::$cache && class_exists('Memcache')) {
       $this->mc = new Memcache();
       $this->mc->addServer('127.0.0.1');

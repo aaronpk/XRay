@@ -8,9 +8,20 @@ class XRay {
 
   public function __construct($options=[]) {
     $this->http = new HTTP('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36 p3k/XRay');
-    if (is_array($options)) {
-      $this->defaultOptions = $options;
+    if (!is_array($options)) {
+      $options = [];
     }
+
+    // The URLs XRay fetches come from anywhere, so by default it only
+    // fetches http(s) URLs on public addresses, checking every redirect.
+    // 'allow_private' lists hosts, addresses or CIDR ranges to reach anyway;
+    // 'safe_mode' => false turns the checks off.
+    if (!isset($options['safe_mode']) || $options['safe_mode'] !== false) {
+      $this->http->set_safe_mode(true, isset($options['allow_private']) ? (array)$options['allow_private'] : []);
+    }
+    unset($options['safe_mode'], $options['allow_private']);
+
+    $this->defaultOptions = $options;
   }
 
   public function rels($url, $opts=[]) {

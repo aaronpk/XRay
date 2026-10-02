@@ -34,6 +34,15 @@ class Rels {
 
     $result = $this->http->get($url);
 
+    if(isset($result['error']) && $result['error']) {
+      return [
+        'error' => $result['error'],
+        'error_description' => $result['error_description'],
+        'url' => $result['url'],
+        'code' => $result['code'],
+      ];
+    }
+
     $html = $result['body'];
     $mf2 = \mf2\Parse($html, $result['url']);
 

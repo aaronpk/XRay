@@ -88,6 +88,32 @@ $parsed = $xray->parse('https://aaronparecki.com/2017/04/28/9/', $html, [
 ]);
 ```
 
+### Safe mode
+
+The URLs XRay fetches usually come from someone else, so by default it only
+fetches `http` and `https` URLs whose host resolves to a public address. It
+refuses loopback, private-network, link-local and other reserved addresses,
+checks every redirect the same way, and connects only to the addresses it
+checked. A refused URL returns the error `blocked_url`. (This is
+[p3k/http's safe mode](https://github.com/aaronpk/p3k-http#safe-mode).)
+
+To reach a private server on purpose, such as a development site, list it in
+`allow_private` by hostname, address or CIDR range. To turn the checks off,
+for example on a trusted internal network, pass `'safe_mode' => false`:
+
+```php
+$xray = new p3k\XRay([
+  'allow_private' => ['dev.example.com', '10.11.11.0/24'],
+]);
+
+$xray = new p3k\XRay(['safe_mode' => false]);
+```
+
+These two options only apply to the constructor. If you replace `$xray->http`
+with your own `p3k\HTTP` object, call `set_safe_mode()` on it yourself.
+
+The hosted service reads the same list from `Config::$allow_private` in `config.php`.
+
 The `$parsed` return value will look like the below. See "Primary Data" below for an explanation of the vocabularies returned.
 
 ```
@@ -319,6 +345,7 @@ Possible errors are listed below:
 * `no_content`: No usable content could be found at the given URL.
 * `unauthorized`: The URL returned HTTP 401 Unauthorized.
 * `forbidden`: The URL returned HTTP 403 Forbidden.
+* `blocked_url`: The URL is not an http(s) URL on a public address, or redirected to one that is not (see Safe mode).
 
 ### Response Format
 

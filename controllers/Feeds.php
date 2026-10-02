@@ -9,6 +9,7 @@ class Feeds {
 
   public function __construct() {
     $this->http = new p3k\HTTP();
+    $this->http->set_safe_mode(true, property_exists('Config', 'allow_private') ? (array)Config::$allow_private : []);
   }
 
   private function respond(Response $response, $code, $params, $headers=[]) {
