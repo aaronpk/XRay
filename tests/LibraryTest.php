@@ -109,4 +109,17 @@ class LibraryTest extends PHPUnit\Framework\TestCase
         );
     }
 
+    public function testRelAlternateKeepsPageURL()
+    {
+        $url = 'http://source.example.com/rel-alternate-mf2-json';
+
+        $xray = new p3k\XRay();
+        $xray->http = new p3k\HTTP\Test(dirname(__FILE__).'/data/');
+        $data = $xray->parse($url);
+
+        $this->assertEquals('mf2+json', $data['source-format']);
+        $this->assertEquals($url, $data['url']);
+        $this->assertEquals('http://source.example.com/rel-alternate-mf2-json.json', $data['parsed-url']);
+    }
+
 }
