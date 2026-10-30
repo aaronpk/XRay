@@ -75,7 +75,9 @@ class XRay {
 
     if(!isset($opts['include_original']) || !$opts['include_original'])
       unset($result['original']);
-    if(!isset($result['url'])) $result['url'] = $url;
+    // Keep the page URL, like the API does, if the data was parsed from a rel=alternate URL
+    if(isset($result['url']) && $result['url'] != $url) $result['parsed-url'] = $result['url'];
+    $result['url'] = $url;
     if(!isset($result['code'])) $result['code'] = $code;
     if(!isset($result['source-format'])) $result['source-format'] = null;
     return $result;
